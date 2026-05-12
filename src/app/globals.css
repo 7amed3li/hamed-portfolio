@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #080808;
+  --color-surface: #101010;
+  --color-surface-2: #161616;
+  --color-foreground: #f5f5f0;
+  --color-muted-foreground: #888884;
+  --color-border: #1e1e1e;
+  --color-accent: #c9fd74;
+  --color-accent-dim: #a3cc5c;
+  --color-dangerous: #ff3366;
+  --color-brand: #c9fd74;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    --background: #080808;
+    --surface: #101010;
+    --surface-2: #161616;
+    --foreground: #f5f5f0;
+    --muted-foreground: #888884;
+    --border: #1e1e1e;
+    --accent: #c9fd74;
+    --dangerous: #ff3366;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-color: var(--border);
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #000000;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Utility classes */
+.accent-text {
+  color: var(--accent);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.section-line {
+  width: 2rem;
+  height: 1px;
+  background: var(--accent);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.75rem;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Number tag for project/service cards */
+.num-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+}
+
+/* Card hover border glow */
+.hover-glow {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 32px -8px rgba(201, 253, 116, 0.15);
+}
