@@ -2,20 +2,24 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contact", href: "#contact" },
-];
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/translations";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const { lang, toggleLang, isRTL } = useLang();
+  const tr = t[lang].nav;
+
+  const links = [
+    { label: tr.about, href: "#about" },
+    { label: tr.services, href: "#services" },
+    { label: tr.experience, href: "#experience" },
+    { label: tr.projects, href: "#projects" },
+    { label: tr.stack, href: "#stack" },
+    { label: tr.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 50);
@@ -45,13 +49,13 @@ export function Nav() {
           transition={{ delay: 0.2 }}
           className="block"
         >
-          <Image 
-            src="/logo.png" 
-            alt="Hamed Mohamed Logo" 
-            width={48} 
-            height={48} 
-            className="object-contain invert mix-blend-screen opacity-90 hover:opacity-100 transition-opacity" 
-            priority 
+          <Image
+            src="/logo.png"
+            alt="Hamed Mohamed Logo"
+            width={48}
+            height={48}
+            className="object-contain invert mix-blend-screen opacity-90 hover:opacity-100 transition-opacity"
+            priority
           />
         </motion.a>
 
@@ -65,7 +69,7 @@ export function Nav() {
                 href={l.href}
                 onMouseEnter={() => setHoveredLink(l.href)}
                 onMouseLeave={() => setHoveredLink(null)}
-                className={`relative px-4 py-2 text-xs font-mono uppercase tracking-widest transition-colors ${isHovered ? 'text-black' : 'text-muted-foreground'}`}
+                className={`relative px-4 py-2 text-xs font-mono uppercase tracking-widest transition-colors ${isHovered ? "text-black" : "text-muted-foreground"}`}
               >
                 {isHovered && (
                   <motion.div
@@ -80,33 +84,55 @@ export function Nav() {
           })}
         </div>
 
-        {/* Resume CTA - Desktop */}
-        <a
-          href="/Hamed_Mohamed_CV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-200 group ml-4"
-        >
-          Resume
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-40 group-hover:opacity-100 group-hover:translate-y-0.5 transition-all">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-        </a>
+        {/* Right side: Resume + Lang Toggle */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* Resume CTA */}
+          <a
+            href="/Hamed_Mohamed_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-200 group"
+          >
+            {tr.resume}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-40 group-hover:opacity-100 group-hover:translate-y-0.5 transition-all">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </a>
 
-        {/* Mobile Hamburger Button */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          onClick={() => setOpen(true)}
-          className="flex md:hidden flex-col gap-1.5 p-2 group"
-          aria-label="Open menu"
-        >
-          <span className="block w-6 h-px bg-current transition-all group-hover:w-8" />
-          <span className="block w-4 h-px bg-current transition-all group-hover:w-8" />
-        </motion.button>
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 px-3 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-200"
+            aria-label="Toggle language"
+          >
+            <span className={lang === "en" ? "text-accent" : "opacity-40"}>EN</span>
+            <span className="opacity-30">/</span>
+            <span className={lang === "ar" ? "text-accent" : "opacity-40"} style={{ fontFamily: "inherit" }}>ع</span>
+          </button>
+        </div>
+
+        {/* Mobile: Lang toggle + Hamburger */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="text-xs font-mono text-muted-foreground hover:text-accent transition-colors"
+          >
+            {lang === "en" ? "ع" : "EN"}
+          </button>
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            onClick={() => setOpen(true)}
+            className="flex flex-col gap-1.5 p-2 group"
+            aria-label="Open menu"
+          >
+            <span className="block w-6 h-px bg-current transition-all group-hover:w-8" />
+            <span className="block w-4 h-px bg-current transition-all group-hover:w-8" />
+          </motion.button>
+        </div>
       </header>
 
       <AnimatePresence>
@@ -124,14 +150,16 @@ export function Nav() {
 
             {/* Sidebar */}
             <motion.div
-              initial={{ x: "100%" }}
+              initial={{ x: isRTL ? "-100%" : "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              exit={{ x: isRTL ? "-100%" : "100%" }}
               transition={{ type: "tween", duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-              className="fixed top-0 right-0 h-full w-[340px] max-w-[85vw] z-50 flex flex-col bg-surface-2 border-l border-border"
+              className={`fixed top-0 ${isRTL ? "left-0" : "right-0"} h-full w-[340px] max-w-[85vw] z-50 flex flex-col bg-surface-2 border-${isRTL ? "r" : "l"} border-border`}
             >
               <div className="flex items-center justify-between px-8 h-16 border-b border-border">
-                <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">Menu</span>
+                <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                  {lang === "ar" ? "القائمة" : "Menu"}
+                </span>
                 <button
                   onClick={() => setOpen(false)}
                   className="w-8 h-8 flex items-center justify-center hover:text-accent transition-colors"
@@ -149,7 +177,7 @@ export function Nav() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.06 }}
                     className="group flex items-center justify-between py-4 border-b border-border text-2xl font-bold tracking-tight text-foreground hover:text-accent transition-colors"

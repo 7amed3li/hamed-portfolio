@@ -1,29 +1,14 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const stackGroups = [
-  {
-    label: "Languages",
-    items: ["JavaScript (ES2022+)", "TypeScript", "Python", "C#", "Java", "SQL"],
-  },
-  {
-    label: "Frontend",
-    items: ["React.js", "Next.js", "Redux", "Tailwind CSS"],
-  },
-  {
-    label: "Backend",
-    items: ["Node.js", "Express.js", "RESTful APIs", "PostgreSQL", "MySQL", "MongoDB", "Redis"],
-  },
-  {
-    label: "Security & DevOps",
-    items: ["SAST / DAST", "CI/CD Pipelines", "Docker", "Circuit Breaker", "SSRF Detection", "AST Analysis", "Threat Modeling"],
-  },
-];
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/translations";
 
 export function Stack() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { lang } = useLang();
+  const tr = t[lang].stack;
 
   return (
     <section id="stack" className="py-40 px-8 md:px-20 lg:px-28 border-t border-border">
@@ -36,13 +21,13 @@ export function Stack() {
         >
           <p className="section-label mb-8">
             <span className="section-line" />
-            Technologies
+            {tr.label}
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight uppercase text-foreground">My Stack</h2>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight uppercase text-foreground">{tr.heading}</h2>
         </motion.div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {stackGroups.map((group, i) => (
+          {tr.groups.map((group, i) => (
             <motion.div
               key={group.label}
               initial={{ opacity: 0, y: 24 }}

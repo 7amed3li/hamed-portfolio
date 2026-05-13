@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ScrambleText } from "@/components/ui/ScrambleText";
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/translations";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [val, setVal] = useState(0);
@@ -70,7 +72,7 @@ function TerminalAnimation() {
   }, []);
 
   return (
-    <div className="hidden lg:block absolute right-20 top-40 w-96 bg-surface/80 backdrop-blur border border-border p-6 rounded-lg font-mono text-xs shadow-2xl opacity-80">
+    <div className="hidden lg:block absolute right-20 rtl:right-auto rtl:left-20 top-40 w-96 bg-surface/80 backdrop-blur border border-border p-6 rounded-lg font-mono text-xs shadow-2xl opacity-80">
       <div className="flex gap-2 mb-4 pb-4 border-b border-border/50">
         <div className="w-3 h-3 rounded-full bg-dangerous/80" />
         <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -110,6 +112,8 @@ function TerminalAnimation() {
 }
 
 export function Hero() {
+  const { lang } = useLang();
+  const tr = t[lang].hero;
   return (
     <section className="min-h-screen flex flex-col justify-end px-6 md:px-20 lg:px-28 pb-24 pt-32 relative overflow-hidden">
       {/* Subtle dot grid */}
@@ -141,7 +145,7 @@ export function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
           </span>
           <span className="text-xs font-mono tracking-widest uppercase text-muted-foreground">
-            Available Aug 2026 · Open to KSA Relocation
+            {tr.badge}
           </span>
         </motion.div>
 
@@ -158,18 +162,17 @@ export function Hero() {
 
         {/* Tagline */}
         <motion.p variants={fadeUp} className="text-xl md:text-2xl font-light max-w-xl mb-16 text-muted-foreground relative z-20">
-          Full-Stack Engineer.{" "}
-          <span className="text-foreground">Node.js & React. Focusing on Application Security and Performance.</span>
+          {tr.tagline}{" "}
+          <span className="text-foreground">{tr.taglineSub}</span>
         </motion.p>
 
-        {/* CTA row with Magnetic Buttons */}
         <motion.div variants={fadeUp} className="flex flex-wrap gap-6 mb-28 relative z-20">
           <MagneticButton strength={60}>
             <a
               href="#projects"
               className="block px-8 py-4 text-sm font-mono uppercase tracking-widest font-bold bg-accent text-black hover:bg-foreground transition-colors hover-glow"
             >
-              View Work
+              {tr.cta_work}
             </a>
           </MagneticButton>
           <MagneticButton strength={40}>
@@ -177,22 +180,31 @@ export function Hero() {
               href="#contact"
               className="block px-8 py-4 text-sm font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-foreground hover:text-foreground transition-colors bg-background"
             >
-              Get in Touch
+              {tr.cta_contact}
+            </a>
+          </MagneticButton>
+          <MagneticButton strength={40}>
+            <a
+              href="/Hamed_Mohamed_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-8 py-4 text-sm font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-colors bg-background group"
+            >
+              {tr.cta_resume}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 group-hover:opacity-100 transition-opacity">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
             </a>
           </MagneticButton>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           variants={fadeUp}
           className="grid grid-cols-2 md:grid-cols-4 gap-10 pt-10 border-t border-border"
         >
-          {[
-            { label: "Latency Reduction", to: 98, suffix: "%" },
-            { label: "Throughput Boost", to: 6100, suffix: "%" },
-            { label: "Daily Users", to: 2000, suffix: "+" },
-            { label: "OSS PRs Merged", to: 7, suffix: "" },
-          ].map((s) => (
+          {tr.stats.map((s) => (
             <div key={s.label}>
               <div className="text-3xl md:text-4xl font-bold tracking-tight mb-1 accent-text">
                 <Counter to={s.to} suffix={s.suffix} />

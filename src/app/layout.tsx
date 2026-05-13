@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,8 +30,10 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col">
-        <ConsoleMessage />
-        {children}
+        <LanguageProvider>
+          <ConsoleMessage />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

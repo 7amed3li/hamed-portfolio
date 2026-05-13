@@ -1,46 +1,14 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-
-const projects = [
-  {
-    num: "1",
-    title: "QR Attendance System",
-    category: "Backend · Performance Engineering",
-    tags: ["Node.js", "PostgreSQL", "Redis", "Docker", "JWT", "Opossum"],
-    year: "2025–Present",
-    summary: "Hybrid QR verification pipeline serving 2,000+ daily users. 98% latency reduction — from 94ms down to 1.5ms. +6,100% throughput. Circuit Breaker pattern for 99.9% uptime.",
-    lesson: "Lesson Learned: High throughput requires aggressive caching. I had to rip out the original DB queries and rewrite them to use Redis.",
-    metrics: ["94ms → 1.5ms latency", "+6,100% throughput", "2,000+ daily users", "99.9% uptime"],
-    link: null,
-  },
-  {
-    num: "2",
-    title: "NodeSecure OSS Contributions",
-    category: "Security Research · Open Source",
-    tags: ["TypeScript", "AST Analysis", "SSRF Detection", "Security"],
-    year: "Q1 2026",
-    summary: "7 merged PRs to the NodeSecure ecosystem. Built insecure-random probe, improved SSRF detection, added configurable sensitivity modes and performance benchmarking.",
-    lesson: "Lesson Learned: AST analysis is incredibly powerful but resource-intensive. Writing efficient recursive tree walkers is harder than it looks.",
-    metrics: ["7 merged PRs", "Math.random probe", "SSRF detection", "AST benchmarks"],
-    link: "https://github.com/NodeSecure",
-  },
-  {
-    num: "3",
-    title: "DragonSploit",
-    category: "AI · Orchestration · Security",
-    tags: ["Node.js", "AI Orchestration", "Security", "Stack Detection"],
-    year: "2025",
-    summary: "AI-powered vulnerability scanning with intent-based orchestration engine. Dynamic strategy selection gives ~40% efficiency gain. Stack-detection module cuts false-positive alerts by 70%.",
-    lesson: "Lesson Learned: AI engines can hallucinate vulnerabilities. The real challenge was building a deterministic validation layer to verify the AI's claims.",
-    metrics: ["+40% efficiency", "-70% false positives", "Intent-based engine", "Stack detection"],
-    link: null,
-  },
-];
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/translations";
 
 function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: (i: number) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
+  const { lang } = useLang();
+  const tr = t[lang].projects;
 
   useEffect(() => {
     if (isInView) {
@@ -76,7 +44,7 @@ function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: 
       {p.lesson && (
         <div className="max-w-2xl bg-surface p-4 rounded-md border border-border mb-8">
           <p className="text-sm font-mono text-muted-foreground italic">
-            <span className="text-accent font-bold not-italic mr-2">💡 Behind the code:</span>
+            <span className="text-accent font-bold not-italic mr-2">{tr.behindCode}</span>
             {p.lesson}
           </p>
         </div>
@@ -101,7 +69,7 @@ function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: 
           rel="noreferrer"
           className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-sm"
         >
-          View Repository
+          {tr.viewRepo}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
@@ -113,6 +81,8 @@ function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: 
 
 export function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { lang } = useLang();
+  const tr = t[lang].projects;
 
   return (
     <section id="projects" className="px-8 md:px-20 lg:px-28 border-t border-border relative pb-40">
@@ -140,7 +110,7 @@ export function Projects() {
                     animate={{ y: `-${activeIndex * 100}%` }}
                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                   >
-                    {projects.map((p) => (
+                    {tr.items.map((p) => (
                       <h2 
                         key={p.num}
                         className="font-bold leading-none tracking-tighter text-border/30 flex items-center h-full w-full"
@@ -164,7 +134,7 @@ export function Projects() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row relative z-10 -mt-[100vh]">
         <div className="hidden lg:block lg:w-1/3 flex-shrink-0" /> {/* Spacer for left column */}
         <div className="w-full lg:w-2/3 pt-40">
-          {projects.map((p, i) => (
+          {tr.items.map((p, i) => (
             <ProjectCard 
               key={p.num} 
               p={p} 

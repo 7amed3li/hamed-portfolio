@@ -1,36 +1,19 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-
-const services = [
-  {
-    num: "( 01 )",
-    title: "Backend Engineering",
-    desc: "I build APIs and backends that scale. I focus on keeping latency low, database queries efficient, and the architecture clean.",
-    subServices: ["01 API Design", "02 Database Optimization", "03 Node.js & React", "04 High-Throughput Systems"],
-  },
-  {
-    num: "( 02 )",
-    title: "Application Security",
-    desc: "Security shouldn't be an afterthought. I write custom AST checkers, find SSRF vulnerabilities, and integrate security directly into the CI/CD pipeline.",
-    subServices: ["01 SAST/DAST", "02 Vulnerability Research", "03 Threat Modeling", "04 Open Source Auditing"],
-  },
-  {
-    num: "( 03 )",
-    title: "System Resilience",
-    desc: "Servers go down and networks fail. I use circuit breakers and automated fallbacks to make sure the system stays up even when things go wrong.",
-    subServices: ["01 Circuit Breakers", "02 Automated Fallbacks", "03 Load Testing", "04 Performance Tuning"],
-  },
-];
+import { useLang } from "@/contexts/LanguageContext";
+import { t } from "@/lib/translations";
 
 export function EngineeringPrinciples() {
   const [hovered, setHovered] = useState<number | null>(0); // Default open first one
+  const { lang } = useLang();
+  const tr = t[lang].services;
 
   return (
     <section id="services" className="py-40 px-8 md:px-20 lg:px-28 border-t border-border">
       <div className="max-w-6xl mx-auto">
         <div className="divide-y divide-border">
-          {services.map((s, i) => {
+          {tr.items.map((s, i) => {
             const isOpen = hovered === i;
 
             return (
