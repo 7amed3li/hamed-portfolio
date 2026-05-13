@@ -152,6 +152,10 @@ export const t = {
           summary: "Hybrid QR verification pipeline managing 2,000+ students across 7 faculties. 98% latency reduction — from 94ms down to 1.5ms. +6,100% throughput. Circuit Breaker pattern for 99.9% uptime.",
           lesson: "Lesson Learned: High throughput requires aggressive caching. I had to rip out the original DB queries and rewrite them to use Redis.",
           metrics: ["94ms → 1.5ms latency", "+6,100% throughput", "2,000+ students", "99.9% uptime"],
+          links: [
+            { label: "Admin Panel", url: "https://yzdd.gop.edu.tr/qr-admin/dashboard" },
+            { label: "Mobile UI", url: "https://yzdd.gop.edu.tr/qr-ui/" }
+          ],
           link: null,
         },
         {
@@ -174,7 +178,7 @@ export const t = {
           summary: "AI-powered vulnerability scanning with intent-based orchestration engine. Dynamic strategy selection gives ~40% efficiency gain. Stack-detection module cuts false-positive alerts by 70%.",
           lesson: "Lesson Learned: AI engines can hallucinate vulnerabilities. The real challenge was building a deterministic validation layer to verify the AI's claims.",
           metrics: ["+40% efficiency", "-70% false positives", "Intent-based engine", "Stack detection"],
-          link: null,
+          link: "https://github.com/7amed3li/DragonSploit",
         },
       ],
       behindCode: "💡 Behind the code:",
@@ -357,6 +361,10 @@ export const t = {
           summary: "نظام تسجيل حضور هجين يدير بيانات أكثر من 2000 طالب عبر 7 كليات. تم تقليل زمن الاستجابة بنسبة 98% (من 94ms إلى 1.5ms). وزيادة المعالجة بنسبة 6100%. نظام قواطع الدائرة (Circuit Breaker) لتحقيق توفر بنسبة 99.9%.",
           lesson: "الدرس المستفاد: المعالجة العالية تتطلب تخزيناً مؤقتاً قوياً. اضطررت لإزالة استعلامات قاعدة البيانات الأصلية وإعادة كتابتها لاستخدام Redis.",
           metrics: ["94ms → 1.5ms استجابة", "+6,100% معالجة", "2000+ طالب", "99.9% توفر"],
+          links: [
+            { label: "لوحة التحكم (Admin)", url: "https://yzdd.gop.edu.tr/qr-admin/dashboard" },
+            { label: "واجهة المستخدم (Mobile)", url: "https://yzdd.gop.edu.tr/qr-ui/" }
+          ],
           link: null,
         },
         {
@@ -379,7 +387,7 @@ export const t = {
           summary: "ماسح ثغرات مدعوم بالذكاء الاصطناعي مع محرك تنسيق قائم على النوايا. اختيار الاستراتيجية الديناميكي يعطي أرباح كفاءة بحوالي 40%. وحدة الكشف عن التكنولوجيا تقلل من التنبيهات الإيجابية الخاطئة بنسبة 70%.",
           lesson: "الدرس المستفاد: محركات ذكاء الاصطناعي قد تهلوس بالثغرات. التحدي الحقيقي كان بناء طبقة تحقق حتمية لتأكيد افتراضات الذكاء الاصطناعي.",
           metrics: ["+40% كفاءة", "-70% تنبيهات خاطئة", "محرك قائم على النوايا", "اكتشاف التقنيات"],
-          link: null,
+          link: "https://github.com/7amed3li/DragonSploit",
         },
       ],
       behindCode: "💡 خلف الكود:",

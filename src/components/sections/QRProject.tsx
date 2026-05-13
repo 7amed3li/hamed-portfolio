@@ -62,19 +62,36 @@ function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: 
         ))}
       </div>
 
-      {p.link && (
-        <a 
-          href={p.link} 
-          target="_blank" 
-          rel="noreferrer"
-          className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-sm"
-        >
-          {tr.viewRepo}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
-      )}
+      <div className="flex flex-wrap gap-6 mt-4">
+        {p.links?.map((l: any, i: number) => (
+          <a 
+            key={i}
+            href={l.url} 
+            target="_blank" 
+            rel="noreferrer"
+            className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-sm"
+          >
+            {l.label}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        ))}
+
+        {p.link && (
+          <a 
+            href={p.link} 
+            target="_blank" 
+            rel="noreferrer"
+            className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-sm"
+          >
+            {tr.viewRepo}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        )}
+      </div>
     </div>
   );
 }
