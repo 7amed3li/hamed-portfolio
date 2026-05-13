@@ -133,7 +133,7 @@ export function Projects() {
                         className="font-bold leading-none tracking-tighter text-border/30 flex items-center h-full w-full"
                         style={{ fontSize: "clamp(10rem, 20vw, 20rem)" }}
                       >
-                        {p.num}.
+                        {p.num}
                       </h2>
                     ))}
                   </motion.div>

@@ -9,7 +9,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const { lang, toggleLang, isRTL } = useLang();
+  const { lang, toggleLang, setLanguage, isRTL } = useLang();
   const tr = t[lang].nav;
 
   const links = [
@@ -104,22 +104,35 @@ export function Nav() {
           {/* Language Toggle */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-200"
+            className="group flex items-center gap-2 w-[4.5rem] justify-center px-0 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-300"
             aria-label="Toggle language"
+            title="Switch Language"
           >
-            <span className={lang === "en" ? "text-accent" : "opacity-40"}>EN</span>
-            <span className="opacity-30">/</span>
-            <span className={lang === "ar" ? "text-accent" : "opacity-40"} style={{ fontFamily: "inherit" }}>ع</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-70 group-hover:rotate-180 transition-transform duration-500">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span className={`w-4 text-center ${lang === "ar" ? "text-base font-bold leading-none mb-0.5" : ""}`} style={lang === "ar" ? { fontFamily: "inherit" } : {}}>
+              {lang === "en" ? "EN" : lang === "tr" ? "TR" : "ع"}
+            </span>
           </button>
         </div>
 
         {/* Mobile: Lang toggle + Hamburger */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-4">
           <button
             onClick={toggleLang}
-            className="text-xs font-mono text-muted-foreground hover:text-accent transition-colors"
+            className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-accent transition-colors"
           >
-            {lang === "en" ? "ع" : "EN"}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span className={`w-4 text-center ${lang === "ar" ? "text-sm font-bold leading-none" : ""}`} style={lang === "ar" ? { fontFamily: "inherit" } : {}}>
+              {lang === "en" ? "EN" : lang === "tr" ? "TR" : "ع"}
+            </span>
           </button>
           <motion.button
             initial={{ opacity: 0 }}
