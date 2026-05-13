@@ -108,7 +108,7 @@ export function Projects() {
          <div className="max-w-7xl mx-auto w-full flex">
             {/* LEFT: Sticky Massive Number */}
             <div className="w-full lg:w-1/3 flex-shrink-0 relative">
-              <div className="relative flex items-center h-[20rem]">
+              <div className="relative flex items-center h-[20rem]" dir="ltr">
                 {/* Fixed "0" */}
                 <h2 
                   className="font-bold leading-none tracking-tighter text-border/30"
