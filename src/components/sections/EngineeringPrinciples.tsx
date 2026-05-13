@@ -52,10 +52,10 @@ export function EngineeringPrinciples() {
 
                             <div className="space-y-4">
                               {s.subServices.map((sub, j) => (
-                                <div key={j} className="border-b border-border/50 pb-4 hover-glow hover:border-accent/50 pl-2 -ml-2 rounded-sm transition-all">
-                                  <span className="text-lg md:text-2xl font-bold text-foreground flex items-center">
-                                    <span className="text-sm font-mono text-accent mr-3">{sub.substring(0, 2)}</span>
-                                    {sub.substring(3)}
+                                <div key={j} className="border-b border-border/50 pb-4 hover-glow hover:border-accent/50 px-2 -mx-2 rounded-sm transition-all">
+                                  <span className="text-lg md:text-2xl font-bold text-foreground flex items-center gap-3">
+                                    <span className="text-sm font-mono text-accent">{sub.substring(0, 2)}</span>
+                                    <span>{sub.substring(3)}</span>
                                   </span>
                                 </div>
                               ))}
