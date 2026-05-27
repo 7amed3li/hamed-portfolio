@@ -1,5 +1,6 @@
 "use client";
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, ReactNode } from "react";
+import { useParams, useRouter, usePathname } from "next/navigation";
 
 type Lang = "en" | "ar" | "tr";
 
@@ -18,25 +19,36 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("en");
-
-  const toggleLang = () => {
-    setLang((l) => {
-      if (l === "en") return "tr";
-      if (l === "tr") return "ar";
-      return "en";
-    });
-  };
-
-  const setLanguage = (newLang: Lang) => setLang(newLang);
-
+  const params = useParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  const lang = (params?.lang as Lang) || "en";
   const isRTL = lang === "ar";
 
-  useEffect(() => {
-    const html = document.documentElement;
-    html.setAttribute("lang", lang);
-    html.setAttribute("dir", isRTL ? "rtl" : "ltr");
-  }, [lang, isRTL]);
+  const changeLang = (newLang: Lang) => {
+    if (newLang === lang) return;
+    const currentPath = pathname || `/${lang}`;
+    // Replace the current language in the path with the new one
+    // e.g. /en/about -> /ar/about
+    const segments = currentPath.split("/");
+    if (segments.length >= 2 && ["en", "ar", "tr"].includes(segments[1])) {
+      segments[1] = newLang;
+    } else {
+      segments.splice(1, 0, newLang);
+    }
+    const newPath = segments.join("/");
+    router.push(newPath);
+  };
+
+  const toggleLang = () => {
+    let nextLang: Lang = "en";
+    if (lang === "en") nextLang = "tr";
+    if (lang === "tr") nextLang = "ar";
+    changeLang(nextLang);
+  };
+
+  const setLanguage = (newLang: Lang) => changeLang(newLang);
 
   return (
     <LanguageContext.Provider value={{ lang, toggleLang, setLanguage, isRTL }}>
