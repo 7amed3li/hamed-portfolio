@@ -149,16 +149,27 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Big name */}
-        <motion.h1
-          variants={fadeUp}
-          className="font-bold leading-[0.88] tracking-[-0.03em] uppercase mb-12 text-foreground"
-          style={{ fontSize: "clamp(3.5rem, 11vw, 10rem)" }}
-        >
-          <ScrambleText text="Hamed" /><br />
-          <span className="accent-text"><ScrambleText text="Mohamed" /></span>
-          <span className="text-foreground">.</span>
-        </motion.h1>
+        {lang === "ar" ? (
+          <motion.h1
+            variants={fadeUp}
+            className="font-bold leading-tight mb-12 text-foreground"
+            style={{ fontSize: "clamp(3rem, 10vw, 8rem)" }}
+          >
+            حامد<br />
+            <span className="accent-text">محمد</span>
+            <span className="text-foreground font-mono">.</span>
+          </motion.h1>
+        ) : (
+          <motion.h1
+            variants={fadeUp}
+            className="font-bold leading-[0.88] tracking-[-0.03em] uppercase mb-12 text-foreground"
+            style={{ fontSize: "clamp(3.5rem, 11vw, 10rem)" }}
+          >
+            <ScrambleText text="Hamed" /><br />
+            <span className="accent-text"><ScrambleText text="Mohamed" /></span>
+            <span className="text-foreground">.</span>
+          </motion.h1>
+        )}
 
         {/* Tagline */}
         <motion.p variants={fadeUp} className="text-xl md:text-2xl font-light max-w-xl mb-16 text-muted-foreground relative z-20">

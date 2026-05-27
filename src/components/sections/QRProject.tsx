@@ -22,9 +22,9 @@ function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: 
         {p.category}
       </div>
 
-      <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground uppercase mb-8">
+      <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground uppercase mb-8">
         {p.title}
-      </h3>
+      </h2>
 
       <div className="flex flex-wrap gap-4 mb-12">
         {p.tags.map((t: string) => (
@@ -110,12 +110,13 @@ export function Projects() {
             <div className="w-full lg:w-1/3 flex-shrink-0 relative">
               <div className="relative flex items-center h-[20rem]" dir="ltr">
                 {/* Fixed "0" */}
-                <h2 
+                <span 
                   className="font-bold leading-none tracking-tighter text-border/30"
                   style={{ fontSize: "clamp(10rem, 20vw, 20rem)" }}
+                  aria-hidden="true"
                 >
                   0
-                </h2>
+                </span>
 
                 {/* Animated Right Digit Container */}
                 <div 
@@ -128,13 +129,14 @@ export function Projects() {
                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                   >
                     {tr.items.map((p) => (
-                      <h2 
+                      <span 
                         key={p.num}
                         className="font-bold leading-none tracking-tighter text-border/30 flex items-center h-full w-full"
                         style={{ fontSize: "clamp(10rem, 20vw, 20rem)" }}
+                        aria-hidden="true"
                       >
                         {p.num}
-                      </h2>
+                      </span>
                     ))}
                   </motion.div>
                 </div>

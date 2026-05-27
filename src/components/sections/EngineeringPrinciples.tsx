@@ -25,9 +25,9 @@ export function EngineeringPrinciples() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-8 items-start">
                   {/* Number */}
-                  <h3 className="text-3xl md:text-5xl font-bold font-mono text-foreground">
+                  <span className="text-3xl md:text-5xl font-bold font-mono text-foreground" aria-hidden="true">
                     {s.num}
-                  </h3>
+                  </span>
 
                   {/* Title & Expandable Content */}
                   <div>

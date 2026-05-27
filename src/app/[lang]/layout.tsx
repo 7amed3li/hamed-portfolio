@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import "@/app/globals.css";
 import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -188,17 +200,83 @@ export default async function LangLayout({
   const lang = langParam || "en";
   const isRTL = lang === "ar";
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${siteUrl}/#person`,
+        name: "Hamed Mohamed Abdelalim",
+        alternateName: [
+          "حامد محمد",
+          "حامد محمد عبدالعليم كامل",
+          "حامد المصري",
+          "Hamed Mohamed",
+          "Hamed"
+        ],
+        url: siteUrl,
+        image: `${siteUrl}/logo.png`,
+        jobTitle: ["Full-Stack Engineer", "Security Researcher", "مطور ويب", "مطور نود جي اس"],
+        nationality: {
+          "@type": "Country",
+          name: "Egypt"
+        },
+        worksFor: {
+          "@type": "Organization",
+          name: "AI & Digital Transformation Unit — Tokat Gaziosmanpaşa University"
+        },
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: "Tokat Gaziosmanpaşa University",
+          location: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "Turkey"
+            }
+          }
+        },
+        knowsLanguage: ["Arabic", "English", "Turkish"],
+        knowsAbout: [
+          "Node.js", "React", "TypeScript", "JavaScript", 
+          "Application Security", "Cybersecurity", "PostgreSQL", 
+          "Redis", "Express.js", "Next.js", "SAST", "DAST", 
+          "Performance Engineering", "AST Analysis"
+        ],
+        sameAs: [
+          "https://github.com/7amed3li",
+          "https://www.linkedin.com/in/hamed-abdelalim"
+        ],
+        email: "hamed.m.abdelalim@gmail.com",
+        telephone: "+905060453906",
+        description: "Hamed Mohamed (حامد محمد) is an Egyptian Full-Stack Engineer and Security Researcher who studied in Turkey. He specializes in Node.js, React, and building highly secure, scalable backend architectures."
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: "Hamed Mohamed Portfolio",
+        publisher: {
+          "@id": `${siteUrl}/#person`
+        }
+      }
+    ]
+  };
+
   return (
-    <div lang={lang} dir={isRTL ? "rtl" : "ltr"}>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `document.documentElement.lang="${lang}";document.documentElement.dir="${isRTL ? "rtl" : "ltr"}";`
-        }}
-      />
-      <LanguageProvider>
-        <ConsoleMessage />
-        {children}
-      </LanguageProvider>
-    </div>
+    <html lang={lang} dir={isRTL ? "rtl" : "ltr"} suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased dark`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col">
+        <LanguageProvider>
+          <ConsoleMessage />
+          {children}
+        </LanguageProvider>
+      </body>
+    </html>
   );
 }

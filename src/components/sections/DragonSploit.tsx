@@ -54,9 +54,9 @@ export function About() {
               {tr.bio2part3}
             </p>
             <div className="p-5 border-l-2 border-accent bg-accent/5 rounded-r-lg my-6">
-              <h4 className="text-foreground font-mono text-sm uppercase tracking-widest mb-2">
+              <h3 className="text-foreground font-mono text-sm uppercase tracking-widest mb-2">
                 {tr.philosophyTitle}
-              </h4>
+              </h3>
               <p className="text-sm">{tr.philosophyText}</p>
             </div>
           </div>
@@ -109,13 +109,13 @@ export function About() {
 
           {/* Opinionated Stack */}
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-widest mb-6 text-muted-foreground">
+            <h3 className="text-xs font-mono uppercase tracking-widest mb-6 text-muted-foreground">
               {tr.stackTitle}
-            </h4>
+            </h3>
             <div className="space-y-3">
               {tr.stack.map(({ tech, comment }) => (
                 <div key={tech} className="p-4 bg-surface rounded-lg border border-border hover:border-accent/50 transition-colors group">
-                  <h5 className="font-bold text-foreground mb-1 group-hover:text-accent transition-colors">{tech}</h5>
+                  <h4 className="font-bold text-foreground mb-1 group-hover:text-accent transition-colors">{tech}</h4>
                   <p className="text-xs font-mono text-muted-foreground">{comment}</p>
                 </div>
               ))}

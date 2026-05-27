@@ -191,19 +191,19 @@ export const t = {
       groups: [
         {
           label: "Languages",
-          items: ["JavaScript (ES2022+)", "TypeScript", "Python", "C#", "Java", "SQL"],
+          items: ["JavaScript (ES6+)", "TypeScript", "Python", "C#", "Java", "SQL", "HTML5/CSS3", "Bash"],
         },
         {
           label: "Frontend",
-          items: ["React.js", "Next.js", "Redux", "Tailwind CSS"],
+          items: ["React.js", "Next.js", "Redux Toolkit", "Zustand", "Tailwind CSS", "Framer Motion", "Vite", "Responsive Design"],
         },
         {
           label: "Backend",
-          items: ["Node.js", "Express.js", "RESTful APIs", "PostgreSQL", "MySQL", "MongoDB", "Redis"],
+          items: ["Node.js", "Express.js", "NestJS", "REST APIs", "GraphQL", "WebSockets", "Prisma ORM", "PostgreSQL", "MySQL", "MongoDB", "Redis", "JWT/OAuth"],
         },
         {
           label: "Security & DevOps",
-          items: ["SAST / DAST", "CI/CD Pipelines", "Docker", "Circuit Breaker", "SSRF Detection", "AST Analysis", "Threat Modeling"],
+          items: ["Docker", "Linux/Ubuntu", "CI/CD (GitHub Actions)", "Nginx", "Prometheus/Grafana", "SAST/DAST", "Circuit Breaker", "Threat Modeling", "Git"],
         },
       ]
     },
@@ -408,19 +408,19 @@ export const t = {
       groups: [
         {
           label: "اللغات",
-          items: ["JavaScript (ES2022+)", "TypeScript", "Python", "C#", "Java", "SQL"],
+          items: ["JavaScript (ES6+)", "TypeScript", "Python", "C#", "Java", "SQL", "HTML5/CSS3", "Bash"],
         },
         {
-          label: "واجهة المستخدم",
-          items: ["React.js", "Next.js", "Redux", "Tailwind CSS"],
+          label: "واجهة المستخدم (Frontend)",
+          items: ["React.js", "Next.js", "Redux Toolkit", "Zustand", "Tailwind CSS", "Framer Motion", "Vite", "Responsive Design"],
         },
         {
-          label: "الباك إند",
-          items: ["Node.js", "Express.js", "RESTful APIs", "PostgreSQL", "MySQL", "MongoDB", "Redis"],
+          label: "الباك إند (Backend)",
+          items: ["Node.js", "Express.js", "NestJS", "REST APIs", "GraphQL", "WebSockets", "Prisma ORM", "PostgreSQL", "MySQL", "MongoDB", "Redis", "JWT/OAuth"],
         },
         {
           label: "الأمان والعمليات (DevOps)",
-          items: ["SAST / DAST", "CI/CD Pipelines", "Docker", "Circuit Breaker", "SSRF Detection", "AST Analysis", "Threat Modeling"],
+          items: ["Docker", "Linux/Ubuntu", "CI/CD (GitHub Actions)", "Nginx", "Prometheus/Grafana", "SAST/DAST", "Circuit Breaker", "Threat Modeling", "Git"],
         },
       ]
     },
