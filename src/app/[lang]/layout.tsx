@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Cairo } from "next/font/google";
 import "@/app/globals.css";
 import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -12,6 +12,11 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+});
+
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["arabic"],
 });
 
 const siteUrl = "https://www.hamedmohamed.dev";
@@ -264,7 +269,7 @@ export default async function LangLayout({
   };
 
   return (
-    <html lang={lang} dir={isRTL ? "rtl" : "ltr"} suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased dark`}>
+    <html lang={lang} dir={isRTL ? "rtl" : "ltr"} suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${cairo.variable} h-full antialiased dark`}>
       <head>
         <script
           type="application/ld+json"

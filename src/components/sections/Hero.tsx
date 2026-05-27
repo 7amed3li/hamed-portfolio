@@ -152,12 +152,14 @@ export function Hero() {
         {lang === "ar" ? (
           <motion.h1
             variants={fadeUp}
-            className="font-bold leading-tight mb-12 text-foreground"
-            style={{ fontSize: "clamp(3rem, 10vw, 8rem)" }}
+            className="font-black leading-tight mb-12 text-foreground"
+            style={{ 
+              fontSize: "clamp(3rem, 10vw, 8rem)", 
+              fontFamily: "var(--font-cairo), sans-serif" 
+            }}
           >
             حامد<br />
-            <span className="accent-text">محمد</span>
-            <span className="text-foreground font-mono">.</span>
+            <span className="accent-text" style={{ letterSpacing: "-0.05em" }}>محمـــــــــد</span>
           </motion.h1>
         ) : (
           <motion.h1
