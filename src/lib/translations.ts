@@ -6,6 +6,7 @@ export const t = {
       experience: "Experience",
       projects: "Projects",
       stack: "Stack",
+      blog: "Blog",
       contact: "Contact",
       resume: "Resume",
     },
@@ -206,6 +207,13 @@ export const t = {
         },
       ]
     },
+    blog: {
+      label: "Writings",
+      heading1: "Latest",
+      heading2: "Articles",
+      readMore: "Read Article",
+      emptyText: "No articles published yet.",
+    },
   },
 
   ar: {
@@ -215,6 +223,7 @@ export const t = {
       experience: "الخبرة",
       projects: "المشاريع",
       stack: "التقنيات",
+      blog: "المدونة",
       contact: "تواصل",
       resume: "السيرة الذاتية",
     },
@@ -415,6 +424,13 @@ export const t = {
         },
       ]
     },
+    blog: {
+      label: "كتاباتي",
+      heading1: "أحدث",
+      heading2: "المقالات",
+      readMore: "اقرأ المقال",
+      emptyText: "لم يتم نشر مقالات بعد.",
+    },
   },
 
   tr: {
@@ -424,6 +440,7 @@ export const t = {
       experience: "Deneyim",
       projects: "Projeler",
       stack: "Teknolojiler",
+      blog: "Blog",
       contact: "İletişim",
       resume: "Özgeçmiş",
     },
@@ -623,6 +640,13 @@ export const t = {
           items: ["SAST / DAST", "CI/CD Pipelines", "Docker", "Circuit Breaker", "SSRF Detection", "AST Analysis", "Threat Modeling"],
         },
       ]
+    },
+    blog: {
+      label: "Yazılarım",
+      heading1: "Son",
+      heading2: "Makaleler",
+      readMore: "Makaleyi Oku",
+      emptyText: "Henüz makale yayınlanmadı.",
     },
   },
 } as const;

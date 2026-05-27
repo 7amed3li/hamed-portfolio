@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   verification: {
     google: "google25a857f9c98e0560",
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 // Advanced JSON-LD Structured Data for Maximum E-E-A-T and Identity Recognition
@@ -67,7 +71,7 @@ const jsonLd = {
       ],
       sameAs: [
         "https://github.com/7amed3li",
-        "https://linkedin.com/in/hamed-abdelalim"
+        "https://www.linkedin.com/in/hamed-abdelalim"
       ],
       email: "hamed.m.abdelalim@gmail.com",
       telephone: "+905060453906",
@@ -92,7 +96,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased dark`}
     >
       <head>

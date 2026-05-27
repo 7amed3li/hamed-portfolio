@@ -18,6 +18,7 @@ export function Nav() {
     { label: tr.experience, href: "#experience" },
     { label: tr.projects, href: "#projects" },
     { label: tr.stack, href: "#stack" },
+    { label: tr.blog, href: "#blog" },
     { label: tr.contact, href: "#contact" },
   ];
 

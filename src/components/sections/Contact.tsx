@@ -13,7 +13,7 @@ export function Contact() {
   const tr = t[lang].contact;
 
   const handleCopyCurl = () => {
-    navigator.clipboard.writeText("curl -X POST https://api.hamed.dev/contact -H 'Content-Type: application/json' -d '{\"message\": \"Let\\'s build something.\"}'");
+    navigator.clipboard.writeText("curl -X POST https://www.hamedmohamed.dev/api/contact -H 'Content-Type: application/json' -d '{\"message\": \"Let\\'s build something.\"}'");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -114,7 +114,7 @@ export function Contact() {
               </div>
               <div className="pt-8 overflow-x-auto">
                 <p>
-                  <span className="text-accent">curl</span> -X POST https://api.hamed.dev/contact \
+                  <span className="text-accent">curl</span> -X POST https://www.hamedmohamed.dev/api/contact \
                 </p>
                 <p className="pl-4">
                   -H <span className="text-foreground">"Content-Type: application/json"</span> \
@@ -136,7 +136,7 @@ export function Contact() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/hamed-abdelalim"
+                href="https://www.linkedin.com/in/hamed-abdelalim"
                 target="_blank"
                 rel="noreferrer"
                 className="px-5 py-3 text-xs font-mono uppercase tracking-widest transition-colors border border-border text-muted-foreground hover:border-accent hover:text-accent"

@@ -139,8 +139,14 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       siteName: "Hamed Mohamed | حامد محمد",
       title: lang === "ar" 
         ? "حامد محمد | مهندس برمجيات وباحث أمني" 
+        : lang === "tr"
+        ? "Hamed Mohamed | Full-Stack Mühendisi & Güvenlik Araştırmacısı"
         : "Hamed Mohamed | Full-Stack Engineer & Security Researcher",
-      description: lang === "ar" ? "مطور فول ستاك وباحث أمني" : "Full-Stack Engineer & Security Researcher",
+      description: lang === "ar" 
+        ? "مطور فول ستاك وباحث أمني" 
+        : lang === "tr" 
+        ? "Node.js, React ve Uygulama Güvenliği alanında uzmanlaşmış Full-Stack Mühendisi."
+        : "Full-Stack Engineer & Security Researcher",
       images: [
         {
           url: "/logo.png",
@@ -154,8 +160,16 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
     twitter: {
       card: "summary_large_image",
-      title: "Hamed Mohamed | حامد محمد",
-      description: "I build fast, secure backends. مطور فول ستاك وباحث أمني.",
+      title: lang === "ar" 
+        ? "حامد محمد | مهندس برمجيات وباحث أمني" 
+        : lang === "tr"
+        ? "Hamed Mohamed | Full-Stack Mühendisi"
+        : "Hamed Mohamed | Full-Stack Engineer",
+      description: lang === "ar" 
+        ? "مطور فول ستاك وباحث أمني. أبني أنظمة خلفية سريعة وآمنة."
+        : lang === "tr"
+        ? "Hızlı ve güvenli backend sistemleri inşa ediyorum."
+        : "I build fast, secure backends. Open-source contributor to NodeSecure.",
       images: ["/logo.png"],
     },
 
@@ -176,6 +190,11 @@ export default async function LangLayout({
 
   return (
     <div lang={lang} dir={isRTL ? "rtl" : "ltr"}>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang="${lang}";document.documentElement.dir="${isRTL ? "rtl" : "ltr"}";`
+        }}
+      />
       <LanguageProvider>
         <ConsoleMessage />
         {children}

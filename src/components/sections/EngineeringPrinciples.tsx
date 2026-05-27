@@ -21,6 +21,7 @@ export function EngineeringPrinciples() {
                 key={s.num}
                 className="py-10 cursor-pointer transition-colors"
                 onMouseEnter={() => setHovered(i)}
+                onClick={() => setHovered(i)}
               >
                 <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-8 items-start">
                   {/* Number */}
@@ -36,34 +37,29 @@ export function EngineeringPrinciples() {
                       {s.title}
                     </h2>
 
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pt-6 max-w-2xl">
-                            <p className="text-sm md:text-base leading-relaxed text-muted-foreground mb-8">
-                              {s.desc}
-                            </p>
+                    <motion.div
+                      initial={false}
+                      animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-6 max-w-2xl">
+                        <p className="text-sm md:text-base leading-relaxed text-muted-foreground mb-8">
+                          {s.desc}
+                        </p>
 
-                            <div className="space-y-4">
-                              {s.subServices.map((sub, j) => (
-                                <div key={j} className="border-b border-border/50 pb-4 hover-glow hover:border-accent/50 px-2 -mx-2 rounded-sm transition-all">
-                                  <span className="text-lg md:text-2xl font-bold text-foreground flex items-center gap-3">
-                                    <span className="text-sm font-mono text-accent">{sub.substring(0, 2)}</span>
-                                    <span>{sub.substring(3)}</span>
-                                  </span>
-                                </div>
-                              ))}
+                        <div className="space-y-4">
+                          {s.subServices.map((sub, j) => (
+                            <div key={j} className="border-b border-border/50 pb-4 hover-glow hover:border-accent/50 px-2 -mx-2 rounded-sm transition-all">
+                              <span className="text-lg md:text-2xl font-bold text-foreground flex items-center gap-3">
+                                <span className="text-sm font-mono text-accent">{sub.substring(0, 2)}</span>
+                                <span>{sub.substring(3)}</span>
+                              </span>
                             </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
 
                   <div className={`mt-2 transition-transform duration-500 ${isOpen ? 'rotate-45 opacity-100' : 'opacity-50'}`}>

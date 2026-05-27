@@ -7,6 +7,7 @@ import { EngineeringPrinciples } from "@/components/sections/EngineeringPrincipl
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/QRProject";
 import { Stack } from "@/components/sections/NodeSecure";
+import { Blog } from "@/components/sections/Blog";
 import { Contact } from "@/components/sections/Contact";
 import { StatusWidget } from "@/components/ui/StatusWidget";
 
@@ -22,6 +23,7 @@ export default function Home() {
         <Experience />
         <Projects />
         <Stack />
+        <Blog />
         <Contact />
         <StatusWidget />
       </main>
