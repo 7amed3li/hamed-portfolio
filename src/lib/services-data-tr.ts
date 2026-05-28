@@ -1,4 +1,4 @@
-import { ServicePage } from './services-data';
+import type { ServicePage } from './types';
 
 export const servicesData: ServicePage[] = [
   {

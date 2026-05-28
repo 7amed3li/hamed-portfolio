@@ -1,23 +1,8 @@
-import { caseStudies as caseStudiesEn } from './case-studies-data-en';
-import { caseStudies as caseStudiesAr } from './case-studies-data-ar';
-import { caseStudies as caseStudiesTr } from './case-studies-data-tr';
+import { caseStudies as caseStudiesEn } from '@/lib/case-studies-data-en';
+import { caseStudies as caseStudiesAr } from '@/lib/case-studies-data-ar';
+import { caseStudies as caseStudiesTr } from '@/lib/case-studies-data-tr';
 
-export type CaseStudy = {
-  slug: string;
-  title: string;
-  metaTitle: string;
-  metaDescription: string;
-  category: string;
-  year: string;
-  tags: string[];
-  heroStat: { value: string; label: string };
-  problem: string;
-  solution: string;
-  technologies: string[];
-  results: { metric: string; description: string }[];
-  clientProof: string;
-  cta: string;
-};
+import type { CaseStudy } from './types';
 
 export const caseStudiesData: Record<string, CaseStudy[]> = {
   en: caseStudiesEn,

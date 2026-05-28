@@ -91,6 +91,17 @@ function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: 
             </svg>
           </a>
         )}
+
+        {/* Case Study Links */}
+        <a 
+          href={`/${lang}/case-studies/${p.num === "1" ? "qr-attendance-system" : p.num === "2" ? "nodesecure-open-source" : "dragonsploit"}`}
+          className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-sm"
+        >
+          {lang === "ar" ? "اقرأ دراسة الحالة" : lang === "tr" ? "Örnek Olayı Oku" : "Read Case Study"}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
       </div>
     </div>
   );

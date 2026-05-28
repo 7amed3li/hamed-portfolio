@@ -1,4 +1,4 @@
-import { CaseStudy } from './case-studies-data';
+import type { CaseStudy } from './types';
 
 export const caseStudies: CaseStudy[] = [
   {

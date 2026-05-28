@@ -1,21 +1,8 @@
-import { servicesData as servicesEn } from './services-data-en';
-import { servicesData as servicesAr } from './services-data-ar';
-import { servicesData as servicesTr } from './services-data-tr';
+import { servicesData as servicesEn } from '@/lib/services-data-en';
+import { servicesData as servicesAr } from '@/lib/services-data-ar';
+import { servicesData as servicesTr } from '@/lib/services-data-tr';
 
-export type ServicePage = {
-  slug: string;
-  title: string;
-  metaTitle: string;
-  metaDescription: string;
-  h1: string;
-  intro: string;
-  forWho: string;
-  whatIBuild: string[];
-  technologies: string[];
-  businessValue: string;
-  proof: string;
-  faq: { q: string; a: string }[];
-};
+import type { ServicePage } from './types';
 
 export const servicesData: Record<string, ServicePage[]> = {
   en: servicesEn,

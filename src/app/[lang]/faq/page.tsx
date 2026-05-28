@@ -15,7 +15,14 @@ export async function generateMetadata({
     metadataBase: new URL(siteUrl),
     title: data.metaTitle,
     description: data.metaDesc,
-    alternates: { canonical: `${siteUrl}/${lang}/faq` },
+    alternates: { 
+      canonical: `${siteUrl}/${lang}/faq`,
+      languages: {
+        "en": `${siteUrl}/en/faq`,
+        "ar": `${siteUrl}/ar/faq`,
+        "tr": `${siteUrl}/tr/faq`
+      }
+    },
   };
 }
 

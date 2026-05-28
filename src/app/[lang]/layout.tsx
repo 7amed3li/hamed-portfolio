@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Cairo } from "next/font/google";
 import "@/app/globals.css";
 import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Footer } from "@/components/sections/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -362,7 +363,10 @@ export default async function LangLayout({
       <body className="min-h-full flex flex-col">
         <LanguageProvider>
           <ConsoleMessage />
-          {children}
+          <div className="flex-1 flex flex-col">
+            {children}
+          </div>
+          <Footer lang={lang} />
         </LanguageProvider>
       </body>
     </html>
