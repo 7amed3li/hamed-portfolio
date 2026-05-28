@@ -44,6 +44,7 @@ export default async function CaseStudyPage({
     "@graph": [
       {
         "@type": "Article",
+        "@id": `${siteUrl}/${lang}/case-studies/${slug}/#article`,
         name: cs.title,
         description: cs.metaDescription,
         author: { "@id": `${siteUrl}/#person` },
@@ -52,6 +53,7 @@ export default async function CaseStudyPage({
       },
       {
         "@type": "BreadcrumbList",
+        "@id": `${siteUrl}/${lang}/case-studies/${slug}/#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/${lang}` },
           {

@@ -44,6 +44,7 @@ export default async function ServicePage({
     "@graph": [
       {
         "@type": "Service",
+        "@id": `${siteUrl}/${lang}/services/${slug}/#service`,
         name: service.title,
         description: service.intro,
         provider: { "@id": `${siteUrl}/#person` },
@@ -53,6 +54,7 @@ export default async function ServicePage({
       },
       {
         "@type": "BreadcrumbList",
+        "@id": `${siteUrl}/${lang}/services/${slug}/#breadcrumb`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/${lang}` },
           { "@type": "ListItem", position: 2, name: "Hire", item: `${siteUrl}/${lang}/hire` },
@@ -66,6 +68,7 @@ export default async function ServicePage({
       },
       {
         "@type": "FAQPage",
+        "@id": `${siteUrl}/${lang}/services/${slug}/#faq`,
         mainEntity: service.faq.map((f) => ({
           "@type": "Question",
           name: f.q,
