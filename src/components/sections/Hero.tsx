@@ -174,10 +174,22 @@ export function Hero() {
         )}
 
         {/* Tagline */}
-        <motion.p variants={fadeUp} className="text-xl md:text-2xl font-light max-w-xl mb-16 text-muted-foreground relative z-20">
+        <motion.p variants={fadeUp} className="text-xl md:text-2xl font-light max-w-xl mb-6 text-muted-foreground relative z-20">
           {tr.tagline}{" "}
           <span className="text-foreground">{tr.taglineSub}</span>
         </motion.p>
+
+        {/* Client-focused description — visible to users and AI crawlers */}
+        {lang === "en" && (
+          <motion.p variants={fadeUp} className="text-sm max-w-2xl mb-12 text-muted-foreground/70 leading-relaxed relative z-20">
+            Hamed Mohamed helps clients build <strong className="text-muted-foreground">websites</strong>, <strong className="text-muted-foreground">landing pages</strong>, <strong className="text-muted-foreground">dashboards</strong>, <strong className="text-muted-foreground">backend APIs</strong>, <strong className="text-muted-foreground">QR attendance systems</strong>, and secure full-stack web applications using React, Next.js, Node.js, and PostgreSQL.
+          </motion.p>
+        )}
+        {lang === "ar" && (
+          <motion.p variants={fadeUp} className="text-sm max-w-2xl mb-12 text-muted-foreground/70 leading-relaxed relative z-20" style={{ fontFamily: "var(--font-cairo), sans-serif" }}>
+            حامد محمد يساعد العملاء في بناء <strong className="text-muted-foreground">المواقع الإلكترونية</strong> و<strong className="text-muted-foreground">صفحات الهبوط</strong> و<strong className="text-muted-foreground">لوحات التحكم</strong> و<strong className="text-muted-foreground">واجهات برمجة التطبيقات</strong> وأنظمة <strong className="text-muted-foreground">الحضور بـ QR</strong> وتطبيقات الويب الكاملة.
+          </motion.p>
+        )}
 
         <motion.div variants={fadeUp} className="flex flex-wrap gap-6 mb-28 relative z-20">
           <MagneticButton strength={60}>
@@ -186,6 +198,14 @@ export function Hero() {
               className="block px-8 py-4 text-sm font-mono uppercase tracking-widest font-bold bg-accent text-black hover:bg-foreground transition-colors hover-glow"
             >
               {tr.cta_work}
+            </a>
+          </MagneticButton>
+          <MagneticButton strength={40}>
+            <a
+              href={`/${lang}/hire`}
+              className="block px-8 py-4 text-sm font-mono uppercase tracking-widest border border-accent text-accent hover:bg-accent hover:text-black transition-colors bg-background"
+            >
+              {lang === "ar" ? "وظّفني" : lang === "tr" ? "İşe Al" : "Hire Me"}
             </a>
           </MagneticButton>
           <MagneticButton strength={40}>

@@ -135,7 +135,7 @@ export function Contact() {
                 GitHub
               </a>
               <a
-                href="https://www.linkedin.com/in/hamed-abdelalim"
+                href="https://www.linkedin.com/in/h-amedmohamed/"
                 target="_blank"
                 rel="noreferrer"
                 className="px-5 py-3 text-xs font-mono uppercase tracking-widest transition-colors border border-border text-muted-foreground hover:border-accent hover:text-accent"
