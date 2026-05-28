@@ -36,9 +36,9 @@ export function Nav() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 h-20 flex items-center justify-between transition-all"
+        className="fixed top-0 left-0 w-screen z-50 px-6 md:px-12 h-20 flex items-center justify-between transition-all"
         style={{
-          backgroundColor: scrolled ? "rgba(16, 16, 16, 0.92)" : "transparent",
+          backgroundColor: scrolled ? "rgba(8, 8, 8, 0.92)" : "transparent",
           backdropFilter: scrolled ? "blur(16px)" : "none",
           borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
         }}
