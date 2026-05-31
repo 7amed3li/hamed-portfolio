@@ -30,7 +30,7 @@ export function Blog() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await fetch(`https://dev.to/api/articles?username=${DEV_TO_USERNAME}&per_page=3`);
+        const res = await fetch(`https://dev.to/api/articles?username=${DEV_TO_USERNAME}&per_page=6`);
         if (res.ok) {
           const data = await res.json();
           setArticles(data);
