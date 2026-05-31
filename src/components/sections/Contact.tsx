@@ -13,7 +13,7 @@ export function Contact() {
   const tr = t[lang].contact;
 
   const handleCopyCurl = () => {
-    navigator.clipboard.writeText("curl -X POST https://formsubmit.co/ajax/hamed.m.abdelalim@gmail.com -H 'Content-Type: application/json' -d '{\"message\": \"Let\\'s build something.\"}'");
+    navigator.clipboard.writeText("curl -X POST https://api.web3forms.com/submit -H 'Content-Type: application/json' -d '{\"access_key\": \"YOUR_WEB3FORMS_ACCESS_KEY\", \"message\": \"Let\\'s build something.\"}'");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -24,14 +24,16 @@ export function Contact() {
     
     const formData = new FormData(e.currentTarget);
     const data = {
+      access_key: "863a8b72-97be-464b-b8f9-f26369a6d3de", // <-- قم بوضع مفتاحك هنا
       name: formData.get('name'),
       email: formData.get('email'),
       message: formData.get('message'),
-      _captcha: false // disable formsubmit's visual captcha
+      subject: "رسالة جديدة من موقعك",
+      from_name: "Hamed Portfolio"
     };
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/hamed.m.abdelalim@gmail.com", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -114,7 +116,7 @@ export function Contact() {
               </div>
               <div className="pt-8 overflow-x-auto">
                 <p>
-                  <span className="text-accent">curl</span> -X POST https://formsubmit.co/ajax/hamed.m.abdelalim@gmail.com \
+                  <span className="text-accent">curl</span> -X POST https://api.web3forms.com/submit \
                 </p>
                 <p className="pl-4">
                   -H <span className="text-foreground">"Content-Type: application/json"</span> \
@@ -233,15 +235,7 @@ export function Contact() {
           </motion.div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-28 pt-12 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-border">
-          <span className="text-xs font-mono text-muted-foreground">
-            © {new Date().getFullYear()} Hamed Mohamed · {tr.footerLeft}
-          </span>
-          <span className="text-xs font-mono text-muted-foreground">
-            {tr.footerRight}
-          </span>
-        </div>
+
       </div>
     </section>
   );
