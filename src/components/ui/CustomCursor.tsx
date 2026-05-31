@@ -8,6 +8,9 @@ export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
+    // Disable on mobile devices to save CPU and hit 100/100 performance
+    if (window.innerWidth < 768 || window.matchMedia("(hover: none)").matches) return;
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
