@@ -1,0 +1,146 @@
+---
+title: "How I Stopped Node.js from Freezing While Bulk-Processing 1,500+ Excel Rows"
+description: "Looping through large Excel uploads to hit external APIs (like emails) will drain your DB connections and block your server. Here is how I fixed it."
+lang: "en"
+translationKey: "nodejs-excel-optimization"
+date: "2026-05-31"
+author: "Hamed Mohamed"
+tags: ["node", "backend", "javascript", "database"]
+series: "Performance Engineering"
+seriesOrder: 1
+published: true
+featured: true
+summary: "A real-world case study on optimizing bulk database inserts and decoupling slow SMTP calls in a production Node.js backend."
+coverImage: "/static/blog/nodejs-excel-optimization.png"
+---
+
+**TL;DR:** Looping through large Excel uploads to hit external APIs (like emails) will drain your DB connections and block your server. I fixed a massive bottleneck by grouping database inserts with `SAVEPOINT`s and moving SMTP calls to a post-transaction queue.
+
+---
+
+## Context
+
+I was building a virtual attendance tracking system for a university. The client requested a feature we’ve all built a hundred times: **"Allow admins to upload an Excel file to bulk-import students."**
+
+Easy, right? I set up `multer`, grabbed the file buffer, parsed it, looped over the rows, and inserted them into Postgres. 
+
+Locally, with a dummy file of 5 rows, it was blazingly fast. We shipped it to production.
+
+## Problem
+
+The next day, an admin uploaded a real-world file containing **1,500 students**. 
+
+The server choked. The API timed out. The database connection pool was entirely exhausted, and every other user trying to use the app got a spinning wheel of death. 💀
+
+Here is exactly how I diagnosed the disaster and optimized the endpoint to handle thousands of rows efficiently.
+
+### 🚩 First wrong approach (The "Death Loop")
+
+When you look closely at the initial code, the problem wasn't parsing the Excel file. The problem was **I/O and network abuse inside a loop.**
+
+Here is a simplified version of my initial crime:
+
+```javascript title="conference.service.js"
+// ❌ Don't do this
+const rows = excelParser.read(fileBuffer);
+
+for (const row of rows) {
+  // 1. Hash password (CPU intensive)
+  const hashedPassword = await bcrypt.hash(row.password, 10);
+  
+  // 2. Insert into database
+  const user = await prisma.$queryRaw`INSERT INTO users ... RETURNING id`;
+  await prisma.$queryRaw`INSERT INTO enrollments ...`;
+  
+  // 3. Send welcome email (Slow external API)
+  await sendEmail(row.email, row.password);
+}
+```
+
+Let's do the math:
+- `bcrypt.hash` running sequentially 1,500 times puts pressure on the libuv threadpool.
+- Email SMTP takes about `300ms - 500ms` per send. `500ms * 1,500 = 750 seconds`.
+
+I was holding database connections open while waiting for an external Email API to respond for **12+ minutes**. 
+
+## Final Solution (Architecture Refactor)
+
+I needed to separate the slow external operations from the database operations. But I also faced the **"All-or-Nothing" Dilemma**: If row 1,499 fails because of a duplicate ID, I cannot let the entire transaction fail and reject the 1,498 good rows.
+
+Here is the 3-step solution that fixed it:
+
+#### 1. Grouping DB Work
+Instead of keeping many small DB operations mixed with slow external calls, I grouped the database work into **one controlled transaction**. The goal was not just fewer queries, but a radically shorter connection hold time.
+
+#### 2. Row-Level `SAVEPOINT`s
+To handle partial failures gracefully, I used raw SQL `SAVEPOINT`s inside the transaction. If a specific row throws an error, I rollback *only* to that row's savepoint. The rest of the batch survives.
+
+#### 3. Decoupling Emails
+Sending emails inside a DB transaction is a cardinal sin. I created an in-memory array `pendingEmails`. We push data to it during the loop, and only process the slow SMTP calls *after* the database transaction safely commits.
+
+### ✨ Code after
+
+Here is the battle-tested version:
+
+```javascript title="conference.service.js"
+// ✅ The Optimized Way
+const rows = excelParser.read(fileBuffer);
+const pendingEmails = [];
+const results = { success: 0, failed: 0, errors: [] };
+
+await prisma.$transaction(async (tx) => {
+  
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    const savepointName = `sp_row_${i}`;
+    
+    try {
+      // Safe here because savepointName is generated internally, not from user input
+      await tx.$executeRawUnsafe(`SAVEPOINT ${savepointName}`);
+      
+      const hashedPassword = await bcrypt.hash(row.password, 10);
+      await tx.$queryRaw`INSERT INTO users ...`;
+      await tx.$queryRaw`INSERT INTO enrollments ...`;
+      
+      // Queue email data (DO NOT send yet)
+      pendingEmails.push({ email: row.email, plainPass: row.password });
+      
+      // Implicitly commit this row
+      await tx.$executeRawUnsafe(`RELEASE SAVEPOINT ${savepointName}`);
+      results.success++;
+
+    } catch (err) {
+      // If THIS row fails, rollback ONLY this row. Loop continues!
+      await tx.$executeRawUnsafe(`ROLLBACK TO SAVEPOINT ${savepointName}`);
+      results.failed++;
+      results.errors.push({ row: i + 2, reason: err.message });
+    }
+  }
+});
+
+// The DB connection is now released and returned to the pool!
+// Now we safely fire off the slow SMTP emails asynchronously.
+for (const mail of pendingEmails) {
+  await sendEmail(mail.email, mail.plainPass);
+}
+
+return results;
+```
+
+> **🛡️ Security Note on Passwords:**
+> In the code above, the legacy system required emailing the generated temporary password. **In a modern production system, emailing plain passwords is an anti-pattern.** A much safer approach is saving the user without a password and pushing an `activationToken` to the queue, emailing them a secure *magic link* to set their own password.
+
+## Result
+The difference was night and day. 
+
+- **Database Write Time:** Database write operations dropped to around **~1.5 seconds** after isolating them from the slow SMTP overhead.
+- **Server Responsiveness:** The server remained responsive because long-running SMTP calls were no longer holding database connections open.
+- **Admin UX:** The endpoint now returns a clean JSON array of exactly which rows failed (e.g., `row 42: invalid email`), so the admin knows what to fix instead of getting a generic `500 Internal Server Error`.
+
+## What I learned
+When building bulk-import features in Node.js, your enemy isn't Node—it's how you manage external I/O. 
+1. **Never put slow external APIs (like emails) inside a DB lock.**
+2. **Keep connection hold times as short as possible.**
+3. **Assume data is dirty** and design for partial failures using Savepoints.
+
+<CTA />

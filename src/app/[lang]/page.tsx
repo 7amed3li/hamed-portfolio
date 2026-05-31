@@ -10,8 +10,14 @@ import { Stack } from "@/components/sections/NodeSecure";
 import { Blog } from "@/components/sections/Blog";
 import { Contact } from "@/components/sections/Contact";
 import { StatusWidget } from "@/components/ui/StatusWidget";
+import { getFeaturedPosts } from "@/lib/blog";
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ lang: 'en' | 'ar' | 'tr' }> }) {
+  const resolvedParams = await params;
+  const lang = resolvedParams.lang;
+  // Get max 3 featured posts for the home page
+  const posts = getFeaturedPosts(lang).slice(0, 3);
+
   return (
     <SmoothScrollProvider>
       <CustomCursor />
@@ -23,7 +29,7 @@ export default function Home() {
         <Experience />
         <Projects />
         <Stack />
-        <Blog />
+        <Blog initialPosts={posts} lang={lang} />
         <Contact />
         <StatusWidget />
       </main>

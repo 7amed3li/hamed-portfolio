@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { servicesData } from "@/lib/services-data";
 import { caseStudiesData } from "@/lib/case-studies-data";
+import { posts } from "#site/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.hamedmohamed.dev";
@@ -69,6 +70,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates: {
           languages: Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/case-studies/${cs.slug}`])),
         },
+      });
+    }
+
+    // Blog Main Page
+    entries.push({
+      url: `${baseUrl}/${locale}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: {
+        languages: Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/blog`])),
+      },
+    });
+
+    // Blog Post Pages
+    const localePosts = posts.filter(post => post.published && post.lang === locale);
+    for (const post of localePosts) {
+      const slug = post.slug.split('/').pop() || post.slugAsParams;
+      entries.push({
+        url: `${baseUrl}/${locale}/blog/${slug}`,
+        lastModified: new Date(post.updated || post.date),
+        changeFrequency: "monthly",
+        priority: 0.8,
       });
     }
   }

@@ -4,6 +4,8 @@ import "@/app/globals.css";
 import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Footer } from "@/components/sections/Footer";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const lang = langParam || "en";
   
   return {
+    metadataBase: new URL(siteUrl),
     title: {
       default: lang === "ar" 
         ? "حامد محمد | مهندس برمجيات وباحث أمني" 
@@ -367,6 +370,8 @@ export default async function LangLayout({
             {children}
           </div>
           <Footer lang={lang} />
+          <Analytics />
+          <SpeedInsights />
         </LanguageProvider>
       </body>
     </html>

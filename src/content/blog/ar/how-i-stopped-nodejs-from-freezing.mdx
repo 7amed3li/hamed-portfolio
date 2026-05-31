@@ -1,0 +1,146 @@
+---
+title: "كيف منعت خوادم Node.js من الانهيار أثناء معالجة آلاف الصفوف من ملفات Excel"
+description: "الدوران عبر ملفات إكسل ضخمة للاتصال بواجهات خارجية مثل البريد الإلكتروني سيستنزف اتصالات قاعدة البيانات ويشل الخادم. إليك كيف أصلحت ذلك."
+lang: "ar"
+translationKey: "nodejs-excel-optimization"
+date: "2026-05-31"
+author: "Hamed Mohamed"
+tags: ["node", "backend", "javascript", "database"]
+series: "Performance Engineering"
+seriesOrder: 1
+published: true
+featured: true
+summary: "دراسة حالة واقعية حول تحسين عمليات الإدخال الضخمة وفصل إرسال الإيميلات البطيئة في أنظمة Node.js."
+coverImage: "/static/blog/nodejs-excel-optimization.png"
+---
+
+**الخلاصة:** الدوران عبر ملفات إكسل ضخمة للاتصال بـ APIs خارجية (مثل الإيميلات) سيستنزف (Connection Pool) لقاعدة البيانات ويشل الخادم. لقد قمت بحل هذه المشكلة عن طريق تجميع عمليات قاعدة البيانات بـ `SAVEPOINT`s وفصل عمليات SMTP لتتم بعد المعاملة الأساسية.
+
+---
+
+## السياق (Context)
+
+كنت أبني نظام تسجيل حضور افتراضي لإحدى الجامعات. طلب العميل ميزة قمنا جميعنا ببنائها مئات المرات: **"السماح للإدارة برفع ملف Excel لإضافة الطلاب دفعة واحدة."**
+
+تبدو مهمة سهلة، أليس كذلك؟ قمت بإعداد `multer`، وحصلت على الـ `buffer` للملف، وقرأته، ودرت حول الصفوف، وقمت بإدخالهم في قاعدة البيانات Postgres.
+
+محليًا، مع ملف تجريبي من 5 صفوف، كان الأداء فائق السرعة. رفعنا الكود إلى الإنتاج.
+
+## المشكلة (Problem)
+
+في اليوم التالي، قام المشرف برفع ملف حقيقي يحتوي على **1,500 طالب**.
+
+انهار الخادم. انتهت مهلة الـ API (Timeout). تم استنفاد كل اتصالات قاعدة البيانات (Connection Pool Exhausted)، وكل مستخدم آخر يحاول الدخول للنظام رأى عجلة التحميل اللانهائية. 💀
+
+إليك بالضبط كيف قمت بتشخيص الكارثة وتحسين النظام ليتعامل مع آلاف الصفوف بكفاءة.
+
+### 🚩 المحاولة الأولى الخاطئة (The "Death Loop")
+
+عندما تدقق في الكود الأولي، المشكلة لم تكن في قراءة ملف الإكسل. المشكلة كانت في **إساءة استخدام الـ I/O والشبكة داخل حلقة (Loop).**
+
+إليك نسخة مبسطة من جريمتي البرمجية:
+
+```javascript title="conference.service.js"
+// ❌ لا تفعل هذا
+const rows = excelParser.read(fileBuffer);
+
+for (const row of rows) {
+  // 1. تشفير كلمة المرور (عملية تجهد المعالج)
+  const hashedPassword = await bcrypt.hash(row.password, 10);
+  
+  // 2. إدخال في قاعدة البيانات
+  const user = await prisma.$queryRaw`INSERT INTO users ... RETURNING id`;
+  await prisma.$queryRaw`INSERT INTO enrollments ...`;
+  
+  // 3. إرسال إيميل الترحيب (API خارجي بطيء)
+  await sendEmail(row.email, row.password);
+}
+```
+
+لنفعل القليل من الحسابات:
+- تشغيل `bcrypt.hash` بشكل متتابع 1,500 مرة يضع ضغطاً كبيراً على الـ libuv threadpool.
+- إرسال الإيميلات عبر SMTP يستغرق حوالي `300ms - 500ms` لكل إيميل. `500ms * 1,500 = 750 ثانية`.
+
+كنت أبقي اتصالات قاعدة البيانات مفتوحة أثناء انتظار استجابة الـ SMTP الخارجي لأكثر من **12 دقيقة**.
+
+## الحل النهائي (Architecture Refactor)
+
+كنت بحاجة لفصل العمليات الخارجية البطيئة عن عمليات قاعدة البيانات. لكن واجهت معضلة **الكل أو اللاشيء**: إذا فشل الصف رقم 1,499 بسبب وجود ID مكرر، لا يمكنني السماح بفشل المعاملة بالكامل ورفض الـ 1,498 صفاً الناجحين.
+
+إليك الحل الثلاثي الذي أصلح الأمر:
+
+#### 1. تجميع عمليات قاعدة البيانات
+بدلًا من إبقاء عمليات قاعدة بيانات صغيرة مختلطة بمكالمات خارجية بطيئة، قمت بتجميع عمل قاعدة البيانات في **معاملة واحدة محكمة (Transaction)**. الهدف لم يكن تقليل عدد الاستعلامات فحسب، بل تقليل وقت حجز الاتصال (Connection hold time) بشكل جذري.
+
+#### 2. نقاط حفظ على مستوى الصف (Row-Level `SAVEPOINT`s)
+للتعامل مع حالات الفشل الجزئي (Partial Failures) بسلاسة، استخدمت الـ `SAVEPOINT`s الخاصة بالـ SQL داخل الـ Transaction. إذا تسبب صف معين في خطأ، أقوم بعمل Rollback *فقط* لـ Savepoint ذلك الصف. باقي الدفعة تنجو!
+
+#### 3. فصل إرسال الإيميلات (Decoupling)
+إرسال الإيميلات داخل DB Transaction يعتبر خطيئة كبرى. أنشأت مصفوفة في الذاكرة `pendingEmails`. نرسل البيانات إليها أثناء الـ Loop، ونقوم بمعالجة إرسال الـ SMTP البطيء *فقط بعد* نجاح التزام (Commit) الـ Transaction.
+
+### ✨ الكود بعد التعديل
+
+إليك النسخة التي قاومت الإنتاج:
+
+```javascript title="conference.service.js"
+// ✅ الطريقة الأمثل
+const rows = excelParser.read(fileBuffer);
+const pendingEmails = [];
+const results = { success: 0, failed: 0, errors: [] };
+
+await prisma.$transaction(async (tx) => {
+  
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    const savepointName = `sp_row_${i}`;
+    
+    try {
+      // آمن هنا لأن اسم الـ Savepoint مُولد داخلياً
+      await tx.$executeRawUnsafe(`SAVEPOINT ${savepointName}`);
+      
+      const hashedPassword = await bcrypt.hash(row.password, 10);
+      await tx.$queryRaw`INSERT INTO users ...`;
+      await tx.$queryRaw`INSERT INTO enrollments ...`;
+      
+      // حفظ بيانات الإيميل (لا ترسله الآن)
+      pendingEmails.push({ email: row.email, plainPass: row.password });
+      
+      // التزام ضمني لهذا الصف
+      await tx.$executeRawUnsafe(`RELEASE SAVEPOINT ${savepointName}`);
+      results.success++;
+
+    } catch (err) {
+      // إذا فشل هذا الصف، نعيده فقط ونكمل الدوران
+      await tx.$executeRawUnsafe(`ROLLBACK TO SAVEPOINT ${savepointName}`);
+      results.failed++;
+      results.errors.push({ row: i + 2, reason: err.message });
+    }
+  }
+});
+
+// تم تحرير اتصال قاعدة البيانات بنجاح!
+// الآن نرسل الإيميلات بشكل آمن.
+for (const mail of pendingEmails) {
+  await sendEmail(mail.email, mail.plainPass);
+}
+
+return results;
+```
+
+> **🛡️ ملاحظة أمنية حول كلمات المرور:**
+> في الكود أعلاه، النظام القديم تطلب إرسال كلمة المرور المؤقتة. **في الأنظمة الحديثة، إرسال كلمات المرور الصريحة هو (Anti-pattern).** النهج الأكثر أماناً هو الحفظ بدون كلمة مرور، ودفع `activationToken` لقائمة انتظار، وإرسال *رابط سحري (Magic Link)* آمن لتعيين كلمة مرور خاصة بهم.
+
+## النتيجة
+الفرق كان كبيراً جداً.
+
+- **وقت الكتابة (Database Write Time):** انخفض وقت كتابة البيانات إلى حوالي **~1.5 ثانية** بعد عزلها عن وقت الـ SMTP.
+- **استجابة الخادم:** الخادم لم يعد يتجمد لأن عمليات الـ SMTP البطيئة لم تعد تحجز اتصالات الـ DB.
+- **تجربة المستخدم (UX):** الإدارة الآن تحصل على مصفوفة نظيفة تخبرهم بالضبط أي الصفوف فشلت ولماذا (مثل: `row 42: invalid email`)، بدلاً من `500 Internal Server Error` غامض.
+
+## الدروس المستفادة
+عند بناء ميزات الإدخال الضخم في Node.js، عدوك ليس Node—بل كيف تدير العمليات الخارجية (I/O).
+1. **لا تضع استدعاءات API خارجية (كالإيميل) داخل DB lock أبداً.**
+2. **أبقِ وقت الاحتفاظ بالاتصال (Connection Hold Time) بأقصر قدر ممكن.**
+3. **افترض أن البيانات غير نظيفة (Dirty)** وصمم لتقبل الفشل الجزئي باستخدام الـ Savepoints.
+
+<CTA />

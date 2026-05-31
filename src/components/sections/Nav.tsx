@@ -13,13 +13,13 @@ export function Nav() {
   const tr = t[lang].nav;
 
   const links = [
-    { label: tr.about, href: "#about" },
-    { label: tr.services, href: "#services" },
-    { label: tr.experience, href: "#experience" },
-    { label: tr.projects, href: "#projects" },
-    { label: tr.stack, href: "#stack" },
-    { label: tr.blog, href: "#blog" },
-    { label: tr.contact, href: "#contact" },
+    { label: tr.about, href: `/${lang}#about` },
+    { label: tr.services, href: `/${lang}#services` },
+    { label: tr.experience, href: `/${lang}#experience` },
+    { label: tr.projects, href: `/${lang}#projects` },
+    { label: tr.stack, href: `/${lang}#stack` },
+    { label: tr.blog, href: `/${lang}/blog` },
+    { label: tr.contact, href: `/${lang}#contact` },
   ];
 
   useEffect(() => {
