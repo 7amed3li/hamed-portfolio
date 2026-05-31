@@ -10,6 +10,7 @@ interface DevToArticle {
   description: string;
   url: string;
   cover_image: string | null;
+  social_image: string | null;
   published_at: string;
   public_reactions_count: number;
   reading_time_minutes: number;
@@ -95,10 +96,10 @@ export function Blog() {
                     transition={{ duration: 0.6, delay: i * 0.1 }}
                     className="group flex flex-col border border-border rounded-xl overflow-hidden hover:border-accent transition-colors bg-surface-2"
                   >
-                    {article.cover_image ? (
+                    {article.cover_image || article.social_image ? (
                       <div className="h-48 w-full overflow-hidden border-b border-border">
                         <img 
-                          src={article.cover_image} 
+                          src={article.cover_image || article.social_image || ''} 
                           alt={article.title}
                           width={600}
                           height={300} 
