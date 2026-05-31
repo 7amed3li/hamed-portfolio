@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Post } from '#site/content';
+import Image from 'next/image';
 
 interface BlogListProps {
   posts: Post[];
@@ -81,11 +82,13 @@ export function BlogList({ posts, lang, allTags }: BlogListProps) {
                 className="group flex flex-col h-full rounded-xl border border-border bg-surface-2 overflow-hidden hover:border-accent transition-colors"
               >
                 {post.coverImage ? (
-                  <div className="aspect-video w-full overflow-hidden border-b border-border">
-                    <img 
+                  <div className="aspect-video w-full overflow-hidden border-b border-border relative">
+                    <Image 
                       src={post.coverImage} 
                       alt={post.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                 ) : (

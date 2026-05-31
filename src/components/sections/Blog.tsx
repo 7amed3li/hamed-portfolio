@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
 import { Post } from "#site/content";
+import Image from "next/image";
 
 interface BlogProps {
   initialPosts?: Post[];
@@ -64,11 +65,13 @@ export function Blog({ initialPosts = [] }: BlogProps) {
               >
                 <Link href={post.permalink!} className="flex flex-col h-full">
                   {post.coverImage ? (
-                    <div className="h-48 w-full overflow-hidden border-b border-border">
-                      <img 
+                    <div className="h-48 w-full overflow-hidden border-b border-border relative">
+                      <Image 
                         src={post.coverImage} 
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   ) : (

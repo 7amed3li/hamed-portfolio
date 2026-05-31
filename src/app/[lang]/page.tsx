@@ -1,19 +1,16 @@
-import dynamic from "next/dynamic";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/DragonSploit";
+import { EngineeringPrinciples } from "@/components/sections/EngineeringPrinciples";
+import { Experience } from "@/components/sections/Experience";
+import { Projects } from "@/components/sections/QRProject";
+import { Stack } from "@/components/sections/NodeSecure";
+import { Blog } from "@/components/sections/Blog";
+import { Contact } from "@/components/sections/Contact";
+import { StatusWidget } from "@/components/ui/StatusWidget";
 import { getFeaturedPosts } from "@/lib/blog";
-
-// Lazy load everything below the fold to achieve 100/100 Performance Score
-const About = dynamic(() => import("@/components/sections/DragonSploit").then(mod => mod.About));
-const EngineeringPrinciples = dynamic(() => import("@/components/sections/EngineeringPrinciples").then(mod => mod.EngineeringPrinciples));
-const Experience = dynamic(() => import("@/components/sections/Experience").then(mod => mod.Experience));
-const Projects = dynamic(() => import("@/components/sections/QRProject").then(mod => mod.Projects));
-const Stack = dynamic(() => import("@/components/sections/NodeSecure").then(mod => mod.Stack));
-const Blog = dynamic(() => import("@/components/sections/Blog").then(mod => mod.Blog));
-const Contact = dynamic(() => import("@/components/sections/Contact").then(mod => mod.Contact));
-const StatusWidget = dynamic(() => import("@/components/ui/StatusWidget").then(mod => mod.StatusWidget));
 
 export default async function Home({ params }: { params: Promise<{ lang: 'en' | 'ar' | 'tr' }> }) {
   const resolvedParams = await params;

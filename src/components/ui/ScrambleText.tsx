@@ -35,10 +35,7 @@ export function ScrambleText({ text, className = "" }: { text: string; className
     }, 40); // Slightly slower tick rate (40ms instead of 30ms)
   };
 
-  useEffect(() => {
-    scramble();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text]);
+  // Removed useEffect that scrambles on mount to prevent Cumulative Layout Shift (CLS)
 
   return (
     <motion.span
