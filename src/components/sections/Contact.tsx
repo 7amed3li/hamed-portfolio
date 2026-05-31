@@ -13,7 +13,7 @@ export function Contact() {
   const tr = t[lang].contact;
 
   const handleCopyCurl = () => {
-    navigator.clipboard.writeText("curl -X POST https://www.hamedmohamed.dev/api/contact -H 'Content-Type: application/json' -d '{\"message\": \"Let\\'s build something.\"}'");
+    navigator.clipboard.writeText("curl -X POST https://formsubmit.co/ajax/hamed.m.abdelalim@gmail.com -H 'Content-Type: application/json' -d '{\"message\": \"Let\\'s build something.\"}'");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -31,10 +31,11 @@ export function Contact() {
     };
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://formsubmit.co/ajax/hamed.m.abdelalim@gmail.com", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(data)
       });
@@ -113,7 +114,7 @@ export function Contact() {
               </div>
               <div className="pt-8 overflow-x-auto">
                 <p>
-                  <span className="text-accent">curl</span> -X POST https://www.hamedmohamed.dev/api/contact \
+                  <span className="text-accent">curl</span> -X POST https://formsubmit.co/ajax/hamed.m.abdelalim@gmail.com \
                 </p>
                 <p className="pl-4">
                   -H <span className="text-foreground">"Content-Type: application/json"</span> \
