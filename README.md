@@ -1,95 +1,105 @@
-# Hamed Mohamed — Portfolio
+# Hamed Mohamed — Engineering Portfolio & Native Blog
 
-> Personal portfolio of Hamed Mohamed, Full-Stack Engineer specializing in Node.js, Application Security, and High-Throughput Backend Systems.
+> The personal portfolio and technical blog of Hamed Mohamed, a Full-Stack Software Engineer specializing in Node.js, Application Security, and High-Throughput Backend Systems.
 
-**Live site:** [hamed.dev](https://hamed.dev) *(coming soon)*
+🌍 **Live Site:** [hamedmohamed.dev](https://hamedmohamed.dev)
 
----
-
-## Tech Stack
-
-| Layer | Tech |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript |
-| Styling | Tailwind CSS + CSS Variables |
-| Animation | Framer Motion |
-| Font | Inter + JetBrains Mono |
-| Deployment | Vercel |
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat&logo=tailwind-css)
+![Velite](https://img.shields.io/badge/Velite-MDX_Engine-purple?style=flat)
 
 ---
 
-## Key Features
+## 🏗️ Architecture & Core Features
 
-- **Scramble Text Effect** — Name animates character-by-character on load
-- **Magnetic Buttons** — Physics-based cursor attraction on CTAs
-- **Sticky Scroll Numbers** — IntersectionObserver-driven project counter
-- **Boot Terminal** — Animated server-log sequence in the Hero section
-- **Sliding Nav Pill** — Framer Motion `layoutId` hover animation on desktop nav
-- **Hand-Drawn SVG Highlight** — Animated underline on the About heading
-- **Console Easter Egg** — Message for developers who open DevTools
-- **Status Widget** — Live clock with availability status (bottom-right)
+This project isn't just a static portfolio; it's a production-grade, SEO-optimized web application engineered for maximum performance and global reach.
+
+### 1. 🌐 Full Internationalization (i18n)
+- Natively supports **English (`en`), Arabic (`ar`), and Turkish (`tr`)**.
+- Uses Next.js App Router `[lang]` dynamic segments.
+- Custom translation engine with strict typing for all localized strings.
+- Bi-directional support (RTL for Arabic, LTR for EN/TR) dynamically injected into the `<html>` tag.
+
+### 2. 📝 Git-Backed MDX Blog (Velite)
+- **Type-Safe Content:** Uses [Velite](https://velite.js.org/) and Zod to parse, validate, and compile MDX files at build time. If a post is missing required frontmatter, the build fails.
+- **Custom Components:** MDX articles support custom React components (e.g., `<Callout />`, `<CodeBlock />`, `<CTA />`).
+- **Interactive UI:** Real-time client-side search and tag filtering using Framer Motion layout animations.
+
+### 3. 🔍 Advanced SEO & Discoverability
+- **JSON-LD Schema.org:** Dynamically injected structured data (`Person`, `WebSite`, `BlogPosting`) for rich Google Search results.
+- **Dynamic Metadata:** Programmatically generated `generateMetadata` for dynamic OpenGraph tags, Twitter Cards, and canonical URLs.
+- **Global Indexing:** Automated `sitemap.ts` and `hreflang` tags to link translated versions of the same page.
+- **RSS Feed:** Programmatically generated `rss.xml` for content syndication.
+
+### 4. ⚡ Performance & Observability
+- **Zero Database:** The entire app and blog compile to static HTML/JSON during the build process, resulting in sub-50ms response times globally via Vercel's Edge Network.
+- **Analytics & Insights:** Integrated `@vercel/analytics` and `@vercel/speed-insights` for real-time monitoring of Core Web Vitals and user behavior.
+- **Contact Form:** Serverless AJAX form submission via FormSubmit, completely decoupling the frontend from email-sending overhead.
 
 ---
 
-## Performance (Production Build)
+## 💻 Tech Stack
 
+| Layer | Technology | Purpose |
+|---|---|---|
+| **Framework** | Next.js (App Router) | Server Components, Routing, SSG |
+| **Language** | TypeScript | End-to-end type safety |
+| **Styling** | Tailwind CSS + CSS Vars | Responsive design, Dark mode |
+| **Animation** | Framer Motion | Fluid micro-interactions & page transitions |
+| **Content Engine** | Velite + Zod + MDX | Compiling and validating markdown articles |
+| **Syntax Highlighting** | Rehype Pretty Code | VS Code-like code blocks in the blog |
+| **Deployment** | Vercel | Global CDN, Edge Caching, CI/CD |
+
+---
+
+## 📂 Project Structure
+
+```text
+├── public/                 # Static assets (fonts, CV, blog covers)
+├── src/
+│   ├── app/                
+│   │   ├── [lang]/         # Internationalized App Router (en, ar, tr)
+│   │   ├── rss.xml/        # Dynamic RSS Feed Route
+│   │   └── sitemap.ts      # Dynamic Sitemap Generator
+│   ├── components/         # Reusable React UI Components
+│   ├── content/blog/       # Raw MDX files categorized by language
+│   ├── contexts/           # React Contexts (Language Provider)
+│   ├── lib/                # Utilities, Translations, and Blog logic
+│   └── middleware.ts       # Language redirection & route protection
+├── velite.config.ts        # MDX schema & content modeling definitions
+└── next.config.ts          # Next.js bundler configuration
 ```
-Route (app)          Size
-─────────────────────────
-○ /                  static
-○ /_not-found        static
-
-Build: ✓ Exit code 0
-TypeScript: ✓ No errors
-```
 
 ---
 
-## Running Locally
+## 🛠️ Running Locally
 
 ```bash
-# Install dependencies
+# 1. Clone the repository
+git clone https://github.com/7amed3li/hamed-portfolio.git
+
+# 2. Install dependencies
 npm install
 
-# Start dev server (http://localhost:3000)
+# 3. Start the development server (localhost:3000)
 npm run dev
 
-# Production build check
+# 4. Run a production build test
 npm run build
 ```
 
 ---
 
-## Project Structure
+## 📝 Authoring Blog Posts (For AI & Devs)
 
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout, fonts, metadata
-│   ├── page.tsx            # Page composition
-│   └── globals.css         # Design tokens (CSS variables)
-├── components/
-│   ├── sections/           # Page sections (Hero, About, Projects...)
-│   └── ui/                 # Reusable components (MagneticButton, ScrambleText...)
-public/
-│   ├── logo.png            # Personal logo
-│   └── Hamed_Mohamed_CV.pdf
-```
+We use a strict Git-backed workflow for publishing case studies.
+For detailed instructions on adding new articles, including frontmatter schema and image handling, please refer to the [AI Blog Authoring Guide](./AI_BLOG_AUTHORING_GUIDE.md).
 
 ---
 
-## Deployment (Vercel)
-
-1. Push repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → **New Project** → Import repo
-3. No env vars needed — deploy as-is
-4. Vercel auto-detects Next.js. Hit **Deploy**.
-
----
-
-## Contact
+## 📬 Contact
 
 - **Email:** hamed.m.abdelalim@gmail.com
-- **GitHub:** [github.com/7amed3li](https://github.com/7amed3li)
-- **Phone:** +90 506 045 3906
+- **LinkedIn:** [Hamed Mohamed](https://www.linkedin.com/in/hamed-mohamed/)
+- **GitHub:** [@7amed3li](https://github.com/7amed3li)

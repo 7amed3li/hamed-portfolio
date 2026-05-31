@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   
   return {
     metadataBase: new URL(siteUrl),
+    applicationName: lang === "ar" ? "حامد محمد" : "Hamed Mohamed",
     title: {
       default: lang === "ar" 
         ? "حامد محمد | مهندس برمجيات وباحث أمني" 
@@ -345,7 +346,7 @@ export default async function LangLayout({
         "@type": "WebSite",
         "@id": `${siteUrl}/#website`,
         url: siteUrl,
-        name: "Hamed Mohamed Portfolio",
+        name: lang === "ar" ? "حامد محمد" : "Hamed Mohamed",
         description: "Portfolio of Hamed Mohamed Abdelalim — Full-Stack Engineer & Security Researcher specializing in Node.js, React, and Application Security.",
         inLanguage: ["en", "ar", "tr"],
         publisher: {

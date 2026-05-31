@@ -8,9 +8,10 @@ Articles must be created as `.mdx` files in their respective language directorie
 - **Arabic:** `src/content/blog/ar/`
 - **Turkish:** `src/content/blog/tr/`
 
-## 🖼️ 2. Image Handling (CRITICAL)
+## 🖼️ 2. Image Handling & Generation (CRITICAL)
+- **Uniqueness Requirement:** NEVER reuse the same cover image for different blog posts. You MUST generate or request a unique, highly relevant, visually stunning cover image for EVERY new post.
 - **Location:** ALL images (covers or content images) MUST be saved inside `public/static/blog/`.
-- **Naming:** Use lowercase, hyphenated names (e.g., `my-post-cover.png`).
+- **Naming:** Use lowercase, hyphenated names relevant to the post topic (e.g., `jwt-security-cover.png`).
 - **Referencing in MDX:** Always use the absolute web path starting with `/static/blog/`. Do NOT use relative paths like `../../public`.
   - *Example in Frontmatter:* `coverImage: "/static/blog/post-cover.png"`
   - *Example in Content:* `![Alt Text](/static/blog/post-cover.png)`
@@ -73,8 +74,9 @@ Should be placed at the very end of EVERY engineering article to convert readers
 
 ## 🚀 AI Agent Workflow Example
 If the USER asks: *"Write an article about JWT security for my blog in Arabic"*:
-1. Generate the content in Arabic.
-2. Tell the user to place their cover image at `public/static/blog/jwt-security-ar.png`.
-3. Create the file `src/content/blog/ar/jwt-security.mdx`.
-4. Ensure the frontmatter is populated exactly as defined above (e.g., `lang: "ar"`).
-5. Add `<CTA />` at the bottom of the content.
+1. Generate a brand new, highly relevant cover image for JWT Security using your internal image generation tools.
+2. Tell the user you are saving the cover image to `public/static/blog/jwt-security-cover.png`.
+3. Generate the article content in Arabic.
+4. Create the file `src/content/blog/ar/jwt-security.mdx`.
+5. Ensure the frontmatter is populated exactly as defined above (e.g., `lang: "ar"`, `coverImage: "/static/blog/jwt-security-cover.png"`).
+6. Add `<CTA />` at the bottom of the content.
