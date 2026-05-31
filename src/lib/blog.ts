@@ -17,7 +17,7 @@ export function getAllPosts(lang: string) {
 
 // Get a single post by slug and language
 export function getPostBySlug(lang: string, slug: string) {
-  return posts.find(post => post.slug === `blog/${lang}/${slug}` || post.slugAsParams === slug && post.lang === lang)
+  return posts.find(post => post.slug === `blog/${lang}/${slug}` || post.slug.split('/').pop() === slug && post.lang === lang)
 }
 
 // Get featured posts for the home page or sidebar
@@ -27,8 +27,8 @@ export function getFeaturedPosts(lang: string) {
 }
 
 // Get related posts by tags (excluding the current post)
-export function getRelatedPosts(lang: string, currentSlugAsParams: string, tags: string[], limit: number = 3) {
-  const allLangPosts = getAllPosts(lang).filter(p => p.slugAsParams !== currentSlugAsParams)
+export function getRelatedPosts(lang: string, currentSlug: string, tags: string[], limit: number = 3) {
+  const allLangPosts = getAllPosts(lang).filter(p => p.slug.split('/').pop() !== currentSlug)
   
   // Sort by number of matching tags
   const related = allLangPosts.map(post => {
