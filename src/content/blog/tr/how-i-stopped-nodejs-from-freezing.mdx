@@ -1,0 +1,147 @@
+---
+title: "1.500+ Excel Satırını Toplu İşlerken Node.js'in Çökmesini Nasıl Engelledim"
+description: "Büyük Excel yüklemelerinde dış API'leri (e-posta gibi) döngüye sokmak veritabanı bağlantılarınızı tüketir ve sunucunuzu kilitler. İşte bunu nasıl çözdüğüm."
+slug: "how-i-stopped-nodejs-from-freezing"
+lang: "tr"
+translationKey: "nodejs-excel-optimization"
+date: "2026-05-31"
+author: "Hamed Mohamed"
+tags: ["node", "backend", "javascript", "database"]
+series: "Performans Mühendisliği"
+seriesOrder: 1
+published: true
+featured: true
+summary: "Canlı bir Node.js backend'inde toplu veritabanı eklemelerini (bulk insert) optimize etme ve yavaş SMTP çağrılarını ayırma üzerine gerçek bir vaka çalışması."
+coverImage: "/static/blog/nodejs-excel-optimization.png"
+---
+
+**Kısaca:** Büyük Excel yüklemelerinde dış API'lere (e-postalar gibi) döngüyle istek atmak veritabanı bağlantılarınızı tüketir ve sunucunuzu kilitler. Veritabanı eklemelerini `SAVEPOINT`'ler ile gruplayarak ve SMTP çağrılarını transaction sonrası bir kuyruğa taşıyarak devasa bir darboğazı (bottleneck) çözdüm.
+
+---
+
+## Bağlam
+
+Bir üniversite için sanal bir yoklama takip sistemi inşa ediyordum. Müşteri hepimizin yüzlerce kez inşa ettiği bir özellik istedi: **"Yöneticilerin (admin) öğrencileri toplu olarak içe aktarması için bir Excel dosyası yüklemesine izin ver."**
+
+Kolay, değil mi? `multer`'ı kurdum, dosya belleğini (buffer) aldım, ayrıştırdım, satırlar üzerinde bir döngü kurdum ve onları Postgres'e ekledim.
+
+Lokal ortamda, 5 satırlık örnek bir dosya ile inanılmaz hızlıydı. Üretime (production) aldık.
+
+## Sorun
+
+Ertesi gün, bir yönetici **1.500 öğrenci** içeren gerçek bir dosya yükledi.
+
+Sunucu tıkandı. API zaman aşımına (timeout) uğradı. Veritabanı bağlantı havuzu tamamen tükendi ve uygulamayı kullanmaya çalışan diğer tüm kullanıcılar sonsuz yükleme ekranında kaldı. 💀
+
+İşte bu felaketi nasıl teşhis ettiğim ve uç noktayı (endpoint) binlerce satırı verimli bir şekilde işleyecek şekilde nasıl optimize ettiğim.
+
+### 🚩 İlk Yanlış Yaklaşım ("Ölüm Döngüsü")
+
+Başlangıçtaki koda yakından baktığınızda, sorunun Excel dosyasını ayrıştırmak (parsing) olmadığını görürsünüz. Sorun, **bir döngü içindeki I/O ve ağ istismarıydı.**
+
+İşte ilk suçumun basitleştirilmiş bir versiyonu:
+
+```javascript title="conference.service.js"
+// ❌ Bunu yapmayın
+const rows = excelParser.read(fileBuffer);
+
+for (const row of rows) {
+  // 1. Şifreyi hashle (CPU yoğun)
+  const hashedPassword = await bcrypt.hash(row.password, 10);
+  
+  // 2. Veritabanına ekle
+  const user = await prisma.$queryRaw`INSERT INTO users ... RETURNING id`;
+  await prisma.$queryRaw`INSERT INTO enrollments ...`;
+  
+  // 3. Hoş geldin e-postası gönder (Yavaş dış API)
+  await sendEmail(row.email, row.password);
+}
+```
+
+Matematiğini yapalım:
+- `bcrypt.hash`'in ardışık olarak 1.500 kez çalışması libuv iş parçacığı havuzu (threadpool) üzerinde baskı oluşturur.
+- E-posta SMTP işlemi gönderim başına yaklaşık `300ms - 500ms` sürer. `500ms * 1.500 = 750 saniye`.
+
+Harici bir E-posta API'sinin yanıt vermesini beklerken veritabanı bağlantılarını **12+ dakika** boyunca açık tutuyordum.
+
+## Nihai Çözüm (Mimari Yeniden Düzenleme)
+
+Yavaş harici işlemleri veritabanı işlemlerinden ayırmam gerekiyordu. Ancak aynı zamanda **"Hepsi ya da Hiçbiri" İkilemi** ile de karşı karşıyaydım: Eğer 1.499. satır yinelenen bir ID (duplicate ID) nedeniyle başarısız olursa, tüm transaction'ın başarısız olmasına ve diğer 1.498 geçerli satırın reddedilmesine izin veremezdim.
+
+İşte bunu çözen 3 adımlı çözüm:
+
+#### 1. Veritabanı İşlerini Gruplandırma
+Pek çok küçük veritabanı işlemini yavaş harici çağrılarla karıştırmak yerine, veritabanı işini **kontrollü tek bir transaction** içinde grupladım. Amaç sadece daha az sorgu yapmak değil, bağlantının elde tutulma süresini radikal bir şekilde kısaltmaktı.
+
+#### 2. Satır Bazlı `SAVEPOINT`'ler
+Kısmi hataları zarif bir şekilde yönetmek için transaction içinde ham SQL `SAVEPOINT`'leri kullandım. Belirli bir satır hata verirse, *sadece* o satırın savepoint'ine (kayıt noktasına) geri dönülür (rollback). Grubun geri kalanı işlemeye devam eder.
+
+#### 3. E-postaları Ayırma (Decoupling)
+Bir veritabanı transaction'ı içinde e-posta göndermek affedilmez bir günahtır. Bellek içi (in-memory) bir `pendingEmails` dizisi oluşturdum. Döngü sırasında veriyi bu diziye atıyoruz ve yavaş SMTP çağrılarını sadece veritabanı transaction'ı güvenli bir şekilde onaylandıktan (commit) *sonra* işliyoruz.
+
+### ✨ Sonraki Kod
+
+İşte savaş testinden geçmiş versiyon:
+
+```javascript title="conference.service.js"
+// ✅ Optimize Edilmiş Yol
+const rows = excelParser.read(fileBuffer);
+const pendingEmails = [];
+const results = { success: 0, failed: 0, errors: [] };
+
+await prisma.$transaction(async (tx) => {
+  
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    const savepointName = `sp_row_${i}`;
+    
+    try {
+      // Burada güvenli çünkü savepointName kullanıcı girdisinden değil, dahili olarak oluşturuluyor
+      await tx.$executeRawUnsafe(`SAVEPOINT ${savepointName}`);
+      
+      const hashedPassword = await bcrypt.hash(row.password, 10);
+      await tx.$queryRaw`INSERT INTO users ...`;
+      await tx.$queryRaw`INSERT INTO enrollments ...`;
+      
+      // E-posta verisini kuyruğa al (Henüz GÖNDERME)
+      pendingEmails.push({ email: row.email, plainPass: row.password });
+      
+      // Bu satırı zımni olarak (implicitly) onayla
+      await tx.$executeRawUnsafe(`RELEASE SAVEPOINT ${savepointName}`);
+      results.success++;
+
+    } catch (err) {
+      // SADECE BU satır başarısız olursa, SADECE bu satırı geri al. Döngü devam eder!
+      await tx.$executeRawUnsafe(`ROLLBACK TO SAVEPOINT ${savepointName}`);
+      results.failed++;
+      results.errors.push({ row: i + 2, reason: err.message });
+    }
+  }
+});
+
+// Veritabanı bağlantısı artık serbest bırakıldı ve havuza iade edildi!
+// Artık yavaş SMTP e-postalarını güvenli bir şekilde asenkron olarak gönderebiliriz.
+for (const mail of pendingEmails) {
+  await sendEmail(mail.email, mail.plainPass);
+}
+
+return results;
+```
+
+> **🛡️ Şifreler Üzerine Güvenlik Notu:**
+> Yukarıdaki kodda, eski sistem (legacy) oluşturulan geçici şifrenin e-posta ile gönderilmesini gerektiriyordu. **Modern bir üretim (production) sisteminde, şifreleri düz metin (plain text) olarak e-postalamak bir anti-pattern'dir (kötü uygulama).** Çok daha güvenli bir yaklaşım, kullanıcıyı şifresiz kaydetmek ve kuyruğa bir `activationToken` ekleyerek, kendi şifrelerini belirlemeleri için onlara güvenli bir *sihirli bağlantı (magic link)* e-postası göndermektir.
+
+## Sonuç
+Aradaki fark gece ve gündüz gibiydi.
+
+- **Veritabanı Yazma Süresi:** Veritabanı yazma işlemleri yavaş SMTP yükünden (overhead) yalıtıldıktan sonra **~1.5 saniyeye** düştü.
+- **Sunucu Yanıt Süresi:** Sunucu yanıt vermeye devam etti çünkü uzun süren SMTP çağrıları artık veritabanı bağlantılarını açık tutmuyordu.
+- **Admin UX (Kullanıcı Deneyimi):** Endpoint artık genel bir `500 Internal Server Error` döndürmek yerine, tam olarak hangi satırların başarısız olduğunu gösteren temiz bir JSON dizisi döndürüyor (örneğin, `row 42: invalid email`), böylece yönetici neyi düzelteceğini biliyor.
+
+## Ne Öğrendim
+Node.js'te toplu içe aktarma (bulk-import) özellikleri oluştururken düşmanınız Node değildir—harici I/O (girdi/çıktı) işlemlerini nasıl yönettiğinizdir.
+1. **Asla yavaş dış API'leri (e-postalar gibi) bir DB kilidinin (lock) içine koymayın.**
+2. **Bağlantı tutma sürelerini (connection hold times) olabildiğince kısa tutun.**
+3. **Verinin kirli olduğunu varsayın** ve Savepoint'leri kullanarak kısmi hatalar (partial failures) için tasarım yapın.
+
+<CTA />

@@ -356,7 +356,7 @@ export default async function LangLayout({
   };
 
   return (
-    <html lang={lang} dir={isRTL ? "rtl" : "ltr"} suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${cairo.variable} h-full antialiased dark`}>
+    <html lang={lang} dir={isRTL ? "rtl" : "ltr"} data-scroll-behavior="smooth" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${cairo.variable} h-full antialiased dark`}>
       <head>
         <script
           type="application/ld+json"

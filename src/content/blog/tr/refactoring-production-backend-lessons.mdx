@@ -1,0 +1,126 @@
+---
+title: "Kodu Yeniden Düzenlemenin Sadece Temiz Kod Yazmak Olduğunu Sanıyordum. Yanılmışım."
+description: "Bir üniversite yoklama sistemi backend'ini yeniden düzenleme üzerine vaka çalışması; risk azaltma ve veritabanı bağlantı yönetimine odaklanıyor."
+slug: "refactoring-production-backend-lessons"
+lang: "tr"
+date: "2026-06-01"
+author: "Hamed Mohamed"
+tags: ["backend", "refactoring", "prisma", "node", "architecture"]
+coverImage: "/static/blog/nodejs-excel-optimization.png"
+published: true
+featured: true
+---
+
+Backend kodunu yeniden düzenlemenin (refactoring) çoğunlukla kötü kodu "temiz" koda dönüştürmek olduğunu sanıyordum.
+
+Yanılmışım.
+
+**En zor kısım, hiç kimsenin yeniden düzenleme yapıldığını fark etmemesini sağlamaktı.**
+
+Yakın zamanda bir üniversitenin QR kodlu yoklama sistemi için Express backend'ini yeniden yapılandırmak üzerinde çalıştım. Platform şu anda **günde ortalama 300 yoklama işlemi yapan 2.000 aktif kullanıcıya sahip** ve farklı fakültelerde hala test aşamalarından geçiyor.
+
+Bu ölçekte bile riskler büyüktü: API beklenmeyen bir veri formatı döndürürse veya bir ders sırasında çökerse, öğrencilerin yoklama kayıtları tehlikeye girecekti.
+
+## Devraldığım Kaos
+
+Kod tabanını incelemeye başladığımda, zamanla kendi kendine büyümüş bir mimari buldum. Bu, teknik borcun (technical debt) klasik bir örneğiydi:
+
+*   **Devasa Route Dosyaları:** 3.000'den fazla satırı aşan route dosyalarımız vardı.
+*   **Kopyalanmış Yetkilendirme:** JWT doğrulama ara yazılımı (middleware) birden fazla dosya arasında manuel olarak kopyalanmıştı.
+*   **Veritabanı ORM Çorbası:** Kod tabanı aynı anda `pg` (ham sorgular), `knex` (sorgu oluşturucu) ve `prisma`'yı (ORM) bir arada kullanıyordu.
+*   **Mantık Sızıntıları:** Karmaşık iş mantığı, doğrudan Express rotalarının (routes) içine sıkı sıkıya bağlıydı.
+
+Ancak en çok dikkat çeken şey mimari bir seçimdi.
+
+### Prisma Bağlantı Havuzu Sorunu
+
+Route dosyalarını incelerken, bu kalıbın her yerde tekrarlandığını fark ettim:
+
+```javascript
+// studentRoutes.js içinde
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient(); // ❌ Her dosyada yeni bir instance oluşturuluyor
+
+router.post('/record', async (req, res) => {
+    // ...
+});
+
+// attendanceRoutes.js içinde
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient(); // ❌ Başka bir bağımsız bağlantı havuzu
+```
+
+Her route dosyası kendi `new PrismaClient()`'ını oluşturuyordu. Bu, uygulamanın istemeden veritabanına **birden fazla bağımsız bağlantı havuzu (connection pools)** açtığı anlamına geliyordu. Bir dersin başlangıcındaki eşzamanlı yoklamalar sırasında bu yaklaşım bağlantıları israf ediyor ve veritabanı sınırlarına erken ulaşma riskini taşıyordu.
+
+Çözüm basitti: Tek bir Prisma örneği (Singleton deseni) çıkarmak ve bunu uygulama genelinde yeniden kullanmak.
+
+```javascript
+// prisma/client.js
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+module.exports = prisma; // ✅ Tek ve genel bir havuz
+```
+
+**Bu küçük kod değişikliği, veritabanı bağlantı kullanımını daha öngörülebilir hale getirdi ve yoğun kullanım saatlerinde bağlantı sınırlarına ulaşma riskini azalttı.**
+
+<Callout type="info">
+**Pratik İpucu:** ORM istemcinizi asla ayrı route veya service dosyaları içinde başlatmayın. Tüm Node.js süreci boyunca tek bir bağlantı havuzunu korumak için her zaman global bir singleton kullanın.
+</Callout>
+
+## "Temiz Mimari" İşin Kolay Kısmı
+
+Bu yeniden düzenleme sırasında fark ettiğim bir diğer önemli şey: "temiz mimariyi" uygulamak aslında işin kolay kısmıydı. *Gerçek* zorluk bunu şu şartlar altında yapmaktı:
+
+1.  **Geriye dönük uyumluluğu korumak:** Frontend (arayüz), tam olarak aynı JSON anahtarlarını bekliyor.
+2.  **Mobil uygulamayı bozmamak:** Mobil uygulamalar anında güncellenmeye zorlanamaz.
+3.  **Yanıt formatlarını aynı tutmak:** Alttaki veritabanı yapısı değişse bile, API çıktısı kusursuz kalmalıdır.
+4.  **Hassas akışlara testler eklemek:** Test edilebilir şekilde inşa edilmemiş akışların nasıl test edileceğini bulmak.
+5.  **Geri alma yolları tasarlamak:** Dağıtım beklenmeyen hatalar (regressions) ortaya çıkarırsa, geri dönmek için net bir plana sahip olmak.
+
+## Risk Seviyesine Göre Yeniden Düzenleme
+
+Bunu yönetmek için, özellikleri bir **"yeniden düzenleme risk seviyesine"** göre sınıflandırmaya başladım.
+
+Örneğin, `attendance` (yoklama) ve `session` (oturum) akışlarını yüksek riskli alanlar olarak değerlendirdim ve ilk önce entegrasyon testleri eklemeden onları değiştirmekten kaçındım. Çünkü bu akışlar gerçek öğrenci kayıtlarını etkiler; orada oluşan herhangi bir hata (bug) sadece bir log hatası değildir—yanlış akademik verilere dönüşür.
+
+Daha ilginç geçişlerden biri, ham SQL işlem (transactional) akışlarını değiştirmekti.
+
+### Prisma Transaction'lara Geçiş
+
+Aşağıdakine benzer eski ham SQL transaction'larımız vardı:
+
+```javascript
+// Eski Knex/PG karışık transaction
+const client = await pool.connect();
+try {
+  await client.query('BEGIN');
+  // Karmaşık insert ve update işlemleri
+  await client.query('COMMIT');
+} catch (e) {
+  await client.query('ROLLBACK');
+  throw e;
+} finally {
+  client.release();
+}
+```
+
+Bunları `prisma.$transaction`'a taşıdım. Buradaki amaç sadece modern bir araç kullanmak değil, aynı zamanda API davranışının onu tüketen mevcut istemcilerle (clients) **uyumlu kalmasını sağlarken** tip güvenliğini (type safety) ve otomatik geri almaları (automatic rollbacks) garanti etmekti.
+
+```javascript
+// Yeni Prisma Transaction
+const result = await prisma.$transaction(async (tx) => {
+  const session = await tx.session.update({ /* ... */ });
+  const attendance = await tx.attendance.create({ /* ... */ });
+  return attendance;
+});
+```
+
+## Farkındalık
+
+Bu projenin derinliklerine indikçe bakış açım daha da değişti.
+
+Backend mühendisliği *"sadece API'ler inşa etmek"* gibi hissettirmeyi bıraktı...
+
+...ve daha çok: **Üretim (production) kısıtlamaları altında risk yönetimi** gibi hissettirmeye başladı.
+
+<CTA />

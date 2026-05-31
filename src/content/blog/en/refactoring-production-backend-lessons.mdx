@@ -1,0 +1,126 @@
+---
+title: "I Thought Refactoring Was About Clean Code. I Was Wrong."
+description: "A practical look at refactoring an Express.js backend for a university attendance system, focusing on risk mitigation, API behavior, and DB connection pooling."
+slug: "refactoring-production-backend-lessons"
+lang: "en"
+date: "2026-06-01"
+author: "Hamed Mohamed"
+tags: ["backend", "refactoring", "prisma", "node", "architecture"]
+coverImage: "/static/blog/nodejs-excel-optimization.png"
+published: true
+featured: true
+---
+
+I thought refactoring a backend would mostly be about rewriting bad code into "clean" code.
+
+I was wrong.
+
+**The hardest part was making sure nobody noticed the refactor was happening at all.**
+
+I recently worked on restructuring an Express backend for a university QR attendance system. The platform currently has **2,000 active users with an average of ~300 daily check-ins**, and is still undergoing testing phases across different faculties. 
+
+Even at this scale, the stakes were high: if the API returned an unexpected data shape or went down during a lecture, student attendance records would be compromised.
+
+## The Chaos I Inherited
+
+When I started digging through the codebase, I found an architecture that had organically grown over time. It was a classic case of technical debt:
+
+*   **Massive Route Files:** We had route files exceeding 3,000+ lines.
+*   **Duplicated Auth:** The JWT validation middleware was duplicated manually across multiple files.
+*   **The Database ORM Soup:** The codebase was simultaneously using `pg` (raw queries), `knex` (query builder), and `prisma` (ORM) all mixed together.
+*   **Logic Leaks:** Complex business logic was tightly coupled directly inside the Express routes.
+
+But one architectural choice stood out the most.
+
+### The Prisma Connection Pool Issue
+
+While reviewing the route files, I noticed this pattern repeated everywhere:
+
+```javascript
+// Inside studentRoutes.js
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient(); // ❌ Creating a new instance per file
+
+router.post('/record', async (req, res) => {
+    // ...
+});
+
+// Inside attendanceRoutes.js
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient(); // ❌ Another independent connection pool
+```
+
+Every route file was creating its own `new PrismaClient()`. This meant the application was inadvertently opening **multiple independent connection pools** to the database. During simultaneous check-ins at the start of a lecture, this approach wastes connections and risks hitting database limits prematurely.
+
+The fix was straightforward: extracting a single Prisma instance (Singleton pattern) and reusing it across the app.
+
+```javascript
+// prisma/client.js
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+module.exports = prisma; // ✅ One global pool
+```
+
+This tiny code change made database connection usage more predictable and reduced the risk of hitting connection limits during peak usage.
+
+<Callout type="info">
+**Practical Tip:** Never instantiate your ORM client inside individual route or service files. Always use a global singleton to maintain a single connection pool across the entire Node.js process.
+</Callout>
+
+## "Clean Architecture" is the Easy Part
+
+Another major realization I had during this refactor: implementing "clean architecture" is actually the easy part. The *real* challenge is doing it while:
+
+1.  **Preserving backward compatibility:** The frontend expects exact JSON keys.
+2.  **Not breaking the mobile app:** Mobile apps can't be instantly forced to update.
+3.  **Keeping response shapes identical:** Even if the underlying database structure changes, the API output must remain pristine.
+4.  **Introducing tests into fragile flows:** Figuring out how to test flows that were never built to be testable.
+5.  **Designing rollback paths:** Having a clear plan to revert if the deployment introduces unexpected regressions.
+
+## Refactoring by Risk Level
+
+To manage this, I started categorizing features by a **"refactor risk level"**. 
+
+For example, I treated the `attendance` and `session` flows as high-risk areas and avoided changing them before adding integration tests first. Because those flows affect real student records, any bug introduced there isn't just a log error—it translates to incorrect academic data.
+
+One of the more interesting migrations was replacing raw SQL transactional flows.
+
+### Migrating to Prisma Transactions
+
+We had legacy raw SQL transactions that looked something like this:
+
+```javascript
+// Legacy Knex/PG mixed transaction
+const client = await pool.connect();
+try {
+  await client.query('BEGIN');
+  // Complex inserts and updates
+  await client.query('COMMIT');
+} catch (e) {
+  await client.query('ROLLBACK');
+  throw e;
+} finally {
+  client.release();
+}
+```
+
+I migrated these to `prisma.$transaction`. The goal wasn't just to use a modern tool, but to guarantee type safety and automatic rollbacks, while ensuring the API behavior remained compatible with existing clients.
+
+```javascript
+// New Prisma Transaction
+const result = await prisma.$transaction(async (tx) => {
+  const session = await tx.session.update({ /* ... */ });
+  const attendance = await tx.attendance.create({ /* ... */ });
+  return attendance;
+});
+```
+
+## The Realization
+
+The deeper I got into this project, the more my perspective shifted. 
+
+Backend engineering stopped feeling like *"just building APIs"*...
+
+...and started feeling more like: **Risk management under production constraints.**
+
+<CTA />

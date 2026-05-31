@@ -35,6 +35,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|api|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_CV\\.pdf).*)",
+    "/((?!_next|static|api|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_CV\\.pdf).*)",
   ],
 };

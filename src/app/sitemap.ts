@@ -87,7 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Blog Post Pages
     const localePosts = posts.filter(post => post.published && post.lang === locale);
     for (const post of localePosts) {
-      const slug = post.slug.split('/').pop() || post.slugAsParams;
+      const slug = post.slug.split('/').pop() || post.slug;
       entries.push({
         url: `${baseUrl}/${locale}/blog/${slug}`,
         lastModified: new Date(post.updated || post.date),

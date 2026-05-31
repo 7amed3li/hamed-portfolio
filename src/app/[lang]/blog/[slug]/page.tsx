@@ -14,7 +14,7 @@ interface PostPageProps {
 export async function generateStaticParams() {
   return posts.filter(post => post.published).map((post) => ({
     lang: post.lang,
-    slug: post.slug.split('/').pop() || post.slugAsParams,
+    slug: post.slug.split('/').pop() || post.slug,
   }))
 }
 
