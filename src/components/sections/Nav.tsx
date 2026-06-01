@@ -12,6 +12,18 @@ export function Nav() {
   const { lang, toggleLang, setLanguage, isRTL } = useLang();
   const tr = t[lang].nav;
 
+  // Calculate next language and path for SEO-friendly language switcher
+  const nextLang = lang === "en" ? "tr" : lang === "tr" ? "ar" : "en";
+  let nextPath = `/${nextLang}`;
+  if (typeof window !== 'undefined') {
+    const currentPath = window.location.pathname;
+    const segments = currentPath.split("/");
+    if (segments.length >= 2 && ["en", "ar", "tr"].includes(segments[1])) {
+      segments[1] = nextLang;
+      nextPath = segments.join("/");
+    }
+  }
+
   const links = [
     { label: tr.about, href: `/${lang}#about` },
     { label: tr.services, href: `/${lang}#services` },
@@ -102,9 +114,13 @@ export function Nav() {
             </svg>
           </a>
 
-          {/* Language Toggle */}
-          <button
-            onClick={toggleLang}
+          {/* Language Toggle (SEO Friendly) */}
+          <a
+            href={nextPath}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleLang();
+            }}
             className="group flex items-center gap-2 w-[4.5rem] justify-center px-0 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-300"
             aria-label="Toggle language"
             title="Switch Language"
@@ -117,13 +133,17 @@ export function Nav() {
             <span className={`w-4 text-center ${lang === "ar" ? "text-base font-bold leading-none mb-0.5" : ""}`} style={lang === "ar" ? { fontFamily: "inherit" } : {}}>
               {lang === "en" ? "EN" : lang === "tr" ? "TR" : "ع"}
             </span>
-          </button>
+          </a>
         </div>
 
         {/* Mobile: Lang toggle + Hamburger */}
         <div className="flex md:hidden items-center gap-4">
-          <button
-            onClick={toggleLang}
+          <a
+            href={nextPath}
+            onClick={(e) => {
+              e.preventDefault();
+              toggleLang();
+            }}
             className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-accent transition-colors"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -134,7 +154,7 @@ export function Nav() {
             <span className={`w-4 text-center ${lang === "ar" ? "text-sm font-bold leading-none" : ""}`} style={lang === "ar" ? { fontFamily: "inherit" } : {}}>
               {lang === "en" ? "EN" : lang === "tr" ? "TR" : "ع"}
             </span>
-          </button>
+          </a>
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

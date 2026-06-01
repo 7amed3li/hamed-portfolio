@@ -42,7 +42,7 @@ export const t = {
       info: [
         { label: "University", value: "Tokat Gaziosmanpaşa University, Turkey" },
         { label: "Degree", value: "B.Sc. Computer Engineering · GPA 3.38/4.0" },
-        { label: "Location", value: "Tokat, Turkey · Open to KSA" },
+        { label: "Location", value: "Tokat, Turkey · From Minya, Egypt · Open to KSA (Riyadh, Jeddah)" },
       ],
       stackTitle: "My Core Stack (Honest Opinions)",
       stack: [
@@ -98,7 +98,7 @@ export const t = {
       info: [
         { label: "Email", value: "hamed.m.abdelalim@gmail.com", href: "mailto:hamed.m.abdelalim@gmail.com" },
         { label: "Phone", value: "+90 506 045 3906", href: "tel:+905060453906" },
-        { label: "Location", value: "Tokat, Turkey · Open to KSA", href: null },
+        { label: "Location", value: "Tokat, Turkey · From Minya, Egypt · Open to KSA (Riyadh, Jeddah)" },
         { label: "Available", value: "Full-time from August 2026", href: null },
       ],
       copyHint: "Click to copy",
@@ -259,7 +259,7 @@ export const t = {
       info: [
         { label: "الجامعة", value: "جامعة توقات غازي عثمان باشا، تركيا" },
         { label: "الدرجة العلمية", value: "بكالوريوس هندسة حاسوب · GPA 3.38/4.0" },
-        { label: "الموقع", value: "توقات، تركيا · مفتوح للسعودية" },
+        { label: "الموقع", value: "توقات، تركيا · من مصر (قرية ابشاق، المنيا) · متاح للانتقال للسعودية (الرياض، جدة، وكافة المحافظات)" },
       ],
       stackTitle: "تقنياتي الأساسية (آراء صادقة)",
       stack: [
@@ -315,7 +315,7 @@ export const t = {
       info: [
         { label: "البريد", value: "hamed.m.abdelalim@gmail.com", href: "mailto:hamed.m.abdelalim@gmail.com" },
         { label: "الهاتف", value: "+90 506 045 3906", href: "tel:+905060453906" },
-        { label: "الموقع", value: "توقات، تركيا · مفتوح للسعودية", href: null },
+        { label: "الموقع", value: "توقات، تركيا · من مصر (قرية ابشاق، المنيا) · متاح للسعودية (الرياض، جدة)", href: null },
         { label: "التوفر", value: "دوام كامل من أغسطس 2026", href: null },
       ],
       copyHint: "انقر للنسخ",
