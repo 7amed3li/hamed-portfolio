@@ -98,7 +98,7 @@ export const t = {
       info: [
         { label: "Email", value: "hamed.m.abdelalim@gmail.com", href: "mailto:hamed.m.abdelalim@gmail.com" },
         { label: "Phone", value: "+90 506 045 3906", href: "tel:+905060453906" },
-        { label: "Location", value: "Tokat, Turkey · From Minya, Egypt · Open to KSA (Riyadh, Jeddah)" },
+        { label: "Location", value: "Tokat, Turkey · From Minya, Egypt · Open to KSA (Riyadh, Jeddah)", href: null },
         { label: "Available", value: "Full-time from August 2026", href: null },
       ],
       copyHint: "Click to copy",
