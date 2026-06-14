@@ -6,7 +6,10 @@ import { getServiceBySlug, servicesData } from "@/lib/services-data";
 const siteUrl = "https://www.hamedmohamed.dev";
 
 export async function generateStaticParams() {
-  return servicesData.en.map((s) => ({ slug: s.slug }));
+  const locales = ["en", "ar", "tr"];
+  return servicesData.en.flatMap((s) =>
+    locales.map((lang) => ({ lang, slug: s.slug }))
+  );
 }
 
 export async function generateMetadata({
@@ -17,17 +20,24 @@ export async function generateMetadata({
   const { slug, lang } = await params;
   const service = getServiceBySlug(slug, lang);
   if (!service) return {};
+
+  // ar/tr service pages have English-only content → noindex to avoid duplicate penalty
+  const isEnglish = lang === "en";
+
   return {
     metadataBase: new URL(siteUrl),
     title: service.metaTitle,
     description: service.metaDescription,
-    alternates: { 
-      canonical: `${siteUrl}/${lang}/services/${slug}`,
+    robots: isEnglish
+      ? { index: true, follow: true }
+      : { index: false, follow: true },
+    alternates: {
+      canonical: `${siteUrl}/en/services/${slug}`,
       languages: {
         "en": `${siteUrl}/en/services/${slug}`,
         "ar": `${siteUrl}/ar/services/${slug}`,
-        "tr": `${siteUrl}/tr/services/${slug}`
-      }
+        "tr": `${siteUrl}/tr/services/${slug}`,
+      },
     },
     openGraph: {
       title: service.metaTitle,

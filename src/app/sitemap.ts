@@ -45,18 +45,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     });
 
-    // Service pages
-    const currentServices = servicesData[locale] || servicesData.en;
-    for (const service of currentServices) {
-      entries.push({
-        url: `${baseUrl}/${locale}/services/${service.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.85,
-        alternates: {
-          languages: Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/services/${service.slug}`])),
-        },
-      });
+    // Service pages — only English is indexable (ar/tr have English content → noindex)
+    if (locale === "en") {
+      for (const service of servicesData.en) {
+        entries.push({
+          url: `${baseUrl}/en/services/${service.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly",
+          priority: 0.85,
+          alternates: {
+            languages: {
+              "x-default": `${baseUrl}/en/services/${service.slug}`,
+              "en": `${baseUrl}/en/services/${service.slug}`,
+              "ar": `${baseUrl}/ar/services/${service.slug}`,
+              "tr": `${baseUrl}/tr/services/${service.slug}`,
+            },
+          },
+        });
+      }
     }
 
     // Case study pages
