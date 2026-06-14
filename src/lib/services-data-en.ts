@@ -72,7 +72,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A digital menu is cheaper to update than printing new menus, looks more professional, and customers can access it instantly by scanning a QR code. It also helps your restaurant appear in Google searches.",
     proof:
-      "Built and deployed a real QR-based system used by 2,000+ people at a university across 7 faculties. The system handles high traffic reliably and loads in under 2 seconds.",
+      "Built and deployed a real QR-based system used by 2,000+ users at a university across 42 courses, 13 departments & 6 faculties. The system handles high traffic reliably and loads in under 2 seconds.",
     faq: [
       {
         q: "Do customers need to download an app to see the menu?",
@@ -205,7 +205,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A good dashboard saves hours of manual work. Instead of exporting spreadsheets or asking a developer to pull data, you get a visual interface that shows you exactly what's happening in your business in real time.",
     proof:
-      "Built a full admin dashboard for a QR attendance system used by university staff across 7 faculties. The panel allows managing students, viewing attendance records, and monitoring system health — all from a browser.",
+      "Built a full admin dashboard for a QR attendance system used by university staff across 42 courses, 13 departments & 6 faculties. The panel allows managing students, viewing attendance records, and monitoring system health — all from a browser.",
     faq: [
       {
         q: "What is an admin panel?",
@@ -381,7 +381,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Manual attendance tracking wastes time and is easy to cheat. A QR system saves hours per week, gives you accurate records, and generates reports automatically. Hamed built one that runs in production for 2,000+ users daily.",
     proof:
-      "Built a complete QR attendance system deployed at Tokat Gaziosmanpaşa University serving 2,000+ students across 7 faculties. The system achieved 98% latency reduction and 99.9% uptime with Circuit Breaker reliability patterns.",
+      "Built a complete QR attendance system deployed at Tokat Gaziosmanpaşa University serving 2,000+ users across 42 courses, 13 departments & 6 faculties (Apr 2025 – Jun 2026). The system achieved 98% latency reduction (94.91ms → 1.53ms) and remediated 18 security findings.",
     faq: [
       {
         q: "How does a QR attendance system work?",

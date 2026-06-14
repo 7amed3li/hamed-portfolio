@@ -1,55 +1,60 @@
 **HAMED MOHAMED ABDELALIM**
 
-Full-Stack Engineer · Node.js & React · Application Security
+Full-Stack Software Developer · Node.js & React · Application Security
 
-+90 506 045 3906 <hamed.m.abdelalim@gmail.com> github.com/7amed3li Riyadh-ready · Open to Relocation (KSA)
++90 506 045 3906 <hamed.m.abdelalim@gmail.com> github.com/7amed3li hamedmohamed.dev · Open to Relocation (KSA)
 
 **SUMMARY**
 
-Full-Stack Engineer with 1+ year of production experience building and securing Node.js/React systems. Shipped a high-throughput QR attendance platform serving 2,000+ daily users - reducing latency by 98%. Contributor to the NodeSecure open-source ecosystem with 7 merged pull requests covering AST security analysis, SSRF detection, and performance benchmarking. Integrates security (SAST/DAST, Circuit Breaker, threat modeling) directly into the development lifecycle.
+Software Engineer with 1+ year of production experience building secure and scalable web applications using Node.js, React.js, PostgreSQL, and Prisma ORM. Served as the Primary Developer within a 3-member engineering team, contributing to systems supporting 2,000+ users and 300+ daily active users. Experienced in application security, backend modernization, automated testing, and CI/CD, including the remediation of 18 documented security findings and the migration of 25,019 academic records. Open-source contributor to the NodeSecure ecosystem with 7 merged pull requests enhancing security analysis and software quality.
 
 **EXPERIENCE**
 
-**Full-Stack Engineer & Security Researcher** · AI & Digital Transformation Unit - Tokat, Turkey _Apr 2024 - Present (Hybrid: On-site & Remote)_
+**Full-Stack Software Developer** · Artificial Intelligence and Digital Transformation Unit · Tokat Gaziosmanpaşa University · Tokat, Turkey
 
-- Professional Role during Academic Tenure: Appointed as a core engineer within the University's Digital Transformation Unit, balancing rigorous academic studies with high-impact production responsibilities.
-- Team Leadership: Led a 3-person engineering team to architect and deploy a QR-based attendance ecosystem currently utilized by 2,000+ daily users, under final review for university-wide official adoption.
-- Performance Engineering: Engineered a hybrid QR verification pipeline (JWT / Remote / Temporary fallback) with dynamic server-side resource allocation; achieved a 98% latency reduction (from 94.91ms to 1.53ms) and boosted throughput by +6,100% (up to 653 req/s).
-- System Resilience: Implemented the Circuit Breaker pattern (Opossum) to ensure 99.9% service availability and automated fallback mechanisms during peak traffic periods.
-- Data Optimization: Developed high-performance ingestion scripts capable of processing 25,000+ records in <1.5s, automating previously manual workflows and improving data integrity.
-- Wrote and structured comprehensive unit and integration tests covering core verification flows, failure scenarios, and edge cases; achieved ~85% backend test coverage and integrated SAST/DAST into CI/CD, catching and fixing 15+ vulnerabilities before production.
+_Apr 2025 – Jun 2026 (Hybrid)_
 
-**OPEN SOURCE - NODESECURE ECOSYSTEM**
+- Acted as the Primary Developer within a 3-member engineering team, leading the development and delivery of a QR Attendance System using React.js, Node.js, PostgreSQL, and Prisma ORM.
+- Developed and maintained a production system serving 2,000+ users with approximately 300 daily active users across 42 courses, 13 academic departments, and 6 faculties.
+- Led backend modernization initiatives, including Prisma ORM migration, adoption of a Service-Oriented Architecture (SOA), and implementation of automated testing and CI workflows, contributing to 313 automated tests across 38 test suites.
+- Conducted security assessments across multiple university systems and remediated 18 documented security findings related to authentication, authorization, CORS, XSS, JWT security, secure file handling, and secure application configuration.
+- Developed and executed a production data migration solution that imported 25,019 academic records, including 14,100 course records, 50 faculties, and 259 academic programs.
+- Optimized QR verification performance by redesigning the verification architecture, reducing average validation latency from 94.91 ms to 1.53 ms and increasing throughput from 10.54 req/s to 653.39 req/s through local-first processing and intelligent fallback strategies.
+- Implemented resilience patterns using Opossum Circuit Breaker, enabling automated recovery and maintaining service continuity during remote verification failures and peak traffic conditions.
 
-Contributed 7 merged pull requests to NodeSecure (js-x-ray & scanner), actively improving open-source security tooling (Q1 2026)
+**OPEN SOURCE — NODESECURE ECOSYSTEM**
 
-- Introduced the sensitivity option (conservative / aggressive) across AstAnalyser, ProbeRunner, and SourceFile - enabling configurable detection depth without breaking backward compatibility. (PR #456)
-- Built the insecure-random probe (flags unsafe Math.random() usage) and improved localhost/SSRF detection in the shady-url checker. (PR #452, #462)
-- Added the Named Main Handlers pattern to isSerializeEnv, allowing probes to handle multiple validation scenarios; added direct process.env detection in aggressive mode. (PR #467)
-- Implemented email literal collection using CollectableSet API in the isLiteral probe, with 5 comprehensive test cases. (PR #468)
-- Built benchmarking infrastructure using mitata to track AST analysis performance baselines across releases. (PR #496)
+Contributed 7 merged pull requests to the NodeSecure ecosystem (js-x-ray & scanner), enhancing application security analysis, detection coverage, and performance benchmarking (Q1 2026).
+
+- Introduced the sensitivity option (conservative / aggressive) across AstAnalyser, ProbeRunner, and SourceFile — enabling configurable detection depth without breaking backward compatibility. (merged PR #456)
+- Built the insecure-random probe (flags unsafe Math.random() usage) and improved localhost/SSRF detection in the shady-url checker. (merged PR #452, #462)
+- Added the Named Main Handlers pattern to isSerializeEnv, allowing probes to handle multiple validation scenarios; added direct process.env detection in aggressive mode. (merged PR #467)
+- Implemented email literal collection using CollectableSet API in the isLiteral probe, with 5 comprehensive test cases. (merged PR #468)
+- Built benchmarking infrastructure using mitata to track AST analysis performance baselines across releases. (merged PR #496)
 
 **PROJECTS**
 
-**DragonSploit** - _AI-Powered Vulnerability Scanning Platform · Lead Developer_ _2025_
+**DragonSploit** — AI-Augmented Web Vulnerability Scanner | Graduation Project | 2025
 
-- Built an intent-based orchestration engine in Node.js that dynamically selects scan strategies - estimated 40% efficiency gain over static queue-based approaches.
-- Developed a context-aware stack-detection module (WordPress, Nginx) to run targeted vulnerability tests, reducing false-positive alert rate by an estimated 70%.
+- Designed and implemented a parallel SQL injection scanning engine covering 6 attack vectors, including in-band, blind, out-of-band, second-order, and stacked-query detection techniques, with advanced WAF evasion and payload obfuscation capabilities.
+- Engineered a hybrid AI-powered security workflow using Ollama and Gemini with automatic provider failover, Redis-backed caching, and Playwright-based visual verification that captures screenshots, HTML snapshots, and video evidence to validate findings.
 
 **EDUCATION**
 
-**B.Sc. Computer Engineering** · Tokat Gaziosmanpaşa University, Turkey _Expected Jul 2026 Available for Full-time Remote/On-site from August 2026_
+**B.Sc. Computer Engineering** · Tokat Gaziosmanpaşa University, Turkey
 
-GPA: 3.38 / 4.0 · Relevant: Data Structures, Algorithms, OS, Databases, Cybersecurity
+GPA: 3.5 / 4.0 · Coursework: Data Structures, Algorithms, Databases, Operating Systems, Cybersecurity
 
 **SKILLS**
 
-**Languages:** JavaScript (ES2022+, TypeScript), Python, C#, Java, SQL
+**Languages:** JavaScript (ES2022+), TypeScript, Python, SQL
 
-**Frontend:** React.js, Next.js, Redux, Tailwind CSS
+**Frontend:** React.js, Redux, Tailwind CSS
 
-**Backend:** Node.js, Express.js, RESTful APIs, PostgreSQL, MySQL, MongoDB, Redis
+**Backend:** Node.js, Express.js, REST APIs, PostgreSQL, Prisma ORM, Redis, MongoDB
 
-**Security & DevOps:** SAST/DAST, CI/CD, Docker, Circuit Breaker, SSRF, AST Analysis, Threat Modeling
+**Application Security:** SAST/DAST, Threat Modeling, Secure SDLC, OWASP Top 10, Vulnerability Assessment, JWT Security
+
+**DevOps & Testing:** GitHub Actions, CI/CD, Docker, Jest, Automated Testing
 
 **Spoken Languages:** Arabic (native) · English (intermediate) · Turkish (professional)
