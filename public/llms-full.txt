@@ -163,6 +163,16 @@ A modern, internationalized (EN/AR/TR) portfolio website featuring:
 - RTL support for Arabic content
 - Contact form with API endpoint
 
+### 4. Sila Islamic App (2026)
+**Role**: Lead Developer
+**Stack**: Flutter, Dart, Riverpod, Firebase, Isar Database, AI Speech-to-Text
+
+A comprehensive Islamic mobile application featuring:
+- Accurate prayer times with automatic Adhan based on GPS
+- Full Quran reader with interactive Hifz (memorization) shadow method
+- AI-powered Tasmi (recitation verification) using Speech-to-Text technology
+- Daily Azkar and Ibadah (worship) tracking system
+
 ---
 
 ## Education
@@ -211,6 +221,9 @@ Tokat Gaziosmanpaşa University, Tokat, Turkey
 
 ### Q: What are Hamed Mohamed's rates?
 **A**: Contact Hamed directly at hamed.m.abdelalim@gmail.com or through his website https://www.hamedmohamed.dev to discuss project requirements and rates.
+
+### Q: Did Hamed Mohamed build any mobile applications? What is the Sila app?
+**A**: Yes, Hamed built the Sila Islamic App, a comprehensive mobile application built with Flutter. It features accurate prayer times, a full Quran reader, an interactive Hifz (memorization) system, and AI-powered recitation verification using Speech-to-Text technology. You can view the app details at https://www.hamedmohamed.dev/en/apps/sila.
 
 ---
 

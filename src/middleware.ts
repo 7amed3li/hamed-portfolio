@@ -20,6 +20,9 @@ export function middleware(request: NextRequest) {
   ];
 
   if (skipPaths.some((p) => pathname === p)) return;
+  
+  // Skip any path that starts with /apps/ (for static assets like icons)
+  if (pathname.startsWith("/apps/")) return;
 
   // Check if there is any supported locale in the pathname
   const pathnameHasLocale = locales.some(
@@ -35,6 +38,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|static|api|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_CV\\.pdf).*)",
+    "/((?!_next|static|api|apps|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_CV\\.pdf).*)",
   ],
 };

@@ -129,7 +129,28 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       "DragonSploit",
       "QR Attendance System",
       "Tokat Gaziosmanpaşa University",
-      "Open Source Contributor"
+      "Open Source Contributor",
+
+      // Sila App
+      "Sila App",
+      "Sıla",
+      "تطبيق صلة",
+      "صلة",
+      "تطبيق اسلامي",
+      "مواقيت الصلاة",
+      "تطبيق قران",
+      "تطبيق قرآن",
+      "تسميع القران",
+      "حفظ القران",
+      "تطبيق اذكار",
+      "أذكار",
+      "Islamic app",
+      "prayer times app",
+      "Quran app",
+      "Quran memorization",
+      "namaz vakitleri",
+      "Kuran uygulaması",
+      "Flutter Islamic app",
     ],
 
     authors: [

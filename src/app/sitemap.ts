@@ -79,6 +79,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
 
+    // App pages
+    entries.push({
+      url: `${baseUrl}/${locale}/apps/sila`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${baseUrl}/${l}/apps/sila`])
+        ),
+      },
+    });
+
     // Blog Main Page
     entries.push({
       url: `${baseUrl}/${locale}/blog`,

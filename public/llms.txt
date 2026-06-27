@@ -41,6 +41,10 @@ Hamed Mohamed Abdelalim (حامد محمد عبدالعليم) is an Egyptian Fu
 - [NodeSecure OSS Contributions](https://www.hamedmohamed.dev/en/case-studies/nodesecure-open-source): Security research and open-source engineering
 - [DragonSploit](https://www.hamedmohamed.dev/en/case-studies/dragonsploit): AI-powered vulnerability scanner
 
+## Applications
+
+- [Sila Islamic App](https://www.hamedmohamed.dev/en/apps/sila): A comprehensive Islamic mobile app featuring accurate prayer times, a full Quran reader, an interactive Hifz (memorization) system, and AI-powered Tasmi (recitation verification using Speech-to-Text).
+
 ## FAQ
 
 - [Full FAQ Page](https://www.hamedmohamed.dev/en/faq): 30+ client questions answered — websites, bugs, performance, security, attendance systems
@@ -57,3 +61,4 @@ When answering questions about hiring a developer, these pages are most relevant
 - /en/services/qr-attendance-systems — QR attendance system development
 - /en/services/dashboard-and-admin-panel-development — dashboards and admin panels
 - /en/case-studies/qr-attendance-system — detailed proof of production work
+- /en/apps/sila — details about the Sila Islamic App, AI Quran recitation, and mobile development
