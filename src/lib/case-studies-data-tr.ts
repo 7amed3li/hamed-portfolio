@@ -8,7 +8,7 @@ export const caseStudies: CaseStudy[] = [
     metaDescription:
       "Hamed Mohamed'in 7 fakültede 2.000'den fazla öğrenci için nasıl %98 gecikme azalması ve %99.9 çalışma süresi sağlayan QR tabanlı bir yoklama sistemi kurduğunu okuyun.",
     category: "Full-Stack Sistem · Performans Mühendisliği",
-    year: "2024–Günümüz",
+    year: "2025–Günümüz",
     tags: ["Node.js", "React.js", "PostgreSQL", "Redis", "Docker", "QR", "Yönetici Paneli"],
     heroStat: { value: "2.000+", label: "Günlük Canlı Kullanıcı" },
     problem:

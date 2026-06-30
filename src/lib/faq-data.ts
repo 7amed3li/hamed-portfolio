@@ -1,4 +1,4 @@
-export const faqData: Record<string, any> = {
+export const faqData = {
   en: {
     metaTitle: "FAQ — Hamed Mohamed, Full-Stack Developer",
     metaDesc: "Frequently asked questions about hiring Hamed Mohamed. Can he build websites, fix bugs, improve performance, build backends, and create attendance systems? Find answers here.",
@@ -24,7 +24,7 @@ export const faqData: Record<string, any> = {
           },
           {
             q: "Is Hamed Mohamed available for freelance work?",
-            a: "Yes. Hamed is available for freelance projects now and for full-time positions from August 2026. Contact him at hamed.m.abdelalim@gmail.com.",
+            a: "Yes. Hamed is a recent graduate and is available immediately for full-time positions or freelance projects. He is fully open to relocation. Contact him at hamed.m.abdelalim@gmail.com.",
           },
           {
             q: "How can I contact Hamed Mohamed?",
@@ -190,7 +190,7 @@ export const faqData: Record<string, any> = {
           },
           {
             q: "هل حامد متاح للعمل الحر (Freelance)؟",
-            a: "نعم. حامد متاح حالياً للعمل الحر ولمناصب الدوام الكامل بدءاً من أغسطس 2026. تواصل معه عبر hamed.m.abdelalim@gmail.com.",
+            a: "نعم. حامد خريج ومتاح للعمل الفوري لمناصب الدوام الكامل أو العمل الحر، وجاهز للانتقال للعمل في أي مكان. تواصل معه عبر hamed.m.abdelalim@gmail.com.",
           },
           {
             q: "كيف يمكنني التواصل مع حامد محمد؟",
@@ -348,7 +348,7 @@ export const faqData: Record<string, any> = {
           },
           {
             q: "Hamed Mohamed freelance işler için uygun mu?",
-            a: "Evet. Hamed şu anda freelance projeler için, Ağustos 2026'dan itibaren ise tam zamanlı pozisyonlar için müsaittir. hamed.m.abdelalim@gmail.com adresinden iletişime geçebilirsiniz.",
+            a: "Evet. Hamed yeni mezun oldu ve tam zamanlı pozisyonlar ile freelance işler için hemen çalışmaya hazırdır. Yer değiştirmeye tamamen açıktır. hamed.m.abdelalim@gmail.com adresinden iletişime geçebilirsiniz.",
           },
           {
             q: "Hamed Mohamed ile nasıl iletişime geçebilirim?",

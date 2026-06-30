@@ -10,6 +10,7 @@ import {
   SILA_DEMO_VIDEO_URL,
   SILA_PROMO_VIDEO_URL,
 } from "@/lib/sila-app-data";
+import { Nav } from "@/components/sections/Nav";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -194,7 +195,7 @@ export default async function SilaAppPage({
         name: data.demoVideoTitle,
         description: data.metaDescription,
         thumbnailUrl: `${siteUrl}/apps/sila/icon.png`,
-        uploadDate: "2025-06-01T00:00:00Z",
+        uploadDate: "2026-06-27T00:00:00Z",
         contentUrl: SILA_DEMO_VIDEO_URL,
         embedUrl: SILA_DEMO_VIDEO_URL,
         inLanguage: lang,
@@ -206,7 +207,7 @@ export default async function SilaAppPage({
         name: data.promoVideoTitle,
         description: data.metaDescription,
         thumbnailUrl: `${siteUrl}/apps/sila/icon.png`,
-        uploadDate: "2025-06-01T00:00:00Z",
+        uploadDate: "2026-06-27T00:00:00Z",
         contentUrl: SILA_PROMO_VIDEO_URL,
         embedUrl: SILA_PROMO_VIDEO_URL,
         inLanguage: lang,
@@ -221,6 +222,7 @@ export default async function SilaAppPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
+      <Nav />
       <main className="min-h-screen bg-background text-foreground">
         {/* ───── Breadcrumb ───── */}
         <div className="px-6 md:px-20 lg:px-28 pt-8 flex items-center gap-2 text-xs font-mono text-muted-foreground">

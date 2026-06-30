@@ -1,5 +1,5 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";

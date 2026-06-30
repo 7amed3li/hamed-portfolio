@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       template: "%s | Hamed Mohamed",
     },
     description: lang === "ar"
-      ? "مطور فول ستاك (Node.js & React) وباحث أمني. قمت ببناء أنظمة عالية الأداء تخدم أكثر من 2000 مستخدم مع تقليل زمن الاستجابة بنسبة 98%."
+      ? "مطور برمجيات متكامل (Node.js & React) وباحث أمني. قمت ببناء أنظمة عالية الأداء تخدم أكثر من 2000 مستخدم مع تقليل زمن الاستجابة بنسبة 98%."
       : lang === "tr"
       ? "Node.js, React ve Uygulama Güvenliği alanında uzmanlaşmış Full-Stack Mühendisi."
       : "Full-Stack Engineer specializing in Node.js, React, and Application Security. Built high-throughput systems serving 2,000+ users with 98% latency reduction. Open-source contributor to NodeSecure ecosystem.",
@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       
       // Titles (Arabic)
       "مطور ويب",
-      "مطور فول ستاك",
+      "مطور برمجيات متكامل",
       "مطور نود جي اس",
       "مطور رياكت",
       "مهندس برمجيات",
@@ -194,7 +194,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         ? "Hamed Mohamed | Full-Stack Mühendisi & Güvenlik Araştırmacısı"
         : "Hamed Mohamed | Full-Stack Engineer & Security Researcher",
       description: lang === "ar" 
-        ? "مطور فول ستاك وباحث أمني" 
+        ? "مطور برمجيات متكامل وباحث أمني" 
         : lang === "tr" 
         ? "Node.js, React ve Uygulama Güvenliği alanında uzmanlaşmış Full-Stack Mühendisi."
         : "Full-Stack Engineer & Security Researcher",
@@ -217,7 +217,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         ? "Hamed Mohamed | Full-Stack Mühendisi"
         : "Hamed Mohamed | Full-Stack Engineer",
       description: lang === "ar" 
-        ? "مطور فول ستاك وباحث أمني. أبني أنظمة خلفية سريعة وآمنة."
+        ? "مطور برمجيات متكامل وباحث أمني. أبني أنظمة خلفية سريعة وآمنة."
         : lang === "tr"
         ? "Hızlı ve güvenli backend sistemleri inşa ediyorum."
         : "I build fast, secure backends. Open-source contributor to NodeSecure.",

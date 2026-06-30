@@ -10,7 +10,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  const data = faqData[lang] || faqData.en;
+  const data = faqData[lang as keyof typeof faqData] || faqData.en;
   return {
     metadataBase: new URL(siteUrl),
     title: data.metaTitle,
@@ -32,14 +32,17 @@ export default async function FAQPage({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const data = faqData[lang] || faqData.en;
+  const data = faqData[lang as keyof typeof faqData] || faqData.en;
 
-  const allQuestions = data.groups.flatMap((g: any) => g.questions);
+  type Question = { q: string; a: string };
+  type Group = { category: string; questions: Question[] };
+
+  const allQuestions = data.groups.flatMap((g: Group) => g.questions);
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: allQuestions.map((q: any) => ({
+    mainEntity: allQuestions.map((q: Question) => ({
       "@type": "Question",
       name: q.q,
       acceptedAnswer: {
@@ -87,14 +90,14 @@ export default async function FAQPage({
         {/* FAQ Groups */}
         <section className="px-6 md:px-20 lg:px-28 py-20">
           <div className="max-w-4xl space-y-16">
-            {data.groups.map((group: any) => (
+            {data.groups.map((group: Group) => (
               <div key={group.category}>
                 <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-8 flex items-center gap-3">
                   <span className="inline-block w-8 h-px bg-accent" />
                   {group.category}
                 </h2>
                 <div className="space-y-6">
-                  {group.questions.map((item: any) => (
+                  {group.questions.map((item: Question) => (
                     <div
                       key={item.q}
                       className="border-b border-border pb-6"

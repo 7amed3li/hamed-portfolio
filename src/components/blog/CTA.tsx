@@ -9,7 +9,7 @@ export function CTA({ lang }: { lang: 'en' | 'ar' | 'tr' }) {
       <h3 className="mb-4 text-2xl font-bold">Need help with your backend?</h3>
       <p className="mb-8 text-muted-foreground">
         I build and optimize full-stack apps with Node.js, React, and PostgreSQL. 
-        If you have a slow API or need a robust architecture, let's talk.
+        If you have a slow API or need a robust architecture, let&apos;s talk.
       </p>
       <div className="flex justify-center gap-4">
         <Link 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-let locales = ["en", "ar", "tr"];
+const locales = ["en", "ar", "tr"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -15,7 +15,7 @@ export function middleware(request: NextRequest) {
     "/favicon.ico",
     "/logo.png",
     "/google25a857f9c98e0560.html",
-    "/Hamed_Mohamed_CV.pdf",
+    "/Hamed_Mohamed_FullStack_NodeJS_CV.pdf",
     "/icon.png",
   ];
 

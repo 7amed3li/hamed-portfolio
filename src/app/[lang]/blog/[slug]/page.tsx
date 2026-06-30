@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
-import { getPostBySlug, getAllPosts } from '@/lib/blog'
+import Image from 'next/image'
+import { getPostBySlug } from '@/lib/blog'
 import { MDXContent } from '@/components/blog/MdxComponents'
 import { posts } from '#site/content'
 
@@ -116,11 +117,12 @@ export default async function PostPage({ params }: PostPageProps) {
       </div>
 
       {post.coverImage && (
-        <div className="mb-16 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-border">
-          <img 
+        <div className="mb-16 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-border relative">
+          <Image 
             src={post.coverImage} 
             alt={post.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         </div>
       )}

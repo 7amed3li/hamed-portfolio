@@ -1,7 +1,7 @@
 import { posts } from '#site/content';
 import { sortPosts } from '@/lib/blog';
 
-export async function GET(request: Request) {
+export async function GET() {
   // Get language from the URL if possible, default to en
   // But standard RSS is usually per language. Let's do a unified one or language specific.
   // Since it's /rss.xml, let's output English by default, or all.

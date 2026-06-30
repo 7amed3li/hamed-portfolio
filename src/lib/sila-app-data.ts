@@ -40,7 +40,7 @@ export const SILA_SIZE = "~81MB";
 export const SILA_LANGUAGES = ["العربية", "Türkçe", "English", "Français"];
 
 // ──────────────────────────────────────────
-// ⚠️ PLACEHOLDER — Replace with actual links
+// Download & Video URLs
 // ──────────────────────────────────────────
 export const SILA_DOWNLOAD_URL = "https://github.com/7amed3li/Sila/releases/download/4.1.0/Sila.apk";
 export const SILA_DEMO_VIDEO_URL = "https://www.youtube.com/embed/8mgO8QjJ0wM";

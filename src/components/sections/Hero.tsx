@@ -56,7 +56,6 @@ function TerminalAnimation() {
 
   useEffect(() => {
     let currentLine = 0;
-    setLines([]); // Reset on mount for strict mode
     const interval = setInterval(() => {
       if (currentLine < bootSequence.length) {
         // Safe closure capture
@@ -218,7 +217,7 @@ export function Hero() {
           </MagneticButton>
           <MagneticButton strength={40}>
             <a
-              href="/Hamed_Mohamed_CV.pdf"
+              href="/Hamed_Mohamed_FullStack_NodeJS_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 px-8 py-4 text-sm font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-colors bg-background group"

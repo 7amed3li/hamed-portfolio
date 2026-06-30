@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import * as runtime from 'react/jsx-runtime'
+import { useMemo } from 'react'
 import { Callout } from './Callout'
 import { CodeBlock } from './CodeBlock'
 import { CTA } from './CTA'
 
-const useMDXComponent = (code: string) => {
+const getMDXComponent = (code: string) => {
   const fn = new Function(code)
   return fn({ ...runtime }).default
 }
@@ -47,6 +48,18 @@ interface MDXProps {
 }
 
 export function MDXContent({ code, lang = 'en' }: MDXProps) {
-  const Component = useMDXComponent(code)
-  return <Component components={{ ...components, CTA: (props: any) => <CTA lang={lang} {...props} /> }} />
+  const Component = useMemo(() => getMDXComponent(code), [code])
+  
+  // Memoize the components map, including the dynamically wrapped CTA component
+  const mdxComponents = useMemo(() => {
+    const CustomCTA = (props: Record<string, unknown>) => <CTA lang={lang} {...props} />;
+    
+    return {
+      ...components,
+      CTA: CustomCTA
+    };
+  }, [lang]);
+  
+  // eslint-disable-next-line react-hooks/static-components
+  return <Component components={mdxComponents} />
 }

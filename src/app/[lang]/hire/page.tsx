@@ -11,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  const data = hireData[lang] || hireData.en;
+  const data = hireData[lang as keyof typeof hireData] || hireData.en;
   return {
     metadataBase: new URL(siteUrl),
     title: data.metaTitle,
@@ -33,36 +33,6 @@ export async function generateMetadata({
   };
 }
 
-const stats = [
-  { value: "2,000+", label: "Daily users on a system I built" },
-  { value: "98%", label: "Latency reduction achieved in production" },
-  { value: "7", label: "Open-source security PRs merged" },
-  { value: "3", label: "Languages: Arabic, English, Turkish" },
-];
-
-const faqs = [
-  {
-    q: "Can you work with non-technical clients?",
-    a: "Absolutely. Hamed regularly explains technical decisions in plain language so you understand what's being built and why. You don't need to know how to code to work with him.",
-  },
-  {
-    q: "Do you only work with developers and tech companies?",
-    a: "No. Hamed works with restaurants, universities, small businesses, startups, and individual founders — anyone who needs something built.",
-  },
-  {
-    q: "Can I hire you for a small project?",
-    a: "Yes. Whether it's a single landing page, a bug fix, or a performance audit — project size is not a barrier. Contact Hamed and describe what you need.",
-  },
-  {
-    q: "Are you available for freelance projects?",
-    a: "Yes. Hamed is available for freelance work now and for full-time positions from August 2026.",
-  },
-  {
-    q: "What information do I need to start?",
-    a: "Just describe what you want to build or fix. You don't need a technical spec — a plain-language description of the problem or goal is enough to start the conversation.",
-  },
-];
-
 const icons = ["🌐", "🍽️", "⚡", "🔧", "📊", "🐛", "🚀", "🔒", "📱", "🏢"];
 
 export default async function HirePage({
@@ -71,8 +41,8 @@ export default async function HirePage({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  const data = hireData[lang] || hireData.en;
-  const langServices = servicesData[lang] || servicesData.en;
+  const data = hireData[lang as keyof typeof hireData] || hireData.en;
+  const langServices = servicesData[lang as keyof typeof servicesData] || servicesData.en;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -152,7 +122,7 @@ export default async function HirePage({
         {/* Stats */}
         <section className="px-6 md:px-20 lg:px-28 py-16 border-b border-border">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-            {stats.map((s) => (
+            {data.stats.map((s: { value: string; label: string }) => (
               <div key={s.label}>
                 <div className="text-3xl md:text-4xl font-bold accent-text mb-2">{s.value}</div>
                 <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
@@ -228,7 +198,7 @@ export default async function HirePage({
               {data.whyHamedH2}
             </h2>
             <div className="space-y-8">
-              {data.whyPoints.map((item: any) => (
+              {data.whyPoints.map((item: { title: string; desc: string }) => (
                 <div key={item.title} className="flex gap-5">
                   <div className="mt-1 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
                   <div>
@@ -251,7 +221,7 @@ export default async function HirePage({
             {data.faqH2}
           </h2>
           <div className="max-w-3xl space-y-8">
-            {faqs.map((f) => (
+            {data.faqs.map((f: { q: string; a: string }) => (
               <div key={f.q} className="border-b border-border pb-8">
                 <h3 className="text-base font-bold text-foreground mb-3">{f.q}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{f.a}</p>

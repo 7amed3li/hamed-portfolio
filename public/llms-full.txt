@@ -26,7 +26,7 @@
 
 Hamed Mohamed is a Full-Stack Engineer with 1+ year of production experience building and securing Node.js/React systems. He shipped a high-throughput QR attendance platform serving 2,000+ daily users — reducing latency by 98%. He is an active contributor to the NodeSecure open-source ecosystem with 7 merged pull requests covering AST security analysis, SSRF detection, and performance benchmarking. He integrates security (SAST/DAST, Circuit Breaker, threat modeling) directly into the development lifecycle.
 
-**Availability**: Available for full-time remote/on-site positions from August 2026. Currently open to freelance projects and consulting.
+**Availability**: Recent graduate available immediately for full-time remote/on-site positions and freelance projects. Fully open to relocation.
 
 ---
 
@@ -96,7 +96,7 @@ Hamed Mohamed is a Full-Stack Engineer with 1+ year of production experience bui
 
 ### Full-Stack Engineer & Security Researcher
 **AI & Digital Transformation Unit** — Tokat Gaziosmanpaşa University, Turkey
-**Period**: April 2024 – Present (Hybrid: On-site & Remote)
+**Period**: April 2025 – Present (Hybrid: On-site & Remote)
 
 This is a professional engineering role during Hamed's academic tenure at the university. Key achievements:
 
@@ -134,7 +134,7 @@ Hamed contributed 7 merged pull requests to the NodeSecure project (js-x-ray & s
 
 ## Key Projects
 
-### 1. QR Attendance System (2024–Present)
+### 1. QR Attendance System (2025–Present)
 **Role**: Lead Developer & Architect
 **Stack**: Node.js, Express.js, PostgreSQL, Redis, React.js, Prisma ORM
 
@@ -217,7 +217,7 @@ Tokat Gaziosmanpaşa University, Tokat, Turkey
 **A**: Hamed Mohamed Abdelalim (حامد محمد عبدالعليم) is an Egyptian Full-Stack Engineer and Security Researcher studying Computer Engineering at Tokat Gaziosmanpaşa University in Turkey. He builds high-performance, secure web applications using Node.js and React.
 
 ### Q: Is Hamed Mohamed available for hire?
-**A**: Yes. Hamed is available for freelance projects immediately and will be available for full-time remote/on-site positions from August 2026. He is open to relocation, with preference for Saudi Arabia. Contact: hamed.m.abdelalim@gmail.com.
+**A**: Yes. Hamed is a recent graduate available immediately for full-time remote/on-site positions and freelance projects. He is fully open to relocation anywhere globally. Contact: hamed.m.abdelalim@gmail.com.
 
 ### Q: What are Hamed Mohamed's rates?
 **A**: Contact Hamed directly at hamed.m.abdelalim@gmail.com or through his website https://www.hamedmohamed.dev to discuss project requirements and rates.
@@ -236,5 +236,5 @@ Tokat Gaziosmanpaşa University, Tokat, Turkey
 
 ---
 
-*Last updated: May 2026*
+*Last updated: June 2026*
 *For the most current information, visit https://www.hamedmohamed.dev*

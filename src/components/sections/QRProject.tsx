@@ -4,7 +4,20 @@ import { useRef, useEffect, useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
 
-function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: (i: number) => void }) {
+type ProjectData = {
+  num?: string;
+  category: string;
+  title: string;
+  tags: readonly string[];
+  year: string;
+  summary: string;
+  lesson?: string;
+  metrics: readonly string[];
+  links?: readonly { label: string; url: string }[];
+  link?: string | null;
+};
+
+function ProjectCard({ p, index, onInView }: { p: ProjectData, index: number, onInView: (i: number) => void }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
   const { lang } = useLang();
@@ -63,7 +76,7 @@ function ProjectCard({ p, index, onInView }: { p: any, index: number, onInView: 
       </div>
 
       <div className="flex flex-wrap gap-6 mt-4">
-        {p.links?.map((l: any, i: number) => (
+        {p.links?.map((l, i: number) => (
           <a 
             key={i}
             href={l.url} 

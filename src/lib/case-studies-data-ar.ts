@@ -8,7 +8,7 @@ export const caseStudies: CaseStudy[] = [
     metaDescription:
       "كيف قام حامد محمد ببناء نظام لتسجيل الحضور بـ QR لأكثر من 2000 طالب في 7 كليات، محققاً تقليل وقت الاستجابة بنسبة 98% وتوافرية 99.9%.",
     category: "نظام متكامل · هندسة الأداء (Performance Engineering)",
-    year: "2024–الآن",
+    year: "2025–الآن",
     tags: ["Node.js", "React.js", "PostgreSQL", "Redis", "Docker", "QR", "لوحة تحكم للمدير"],
     heroStat: { value: "+2000", label: "مستخدم نشط يومياً" },
     problem:

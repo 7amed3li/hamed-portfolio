@@ -9,7 +9,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const { lang, toggleLang, setLanguage, isRTL } = useLang();
+  const { lang, toggleLang, isRTL } = useLang();
   const tr = t[lang].nav;
 
   // Calculate next language and path for SEO-friendly language switcher
@@ -101,7 +101,7 @@ export function Nav() {
         <div className="hidden md:flex items-center gap-3">
           {/* Resume CTA */}
           <a
-            href="/Hamed_Mohamed_CV.pdf"
+            href="/Hamed_Mohamed_FullStack_NodeJS_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-200 group"

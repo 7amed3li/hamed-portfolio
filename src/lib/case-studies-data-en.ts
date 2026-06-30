@@ -8,7 +8,7 @@ export const caseStudies: CaseStudy[] = [
     metaDescription:
       "How Hamed Mohamed built a QR-based attendance system for 2,000+ students across 7 faculties, achieving 98% latency reduction and 99.9% uptime.",
     category: "Full-Stack System · Performance Engineering",
-    year: "2024–Present",
+    year: "2025–Present",
     tags: ["Node.js", "React.js", "PostgreSQL", "Redis", "Docker", "QR", "Admin Dashboard"],
     heroStat: { value: "2,000+", label: "Daily Users in Production" },
     problem:

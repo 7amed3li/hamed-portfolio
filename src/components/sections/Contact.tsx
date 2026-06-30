@@ -47,7 +47,7 @@ export function Contact() {
       } else {
         setFormState('error');
       }
-    } catch (err) {
+    } catch {
       setFormState('error');
     }
   };
@@ -119,10 +119,10 @@ export function Contact() {
                   <span className="text-accent">curl</span> -X POST https://api.web3forms.com/submit \
                 </p>
                 <p className="pl-4">
-                  -H <span className="text-foreground">"Content-Type: application/json"</span> \
+                  -H <span className="text-foreground">&quot;Content-Type: application/json&quot;</span> \
                 </p>
                 <p className="pl-4">
-                  -d <span className="text-foreground">'&#123;"message": "Let&apos;s build something."&#125;'</span>
+                  -d <span className="text-foreground">&apos;&#123;&quot;message&quot;: &quot;Let&apos;s build something.&quot;&#125;&apos;</span>
                 </p>
               </div>
             </div>

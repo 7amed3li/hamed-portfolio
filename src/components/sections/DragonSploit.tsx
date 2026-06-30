@@ -76,7 +76,7 @@ export function About() {
               {tr.cta_github}
             </a>
             <a
-              href="/Hamed_Mohamed_CV.pdf"
+              href="/Hamed_Mohamed_FullStack_NodeJS_CV.pdf"
               target="_blank"
               rel="noreferrer"
               className="text-xs font-mono uppercase tracking-widest px-6 py-3 transition-colors border border-border text-muted-foreground hover:border-accent hover:text-accent flex items-center gap-2"

@@ -1,9 +1,8 @@
 import { getAllPosts, getAllTags } from '@/lib/blog'
-import { t } from '@/lib/translations'
 import { BlogList } from '@/components/blog/BlogList'
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: 'en' | 'ar' | 'tr' }> }) {
-  const resolvedParams = await params;
+  await params;
   return {
     title: `Engineering Blog | Hamed Mohamed`,
     description: `Technical case studies and engineering notes by Hamed Mohamed.`,
