@@ -25,7 +25,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A fast, well-built website builds trust with your clients and helps you get found on Google. Sites built by Hamed load quickly, are mobile-friendly, and are ready for SEO from day one.",
     proof:
-      "Built the portfolio you're currently viewing — a modern, multilingual site with animations, fast load times, and high Lighthouse scores. Also developed the frontend for a QR attendance system used by 2,000+ students.",
+      "Built and deployed kardeslercihangir.com — a production digital platform for a 28-year-old restaurant in Istanbul with 10 languages, live currency conversion, direct WhatsApp ordering, and comprehensive Schema.org Local SEO, serving ~100 daily visitors. Also built the frontend for a university QR attendance platform serving 2,000+ students and this multilingual portfolio.",
     faq: [
       {
         q: "Can you build a website for a small business?",
@@ -64,15 +64,17 @@ export const servicesData: ServicePage[] = [
       "QR-scannable digital menus",
       "Full restaurant websites with menu, about, and contact pages",
       "Cafe menus with categories and item photos",
-      "Multilingual menus (Arabic, English, Turkish)",
+      "Multilingual menus (Arabic, English, Turkish, etc.)",
       "Menu pages that load fast on any phone",
       "Admin-updatable menus (so you can change prices yourself)",
+      "Live currency conversion & WhatsApp direct ordering",
+      "Comprehensive Local SEO & Schema.org structured data for Google",
     ],
-    technologies: ["React.js", "Next.js", "Node.js", "PostgreSQL", "QR Code Integration"],
+    technologies: ["React 19", "Next.js 16", "Supabase", "Node.js", "Tailwind CSS", "Schema.org Local SEO", "WhatsApp API", "Real-time Currency API"],
     businessValue:
       "A digital menu is cheaper to update than printing new menus, looks more professional, and customers can access it instantly by scanning a QR code. It also helps your restaurant appear in Google searches.",
     proof:
-      "Built and deployed a real QR-based system used by 2,000+ users at a university across 42 courses, 13 departments & 6 faculties. The system handles high traffic reliably and loads in under 2 seconds.",
+      "Built and deployed kardeslercihangir.com — a production restaurant platform for a 28-year-old Turkish restaurant in Cihangir, Istanbul. The platform features dynamic 10-language support, real-time currency conversion for 6 currencies, direct WhatsApp ordering with localized templates, non-technical owner admin panel, and complete Schema.org Local SEO with zero Google ranking loss after migrating from legacy WordPress. The site serves ~100 real visitors every day.",
     faq: [
       {
         q: "Do customers need to download an app to see the menu?",

@@ -28,4 +28,7 @@ export type CaseStudy = {
   results: { metric: string; description: string }[];
   clientProof: string;
   cta: string;
+  liveUrl?: string;
+  statusBadge?: string;
+  images?: { src: string; alt: string; caption?: string }[];
 };

@@ -6,6 +6,7 @@ import { t } from "@/lib/translations";
 
 type ProjectData = {
   num?: string;
+  slug?: string;
   category: string;
   title: string;
   tags: readonly string[];
@@ -107,7 +108,7 @@ function ProjectCard({ p, index, onInView }: { p: ProjectData, index: number, on
 
         {/* Case Study Links */}
         <a 
-          href={`/${lang}/case-studies/${p.num === "1" ? "qr-attendance-system" : p.num === "2" ? "nodesecure-open-source" : "dragonsploit"}`}
+          href={`/${lang}/case-studies/${p.slug || (p.num === "1" ? "qr-attendance-system" : p.num === "2" ? "nodesecure-open-source" : "dragonsploit")}`}
           className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-sm"
         >
           {lang === "ar" ? "اقرأ دراسة الحالة" : lang === "tr" ? "Örnek Olayı Oku" : "Read Case Study"}

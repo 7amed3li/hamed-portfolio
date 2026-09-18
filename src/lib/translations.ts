@@ -28,7 +28,7 @@ export const t = {
       label: "About Me",
       heading1: "Full-Stack Engineer.",
       heading2: "Node.js & React.",
-      bio1: "I'm Hamed, a Full-Stack Engineer based in Turkey. I currently work at the AI & Digital Transformation Unit at Tokat University, where I build and secure Node.js systems.",
+      bio1: "I'm Hamed, an Egyptian Full-Stack Engineer and Computer Engineering graduate (GPA 3.5/4.0), based in Turkey. I build production web systems — from university platforms serving 2,000+ students to multilingual restaurant websites with ~100 daily visitors.",
       bio2part1: "Recently, I helped ship a high-throughput QR attendance platform for",
       bio2strong1: "2,000+ students across 7 faculties",
       bio2part2: ". We managed to cut the response latency by",
@@ -72,6 +72,21 @@ export const t = {
             "Implemented Opossum Circuit Breaker for automated recovery during peak traffic",
             "Executed data migration of 25,019 academic records (14,100 courses, 50 faculties, 259 programs)",
             "313 automated tests across 38 test suites · SAST/DAST CI/CD · 18 security findings remediated",
+          ],
+        },
+        {
+          title: "Freelance Full-Stack Developer",
+          company: "Kardeşler Kebap & Cafe Cihangir",
+          location: "Istanbul, Turkey",
+          period: "2026",
+          type: "Freelance",
+          highlights: [
+            "Designed and built a production digital restaurant platform from scratch using Next.js 16, React 19, and Supabase — replacing an outdated WordPress site",
+            "Implemented 10-language support with dynamic routing, covering Turkish, English, Arabic, Russian, French, Persian, German, Italian, Spanish, and Chinese",
+            "Built live currency conversion (6 currencies) and direct WhatsApp ordering with automated localized messages",
+            "Executed full WordPress migration with 25+ redirect rules preserving Google rankings",
+            "Implemented comprehensive Local SEO: Schema.org (Restaurant, Menu, ImageGallery), hreflang for 10 languages, Open Graph, and dynamic sitemap",
+            "Built owner admin panel allowing non-technical restaurant owner to update prices and availability in real-time",
           ],
         },
         {
@@ -146,6 +161,7 @@ export const t = {
       items: [
         {
           num: "1",
+          slug: "qr-attendance-system",
           title: "QR Attendance System",
           category: "Backend · Performance Engineering",
           tags: ["Node.js", "PostgreSQL", "Redis", "Docker", "JWT", "Opossum"],
@@ -161,6 +177,23 @@ export const t = {
         },
         {
           num: "2",
+          slug: "kardesler-restaurant-platform",
+          title: "Kardeşler Cihangir — Restaurant Platform",
+          category: "Full-Stack · Next.js · Production Client Website",
+          tags: ["Next.js 16", "React 19", "Supabase", "10 Languages", "Live Currency", "WhatsApp Ordering", "SEO"],
+          year: "2026",
+          summary: "Production digital platform for a 28-year-old Turkish restaurant in Cihangir, Istanbul. Built with Next.js 16 & React 19. Supports 10 languages, live currency conversion for 6 currencies, direct WhatsApp ordering, owner admin panel, and comprehensive Local SEO with Schema.org. Migrated from legacy WordPress with full 301 redirect coverage. Serving ~100 real daily visitors.",
+          lesson: "Lesson Learned: Building for a real business means real constraints — an owner who doesn't code, tourists who don't speak Turkish, and Google rankings that directly affect revenue. SEO and UX aren't optional extras; they're the actual product.",
+          metrics: ["~100 Daily Visitors", "10 Languages Live", "6 Live Currencies", "Full SEO & Schema.org"],
+          links: [
+            { label: "Live Website", url: "https://www.kardeslercihangir.com" },
+            { label: "Developer Credit", url: "https://www.kardeslercihangir.com/tasarim-gelistirme" }
+          ],
+          link: null,
+        },
+        {
+          num: "3",
+          slug: "nodesecure-open-source",
           title: "NodeSecure OSS Contributions",
           category: "Security Research · Open Source",
           tags: ["TypeScript", "AST Analysis", "SSRF Detection", "Security"],
@@ -171,7 +204,8 @@ export const t = {
           link: "https://github.com/NodeSecure",
         },
         {
-          num: "3",
+          num: "4",
+          slug: "dragonsploit",
           title: "DragonSploit",
           category: "AI · Orchestration · Security",
           tags: ["Node.js", "AI Orchestration", "Security", "Stack Detection"],
@@ -245,7 +279,7 @@ export const t = {
       label: "نبذة عني",
       heading1: "مهندس برمجيات (Full-Stack).",
       heading2: "Node.js و React.",
-      bio1: "أنا حامد، مهندس برمجيات أقيم في تركيا. أعمل حالياً في وحدة الذكاء الاصطناعي والتحول الرقمي بجامعة توقات غازي عثمان باشا، وتتركز وظيفتي على بناء وتأمين أنظمة خلفية (Backend) قوية بـ Node.js.",
+      bio1: "أنا حامد، مهندس برمجيات مصري خريج هندسة حاسبات (معدل 3.5/4.0)، أعيش في تركيا. أبني أنظمة ويب إنتاجية حقيقية — من منصات جامعية تخدم أكثر من 2,000 مستخدم إلى مواقع مطاعم متعددة اللغات بأكثر من 100 زائر يومياً.",
       bio2part1: "مؤخراً، شاركت كمهندس أساسي في إطلاق نظام حضور عالي الأداء يعتمد على الـ QR ويخدم",
       bio2strong1: "أكثر من 2000 طالب في 7 كليات مختلفة",
       bio2part2: ". من خلال هذا النظام، نجحنا في تقليل زمن استجابة الخادم بنسبة",
@@ -289,6 +323,21 @@ export const t = {
             "دمج تقنية Opossum Circuit Breaker لضمان تعافي النظام التلقائي أثناء أوقات الذروة.",
             "نقل وترحيل أكثر من 25,000 سجل أكاديمي بشكل آمن وفعال للأنظمة الجديدة.",
             "كتابة أكثر من 300 اختبار برمجي أوتوماتيكي، وإجراء فحوصات أمنية (SAST/DAST)، أدت لاكتشاف وحل 18 ثغرة.",
+          ],
+        },
+        {
+          title: "مطور ويب مستقل (Freelance)",
+          company: "كاردشلر كباب وكافيه جيهانغير",
+          location: "إسطنبول، تركيا",
+          period: "2026",
+          type: "مستقل (Freelance)",
+          highlights: [
+            "تصميم وبناء منصة مطاعم رقمية إنتاجية من الصفر باستخدام Next.js 16 و React 19 و Supabase — بديلاً لموقع WordPress قديم",
+            "تطبيق دعم 10 لغات عالمية مع توجيه ديناميكي يشمل التركية والإنجليزية والعربية والروسية والفرنسية والفارسية والألمانية والإيطالية والإسبانية والصينية",
+            "بناء محوّل عملات حي (6 عملات) ونظام طلب مباشر عبر واتساب برسائل وقوالب مخصصة ومترجمة بلغة الزائر",
+            "ترحيل كامل من WordPress مع أكثر من 25 قاعدة إعادة توجيه للحفاظ على ترتيب Google",
+            "تنفيذ سيو محلي شامل: Schema.org (Restaurant, Menu, ImageGallery)، hreflang لـ 10 لغات، Open Graph، وخريطة موقع ديناميكية",
+            "بناء لوحة تحكم للمالك تسمح له بتحديث الأسعار والتوافر فوراً بدون أي خبرة تقنية",
           ],
         },
         {
@@ -363,6 +412,7 @@ export const t = {
       items: [
         {
           num: "1",
+          slug: "qr-attendance-system",
           title: "نظام حضور QR",
           category: "الباك إند · هندسة الأداء",
           tags: ["Node.js", "PostgreSQL", "Redis", "Docker", "JWT", "Opossum"],
@@ -378,6 +428,23 @@ export const t = {
         },
         {
           num: "2",
+          slug: "kardesler-restaurant-platform",
+          title: "كاردشلر جيهانغير — منصة المطاعم الرقمية",
+          category: "فول ستاك · Next.js · موقع عميل إنتاجي حي",
+          tags: ["Next.js 16", "React 19", "Supabase", "10 لغات", "تحويل عملات حي", "طلب واتساب", "سيو"],
+          year: "2026",
+          summary: "منصة رقمية إنتاجية لمطعم تركي عريق عمره 28 سنة في جيهانغير، إسطنبول. مبنية بـ Next.js 16 و React 19. تدعم 10 لغات عالمية، تحويل عملات لحظي لـ 6 عملات، طلب مباشر وسريع عبر واتساب بقوالب مخصصة، لوحة تحكم للمالك، وسيو محلي شامل مع Schema.org. تم ترحيلها بالكامل من ووردبريس القديم مع تغطية كاملة للتحويلات 301. يخدم الموقع ~100 زائر حقيقي يومياً.",
+          lesson: "الدرس المستفاد: البناء لعمل تجاري حقيقي يعني التعامل مع قيود واقعية — مالك لا يكتب كود، سيّاح لا يتكلمون تركي، وترتيب جوجل يؤثر مباشرة على الإيرادات. السيو وتجربة المستخدم ليسا إضافات اختيارية — بل هما المنتج الفعلي.",
+          metrics: ["~100 زائر يومياً", "10 لغات حية", "6 عملات متزامنة", "سيو شامل + Schema.org"],
+          links: [
+            { label: "الموقع الحي", url: "https://www.kardeslercihangir.com" },
+            { label: "اعتماد المطور", url: "https://www.kardeslercihangir.com/tasarim-gelistirme" }
+          ],
+          link: null,
+        },
+        {
+          num: "3",
+          slug: "nodesecure-open-source",
           title: "مساهمات في NodeSecure (مفتوح المصدر)",
           category: "أبحاث أمنية · مفتوح المصدر",
           tags: ["TypeScript", "AST Analysis", "SSRF Detection", "Security"],
@@ -388,7 +455,8 @@ export const t = {
           link: "https://github.com/NodeSecure",
         },
         {
-          num: "3",
+          num: "4",
+          slug: "dragonsploit",
           title: "DragonSploit",
           category: "الذكاء الاصطناعي · التنسيق · الأمان",
           tags: ["Node.js", "AI Orchestration", "Security", "Stack Detection"],
@@ -462,7 +530,7 @@ export const t = {
       label: "Hakkımda",
       heading1: "Full-Stack Mühendisi.",
       heading2: "Node.js & React.",
-      bio1: "Ben Hamed, Türkiye'de yaşayan bir Full-Stack Mühendisiyim. Şu anda Tokat Üniversitesi Yapay Zeka ve Dijital Dönüşüm Birimi'nde Node.js sistemleri inşa ediyor ve güvenliğini sağlıyorum.",
+      bio1: "Ben Hamed, Türkiye'de yaşayan Mısırlı bir Full-Stack Mühendisi ve Bilgisayar Mühendisliği mezunuyum (GNO 3.5/4.0). 2.000'den fazla kullanıcıya hizmet veren üniversite platformlarından günlük 100'den fazla ziyaretçisi olan çok dilli restoran web sitelerine kadar canlı üretim sistemleri inşa ediyorum.",
       bio2part1: "Geçtiğimiz günlerde, 7 fakültede kayıtlı",
       bio2strong1: "2.000'den fazla öğrenci",
       bio2part2: " için yüksek verimli bir QR yoklama platformunu canlıya aldım. Devre kesiciler (circuit breakers) ile sistem kullanılabilirliğini yüksek tutarken yanıt gecikmesini ",
@@ -506,6 +574,21 @@ export const t = {
             "Tepe trafik dönemlerinde otomatik kurtarma için Opossum Circuit Breaker uygulandı",
             "25.019 akademik kayıt taşıması (14.100 ders, 50 fakülte, 259 program)",
             "38 test paketinde 313 otomatik test · SAST/DAST CI/CD · 18 güvenlik açığı giderildi",
+          ],
+        },
+        {
+          title: "Serbest Çalışan Full-Stack Geliştirici",
+          company: "Kardeşler Kebap & Cafe Cihangir",
+          location: "İstanbul, Türkiye",
+          period: "2026",
+          type: "Freelance",
+          highlights: [
+            "Next.js 16, React 19 ve Supabase kullanarak sıfırdan bir üretim dijital restoran platformu tasarlayıp inşa ettim — eski WordPress sitesinin yerine",
+            "Dinamik yönlendirme ile 10 dil desteği uygulandı: Türkçe, İngilizce, Arapça, Rusça, Fransızca, Farsça, Almanca, İtalyanca, İspanyolca ve Çince",
+            "Canlı döviz çevirici (6 para birimi) ve otomatik yerelleştirilmiş mesajlarla WhatsApp üzerinden doğrudan sipariş akışı oluşturuldu",
+            "Google sıralamalarını korumak için 25'ten fazla yönlendirme kuralıyla tam WordPress göçü gerçekleştirildi",
+            "Kapsamlı yerel SEO uygulandı: Schema.org (Restaurant, Menu, ImageGallery), 10 dil için hreflang, Open Graph ve dinamik site haritası",
+            "Teknik bilgisi olmayan restoran sahibinin fiyatları ve müsaitliği gerçek zamanlı olarak güncellemesine olanak tanıyan yönetici paneli inşa edildi",
           ],
         },
         {
@@ -580,6 +663,7 @@ export const t = {
       items: [
         {
           num: "1",
+          slug: "qr-attendance-system",
           title: "QR Yoklama Sistemi",
           category: "Backend · Performans Mühendisliği",
           tags: ["Node.js", "PostgreSQL", "Redis", "Docker", "JWT", "Opossum"],
@@ -595,6 +679,23 @@ export const t = {
         },
         {
           num: "2",
+          slug: "kardesler-restaurant-platform",
+          title: "Kardeşler Cihangir — Dijital Restoran Platformu",
+          category: "Full-Stack · Next.js · Canlı Üretim Müşteri Sitesi",
+          tags: ["Next.js 16", "React 19", "Supabase", "10 Dil", "Canlı Döviz", "WhatsApp Sipariş", "SEO"],
+          year: "2026",
+          summary: "Cihangir, İstanbul'daki 28 yıllık Türk restoranı için üretim dijital platformu. Next.js 16 ve React 19 ile inşa edildi. 10 dil desteği, 6 para birimi için canlı döviz çevirici, WhatsApp doğrudan sipariş akışı, sahip yönetici paneli ve Schema.org ile kapsamlı yerel SEO. Eski WordPress'ten tam 301 yönlendirme kapsamıyla taşındı. Günlük ~100 gerçek ziyaretçiye hizmet veriyor.",
+          lesson: "Öğrenilen Ders: Gerçek bir işletme için inşa etmek gerçek kısıtlamalar demektir — kod yazmayan bir sahip, Türkçe konuşamayan turistler ve doğrudan geliri etkileyen Google sıralamaları. SEO ve UX isteğe bağlı ekstralar değil; asıl ürünün kendisidir.",
+          metrics: ["~100 Günlük Ziyaretçi", "10 Dil Canlı", "6 Canlı Para Birimi", "Tam SEO & Schema.org"],
+          links: [
+            { label: "Canlı Web Sitesi", url: "https://www.kardeslercihangir.com" },
+            { label: "Geliştirici Referansı", url: "https://www.kardeslercihangir.com/tasarim-gelistirme" }
+          ],
+          link: null,
+        },
+        {
+          num: "3",
+          slug: "nodesecure-open-source",
           title: "NodeSecure OSS Katkıları",
           category: "Güvenlik Araştırması · Açık Kaynak",
           tags: ["TypeScript", "AST Analysis", "SSRF Detection", "Security"],
@@ -605,7 +706,8 @@ export const t = {
           link: "https://github.com/NodeSecure",
         },
         {
-          num: "3",
+          num: "4",
+          slug: "dragonsploit",
           title: "DragonSploit",
           category: "Yapay Zeka · Orkestrasyon · Güvenlik",
           tags: ["Node.js", "AI Orkestrasyonu", "Security", "Stack Algılama"],

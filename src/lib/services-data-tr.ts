@@ -25,7 +25,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Hızlı ve iyi oluşturulmuş bir web sitesi müşterilerinize güven verir ve Google'da bulunmanıza yardımcı olur. Hamed'in yaptığı siteler hızlı yüklenir, mobil uyumludur ve ilk günden itibaren SEO'ya hazırdır.",
     proof:
-      "Şu anda incelediğiniz portföyü oluşturdu: modern, çok dilli, hızlı yüklenen ve yüksek Lighthouse puanlarına sahip bir site. Ayrıca, 2.000'den fazla öğrencinin kullandığı bir QR yoklama sisteminin ön yüzünü geliştirdi.",
+      "İstanbul'da 28 yıllık bir restoran için 10 dil desteği, canlı döviz çevirisi, WhatsApp doğrudan sipariş ve Schema.org Yerel SEO ile günlük ~100 ziyaretçiye hizmet veren kardeslercihangir.com üretim platformunu tasarlayıp yayına aldı. Ayrıca, 2.000'den fazla öğrencinin kullandığı üniversite QR yoklama sisteminin ön yüzünü ve bu çok dilli portföyü geliştirdi.",
     faq: [
       {
         q: "Küçük bir işletme için web sitesi oluşturabilir misiniz?",
@@ -64,15 +64,17 @@ export const servicesData: ServicePage[] = [
       "QR ile taranabilen dijital menüler",
       "Menü, hakkımızda ve iletişim sayfaları içeren tam restoran web siteleri",
       "Kategorileri ve ürün fotoğrafları olan kafe menüleri",
-      "Çok dilli menüler (Arapça, İngilizce, Türkçe)",
+      "Çok dilli menüler (Arapça, İngilizce, Türkçe dahil 10 dil desteği)",
       "Her telefonda hızlı yüklenen menü sayfaları",
-      "Yönetici tarafından güncellenebilir menüler (fiyatları kendiniz değiştirebilirsiniz)",
+      "Yönetici tarafından güncellenebilir menüler (fiyatları kodsuz kendiniz güncelleyebilirsiniz)",
+      "Canlı döviz çevirici ve WhatsApp doğrudan sipariş",
+      "Kapsamlı Yerel SEO ve Google için Schema.org yapılandırılmış verileri",
     ],
-    technologies: ["React.js", "Next.js", "Node.js", "PostgreSQL", "QR Kod Entegrasyonu"],
+    technologies: ["React 19", "Next.js 16", "Supabase", "Node.js", "Tailwind CSS", "Schema.org Local SEO", "WhatsApp API", "Gerçek Zamanlı Döviz API"],
     businessValue:
       "Dijital bir menüyü güncellemek, yeni menüler yazdırmaktan daha ucuzdur, daha profesyonel görünür ve müşteriler QR kodu tarayarak anında erişebilir. Ayrıca, restoranınızın Google aramalarında görünmesine yardımcı olur.",
     proof:
-      "Bir üniversitede 7 fakültede 2.000'den fazla kişinin günlük kullandığı gerçek bir QR tabanlı sistem geliştirdi ve yayınladı. Sistem yüksek trafiği güvenilir bir şekilde kaldırır ve 2 saniyenin altında yüklenir.",
+      "Cihangir, İstanbul'daki 28 yıllık köklü Kardeşler Kebap için kardeslercihangir.com üretim platformunu sıfırdan geliştirdi. Platform 10 dil, 6 para birimi için anlık döviz çevirisi, WhatsApp doğrudan sipariş akışı, sahip yönetici paneli ve eski WordPress'ten 0 sıralama kaybıyla tam taşınma sağlayan 25+ yönlendirmeli Yerel SEO içerir. Günlük ~100 gerçek ziyaretçiye hizmet vermektedir.",
     faq: [
       {
         q: "Müşterilerin menüyü görmek için bir uygulama indirmesi gerekiyor mu?",

@@ -6,7 +6,7 @@ Full-Stack Software Developer · Node.js & React · Application Security
 
 **SUMMARY**
 
-Software Engineer with 1+ year of production experience building secure and scalable web applications using Node.js, React.js, PostgreSQL, and Prisma ORM. Served as the Primary Developer within a 3-member engineering team, contributing to systems supporting 2,000+ users and 300+ daily active users. Experienced in application security, backend modernization, automated testing, and CI/CD, including the remediation of 18 documented security findings and the migration of 25,019 academic records. Open-source contributor to the NodeSecure ecosystem with 7 merged pull requests enhancing security analysis and software quality.
+Egyptian Full-Stack Software Engineer and Computer Engineering graduate (GPA 3.5/4.0) based in Turkey with production experience building secure, scalable, and high-performance web systems. Developed university platforms serving 2,000+ users (300+ DAU) and production commercial platforms serving ~100 daily visitors across 10 languages. Experienced in application security, performance optimization, automated testing, WordPress-to-Next.js migrations, and Schema.org Local SEO. Open-source contributor to the NodeSecure security ecosystem with 7 merged pull requests.
 
 **EXPERIENCE**
 
@@ -21,6 +21,16 @@ _Apr 2025 – Jun 2026 (Hybrid)_
 - Developed and executed a production data migration solution that imported 25,019 academic records, including 14,100 course records, 50 faculties, and 259 academic programs.
 - Optimized QR verification performance by redesigning the verification architecture, reducing average validation latency from 94.91 ms to 1.53 ms and increasing throughput from 10.54 req/s to 653.39 req/s through local-first processing and intelligent fallback strategies.
 - Implemented resilience patterns using Opossum Circuit Breaker, enabling automated recovery and maintaining service continuity during remote verification failures and peak traffic conditions.
+
+**Freelance Full-Stack Developer** · Kardeşler Kebap & Cafe Cihangir · Istanbul, Turkey
+
+_2026_
+
+- Architected and deployed a production digital restaurant platform from scratch using Next.js 16 (App Router), React 19, Tailwind CSS v4, and Supabase, replacing an outdated WordPress site for a 28-year-old restaurant in Istanbul serving ~100 daily visitors.
+- Implemented 10-language dynamic routing (Turkish, English, Arabic, Russian, French, Persian, German, Italian, Spanish, Chinese) with comprehensive hreflang and canonical tags.
+- Built a real-time multi-currency converter (6 currencies) and dynamic multi-currency pricing across the entire menu.
+- Engineered direct WhatsApp ordering with automated localized messages and developed a secure owner admin panel for real-time menu and pricing updates without code.
+- Executed a zero-downtime WordPress migration with 25+ permanent 301 redirects, preserving all existing Google rankings, and implemented full Local SEO with Schema.org (Restaurant, Menu, ImageGallery, BreadcrumbList) structured data.
 
 **OPEN SOURCE — NODESECURE ECOSYSTEM**
 
@@ -49,12 +59,14 @@ GPA: 3.5 / 4.0 · Coursework: Data Structures, Algorithms, Databases, Operating 
 
 **Languages:** JavaScript (ES2022+), TypeScript, Python, SQL
 
-**Frontend:** React.js, Redux, Tailwind CSS
+**Frontend:** React 19, Next.js 16 (App Router), Redux, Tailwind CSS v4, HTML5/CSS3, Responsive Design
 
-**Backend:** Node.js, Express.js, REST APIs, PostgreSQL, Prisma ORM, Redis, MongoDB
+**Backend:** Node.js, Express.js, Supabase, REST APIs, PostgreSQL, Prisma ORM, Redis, MongoDB
+
+**SEO & Cloud:** Schema.org Structured Data, Local SEO, hreflang, Open Graph, Vercel, WordPress Migration
 
 **Application Security:** SAST/DAST, Threat Modeling, Secure SDLC, OWASP Top 10, Vulnerability Assessment, JWT Security
 
-**DevOps & Testing:** GitHub Actions, CI/CD, Docker, Jest, Automated Testing
+**DevOps & AI:** GitHub Actions, CI/CD, Docker, Jest, Google Gemini AI API, WhatsApp Business API
 
 **Spoken Languages:** Arabic (native) · English (intermediate) · Turkish (professional)
