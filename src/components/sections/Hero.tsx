@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ScrambleText } from "@/components/ui/ScrambleText";
@@ -10,25 +10,110 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [val, setVal] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const ran = useRef(false);
+
   useEffect(() => {
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !ran.current) {
-        ran.current = true;
-        const start = performance.now();
-        const dur = 1600;
-        const tick = (now: number) => {
-          const t = Math.min((now - start) / dur, 1);
-          const ease = 1 - Math.pow(1 - t, 3);
-          setVal(Math.round(ease * to));
-          if (t < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
+    if (ran.current) {
+      setVal(to);
+      return;
+    }
+
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVal(to);
+      ran.current = true;
+      return;
+    }
+
+    let animationControls: { stop: () => void } | null = null;
+
+    const startAnimation = () => {
+      if (ran.current) return;
+      ran.current = true;
+
+      animationControls = animate(0, to, {
+        duration: 1.5,
+        ease: [0.16, 1, 0.3, 1],
+        onUpdate: (latest) => {
+          setVal(Math.round(latest));
+        },
+        onComplete: () => {
+          setVal(to);
+        },
+      });
+    };
+
+    // 1. Direct viewport check (works even when WebKit IntersectionObserver stalls)
+    const checkInView = () => {
+      if (!ref.current) return false;
+      const rect = ref.current.getBoundingClientRect();
+      return rect.top < window.innerHeight + 150 && rect.bottom > -150;
+    };
+
+    if (checkInView()) {
+      // Delay slightly to harmonize with Hero fadeUp entrance
+      const timer = setTimeout(startAnimation, 250);
+      return () => {
+        clearTimeout(timer);
+        if (animationControls) animationControls.stop();
+      };
+    }
+
+    // 2. IntersectionObserver with generous rootMargin
+    let io: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              startAnimation();
+              if (io) io.disconnect();
+              break;
+            }
+          }
+        },
+        { rootMargin: "150px 0px" }
+      );
+      if (ref.current) {
+        io.observe(ref.current);
       }
-    });
-    if (ref.current) io.observe(ref.current);
-    return () => io.disconnect();
+    }
+
+    // 3. Fallback scroll/resize listener for mobile Safari
+    const onScroll = () => {
+      if (checkInView()) {
+        startAnimation();
+        cleanupListeners();
+      }
+    };
+
+    const cleanupListeners = () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    // 4. Guaranteed failsafe timer: ensures values NEVER stay at 0
+    const failsafeTimer = setTimeout(() => {
+      if (!ran.current) {
+        startAnimation();
+      }
+    }, 700);
+
+    return () => {
+      if (io) io.disconnect();
+      cleanupListeners();
+      clearTimeout(failsafeTimer);
+      if (animationControls) animationControls.stop();
+    };
   }, [to]);
-  return <span ref={ref}>{val.toLocaleString()}{suffix}</span>;
+
+  return (
+    <span ref={ref}>
+      {val.toLocaleString()}
+      {suffix}
+    </span>
+  );
 }
 
 const stagger = {
