@@ -61,7 +61,7 @@ export default async function FAQPage({
 
       <main className="min-h-screen bg-background text-foreground" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         {/* Nav back link */}
-        <div className="px-6 md:px-20 lg:px-28 pt-8">
+        <div className="px-6 md:px-20 lg:px-28 pt-28">
           <Link
             href={`/${lang}`}
             className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors flex items-center gap-2"

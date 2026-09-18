@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
 
@@ -35,7 +36,7 @@ export function Nav() {
   ];
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
+    const fn = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
@@ -48,36 +49,41 @@ export function Nav() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 w-screen z-50 px-6 md:px-12 h-20 flex items-center justify-between transition-all"
+        className="fixed top-0 left-0 w-full z-50 px-6 md:px-12 h-20 flex items-center justify-between transition-all duration-300"
         style={{
-          backgroundColor: scrolled ? "rgba(8, 8, 8, 0.92)" : "transparent",
-          backdropFilter: scrolled ? "blur(16px)" : "none",
-          borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+          backgroundColor: scrolled ? "rgba(8, 8, 8, 0.95)" : "rgba(8, 8, 8, 0.75)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: scrolled ? "1px solid var(--border)" : "1px solid rgba(255, 255, 255, 0.05)",
         }}
       >
-        <motion.a
-          href="#"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
+        <Link
+          href={`/${lang}`}
           className="block"
+          aria-label="Hamed Mohamed - Home"
         >
-          <Image
-            src="/logo.png"
-            alt="Hamed Mohamed Logo"
-            width={48}
-            height={48}
-            className="object-contain invert mix-blend-screen opacity-90 hover:opacity-100 transition-opacity"
-            priority
-          />
-        </motion.a>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Image
+              src="/logo.png"
+              alt="Hamed Mohamed Logo"
+              width={48}
+              height={48}
+              className="object-contain invert mix-blend-screen opacity-90 hover:opacity-100 transition-opacity"
+              priority
+            />
+          </motion.div>
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-1">
           {links.map((l) => {
             const isHovered = hoveredLink === l.href;
             return (
-              <a
+              <Link
                 key={l.href}
                 href={l.href}
                 onMouseEnter={() => setHoveredLink(l.href)}
@@ -92,7 +98,7 @@ export function Nav() {
                   />
                 )}
                 <span className="relative z-10">{l.label}</span>
-              </a>
+              </Link>
             );
           })}
         </div>
@@ -207,20 +213,23 @@ export function Nav() {
 
               <nav className="flex-1 flex flex-col justify-center px-8 gap-2">
                 {links.map((l, i) => (
-                  <motion.a
+                  <motion.div
                     key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
                     initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + i * 0.06 }}
-                    className="group flex items-center justify-between py-4 border-b border-border text-2xl font-bold tracking-tight text-foreground hover:text-accent transition-colors"
                   >
-                    <span>{l.label}</span>
-                    <span className="text-xs font-mono opacity-30 group-hover:opacity-100 transition-opacity accent-text">
-                      0{i + 1}
-                    </span>
-                  </motion.a>
+                    <Link
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-center justify-between py-4 border-b border-border text-2xl font-bold tracking-tight text-foreground hover:text-accent transition-colors"
+                    >
+                      <span>{l.label}</span>
+                      <span className="text-xs font-mono opacity-30 group-hover:opacity-100 transition-opacity accent-text">
+                        0{i + 1}
+                      </span>
+                    </Link>
+                  </motion.div>
                 ))}
               </nav>
 

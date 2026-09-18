@@ -1,6 +1,5 @@
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import { CustomCursor } from "@/components/ui/CustomCursor";
-import { Nav } from "@/components/sections/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/DragonSploit";
 import { EngineeringPrinciples } from "@/components/sections/EngineeringPrinciples";
@@ -22,7 +21,6 @@ export default async function Home({ params }: { params: Promise<{ lang: 'en' | 
     <SmoothScrollProvider>
       <CustomCursor />
       <main className="min-h-screen cursor-none">
-        <Nav />
         <Hero />
         <About />
         <EngineeringPrinciples />

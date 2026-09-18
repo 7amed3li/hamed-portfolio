@@ -57,6 +57,7 @@ export default async function CaseStudyPage({
         author: { "@id": `${siteUrl}/#person` },
         url: `${siteUrl}/${lang}/case-studies/${slug}`,
         datePublished: cs.year,
+        image: cs.images ? cs.images.map((img) => `${siteUrl}${img.src}`) : undefined,
       },
       {
         "@type": "BreadcrumbList",
@@ -89,7 +90,7 @@ export default async function CaseStudyPage({
 
       <main className="min-h-screen bg-background text-foreground">
         {/* Breadcrumb */}
-        <div className="px-6 md:px-20 lg:px-28 pt-8 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+        <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
           <Link href={`/${lang}`} className="hover:text-accent transition-colors">
             Home
           </Link>
@@ -104,9 +105,17 @@ export default async function CaseStudyPage({
         {/* Hero */}
         <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
           <div className="max-w-4xl">
-            <p className="text-xs font-mono uppercase tracking-widest text-accent mb-4">
-              Case Study · {cs.year}
-            </p>
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <p className="text-xs font-mono uppercase tracking-widest text-accent">
+                Case Study · {cs.year}
+              </p>
+              {cs.statusBadge && (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  {cs.statusBadge}
+                </span>
+              )}
+            </div>
             <div className="flex flex-wrap gap-2 mb-6">
               {cs.tags.map((tag) => (
                 <span
@@ -122,14 +131,27 @@ export default async function CaseStudyPage({
             </h1>
             <p className="text-sm text-muted-foreground font-mono mb-10">{cs.category}</p>
 
-            {/* Hero stat */}
-            <div className="inline-flex flex-col border border-accent/30 px-8 py-5 bg-accent/5">
-              <span className="text-4xl md:text-5xl font-bold accent-text tracking-tight">
-                {cs.heroStat.value}
-              </span>
-              <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-1">
-                {cs.heroStat.label}
-              </span>
+            {/* Hero stat and live site action */}
+            <div className="flex flex-wrap items-center gap-5">
+              <div className="inline-flex flex-col border border-accent/30 px-8 py-5 bg-accent/5">
+                <span className="text-4xl md:text-5xl font-bold accent-text tracking-tight">
+                  {cs.heroStat.value}
+                </span>
+                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-1">
+                  {cs.heroStat.label}
+                </span>
+              </div>
+              {cs.liveUrl && (
+                <a
+                  href={cs.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-4 border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 font-mono text-xs uppercase tracking-widest font-bold hover:bg-emerald-500 hover:text-black transition-colors"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  Visit Live Website ↗
+                </a>
+              )}
             </div>
           </div>
         </section>
@@ -190,6 +212,41 @@ export default async function CaseStudyPage({
               </div>
             </div>
 
+            {/* Visual Showcase */}
+            {cs.images && cs.images.length > 0 && (
+              <div>
+                <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
+                  <span className="inline-block w-6 h-px bg-accent" />
+                  Visual Showcase
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {cs.images.map((img, idx) => (
+                    <div
+                      key={img.src}
+                      className={`border border-border bg-surface overflow-hidden group hover:border-accent/50 transition-colors ${
+                        idx === 0 ? "md:col-span-2" : ""
+                      }`}
+                    >
+                      <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          loading="lazy"
+                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                        />
+                      </div>
+                      {img.caption && (
+                        <div className="p-4 border-t border-border/60 bg-background/50">
+                          <p className="text-xs font-mono text-muted-foreground">{img.caption}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Client Proof */}
             <div className="p-6 border-l-2 border-accent bg-accent/5">
               <p className="text-xs font-mono uppercase tracking-widest text-accent mb-3">
@@ -202,6 +259,17 @@ export default async function CaseStudyPage({
             <div className="border-t border-border pt-12">
               <p className="text-base text-muted-foreground mb-6 leading-relaxed">{cs.cta}</p>
               <div className="flex flex-wrap gap-4">
+                {cs.liveUrl && (
+                  <a
+                    href={cs.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-8 py-4 border border-emerald-500/60 bg-emerald-500/10 text-emerald-400 font-mono uppercase tracking-widest text-sm font-bold hover:bg-emerald-500 hover:text-black transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Visit Live Website ↗
+                  </a>
+                )}
                 <a
                   href="mailto:hamed.m.abdelalim@gmail.com"
                   className="px-8 py-4 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"

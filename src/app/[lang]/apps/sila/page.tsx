@@ -10,7 +10,6 @@ import {
   SILA_DEMO_VIDEO_URL,
   SILA_PROMO_VIDEO_URL,
 } from "@/lib/sila-app-data";
-import { Nav } from "@/components/sections/Nav";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -222,10 +221,9 @@ export default async function SilaAppPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Nav />
       <main className="min-h-screen bg-background text-foreground">
         {/* ───── Breadcrumb ───── */}
-        <div className="px-6 md:px-20 lg:px-28 pt-8 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+        <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
           <Link
             href={`/${lang}`}
             className="hover:text-accent transition-colors"

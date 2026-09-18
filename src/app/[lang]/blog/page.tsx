@@ -16,7 +16,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: 'en
   const tags = getAllTags(lang)
   
   return (
-    <div className="container mx-auto px-4 py-24 max-w-5xl">
+    <div className="container mx-auto px-4 pt-32 pb-24 max-w-5xl">
       <div className="mb-16">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
           Engineering <span className="text-accent">Notes</span>

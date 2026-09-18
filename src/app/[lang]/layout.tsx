@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono, Cairo } from "next/font/google";
 import "@/app/globals.css";
 import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -396,6 +397,7 @@ export default async function LangLayout({
       <body className="min-h-full flex flex-col">
         <LanguageProvider>
           <ConsoleMessage />
+          <Nav />
           <div className="flex-1 flex flex-col">
             {children}
           </div>

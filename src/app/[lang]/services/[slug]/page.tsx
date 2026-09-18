@@ -104,7 +104,7 @@ export default async function ServicePage({
 
       <main className="min-h-screen bg-background text-foreground">
         {/* Breadcrumb */}
-        <div className="px-6 md:px-20 lg:px-28 pt-8 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+        <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
           <Link href={`/${lang}`} className="hover:text-accent transition-colors">
             Home
           </Link>
@@ -189,9 +189,39 @@ export default async function ServicePage({
               {/* Proof */}
               <div className="p-6 border-l-2 border-accent bg-accent/5">
                 <p className="text-xs font-mono uppercase tracking-widest text-accent mb-3">
-                  Real-World Experience
+                  {lang === 'ar' ? 'خبرة حقيقية ومشاريع حية' : lang === 'tr' ? 'Gerçek Dünya Deneyimi' : 'Real-World Experience'}
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">{service.proof}</p>
+
+                {slug === "restaurant-menu-websites" && (
+                  <div className="mt-5 pt-4 border-t border-accent/20 flex flex-wrap items-center gap-4">
+                    <Link
+                      href={`/${lang}/case-studies/kardesler-restaurant-platform`}
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline font-bold"
+                    >
+                      {lang === 'ar' ? '← قراءة دراسة الحالة كاملة' : lang === 'tr' ? 'Vaka Analizini İncele →' : 'Read Full Case Study →'}
+                    </Link>
+                    <a
+                      href="https://www.kardeslercihangir.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground hover:underline"
+                    >
+                      {lang === 'ar' ? 'زيارة الموقع الحي (kardeslercihangir.com) ↗' : lang === 'tr' ? 'Canlı Siteyi Ziyaret Et (kardeslercihangir.com) ↗' : 'Visit Live Site (kardeslercihangir.com) ↗'}
+                    </a>
+                  </div>
+                )}
+
+                {(slug === "qr-code-systems" || slug === "attendance-tracking-systems") && (
+                  <div className="mt-5 pt-4 border-t border-accent/20 flex flex-wrap items-center gap-4">
+                    <Link
+                      href={`/${lang}/case-studies/qr-attendance-system`}
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline font-bold"
+                    >
+                      {lang === 'ar' ? '← قراءة دراسة حالة نظام الحضور' : lang === 'tr' ? 'QR Yoklama Vaka Analizini İncele →' : 'Read QR Case Study →'}
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {/* FAQ */}

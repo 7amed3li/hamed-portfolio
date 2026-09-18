@@ -84,7 +84,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <article className="container mx-auto px-4 py-24 max-w-4xl">
+    <article className="container mx-auto px-4 pt-32 pb-24 max-w-4xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
