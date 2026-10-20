@@ -19,11 +19,11 @@ export function EngineeringPrinciples() {
             return (
               <div
                 key={s.num}
-                className="py-10 cursor-pointer transition-colors"
+                className="relative py-10 cursor-pointer transition-colors"
                 onMouseEnter={() => setHovered(i)}
-                onClick={() => setHovered(i)}
+                onClick={() => setHovered(hovered === i ? null : i)}
               >
-                <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-6 md:gap-8 items-start">
                   {/* Number */}
                   <span className="text-3xl md:text-5xl font-bold font-mono text-foreground" aria-hidden="true">
                     {s.num}
@@ -62,7 +62,8 @@ export function EngineeringPrinciples() {
                     </motion.div>
                   </div>
 
-                  <div className={`mt-2 transition-transform duration-500 ${isOpen ? 'rotate-45 opacity-100' : 'opacity-50'}`}>
+                  {/* Expand/Collapse Icon - Positioned at top-right on mobile */}
+                  <div className={`absolute top-11 right-0 rtl:right-auto rtl:left-0 md:static md:mt-2 transition-transform duration-500 ${isOpen ? 'rotate-45 opacity-100' : 'opacity-50'}`}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={isOpen ? "text-accent" : "text-muted-foreground"}>
                       <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
