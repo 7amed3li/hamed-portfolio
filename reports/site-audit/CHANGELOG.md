@@ -32,7 +32,9 @@
   - إضافة مستمع لأحداث لوحة المفاتيح لإغلاق القائمة بمفتاح `Escape` وإعادة التركيز فوراً للزر المشغل.
   - إضافة سمات `aria-expanded={open}` و `aria-controls="mobile-menu"`.
   - إضافة معرفات قياسية: `id="mobile-menu-trigger"`, `id="mobile-menu"`, `id="mobile-menu-close"`.
-  - وسم منطقة التنقل بـ `nav aria-label`.
+### `src/components/sections/EngineeringPrinciples.tsx`
+- **السبب:** كانت عناصر أكورديون الخدمات تفتقر إلى قابلية التشغيل عبر لوحة المفاتيح وسمات ARIA الدلالية.
+- **التغيير:** إضافة `role="button"` و `tabIndex={0}` و `aria-expanded={isOpen}`، ومعالج لوحة المفاتيح لمفتاحي `Enter` و `Space`، ومؤشر تركيز مرئي، ووسم الأيقونة التوضيحية بـ `aria-hidden="true"`.
 
 ---
 

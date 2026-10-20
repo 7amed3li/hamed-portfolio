@@ -95,6 +95,7 @@
 18. `src/lib/translations.ts`: توحيد المعدل على 3.5، وتوحيد عدد كليات نظام الحضور على 6.
 19. `src/content/blog/**/*.mdx`: إزالة حقول `slug` المتعارضة مع Velite في 4 ملفات.
 20. `src/proxy.ts`: اعتماد ملف Proxy الرسمي لـ Next.js 16 وحذف `src/middleware.ts` القديم.
+21. `src/components/sections/EngineeringPrinciples.tsx`: تحسين إمكانية الوصول لأكورديون الخدمات وتفعيل التنقل بمفاتيح الأسهم والمسافة وسمات ARIA.
 
 ---
 
