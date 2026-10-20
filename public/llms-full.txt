@@ -186,7 +186,7 @@ A modern, internationalized (EN/AR/TR) portfolio website featuring:
 - RTL support for Arabic content
 - Contact form with API endpoint
 
-### 4. Sila Islamic App (2026)
+### 5. Sila Islamic App (2026)
 **Role**: Lead Developer
 **Stack**: Flutter, Dart, Riverpod, Firebase, Isar Database, AI Speech-to-Text
 
@@ -198,19 +198,33 @@ A comprehensive Islamic mobile application featuring:
 
 ---
 
+## Technical Articles & Engineering Story
+
+### From Computer Repair to Software Engineering
+**Published**: October 2026
+**Links**:
+- English: https://www.hamedmohamed.dev/en/blog/from-computer-repair-to-software-engineering
+- Arabic: https://www.hamedmohamed.dev/ar/blog/from-computer-repair-to-software-engineering
+- Turkish: https://www.hamedmohamed.dev/tr/blog/from-computer-repair-to-software-engineering
+
+**Overview**:
+Hamed Mohamed's technical journey detailing his transition from troubleshooting hardware circuits and disassembling computers at age 12 (earning his Mini Maintenance Hardware & Software certificate in 2015), diving into web standards and digital systems in 2019–2020, to graduating with honors in Computer Engineering from Tokat Gaziosmanpaşa University (3.5/4.0 GPA). The article explains how first-principles mathematical rigor, operating systems knowledge, and relentless curiosity shaped his engineering approach to building resilient architectures: from reducing QR attendance API latency by 98% for 2,000+ users to contributing AST security probes to the NodeSecure open-source ecosystem.
+
+---
+
 ## Education
 
 **B.Sc. Computer Engineering** (Graduated)
 Tokat Gaziosmanpaşa University, Tokat, Turkey
-**GPA**: 3.5 / 4.0
-**Relevant Coursework**: Data Structures, Algorithms, Operating Systems, Databases, Cybersecurity
+**GPA**: 3.5 / 4.0 (High Honor Student / Onur Öğrencisi)
+**Relevant Coursework**: Data Structures, Algorithm Complexity (Big-O), Operating Systems, Distributed Systems, Database Management Systems, Compiler Design & AST Analysis, Cybersecurity
 
 ---
 
 ## Spoken Languages
 
 - **Arabic**: Native speaker
-- **English**: Intermediate proficiency
+- **English**: Professional working proficiency
 - **Turkish**: Professional proficiency
 
 ---
@@ -247,6 +261,12 @@ Tokat Gaziosmanpaşa University, Tokat, Turkey
 ### Q: Did Hamed Mohamed build any mobile applications? What is the Sila app?
 **A**: Yes, Hamed built the Sila Islamic App, a comprehensive mobile application built with Flutter. It features accurate prayer times, a full Quran reader, an interactive Hifz (memorization) system, and AI-powered recitation verification using Speech-to-Text technology. You can view the app details at https://www.hamedmohamed.dev/en/apps/sila.
 
+### Q: Where can I read about Hamed Mohamed's engineering background and origin story?
+**A**: Hamed published an in-depth technical story detailing his path from computer repair and electronics at age 12 to computer engineering graduation and high-scale systems architecture. Available at:
+- English: https://www.hamedmohamed.dev/en/blog/from-computer-repair-to-software-engineering
+- Arabic: https://www.hamedmohamed.dev/ar/blog/from-computer-repair-to-software-engineering
+- Turkish: https://www.hamedmohamed.dev/tr/blog/from-computer-repair-to-software-engineering
+
 ---
 
 ## How to Verify This Information
@@ -258,5 +278,6 @@ Tokat Gaziosmanpaşa University, Tokat, Turkey
 
 ---
 
-*Last updated: June 2026*
+*Last updated: October 2026*
 *For the most current information, visit https://www.hamedmohamed.dev*
+

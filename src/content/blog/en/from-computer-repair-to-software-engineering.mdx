@@ -1,0 +1,170 @@
+---
+title: "My Journey from Computer Repair at Age 12 to Software Engineering"
+description: "From hardware repair in 2015 and top academic rank, to architecting a 2,000-user QR system, NodeSecure security audits, and production restaurant platforms."
+lang: "en"
+translationKey: "journey-computer-repair-to-software-engineering"
+date: "2026-10-15"
+author: "Hamed Mohamed"
+tags: ["career", "journey", "engineering", "fullstack", "entrepreneurship"]
+coverImage: "/static/blog/hamed-coding-desk-cover.webp"
+published: true
+featured: true
+summary: "A personal and engineering reflection: how curiosity at 12 forged first-principles mathematical rigor, production system leadership for 2,000+ users, open-source security work, and extreme ownership in the field."
+---
+
+Hello everyone,
+
+I'm **Hamed Mohamed Abdelaalim Kamel**, a Software Engineer graduated from Tokat Gaziosmanpaşa University in Turkey.
+
+This post isn't a passive resume recap. It is an honest documentation of how my engineering philosophy was forged: **how I think, how I navigate technical and business constraints, and why I believe an engineer's true caliber is measured not by lines of code, but by the tangible problems they solve and the business value they unlock.**
+
+---
+
+## 2015: Starting at Age 12 — How Hardware Repair Builds Better Engineers
+
+My journey into computing began in 2015 when I was just 12 years old. That year, I earned a **Mini Maintenance (Hardware & Software)** certification from Nile International Academy.
+
+![Mini Maintenance Certificate 2015 - Nile International Academy](/static/blog/certificate-mini-maintenance-2015.webp)
+<div className="text-center text-xs font-mono text-muted-foreground -mt-4 mb-6">
+  Nile International Academy — Mini Maintenance (Hardware & Software) Certificate at Age 12 (2015)
+</div>
+
+Working directly with physical hardware at such an early age provided me with an intuitive foundation that stays with me today:
+* Understanding how the machine breathes physically: motherboards, bus bandwidth, CPU cycles, and how thermal and memory constraints govern software behavior.
+* Realizing early on that every complex cloud server is simply a computer with finite resources that will choke if abused with poorly architected queries or runaway loops.
+* Instilling a relentless **troubleshooting mindset**: using logical deduction, isolating failure domains, and diagnosing root causes rather than patching superficial symptoms.
+
+---
+
+## 2019: Discovering the Web, UX Identity & Why I Studied Digital Marketing with Google
+
+Around 2019, my focus shifted toward software and web architecture.
+
+I began with online courses and learned core principles from resources like Elzero Web School until I was comfortably building web applications from scratch.
+
+However, when I started with **Frontend development**, I felt an immediate friction with visual balance, colors, and spatial harmony. Digging deeper, I realized there is a comprehensive science behind **Visual Identity & User Experience (UI/UX)**:
+* How color schemes project authority, trust, and usability.
+* How precise whitespace, typography hierarchy, and micro-interactions eliminate cognitive friction for users.
+
+### The Business Reality: Code Exists to Drive ROI
+
+While building my first web applications, I realized a fundamental truth that many engineers overlook: **an elegantly coded website is completely useless if nobody can discover it, or if it fails to convert visitors into customers.** Software engineering cannot exist in an academic bubble decoupled from commercial reality.
+
+To bridge this gap, I completed and earned the **Google Fundamentals of Digital Marketing** certification, internationally accredited by *The Open University* and *IAB Europe*:
+
+![Google Fundamentals of Digital Marketing Certificate](/static/blog/certificate-google-digital-marketing-2020.webp)
+<div className="text-center text-xs font-mono text-muted-foreground -mt-4 mb-6">
+  Google — Fundamentals of Digital Marketing Certificate (Endorsed by The Open University & IAB Europe)
+</div>
+
+I wanted to deeply understand:
+* How search engines (SEO) crawl, index, and rank modern web applications.
+* User psychology, interaction patterns, and digital conversion funnels.
+* How performant code, low latency, and Schema.org structured data directly drive customer acquisition and business revenue.
+
+This early exposure is the reason why **Technical SEO, Core Web Vitals, and conversion architecture** are first-class citizens in every system I build today.
+
+---
+
+## Language Immersion & Academic Foundations: The Power of Mathematics
+
+Before beginning my Computer Engineering degree in Turkey, I dedicated an entire preparatory year to mastering the Turkish language while continuously sharpening my algorithmic foundations.
+
+When I entered **Tokat Gaziosmanpaşa University**, I focused heavily on core theoretical and mathematical foundations. Frameworks come and go, but mathematical models and algorithmic rigor are what differentiate true software engineers from framework operators:
+
+* **Mathematics:** Achieved an **A (High Distinction)** in *Calculus I*, an **A** in *Calculus II*, an **A** in *Discrete Mathematics*, and a strong grade in *Differential Equations*.
+* **Algorithms & Data Structures:** Achieved a **perfect score (100% / Tam Not)** in *Algorithms & Data Structures*.
+
+This mathematical foundation became the backbone of my engineering work: analyzing Big-O algorithmic complexity, profiling memory footprints, structuring database connection pools, and traversing abstract syntax trees (AST).
+
+* **The Result:** Graduated **ranked 1st among all international students at the university**.
+
+![Valedictorian Speech at Tokat Gaziosmanpaşa University](/static/blog/hamed-graduation-speech.webp)
+<div className="text-center text-xs font-mono text-muted-foreground -mt-4 mb-6">
+  Delivering my speech while being honored as 1st ranked among all international students — Tokat Gaziosmanpaşa University
+</div>
+
+---
+
+## Real-World Engineering: Leading a Team on a Live 2,000+ User Production System
+
+Academic excellence only matters when stress-tested against real users. I joined the university's software development center and was appointed a core member of the Artificial Intelligence and Digital Transformation Organization (*YZDD*).
+
+I served as a **Team Lead** for a development team of 3 engineers, operating as a **Full-Stack Developer** with a relentless focus on code quality and application security:
+* **SAST (Static Application Security Testing):** White-box static analysis of the source code to intercept logic vulnerabilities, variable leaks, and insecure dependencies prior to the build pipeline.
+* **DAST (Dynamic Application Security Testing):** Black-box runtime penetration testing without code access, simulating realistic attack payloads, intercepting HTTP requests, and probing API endpoints under adversarial conditions.
+
+### The QR Attendance System: Solving Real-World Fraud at Scale
+
+The challenge was never just building an API to log timestamps. The real engineering problem was: **How do you cryptographically prove that a student is physically inside a specific lecture hall and prevent attendance fraud across campus?**
+
+We architected a 3-pillar engineering solution:
+1. **Strict Geofencing Verification:** Satellite and browser location coordinates verify that the student is strictly within **50 to 200 meters** of the classroom perimeter.
+2. **Dynamic 15-Second Ephemeral QR Tokens:** The QR code displayed on the lecture screen generates short-lived, digitally signed cryptographic tokens that cycle every 15 seconds, rendering screenshot sharing via messaging apps entirely useless.
+3. **7-Layer Defense Architecture:** Hardened against token forgery and replay attacks, backed by **Redis in-memory caching** and **Circuit Breakers** to absorb the peak concurrency spikes when hundreds of students scan simultaneously within a 2-minute lecture start window.
+
+Today, the system is in active daily production across Tokat Gaziosmanpaşa University:
+* Running across **6 faculties**, **13 academic departments**, and **42 courses**.
+* Actively serving over **2,000 daily users**.
+* Developed over **15 months**, spanning the entire Software Development Life Cycle (SDLC): architectural design, development, security auditing, CI/CD deployment, and production maintenance.
+
+🔗 **[Read the complete QR Attendance System Case Study & Benchmarks](/en/case-studies/qr-attendance-system)**  
+🌐 **[Live Admin Portal](https://yzdd.gop.edu.tr/qr-admin/dashboard)** | **[Live Student UI](https://yzdd.gop.edu.tr/qr-ui/)**
+
+---
+
+## Open-Source Cybersecurity Contributions: NodeSecure
+
+I extended my security focus into the global open-source community by contributing to **[NodeSecure](https://github.com/NodeSecure)**, an established security ecosystem used worldwide to audit npm packages and JavaScript runtimes for vulnerabilities and supply-chain attacks.
+
+I had **9 Pull Requests officially reviewed, accepted, and merged upstream**:
+* Focused extensively on **Abstract Syntax Tree (AST)** analysis in packages like `js-x-ray` and `scanner`.
+* An AST translates source code into a structured data tree that security engines can inspect, enabling automated detection of Server-Side Request Forgery (**SSRF**), insecure pseudo-random generators in cryptographic contexts, and obfuscated payloads before packages are deployed to production.
+
+🔗 **[Read the NodeSecure Open Source Case Study & Pull Request Breakdown](/en/case-studies/nodesecure-open-source)**
+
+---
+
+## Post-Graduation: High Agency & Building Production Platforms
+
+I graduated in June 2026. Due to immediate financial realities, I didn't wait passively for a perfect software engineering offer; I took a job working in a restaurant in Istanbul to meet my obligations.
+
+To an outsider, this might have looked like leaving software engineering behind. But **an engineer's problem-solving mindset never switches off.**
+
+I noticed that the restaurant was using an outdated WordPress site with an inaccessible digital menu, riddled with critical vulnerabilities and missed business opportunities:
+* **Severe Security Flaws:** Insecure SSL configurations, exposed SSH endpoints, and unpatched plugins.
+* **Heavy Asset Bloat:** Painfully slow load times that alienated international tourists looking for quick menus in Istanbul.
+* **Non-existent SEO:** Zero structured data in Taksim/Cihangir, one of the densest tourist districts in Istanbul, forfeiting thousands of potential walk-ins to competitors.
+
+I approached the restaurant owner with commercial metrics and technical diagnosis. Naturally, abstract tech debt is hard to visualize, so he challenged me:  
+> **"Build a prototype and let's see what you can do."**
+
+Instead of endless debate, I built a blistering-fast, interactive prototype. The moment he experienced the speed, UI, and live currency conversions, hesitation turned into complete confidence.
+
+I engineered and deployed the full production platform from scratch:
+* Built on **Next.js 16 (App Router), React 19, and Supabase**.
+* Implemented **10 dynamic languages** and a **live currency converter supporting 6 currencies** with real-time exchange rate APIs.
+* Built localized **direct WhatsApp ordering** and automated message templating.
+* Executed a flawless WordPress migration with **25+ permanent 301 redirects** and comprehensive **Schema.org Local SEO**.
+
+🔗 **[Read the Kardeşler Restaurant Platform Case Study](/en/case-studies/kardesler-restaurant-platform)**  
+🌐 **[Visit kardeslercihangir.com (Live in Production)](https://www.kardeslercihangir.com)**
+
+---
+
+## Current Projects: October 2026
+
+Delivering measurable results naturally attracts subsequent work. In October 2026, I started work on my second bespoke hospitality platform: an Asian and Sushi restaurant platform (**Lucky Sushi & Chinese**) in Istanbul, continuing to refine high-performance digital infrastructure that drives revenue for businesses.
+
+---
+
+## What This Means for Your Company or Project
+
+Today, I operate as a **Full-Stack Software Engineer** specialized in system architecture, application security, high-concurrency performance, and commercial digital products.
+
+When you hire or collaborate with me, you are not getting someone who merely writes syntax to check a ticket. You gain an engineering partner who:
+1. **Demonstrates Extreme Ownership (High Agency):** Identifies friction in your architecture or business pipeline and eliminates it without requiring continuous hand-holding.
+2. **Builds Security-First Systems:** Thinks like an attacker to proactively safeguard your business, infrastructure, and user data.
+3. **Respects Business ROI:** Understands that architecture, page speed, and Schema.org directly translate into customer acquisition, retention, and bottom-line revenue.
+
+This is who I am and the methodology I bring to every system I build. And the journey is just getting started.

@@ -53,11 +53,13 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       modifiedTime: post.updated || post.date,
       authors: [post.author],
       tags: post.tags,
+      images: post.coverImage ? [{ url: `${siteUrl}${post.coverImage}`, width: 1200, height: 630, alt: post.title }] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: post.coverImage ? [`${siteUrl}${post.coverImage}`] : undefined,
     }
   }
 }

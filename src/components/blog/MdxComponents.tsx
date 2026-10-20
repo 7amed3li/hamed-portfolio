@@ -50,6 +50,15 @@ const components = {
   code: ({ className = '', ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code className={`font-mono text-sm ${className}`} {...props} />
   ),
+  img: ({ className = '', alt = '', ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      className={`rounded-xl border border-border shadow-lg my-8 max-w-full h-auto mx-auto ${className}`}
+      alt={alt}
+      loading="lazy"
+      {...props}
+    />
+  ),
 }
 
 interface MDXProps {

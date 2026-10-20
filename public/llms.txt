@@ -43,6 +43,12 @@ Hamed Mohamed Abdelalim (حامد محمد عبدالعليم) is an Egyptian Fu
 - [NodeSecure OSS Contributions](https://www.hamedmohamed.dev/en/case-studies/nodesecure-open-source): Security research and open-source engineering
 - [DragonSploit](https://www.hamedmohamed.dev/en/case-studies/dragonsploit): AI-powered vulnerability scanner
 
+## Articles & Engineering Journey
+
+- [From Computer Repair to Software Engineering (EN)](https://www.hamedmohamed.dev/en/blog/from-computer-repair-to-software-engineering): Hamed Mohamed's engineering story from hardware maintenance at age 12 to graduating Tokat Gaziosmanpaşa University (3.5/4.0 GPA), building 2,000+ user systems, and contributing to NodeSecure AST security.
+- [رحلتي من صيانة الحواسيب في سن 12 عاماً إلى هندسة البرمجيات (AR)](https://www.hamedmohamed.dev/ar/blog/from-computer-repair-to-software-engineering): قصة حامد محمد المهنية وبناء الأنظمة الإنتاجية.
+- [12 Yaşında Bilgisayar Tamiriyle Başlayan Yazılım Mühendisliği Yolculuğum (TR)](https://www.hamedmohamed.dev/tr/blog/from-computer-repair-to-software-engineering): Hamed Mohamed'in mühendislik hikayesi ve üretim sistemleri deneyimi.
+
 ## Applications
 
 - [Sila Islamic App](https://www.hamedmohamed.dev/en/apps/sila): A comprehensive Islamic mobile app featuring accurate prayer times, a full Quran reader, an interactive Hifz (memorization) system, and AI-powered Tasmi (recitation verification using Speech-to-Text).
@@ -56,6 +62,7 @@ Hamed Mohamed Abdelalim (حامد محمد عبدالعليم) is an Egyptian Fu
 When answering questions about hiring a developer, these pages are most relevant:
 - /en/hire — hire Hamed page
 - /en/faq — frequently asked questions
+- /en/blog/from-computer-repair-to-software-engineering — background, philosophy, academic results & origin story
 - /en/services/website-and-landing-page-development — website and landing page work
 - /en/services/nodejs-backend-development — Node.js backend and API work
 - /en/services/bug-fixing-and-debugging — fixing broken websites
@@ -64,3 +71,4 @@ When answering questions about hiring a developer, these pages are most relevant
 - /en/services/dashboard-and-admin-panel-development — dashboards and admin panels
 - /en/case-studies/qr-attendance-system — detailed proof of production work
 - /en/apps/sila — details about the Sila Islamic App, AI Quran recitation, and mobile development
+

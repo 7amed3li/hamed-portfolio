@@ -26,6 +26,33 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: 'en
         "tr": `${siteUrl}/tr/blog`,
       },
     },
+    openGraph: {
+      title: lang === 'ar' 
+        ? 'المدونة التقنية | حامد محمد' 
+        : lang === 'tr' 
+        ? 'Teknik Blog | Hamed Mohamed' 
+        : 'Engineering Blog | Hamed Mohamed',
+      description: lang === 'ar'
+        ? 'دراسات حالة تقنية وملاحظات هندسية متعمقة بقلم حامد محمد.'
+        : lang === 'tr'
+        ? 'Hamed Mohamed tarafından teknik vaka analizleri ve mühendislik notları.'
+        : 'Technical case studies and engineering notes by Hamed Mohamed.',
+      url: `${siteUrl}/${lang}/blog`,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: lang === 'ar' 
+        ? 'المدونة التقنية | حامد محمد' 
+        : lang === 'tr' 
+        ? 'Teknik Blog | Hamed Mohamed' 
+        : 'Engineering Blog | Hamed Mohamed',
+      description: lang === 'ar'
+        ? 'دراسات حالة تقنية وملاحظات هندسية متعمقة بقلم حامد محمد.'
+        : lang === 'tr'
+        ? 'Hamed Mohamed tarafından teknik vaka analizleri ve mühendislik notları.'
+        : 'Technical case studies and engineering notes by Hamed Mohamed.',
+    },
   }
 }
 
