@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
 
@@ -13,14 +14,14 @@ export function Nav() {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const { lang, toggleLang, isRTL } = useLang();
+  const pathname = usePathname();
   const tr = t[lang].nav;
 
   // Calculate next language and path for SEO-friendly language switcher
   const nextLang = lang === "en" ? "tr" : lang === "tr" ? "ar" : "en";
   let nextPath = `/${nextLang}`;
-  if (typeof window !== 'undefined') {
-    const currentPath = window.location.pathname;
-    const segments = currentPath.split("/");
+  if (pathname) {
+    const segments = pathname.split("/");
     if (segments.length >= 2 && ["en", "ar", "tr"].includes(segments[1])) {
       segments[1] = nextLang;
       nextPath = segments.join("/");
