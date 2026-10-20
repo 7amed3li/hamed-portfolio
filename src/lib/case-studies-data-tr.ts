@@ -6,13 +6,13 @@ export const caseStudies: CaseStudy[] = [
     title: "QR Kodlu Yoklama Sistemi",
     metaTitle: "QR Yoklama Sistemi Örnek Olay İncelemesi — Hamed Mohamed",
     metaDescription:
-      "Hamed Mohamed'in 7 fakültede 2.000'den fazla öğrenci için nasıl %98 gecikme azalması ve %99.9 çalışma süresi sağlayan QR tabanlı bir yoklama sistemi kurduğunu okuyun.",
+      "Hamed Mohamed'in 6 fakültede 2.000'den fazla öğrenci için nasıl %98 gecikme azalması ve %99.9 çalışma süresi sağlayan QR tabanlı bir yoklama sistemi kurduğunu okuyun.",
     category: "Full-Stack Sistem · Performans Mühendisliği",
     year: "2025–Günümüz",
     tags: ["Node.js", "React.js", "PostgreSQL", "Redis", "Docker", "QR", "Yönetici Paneli"],
-    heroStat: { value: "2.000+", label: "Günlük Canlı Kullanıcı" },
+    heroStat: { value: "2.000+", label: "Canlı Kullanıcı" },
     problem:
-      "Bir üniversitenin 7 farklı fakültedeki binlerce öğrencinin yoklamasını takip etmesi gerekiyordu. Mevcut süreç manueldi — kağıt yoklama listeleri, Excel tabloları ve eğitmenler için büyük bir zaman kaybı. Kurulacak sistem, bir dersin başlangıcında yüzlerce öğrencinin aynı anda kod taradığı yoğun yük (peak load) anlarını kaldırabilmeli, uygulama indirmeden herhangi bir telefonda çalışabilmeli, yöneticilere kayıtları görüntülemeleri ve dışa aktarmaları için bir kontrol paneli sunmalı ve mesai saatlerinde %100 oranında kesintisiz çalışmalıydı.",
+      "Bir üniversitenin 6 farklı fakültedeki binlerce öğrencinin yoklamasını takip etmesi gerekiyordu. Mevcut süreç manueldi — kağıt yoklama listeleri, Excel tabloları ve eğitmenler için büyük bir zaman kaybı. Kurulacak sistem, bir dersin başlangıcında yüzlerce öğrencinin aynı anda kod taradığı yoğun yük (peak load) anlarını kaldırabilmeli, uygulama indirmeden herhangi bir telefonda çalışabilmeli, yöneticilere kayıtları görüntülemeleri ve dışa aktarmaları için bir kontrol paneli sunmalı ve mesai saatlerinde %100 oranında kesintisiz çalışmalıydı.",
     solution:
       "Hamed, eksiksiz bir QR tabanlı yoklama sistemi tasarladı ve geliştirdi. Öğrenciler, sınıfta görüntülenen bir QR kodunu tarar — kod tarayıcılarında açılır, yoklamayı anında kaydeder ve kapanır. Hile yapılmasını önlemek için her QR kodun kısa bir geçerlilik süresi vardır. Eğitmenler ve fakülte yöneticileri; kayıtları görmek, raporlar oluşturmak ve sistemi yönetmek için bir kontrol paneline giriş yaparlar. Arka planda (backend) Hamed hibrit bir doğrulama hattı kurdu: hız için bellek içi (in-memory) kontroller, doğruluk için veritabanı onayı ve herhangi bir parçanın arızalanması durumunda otomatik yedekleme (fallback). Yoğun tarama zamanlarında veritabanı yükünü büyük ölçüde azaltmak için Redis önbellekleme (caching) eklendi.",
     technologies: [
@@ -35,8 +35,8 @@ export const caseStudies: CaseStudy[] = [
         description: "Sistem artık saniyede 653 isteğe kadar işlem yapabiliyor — aynı anda yüzlerce öğrencinin taramasını kaldırabiliyor.",
       },
       {
-        metric: "2.000+ günlük kullanıcı",
-        description: "Sistem, 7 üniversite fakültesindeki öğrenciler ve öğretim üyeleri tarafından her gün canlı (production) olarak kullanılıyor.",
+        metric: "2.000+ kayıtlı öğrenci",
+        description: "Sistem, 6 üniversite fakültesindeki öğrenciler ve öğretim üyeleri tarafından canlı (production) olarak kullanılıyor.",
       },
       {
         metric: "%99.9 çalışma süresi (uptime)",
@@ -59,7 +59,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "kardesler-restaurant-platform",
     title: "Kardeşler Cihangir — Canlı Üretim Restoran Platformu",
     metaTitle: "Kardeşler Restoran Platformu Vaka Analizi — Hamed Mohamed",
-    metaDescription: "Hamed Mohamed'in İstanbul'daki 28 yıllık bir Türk restoranı için sıfırdan geliştirdiği canlı dijital restoran platformu. 10 dil, WhatsApp sipariş, canlı döviz, günlük ~100 ziyaretçi.",
+    metaDescription: "Hamed Mohamed'in kardeslercihangir.com için geliştirdiği restoran platformu: 10 dil, 6 para biriminde canlı döviz, WhatsApp sipariş ve Schema.org Yerel SEO.",
     category: "Full-Stack · Next.js · Canlı Müşteri Web Sitesi",
     year: "2026",
     tags: ["Next.js 16", "React 19", "Supabase", "Tailwind CSS v4", "Schema.org SEO", "10 Dil", "Canlı Döviz", "WhatsApp Sipariş"],

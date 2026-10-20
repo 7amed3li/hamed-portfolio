@@ -6,7 +6,7 @@ export async function GET() {
   // But standard RSS is usually per language. Let's do a unified one or language specific.
   // Since it's /rss.xml, let's output English by default, or all.
   
-  const siteUrl = 'https://hamedmohamed.dev';
+  const siteUrl = 'https://www.hamedmohamed.dev';
   const allPosts = sortPosts(posts.filter(p => p.published));
 
   const itemsXml = allPosts.map(post => {

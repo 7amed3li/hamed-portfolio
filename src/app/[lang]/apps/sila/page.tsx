@@ -76,6 +76,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `${siteUrl}/${lang}/apps/sila`,
       languages: {
+        "x-default": `${siteUrl}/en/apps/sila`,
         en: `${siteUrl}/en/apps/sila`,
         ar: `${siteUrl}/ar/apps/sila`,
         tr: `${siteUrl}/tr/apps/sila`,
@@ -281,7 +282,7 @@ export default async function SilaAppPage({
                 {data.heroSubtitle}
               </p>
 
-              <p className="text-sm text-muted-foreground/80 leading-relaxed max-w-2xl mb-8">
+              <p className="text-sm text-[#a8a8a2] leading-relaxed max-w-2xl mb-8">
                 {data.heroDescription}
               </p>
 
@@ -523,7 +524,7 @@ export default async function SilaAppPage({
                 </svg>
                 {data.ctaButton}
               </a>
-              <span className="text-xs font-mono text-muted-foreground/50 self-center">
+              <span className="text-xs font-mono text-[#a8a8a2] self-center">
                 {data.androidOnly}
               </span>
             </div>

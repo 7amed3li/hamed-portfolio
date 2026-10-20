@@ -1,11 +1,31 @@
 import { getAllPosts, getAllTags } from '@/lib/blog'
 import { BlogList } from '@/components/blog/BlogList'
 
+const siteUrl = "https://www.hamedmohamed.dev";
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: 'en' | 'ar' | 'tr' }> }) {
-  await params;
+  const { lang } = await params;
   return {
-    title: `Engineering Blog | Hamed Mohamed`,
-    description: `Technical case studies and engineering notes by Hamed Mohamed.`,
+    metadataBase: new URL(siteUrl),
+    title: lang === 'ar' 
+      ? 'المدونة التقنية | حامد محمد' 
+      : lang === 'tr' 
+      ? 'Teknik Blog | Hamed Mohamed' 
+      : 'Engineering Blog | Hamed Mohamed',
+    description: lang === 'ar'
+      ? 'دراسات حالة تقنية وملاحظات هندسية متعمقة بقلم حامد محمد.'
+      : lang === 'tr'
+      ? 'Hamed Mohamed tarafından teknik vaka analizleri ve mühendislik notları.'
+      : 'Technical case studies and engineering notes by Hamed Mohamed.',
+    alternates: {
+      canonical: `${siteUrl}/${lang}/blog`,
+      languages: {
+        "x-default": `${siteUrl}/en/blog`,
+        "en": `${siteUrl}/en/blog`,
+        "ar": `${siteUrl}/ar/blog`,
+        "tr": `${siteUrl}/tr/blog`,
+      },
+    },
   }
 }
 
@@ -14,19 +34,37 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: 'en
   const lang = resolvedParams.lang
   const posts = getAllPosts(lang)
   const tags = getAllTags(lang)
+
+  const content = {
+    en: {
+      h1Part1: "Engineering ",
+      h1Part2: "Notes",
+      desc: "Case studies, performance optimizations, and technical deep dives.",
+    },
+    ar: {
+      h1Part1: "كتابات ",
+      h1Part2: "هندسية",
+      desc: "دراسات حالة، تحسينات الأداء، ومقالات تقنية وتجارب عملية متعمقة.",
+    },
+    tr: {
+      h1Part1: "Mühendislik ",
+      h1Part2: "Notları",
+      desc: "Örnek olay incelemeleri, performans optimizasyonları ve teknik derinlemesine analizler.",
+    },
+  }[lang];
   
   return (
-    <div className="container mx-auto px-4 pt-32 pb-24 max-w-5xl">
+    <main className="container mx-auto px-4 pt-32 pb-24 max-w-5xl min-w-0">
       <div className="mb-16">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
-          Engineering <span className="text-accent">Notes</span>
+          {content.h1Part1}<span className="text-accent">{content.h1Part2}</span>
         </h1>
         <p className="text-xl text-muted-foreground">
-          Case studies, performance optimizations, and technical deep dives.
+          {content.desc}
         </p>
       </div>
 
       <BlogList posts={posts} lang={lang} allTags={tags} />
-    </div>
+    </main>
   )
 }

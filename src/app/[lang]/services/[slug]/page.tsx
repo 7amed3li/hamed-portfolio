@@ -21,19 +21,15 @@ export async function generateMetadata({
   const service = getServiceBySlug(slug, lang);
   if (!service) return {};
 
-  // ar/tr service pages have English-only content → noindex to avoid duplicate penalty
-  const isEnglish = lang === "en";
-
   return {
     metadataBase: new URL(siteUrl),
     title: service.metaTitle,
     description: service.metaDescription,
-    robots: isEnglish
-      ? { index: true, follow: true }
-      : { index: false, follow: true },
+    robots: { index: true, follow: true },
     alternates: {
-      canonical: `${siteUrl}/en/services/${slug}`,
+      canonical: `${siteUrl}/${lang}/services/${slug}`,
       languages: {
+        "x-default": `${siteUrl}/en/services/${slug}`,
         "en": `${siteUrl}/en/services/${slug}`,
         "ar": `${siteUrl}/ar/services/${slug}`,
         "tr": `${siteUrl}/tr/services/${slug}`,

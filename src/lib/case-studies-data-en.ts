@@ -6,13 +6,13 @@ export const caseStudies: CaseStudy[] = [
     title: "QR Attendance System",
     metaTitle: "QR Attendance System Case Study — Hamed Mohamed",
     metaDescription:
-      "How Hamed Mohamed built a QR-based attendance system for 2,000+ students across 7 faculties, achieving 98% latency reduction and 99.9% uptime.",
+      "How Hamed Mohamed built a QR-based attendance system for 2,000+ students across 6 faculties, achieving 98% latency reduction and 99.9% uptime.",
     category: "Full-Stack System · Performance Engineering",
     year: "2025–Present",
     tags: ["Node.js", "React.js", "PostgreSQL", "Redis", "Docker", "QR", "Admin Dashboard"],
-    heroStat: { value: "2,000+", label: "Daily Users in Production" },
+    heroStat: { value: "2,000+", label: "Users in Production" },
     problem:
-      "A university needed to track attendance for thousands of students across 7 different faculties. The existing process was manual — paper registers, spreadsheets, and a lot of wasted time for instructors. The system had to handle peak load when hundreds of students scan at the same time at the start of a lecture, work on any phone without an app, give admins a dashboard to view and export records, and stay up 100% of the time during working hours.",
+      "A university needed to track attendance for thousands of students across 6 different faculties. The existing process was manual — paper registers, spreadsheets, and a lot of wasted time for instructors. The system had to handle peak load when hundreds of students scan at the same time at the start of a lecture, work on any phone without an app, give admins a dashboard to view and export records, and stay up 100% of the time during working hours.",
     solution:
       "Hamed designed and built a complete QR-based attendance system. Students scan a QR code displayed in class — it opens in their browser, records attendance instantly, and closes. Each QR code is time-limited to prevent cheating. Instructors and faculty admins log into a dashboard to see records, generate reports, and manage the system. On the backend, Hamed built a hybrid verification pipeline: fast in-memory checks for speed, database confirmation for accuracy, and automatic fallback if any part fails. Redis caching was added to dramatically reduce database load during peak scanning times.",
     technologies: [
@@ -35,8 +35,8 @@ export const caseStudies: CaseStudy[] = [
         description: "System now handles up to 653 requests per second — able to process hundreds of students scanning at the same moment.",
       },
       {
-        metric: "2,000+ daily users",
-        description: "The system runs in production daily for students and faculty across 7 university faculties.",
+        metric: "2,000+ registered users",
+        description: "The system runs in production for students and faculty across 6 university faculties.",
       },
       {
         metric: "99.9% uptime",
@@ -59,7 +59,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "kardesler-restaurant-platform",
     title: "Kardeşler Cihangir — Production Restaurant Platform",
     metaTitle: "Kardeşler Restaurant Platform Case Study — Hamed Mohamed",
-    metaDescription: "How Hamed Mohamed built a production digital restaurant platform for a 28-year-old Turkish restaurant in Istanbul. 10 languages, WhatsApp ordering, live currency, ~100 daily visitors.",
+    metaDescription: "How Hamed Mohamed built kardeslercihangir.com: 10 languages, live currency for 6 currencies, WhatsApp ordering, and Schema.org SEO for a Turkish restaurant.",
     category: "Full-Stack · Next.js · Production Client Website",
     year: "2026",
     tags: ["Next.js 16", "React 19", "Supabase", "Tailwind CSS v4", "Schema.org SEO", "10 Languages", "Live Currency", "WhatsApp Ordering"],
@@ -143,7 +143,7 @@ export const caseStudies: CaseStudy[] = [
     title: "DragonSploit — AI-Powered Vulnerability Scanner",
     metaTitle: "DragonSploit AI Vulnerability Scanner — Hamed Mohamed",
     metaDescription:
-      "How Hamed Mohamed built DragonSploit, an AI-powered vulnerability scanning platform with intent-based orchestration and stack-aware scanning that reduced false positives by 70%.",
+      "How Hamed Mohamed built DragonSploit: an AI vulnerability scanner with stack-aware scanning and deterministic checks, reducing false positives by 70%.",
     category: "AI · Security · Backend Engineering",
     year: "2025",
     tags: ["Node.js", "AI Orchestration", "Vulnerability Scanning", "Stack Detection", "Security"],

@@ -1,7 +1,7 @@
 export const faqData = {
   en: {
     metaTitle: "FAQ — Hamed Mohamed, Full-Stack Developer",
-    metaDesc: "Frequently asked questions about hiring Hamed Mohamed. Can he build websites, fix bugs, improve performance, build backends, and create attendance systems? Find answers here.",
+    metaDesc: "Frequently asked questions about hiring Hamed Mohamed for web development, performance optimization, Node.js backend architecture, and custom QR systems.",
     backToPortfolio: "← Back to Portfolio",
     faqHead: "FAQ",
     h1: "Frequently Asked Questions",
@@ -16,7 +16,7 @@ export const faqData = {
         questions: [
           {
             q: "Who is Hamed Mohamed?",
-            a: "Hamed Mohamed is a Full-Stack Engineer who builds websites, dashboards, backend APIs, QR attendance systems, and secure web applications using React, Next.js, Node.js, and PostgreSQL. He has production experience building systems used by 2,000+ daily users.",
+            a: "Hamed Mohamed is a Full-Stack Engineer who builds websites, dashboards, backend APIs, QR attendance systems, and secure web applications using React, Next.js, Node.js, and PostgreSQL. He has production experience building systems used by 2,000+ users across 6 faculties.",
           },
           {
             q: "What does Hamed Mohamed build?",
@@ -151,7 +151,7 @@ export const faqData = {
         questions: [
           {
             q: "Can Hamed Mohamed build a QR attendance system?",
-            a: "Yes. Hamed built and deployed a QR attendance system serving 2,000+ students across 7 faculties at a university. Students scan a QR code, attendance is recorded instantly, and admins get a dashboard with reports.",
+            a: "Yes. Hamed built and deployed a QR attendance system serving 2,000+ students across 6 faculties at a university. Students scan a QR code, attendance is recorded instantly, and admins get a dashboard with reports.",
           },
           {
             q: "Can Hamed Mohamed build a student attendance tracking system?",
@@ -313,7 +313,7 @@ export const faqData = {
         questions: [
           {
             q: "هل يستطيع حامد بناء نظام لتسجيل الحضور عبر QR؟",
-            a: "نعم. بنى حامد ونشر نظام حضور بـ QR يخدم أكثر من 2000 طالب عبر 7 كليات. يمسح الطلاب الرمز ليتم تسجيل الحضور في ثوانٍ، ويتوفر للإدارة لوحة تحكم شاملة للتقارير.",
+            a: "نعم. بنى حامد ونشر نظام حضور بـ QR يخدم أكثر من 2000 طالب عبر 6 كليات. يمسح الطلاب الرمز ليتم تسجيل الحضور في ثوانٍ، ويتوفر للإدارة لوحة تحكم شاملة للتقارير.",
           },
           {
             q: "هل يمكن لحامد بناء نظام مخصص لإدارة شركتي؟",
@@ -434,7 +434,7 @@ export const faqData = {
         questions: [
           {
             q: "Hamed Mohamed bir QR yoklama sistemi kurabilir mi?",
-            a: "Evet. Hamed, bir üniversitenin 7 fakültesinde 2.000'den fazla öğrenciye hizmet veren bir QR yoklama sistemi kurdu ve devreye aldı. Öğrenciler kodu okutur, katılım anında kaydedilir ve yöneticiler rapor alır.",
+            a: "Evet. Hamed, bir üniversitenin 6 fakültesinde 2.000'den fazla öğrenciye hizmet veren bir QR yoklama sistemi kurdu ve devreye aldı. Öğrenciler kodu okutur, katılım anında kaydedilir ve yöneticiler rapor alır.",
           },
           {
             q: "Hamed Mohamed özel bir iş yönetim sistemi yapabilir mi?",

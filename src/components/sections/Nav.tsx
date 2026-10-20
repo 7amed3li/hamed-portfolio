@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,6 +10,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
   const { lang, toggleLang, isRTL } = useLang();
   const tr = t[lang].nav;
 
@@ -43,7 +45,21 @@ export function Nav() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      setTimeout(() => closeBtnRef.current?.focus(), 50);
+    }
     return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
   return (
@@ -128,7 +144,7 @@ export function Nav() {
               toggleLang();
             }}
             className="group flex items-center gap-2 w-[4.5rem] justify-center px-0 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-300"
-            aria-label="Toggle language"
+            aria-label={lang === "en" ? "EN - Switch language" : lang === "tr" ? "TR - Dili değiştir" : "ع - تبديل اللغة"}
             title="Switch Language"
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-70 group-hover:rotate-180 transition-transform duration-500">
@@ -150,6 +166,7 @@ export function Nav() {
               e.preventDefault();
               toggleLang();
             }}
+            aria-label={lang === "en" ? "EN - Switch language" : lang === "tr" ? "TR - Dili değiştir" : "ع - تبديل اللغة"}
             className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-accent transition-colors"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -162,12 +179,16 @@ export function Nav() {
             </span>
           </a>
           <motion.button
+            ref={triggerRef}
+            id="mobile-menu-trigger"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={() => setOpen(true)}
             className="flex flex-col gap-1.5 p-2 group"
-            aria-label="Open menu"
+            aria-label={lang === "ar" ? "فتح القائمة" : lang === "tr" ? "Menüyü Aç" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             <span className="block w-6 h-px bg-current transition-all group-hover:w-8" />
             <span className="block w-4 h-px bg-current transition-all group-hover:w-8" />
@@ -183,13 +204,20 @@ export function Nav() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                triggerRef.current?.focus();
+              }}
               className="fixed inset-0 z-50"
               style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
             />
 
             {/* Sidebar */}
             <motion.div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
+              aria-label={lang === "ar" ? "قائمة التنقل" : lang === "tr" ? "Gezinme Menüsü" : "Navigation menu"}
               initial={{ x: isRTL ? "-100%" : "100%" }}
               animate={{ x: 0 }}
               exit={{ x: isRTL ? "-100%" : "100%" }}
@@ -201,9 +229,14 @@ export function Nav() {
                   {lang === "ar" ? "القائمة" : "Menu"}
                 </span>
                 <button
-                  onClick={() => setOpen(false)}
+                  ref={closeBtnRef}
+                  id="mobile-menu-close"
+                  onClick={() => {
+                    setOpen(false);
+                    triggerRef.current?.focus();
+                  }}
                   className="w-8 h-8 flex items-center justify-center hover:text-accent transition-colors"
-                  aria-label="Close"
+                  aria-label={lang === "ar" ? "إغلاق القائمة" : lang === "tr" ? "Menüyü Kapat" : "Close menu"}
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5"/>
@@ -211,7 +244,10 @@ export function Nav() {
                 </button>
               </div>
 
-              <nav className="flex-1 flex flex-col justify-center px-8 gap-2">
+              <nav
+                aria-label={lang === "ar" ? "التنقل الرئيسي" : lang === "tr" ? "Ana Gezinme" : "Main navigation"}
+                className="flex-1 flex flex-col justify-center px-8 gap-2"
+              >
                 {links.map((l, i) => (
                   <motion.div
                     key={l.href}
@@ -236,7 +272,7 @@ export function Nav() {
               <div className="px-8 py-8 border-t border-border">
                 <a
                   href="mailto:hamed.m.abdelalim@gmail.com"
-                  className="text-xs font-mono tracking-wider text-muted-foreground"
+                  className="text-xs font-mono tracking-wider text-muted-foreground break-all"
                 >
                   hamed.m.abdelalim@gmail.com
                 </a>

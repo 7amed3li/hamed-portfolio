@@ -31,7 +31,7 @@ Hamed Mohamed Abdelalim (حامد محمد عبدالعليم) is an Egyptian Fu
 ## Proof Points
 
 - Kardeşler Cihangir Restaurant Platform: Production commercial site serving ~100 daily visitors, 10 languages, 6 currencies, WhatsApp ordering, WordPress migration with 25+ redirects, and full Schema.org Local SEO
-- QR attendance system: 2,000+ daily users, 7 university faculties, 98% latency reduction, 99.9% uptime
+- QR attendance system: 2,000+ users (~300 DAU), 6 university faculties, 98% latency reduction, 99.9% uptime
 - Performance: API response time reduced from 94ms to 1.5ms (+6,100% throughput)
 - Open source: 7 merged pull requests to NodeSecure security tooling
 - Security: caught and fixed 15+ vulnerabilities before production

@@ -24,6 +24,7 @@ export async function generateMetadata({
     alternates: { 
       canonical: `${siteUrl}/${lang}/case-studies/${slug}`,
       languages: {
+        "x-default": `${siteUrl}/en/case-studies/${slug}`,
         "en": `${siteUrl}/en/case-studies/${slug}`,
         "ar": `${siteUrl}/ar/case-studies/${slug}`,
         "tr": `${siteUrl}/tr/case-studies/${slug}`
@@ -217,32 +218,45 @@ export default async function CaseStudyPage({
               <div>
                 <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
                   <span className="inline-block w-6 h-px bg-accent" />
-                  Visual Showcase
+                  {lang === "ar" ? "معرض الشاشات الحية للمشروع" : lang === "tr" ? "Canlı Görsel Vitrin" : "Visual Showcase"}
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {cs.images.map((img, idx) => (
-                    <div
-                      key={img.src}
-                      className={`border border-border bg-surface overflow-hidden group hover:border-accent/50 transition-colors ${
-                        idx === 0 ? "md:col-span-2" : ""
-                      }`}
-                    >
-                      <div className="relative aspect-video w-full overflow-hidden bg-muted/20">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          loading="lazy"
-                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-                        />
-                      </div>
-                      {img.caption && (
-                        <div className="p-4 border-t border-border/60 bg-background/50">
-                          <p className="text-xs font-mono text-muted-foreground">{img.caption}</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                  {cs.images.map((img, idx) => {
+                    const isMobile = img.src.includes("mobile");
+                    return (
+                      <div
+                        key={img.src}
+                        className={`border border-border bg-surface overflow-hidden group hover:border-accent/50 transition-colors flex flex-col justify-between ${
+                          idx === 0 ? "md:col-span-2" : ""
+                        }`}
+                      >
+                        <div
+                          className={`relative w-full overflow-hidden flex items-center justify-center ${
+                            isMobile
+                              ? "aspect-[4/3] md:aspect-auto md:min-h-[380px] p-4 bg-gradient-to-b from-[#141414] to-[#0a0a0a]"
+                              : "aspect-video bg-muted/20"
+                          }`}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            loading="lazy"
+                            className={`w-full h-full transition-transform duration-500 group-hover:scale-[1.02] ${
+                              isMobile
+                                ? "object-contain max-h-[340px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.85)] rounded-lg border border-white/10"
+                                : "object-cover object-top"
+                            }`}
+                          />
                         </div>
-                      )}
-                    </div>
-                  ))}
+                        {img.caption && (
+                          <div className="p-4 border-t border-border/60 bg-background/50">
+                            <p className="text-xs font-mono text-muted-foreground">{img.caption}</p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}

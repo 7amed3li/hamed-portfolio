@@ -30,7 +30,7 @@ export const t = {
       heading2: "Node.js & React.",
       bio1: "I'm Hamed, an Egyptian Full-Stack Engineer and Computer Engineering graduate (GPA 3.5/4.0), based in Turkey. I build production web systems — from university platforms serving 2,000+ students to multilingual restaurant websites with ~100 daily visitors.",
       bio2part1: "Recently, I helped ship a high-throughput QR attendance platform for",
-      bio2strong1: "2,000+ students across 7 faculties",
+      bio2strong1: "2,000+ students across 6 faculties",
       bio2part2: ". We managed to cut the response latency by",
       bio2strong2: "98%",
       bio2part3: " while keeping the system highly available using circuit breakers.",
@@ -168,7 +168,7 @@ export const t = {
           year: "Apr 2025 – Jun 2026",
           summary: "Production QR attendance system serving 2,000+ users across 42 courses, 13 departments & 6 faculties. 98% latency reduction (94.91ms → 1.53ms). +6,100% throughput. 313 automated tests across 38 test suites. 18 security findings remediated.",
           lesson: "Lesson Learned: High throughput requires aggressive caching. I had to rip out the original DB queries and rewrite them to use Redis.",
-          metrics: ["94ms → 1.5ms latency", "+6,100% throughput", "2,000+ daily users", "18 vulns fixed"],
+          metrics: ["94ms → 1.5ms latency", "+6,100% throughput", "2,000+ users", "18 vulns fixed"],
           links: [
             { label: "Admin Panel", url: "https://yzdd.gop.edu.tr/qr-admin/dashboard" },
             { label: "Mobile UI", url: "https://yzdd.gop.edu.tr/qr-ui/" }
@@ -271,7 +271,7 @@ export const t = {
       stats: [
         { label: "تقليل وقت الاستجابة", to: 98, suffix: "%" },
         { label: "زيادة قدرة تحمل الطلبات", to: 6100, suffix: "%" },
-        { label: "مستخدم نشط يومياً", to: 2000, suffix: "+" },
+        { label: "طالب مسجل بالمنصة", to: 2000, suffix: "+" },
         { label: "مساهمات مفتوحة المصدر", to: 7, suffix: "" },
       ],
     },
@@ -281,7 +281,7 @@ export const t = {
       heading2: "Node.js و React.",
       bio1: "أنا حامد، مهندس برمجيات مصري خريج هندسة حاسبات (معدل 3.5/4.0)، أعيش في تركيا. أبني أنظمة ويب إنتاجية حقيقية — من منصات جامعية تخدم أكثر من 2,000 مستخدم إلى مواقع مطاعم متعددة اللغات بأكثر من 100 زائر يومياً.",
       bio2part1: "مؤخراً، شاركت كمهندس أساسي في إطلاق نظام حضور عالي الأداء يعتمد على الـ QR ويخدم",
-      bio2strong1: "أكثر من 2000 طالب في 7 كليات مختلفة",
+      bio2strong1: "أكثر من 2000 طالب في 6 كليات مختلفة",
       bio2part2: ". من خلال هذا النظام، نجحنا في تقليل زمن استجابة الخادم بنسبة",
       bio2strong2: "98%",
       bio2part3: " مع ضمان استمرار النظام بالعمل تحت الضغط العالي باستخدام تقنيات مثل Circuit Breakers.",
@@ -419,7 +419,7 @@ export const t = {
           year: "أبريل 2025 – يونيو 2026",
           summary: "نظام حضور QR إنتاجي يخدم 2,000+ مستخدم عبر 42 مقرراً و13 قسماً و6 كليات. تقليل زمن الاستجابة 98% (94.91ms → 1.53ms). زيادة الطلبات +6,100%. 313 اختباراً آلياً في 38 مجموعة اختبار. إصلاح 18 ثغرة أمنية.",
           lesson: "الدرس المستفاد: المعالجة العالية تتطلب تخزيناً مؤقتاً قوياً. اضطررت لإزالة استعلامات قاعدة البيانات الأصلية وإعادة كتابتها لاستخدام Redis.",
-          metrics: ["94ms → 1.5ms استجابة", "+6,100% معالجة", "2,000+ مستخدم يومي", "18 ثغرة مُصلحة"],
+          metrics: ["94ms → 1.5ms استجابة", "+6,100% معالجة", "2,000+ مستخدم", "18 ثغرة مُصلحة"],
           links: [
             { label: "لوحة التحكم (Admin)", url: "https://yzdd.gop.edu.tr/qr-admin/dashboard" },
             { label: "واجهة المستخدم (Mobile)", url: "https://yzdd.gop.edu.tr/qr-ui/" }
@@ -531,7 +531,7 @@ export const t = {
       heading1: "Full-Stack Mühendisi.",
       heading2: "Node.js & React.",
       bio1: "Ben Hamed, Türkiye'de yaşayan Mısırlı bir Full-Stack Mühendisi ve Bilgisayar Mühendisliği mezunuyum (GNO 3.5/4.0). 2.000'den fazla kullanıcıya hizmet veren üniversite platformlarından günlük 100'den fazla ziyaretçisi olan çok dilli restoran web sitelerine kadar canlı üretim sistemleri inşa ediyorum.",
-      bio2part1: "Geçtiğimiz günlerde, 7 fakültede kayıtlı",
+      bio2part1: "Geçtiğimiz günlerde, 6 fakültede kayıtlı",
       bio2strong1: "2.000'den fazla öğrenci",
       bio2part2: " için yüksek verimli bir QR yoklama platformunu canlıya aldım. Devre kesiciler (circuit breakers) ile sistem kullanılabilirliğini yüksek tutarken yanıt gecikmesini ",
       bio2strong2: "%98",
@@ -543,7 +543,7 @@ export const t = {
       cta_cv: "CV İndir",
       info: [
         { label: "Üniversite", value: "Tokat Gaziosmanpaşa Üniversitesi, Türkiye" },
-        { label: "Derece", value: "B.Sc. Bilgisayar Mühendisliği · GNO 3.38/4.0" },
+        { label: "Derece", value: "B.Sc. Bilgisayar Mühendisliği · GNO 3.5/4.0" },
         { label: "Konum", value: "Tokat, Türkiye · KSA'ya taşınmaya açık" },
       ],
       stackTitle: "Temel Yeteneklerim (Dürüst Fikirler)",
@@ -670,7 +670,7 @@ export const t = {
           year: "Nisan 2025 – Haziran 2026",
           summary: "42 ders, 13 bölüm ve 6 fakültede 2.000+ kullanıcıya hizmet eden üretim ortamı QR yoklama sistemi. %98 gecikme azalması (94.91ms → 1.53ms). +%6.100 verim. 38 test paketinde 313 otomatik test. 18 güvenlik açığı giderildi.",
           lesson: "Öğrenilen Ders: Yüksek verim (throughput) agresif önbellekleme (caching) gerektirir. Orijinal veritabanı sorgularını kaldırıp Redis kullanacak şekilde yeniden yazmak zorunda kaldım.",
-          metrics: ["94ms → 1.5ms yanıt", "+%6.100 verim", "2.000+ günlük kullanıcı", "18 açık giderildi"],
+          metrics: ["94ms → 1.5ms yanıt", "+%6.100 verim", "2.000+ kullanıcı", "18 açık giderildi"],
           links: [
             { label: "Yönetici Paneli (Admin)", url: "https://yzdd.gop.edu.tr/qr-admin/dashboard" },
             { label: "Kullanıcı Arayüzü (Mobil)", url: "https://yzdd.gop.edu.tr/qr-ui/" }

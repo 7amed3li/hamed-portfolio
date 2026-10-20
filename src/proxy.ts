@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 const locales = ["en", "ar", "tr"];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Skip static files and API routes
@@ -16,13 +16,15 @@ export function middleware(request: NextRequest) {
     "/logo.png",
     "/google25a857f9c98e0560.html",
     "/Hamed_Mohamed_FullStack_NodeJS_CV.pdf",
+    "/Hamed_Mohamed_CV.pdf",
     "/icon.png",
+    "/rss.xml",
   ];
 
   if (skipPaths.some((p) => pathname === p)) return;
   
-  // Skip any path that starts with /apps/ (for static assets like icons)
-  if (pathname.startsWith("/apps/")) return;
+  // Skip any path that starts with /apps/ or /case-studies/ (for static assets like icons & images)
+  if (pathname.startsWith("/apps/") || pathname.startsWith("/case-studies/")) return;
 
   // Check if there is any supported locale in the pathname
   const pathnameHasLocale = locales.some(
@@ -38,6 +40,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|static|api|apps|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_CV\\.pdf).*)",
+    "/((?!_next|static|api|apps|case-studies|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|rss\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_FullStack_NodeJS_CV\\.pdf|Hamed_Mohamed_CV\\.pdf).*)",
   ],
 };

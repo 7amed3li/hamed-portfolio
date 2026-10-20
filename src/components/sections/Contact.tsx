@@ -85,14 +85,14 @@ export function Contact() {
 
             <div className="space-y-6">
               {tr.info.map(({ label, value, href }) => (
-                <div key={label} className="flex gap-8 py-5 border-b border-border">
+                <div key={label} className="flex gap-4 sm:gap-8 py-5 border-b border-border min-w-0">
                   <span className="text-xs font-mono uppercase tracking-widest w-20 flex-shrink-0 mt-0.5 text-muted-foreground">{label}</span>
                   {href ? (
-                    <a href={href} className="text-sm transition-colors text-foreground hover:text-accent">
+                    <a href={href} className="text-sm transition-colors text-foreground hover:text-accent break-all sm:break-normal min-w-0">
                       {value}
                     </a>
                   ) : (
-                    <span className="text-sm text-foreground">{value}</span>
+                    <span className="text-sm text-foreground break-words min-w-0">{value}</span>
                   )}
                 </div>
               ))}
@@ -177,7 +177,7 @@ export function Contact() {
                   onClick={() => setFormState('idle')}
                   className="px-6 py-2 text-xs font-mono uppercase tracking-widest transition-colors border border-border text-foreground hover:border-accent hover:text-accent"
                 >
-                  Try Again
+                  {lang === 'ar' ? 'إعادة المحاولة' : lang === 'tr' ? 'Tekrar Dene' : 'Try Again'}
                 </button>
               </div>
             ) : (

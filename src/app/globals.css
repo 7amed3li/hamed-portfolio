@@ -138,3 +138,37 @@ html.lenis body {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent), 0 8px 32px -8px rgba(201, 253, 116, 0.15);
 }
+
+/* Code block containment & responsive scrolling (RSP-01) */
+article {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.prose {
+  min-width: 0;
+  max-width: 100%;
+}
+
+pre,
+[data-rehype-pretty-code-fragment] pre,
+figure[data-rehype-pretty-code-figure] pre {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+}
+
+[data-rehype-pretty-code-fragment],
+figure[data-rehype-pretty-code-figure] {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: auto !important;
+}
+
+pre code {
+  white-space: pre !important;
+  word-break: normal !important;
+  word-wrap: normal !important;
+}
+

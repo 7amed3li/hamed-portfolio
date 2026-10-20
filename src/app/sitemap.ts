@@ -31,7 +31,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.95,
       alternates: {
-        languages: Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/hire`])),
+        languages: {
+          "x-default": `${baseUrl}/en/hire`,
+          ...Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/hire`])),
+        },
       },
     });
 
@@ -41,28 +44,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
       alternates: {
-        languages: Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/faq`])),
+        languages: {
+          "x-default": `${baseUrl}/en/faq`,
+          ...Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/faq`])),
+        },
       },
     });
 
-    // Service pages — only English is indexable (ar/tr have English content → noindex)
-    if (locale === "en") {
-      for (const service of servicesData.en) {
-        entries.push({
-          url: `${baseUrl}/en/services/${service.slug}`,
-          lastModified: now,
-          changeFrequency: "monthly",
-          priority: 0.85,
-          alternates: {
-            languages: {
-              "x-default": `${baseUrl}/en/services/${service.slug}`,
-              "en": `${baseUrl}/en/services/${service.slug}`,
-              "ar": `${baseUrl}/ar/services/${service.slug}`,
-              "tr": `${baseUrl}/tr/services/${service.slug}`,
-            },
+    // Service pages for all locales
+    const currentServices = servicesData[locale] || servicesData.en;
+    for (const service of currentServices) {
+      entries.push({
+        url: `${baseUrl}/${locale}/services/${service.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.85,
+        alternates: {
+          languages: {
+            "x-default": `${baseUrl}/en/services/${service.slug}`,
+            "en": `${baseUrl}/en/services/${service.slug}`,
+            "ar": `${baseUrl}/ar/services/${service.slug}`,
+            "tr": `${baseUrl}/tr/services/${service.slug}`,
           },
-        });
-      }
+        },
+      });
     }
 
     // Case study pages
@@ -74,7 +79,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "monthly",
         priority: 0.8,
         alternates: {
-          languages: Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/case-studies/${cs.slug}`])),
+          languages: {
+            "x-default": `${baseUrl}/en/case-studies/${cs.slug}`,
+            ...Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/case-studies/${cs.slug}`])),
+          },
         },
       });
     }
@@ -86,9 +94,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.85,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${baseUrl}/${l}/apps/sila`])
-        ),
+        languages: {
+          "x-default": `${baseUrl}/en/apps/sila`,
+          ...Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/apps/sila`])),
+        },
       },
     });
 
@@ -99,7 +108,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
       alternates: {
-        languages: Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/blog`])),
+        languages: {
+          "x-default": `${baseUrl}/en/blog`,
+          ...Object.fromEntries(locales.map((l) => [l, `${baseUrl}/${l}/blog`])),
+        },
       },
     });
 
@@ -112,6 +124,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.updated || post.date),
         changeFrequency: "monthly",
         priority: 0.8,
+        alternates: {
+          languages: {
+            "x-default": `${baseUrl}/en/blog/${slug}`,
+            "en": `${baseUrl}/en/blog/${slug}`,
+            "ar": `${baseUrl}/ar/blog/${slug}`,
+            "tr": `${baseUrl}/tr/blog/${slug}`,
+          },
+        },
       });
     }
   }

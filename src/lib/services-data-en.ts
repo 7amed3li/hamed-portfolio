@@ -118,7 +118,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Instead of hiring a frontend developer, a backend developer, and a DevOps engineer separately, Hamed handles the full stack. One point of contact. One consistent codebase. Faster delivery.",
     proof:
-      "Built a complete QR attendance web system — React frontend, Node.js backend, PostgreSQL database, admin dashboard, and deployed to production — serving 2,000+ daily users with 98% latency improvement.",
+      "Built a complete QR attendance web system — React frontend, Node.js backend, PostgreSQL database, admin dashboard, and deployed to production — serving 2,000+ users across 6 faculties with 98% latency improvement.",
     faq: [
       {
         q: "What does full-stack mean?",
@@ -320,7 +320,7 @@ export const servicesData: ServicePage[] = [
     title: "Application Security Review",
     metaTitle: "Application Security Review for Web Apps — Hamed Mohamed",
     metaDescription:
-      "Want your web application reviewed for security issues? Hamed Mohamed offers security reviews for Node.js and React applications to find and fix vulnerabilities before they become problems.",
+      "Professional security reviews for Node.js and React web apps. Hamed Mohamed finds and fixes vulnerabilities before they become problems in production.",
     h1: "Application Security Review for Web Apps and APIs",
     intro:
       "If you want to know whether your web application has security vulnerabilities before a hacker finds them, Hamed Mohamed can review your code and infrastructure. He identifies risks, explains them in plain language, and helps you fix them.",

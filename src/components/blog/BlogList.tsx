@@ -102,7 +102,7 @@ export function BlogList({ posts, lang, allTags }: BlogListProps) {
                 )}
                 <div className="p-6 flex flex-col flex-1">
                   <div className="mb-3 flex items-center gap-2 text-xs font-mono text-muted-foreground">
-                    <time>{new Date(post.date).toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
+                    <time>{new Date(post.date).toLocaleDateString(lang === 'ar' ? 'ar-EG' : lang === 'tr' ? 'tr-TR' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</time>
                     {post.series && (
                       <>
                         <span>•</span>

@@ -6,7 +6,7 @@ export const servicesData: ServicePage[] = [
     title: "Web Sitesi ve Açılış Sayfası Geliştirme",
     metaTitle: "Web Sitesi ve Açılış Sayfası Geliştiricisi — Hamed Mohamed",
     metaDescription:
-      "Bir web sitesine veya açılış sayfasına mı ihtiyacınız var? Hamed Mohamed, React ve Next.js kullanarak işletmeler ve markalar için hızlı ve profesyonel web siteleri geliştirir.",
+      "Hamed Mohamed, React ve Next.js kullanarak işletmeler için hızlı, mobil uyumlu ve modern web siteleri ile açılış sayfaları geliştirir.",
     h1: "İşletmeler ve Girişimler için Web Sitesi ve Açılış Sayfası Geliştiricisi",
     intro:
       "Bir web sitesine veya açılış sayfasına (landing page) ihtiyacınız varsa, Hamed Mohamed size yardımcı olabilir. İster ilk işletme web siteniz, ister ürün açılış sayfanız, ister kişisel portföyünüz olsun; her ekranda harika görünen ve hızlı yüklenen siteleri React ve Next.js ile oluşturur.",
@@ -118,7 +118,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Ayrı ayrı bir frontend, backend ve DevOps mühendisi işe almak yerine, tüm yığını (full-stack) ben yönetiyorum. Tek iletişim noktası. Tek tutarlı kod tabanı. Daha hızlı teslimat.",
     proof:
-      "2.000'den fazla günlük kullanıcıya hizmet veren ve yanıt süresinde %98 iyileşme sağlayan tam bir QR yoklama web sistemi (React, Node.js, PostgreSQL, yönetici paneli) geliştirdi ve üretime (production) aldı.",
+      "2.000'den fazla kayıtlı öğrenciye hizmet veren ve yanıt süresinde %98 iyileşme sağlayan tam bir QR yoklama web sistemi (React, Node.js, PostgreSQL, yönetici paneli) geliştirdi ve üretime (production) aldı.",
     faq: [
       {
         q: "Full-stack ne anlama geliyor?",
@@ -207,7 +207,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "İyi bir kontrol paneli (dashboard), saatler süren manuel çalışmayı kurtarır. Elektronik tabloları (Excel) dışa aktarmak veya veri çekmesi için bir programcıdan yardım istemek yerine, işinizde neler olup bittiğini gerçek zamanlı olarak gösteren görsel bir arayüz elde edersiniz.",
     proof:
-      "7 fakültedeki üniversite personeli tarafından kullanılan bir QR yoklama sistemi için tam bir yönetici paneli (admin dashboard) geliştirdi. Panel, sadece bir tarayıcı üzerinden öğrencileri yönetmeye, yoklama kayıtlarını görmeye ve sistem sağlığını izlemeye olanak tanır.",
+      "6 fakültedeki üniversite personeli tarafından kullanılan bir QR yoklama sistemi için tam bir yönetici paneli (admin dashboard) geliştirdi. Panel, sadece bir tarayıcı üzerinden öğrencileri yönetmeye, yoklama kayıtlarını görmeye ve sistem sağlığını izlemeye olanak tanır.",
     faq: [
       {
         q: "Yönetici paneli (Admin panel) nedir?",
@@ -320,7 +320,7 @@ export const servicesData: ServicePage[] = [
     title: "Uygulama Güvenlik İncelemesi",
     metaTitle: "Web Uygulamaları için Güvenlik İncelemesi — Hamed Mohamed",
     metaDescription:
-      "Web uygulamanızın güvenlik sorunları açısından incelenmesini ister misiniz? Hamed Mohamed, açıklar sorun olmadan önce bulmak için Node.js uygulamalarına güvenlik incelemesi yapar.",
+      "Hamed Mohamed, Node.js ve React web uygulamalarınızdaki güvenlik açıklarını canlıya geçmeden önce tespit edip çözen kapsamlı güvenlik incelemeleri sunar.",
     h1: "Web Uygulamaları ve API'ler için Güvenlik İncelemesi",
     intro:
       "Bir bilgisayar korsanı (hacker) bulmadan önce web uygulamanızın güvenlik açıkları olup olmadığını bilmek istiyorsanız, Hamed Mohamed kodunuzu ve altyapınızı inceleyebilir. Riskleri tespit eder, bunları size açık bir dille anlatır ve düzeltmenize yardımcı olur.",
@@ -381,9 +381,9 @@ export const servicesData: ServicePage[] = [
     ],
     technologies: ["Node.js", "React.js", "PostgreSQL", "Redis", "JWT", "Docker", "QR Kod kütüphaneleri"],
     businessValue:
-      "Manuel yoklama takibi zaman kaybettirir ve hile yapılması kolaydır. Bir QR sistemi size haftada saatlerce zaman kazandırır, doğru kayıtlar sunar ve otomatik olarak raporlar üretir. Ben her gün 2.000'den fazla kullanıcının canlı (production) olarak kullandığı böyle bir sistem inşa ettim.",
+      "Manuel yoklama takibi zaman kaybettirir ve hile yapılması kolaydır. Bir QR sistemi size haftada saatlerce zaman kazandırır, doğru kayıtlar sunar ve otomatik olarak raporlar üretir. Ben 2.000'den fazla kayıtlı öğrencinin canlı (production) olarak kullandığı böyle bir sistem inşa ettim.",
     proof:
-      "Tokat Gaziosmanpaşa Üniversitesi'nde 7 fakültedeki 2.000'den fazla öğrenciye hizmet veren tam bir QR yoklama sistemi geliştirdi ve devreye aldı. Sistem, %98 gecikme azalması ve kesintilere karşı %99.9 çalışma süresi elde etti.",
+      "Tokat Gaziosmanpaşa Üniversitesi'nde 6 fakültedeki 2.000'den fazla öğrenciye hizmet veren tam bir QR yoklama sistemi geliştirdi ve devreye aldı. Sistem, %98 gecikme azalması ve kesintilere karşı %99.9 çalışma süresi elde etti.",
     faq: [
       {
         q: "QR yoklama sistemi nasıl çalışır?",

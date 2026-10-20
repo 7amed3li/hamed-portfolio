@@ -1,7 +1,7 @@
 export const hireData = {
   en: {
     metaTitle: "Hire Hamed Mohamed — Full-Stack Developer for Websites, Dashboards & Web Apps",
-    metaDesc: "Need a developer? Hamed Mohamed builds websites, landing pages, restaurant menus, dashboards, admin panels, Node.js backends, QR attendance systems, and secure full-stack web applications. Available for freelance and full-time work.",
+    metaDesc: "Hire Hamed Mohamed: Full-Stack Engineer building websites, dashboards, Node.js backends, and QR systems with React, Next.js, and PostgreSQL. Available for hire.",
     backToPortfolio: "← Back to Portfolio",
     availableForHire: "Available for Hire",
     hireHamed: "Hire Hamed Mohamed",
@@ -15,7 +15,7 @@ export const hireData = {
     whoIsH2: "A Full-Stack Engineer who builds things that actually work in production.",
     p1: "Hamed Mohamed is an Egyptian Full-Stack Engineer based in Turkey with over a year of production experience building and securing web systems. He has built complete applications used by real people — not just demo projects.",
     p2_1: "His most recent project is a QR-based attendance system running daily for ",
-    p2_bold1: "2,000+ students across 7 university faculties",
+    p2_bold1: "2,000+ students across 6 university faculties",
     p2_2: ". He took the API response time from 94ms down to 1.5ms — a ",
     p2_bold2: "98% improvement",
     p2_3: " — and kept the system at 99.9% uptime under heavy load.",
@@ -55,7 +55,7 @@ export const hireData = {
     contactDesc: "Describe what you need — even in plain, non-technical language. Hamed will respond, ask the right questions, and tell you honestly whether he can help and how long it will take.",
     sendMessage: "Send a Message",
     stats: [
-      { value: "2,000+", label: "Daily users on a system I built" },
+      { value: "2,000+", label: "Users on a system I built" },
       { value: "98%", label: "Latency reduction achieved in production" },
       { value: "7", label: "Open-source security PRs merged" },
       { value: "3", label: "Languages: Arabic, English, Turkish" },
@@ -85,7 +85,7 @@ export const hireData = {
   },
   ar: {
     metaTitle: "وظف حامد محمد — مطور مواقع وتطبيقات ويب متكاملة (Full-Stack)",
-    metaDesc: "تبحث عن مطور؟ حامد محمد يبني لك مواقع إلكترونية، صفحات هبوط، قوائم مطاعم، لوحات تحكم، واجهات خلفية (Node.js API)، أنظمة حضور بالـ QR، وتطبيقات ويب متكاملة وآمنة. متاح للعمل الحر والدوام الكامل.",
+    metaDesc: "توظيف حامد محمد: مهندس برمجيات يبني مواقع، لوحات تحكم، أنظمة حضور QR، وتطبيقات ويب متكاملة باستخدام React و Node.js و PostgreSQL. متاح للعمل الحر والدوام.",
     backToPortfolio: "← العودة لمعرض الأعمال",
     availableForHire: "متاح للتوظيف",
     hireHamed: "وظّف حامد محمد",
@@ -98,8 +98,8 @@ export const hireData = {
     whoIs: "من هو حامد محمد؟",
     whoIsH2: "مهندس برمجيات (Full-Stack) يبني مشاريع حقيقية تعمل بكفاءة في بيئة الإنتاج.",
     p1: "حامد محمد هو مهندس برمجيات مصري مقيم في تركيا، يمتلك خبرة عملية في بناء وتأمين أنظمة الويب. قام بتطوير تطبيقات متكاملة تُستخدم فعلياً من قِبل آلاف المستخدمين — وليست مجرد مشاريع تجريبية.",
-    p2_1: "أحدث مشاريعه كان بناء نظام لتسجيل الحضور عبر الـ QR، ويُستخدم يومياً من قِبل ",
-    p2_bold1: "أكثر من 2000 طالب في 7 كليات جامعية",
+    p2_1: "أحدث مشاريعه كان بناء نظام لتسجيل الحضور عبر الـ QR، ويُستخدم من قِبل ",
+    p2_bold1: "أكثر من 2000 طالب في 6 كليات جامعية",
     p2_2: ". نجح في تقليل زمن استجابة النظام من 94ms إلى 1.5ms — ",
     p2_bold2: "نسبة تحسن بلغت 98%",
     p2_3: " — مع الحفاظ على استقرار النظام بنسبة 99.9% حتى تحت الضغط العالي.",
@@ -139,7 +139,7 @@ export const hireData = {
     contactDesc: "اشرح ما تحتاجه — حتى بلغة بسيطة وغير تقنية. سيرد عليك حامد، ويطرح الأسئلة المناسبة، ويخبرك بصدق ما إذا كان بإمكانه المساعدة والمدة التي سيستغرقها العمل.",
     sendMessage: "أرسل رسالة",
     stats: [
-      { value: "+2,000", label: "مستخدم يومي على نظام بنيته" },
+      { value: "+2,000", label: "طالب مسجل على نظام بنيته" },
       { value: "98%", label: "تقليل في زمن الاستجابة" },
       { value: "7", label: "مساهمات أمنية مفتوحة المصدر" },
       { value: "3", label: "لغات: العربية، الإنجليزية، التركية" },
@@ -169,7 +169,7 @@ export const hireData = {
   },
   tr: {
     metaTitle: "Hamed Mohamed'i İşe Al — Web Siteleri ve Web Uygulamaları için Full-Stack Geliştirici",
-    metaDesc: "Bir geliştiriciye mi ihtiyacınız var? Hamed Mohamed web siteleri, açılış sayfaları, restoran menüleri, yönetim panelleri, arka uç (backend) ve güvenli uygulamalar geliştirir.",
+    metaDesc: "Hamed Mohamed: React, Next.js, Node.js ve PostgreSQL ile web siteleri, yönetim panelleri ve güvenli arka uç sistemleri geliştiren Full-Stack Mühendis.",
     backToPortfolio: "← Portföye Dön",
     availableForHire: "İşe Alıma Açık",
     hireHamed: "Hamed Mohamed'i İşe Al",
@@ -223,7 +223,7 @@ export const hireData = {
     contactDesc: "Neye ihtiyacınız olduğunu sade, teknik olmayan bir dille anlatın. Hamed size yanıt verecek, doğru soruları soracak ve size dürüstçe yardımcı olup olamayacağını ve ne kadar süreceğini söyleyecektir.",
     sendMessage: "Mesaj Gönder",
     stats: [
-      { value: "2.000+", label: "Kurduğum sistemdeki günlük kullanıcı" },
+      { value: "2.000+", label: "Kurduğum sistemdeki kayıtlı öğrenci" },
       { value: "%98", label: "Üretimde elde edilen gecikme azalması" },
       { value: "7", label: "Birleştirilen açık kaynak güvenlik PR'ları" },
       { value: "3", label: "Diller: Arapça, İngilizce, Türkçe" },

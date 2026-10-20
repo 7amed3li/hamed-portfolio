@@ -27,17 +27,21 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     return {}
   }
 
-  const url = `https://hamedmohamed.dev/${post.lang}/blog/${resolvedParams.slug}`
+  const siteUrl = "https://www.hamedmohamed.dev";
+  const url = `${siteUrl}/${post.lang}/blog/${resolvedParams.slug}`;
 
   return {
+    metadataBase: new URL(siteUrl),
     title: post.title,
     description: post.description,
     authors: [{ name: post.author }],
     alternates: {
       canonical: post.canonicalUrl || url,
       languages: {
-        'x-default': `https://hamedmohamed.dev/en/blog/${resolvedParams.slug}`,
-        // Ideally map translation keys here based on your mappings
+        'x-default': `${siteUrl}/en/blog/${resolvedParams.slug}`,
+        'en': `${siteUrl}/en/blog/${resolvedParams.slug}`,
+        'ar': `${siteUrl}/ar/blog/${resolvedParams.slug}`,
+        'tr': `${siteUrl}/tr/blog/${resolvedParams.slug}`,
       }
     },
     openGraph: {
@@ -49,7 +53,6 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       modifiedTime: post.updated || post.date,
       authors: [post.author],
       tags: post.tags,
-      // images: [{ url: post.coverImage || '/og-image.jpg' }] // Will be handled by dynamic OG later
     },
     twitter: {
       card: 'summary_large_image',
@@ -67,6 +70,8 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound()
   }
 
+  const siteUrl = "https://www.hamedmohamed.dev";
+
   // Schema.org JSON-LD
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -76,60 +81,65 @@ export default async function PostPage({ params }: PostPageProps) {
     author: [{
       '@type': 'Person',
       name: post.author,
-      url: 'https://hamedmohamed.dev'
+      url: siteUrl
     }],
     datePublished: post.date,
     dateModified: post.updated || post.date,
-    image: post.coverImage ? [`https://hamedmohamed.dev${post.coverImage}`] : [],
+    image: post.coverImage ? [`${siteUrl}${post.coverImage}`] : [],
   }
 
   return (
-    <article className="container mx-auto px-4 pt-32 pb-24 max-w-4xl">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      
-      <div className="mb-12 text-center">
-        <div className="mb-4 flex justify-center items-center gap-2 text-sm font-mono text-muted-foreground">
-          <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString(resolvedParams.lang === 'ar' ? 'ar-EG' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-          </time>
-          <span>•</span>
-          <span>{post.author}</span>
-        </div>
+    <main className="min-h-screen bg-background text-foreground">
+      <article className="container mx-auto px-4 pt-32 pb-24 max-w-4xl min-w-0 w-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
-          {post.title}
-        </h1>
-        
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          {post.description}
-        </p>
+        <div className="mb-12 text-center min-w-0">
+          <div className="mb-4 flex justify-center items-center gap-2 text-sm font-mono text-muted-foreground">
+            <time dateTime={post.date}>
+              {new Date(post.date).toLocaleDateString(
+                resolvedParams.lang === 'ar' ? 'ar-EG' : resolvedParams.lang === 'tr' ? 'tr-TR' : 'en-US',
+                { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }
+              )}
+            </time>
+            <span>•</span>
+            <span>{post.author}</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight break-words">
+            {post.title}
+          </h1>
+          
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            {post.description}
+          </p>
 
-        <div className="mt-8 flex justify-center flex-wrap gap-2">
-          {post.tags.map(tag => (
-            <span key={tag} className="rounded-md bg-accent/10 text-accent px-3 py-1 text-sm font-mono">
-              #{tag}
-            </span>
-          ))}
+          <div className="mt-8 flex justify-center flex-wrap gap-2">
+            {post.tags.map(tag => (
+              <span key={tag} className="rounded-md bg-accent/10 text-accent px-3 py-1 text-sm font-mono">
+                #{tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {post.coverImage && (
-        <div className="mb-16 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-border relative">
-          <Image 
-            src={post.coverImage} 
-            alt={post.title}
-            fill
-            className="object-cover"
-          />
+        {post.coverImage && (
+          <div className="mb-16 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-border relative">
+            <Image 
+              src={post.coverImage} 
+              alt={post.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+
+        <div className="prose prose-neutral dark:prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-accent hover:prose-a:text-accent/80 mx-auto min-w-0 w-full">
+          <MDXContent code={post.body} lang={post.lang as 'en' | 'ar' | 'tr'} />
         </div>
-      )}
-
-      <div className="prose prose-neutral dark:prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-accent hover:prose-a:text-accent/80 mx-auto">
-        <MDXContent code={post.body} lang={post.lang as 'en' | 'ar' | 'tr'} />
-      </div>
-    </article>
+      </article>
+    </main>
   )
 }

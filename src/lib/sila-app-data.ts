@@ -50,7 +50,7 @@ export const silaAppData: Record<string, SilaAppData> = {
   en: {
     metaTitle: "Sila Islamic App — Prayer Times, Quran & AI Hifz Companion",
     metaDescription:
-      "Download Sila Islamic App, the free app featuring accurate prayer times with automatic Adhan, full Quran reader, interactive Hifz system, AI-powered Tasmi (recitation verification), daily Azkar, and Ibadah tracking.",
+      "Download Sila Islamic App: prayer times with automatic Adhan, Quran reader, interactive Hifz, AI recitation verification, daily Azkar, and Ibadah tracking.",
     heroTitle: "Sila Islamic App",
     heroSubtitle: "Your Complete Prayer Times & Quran Companion",
     heroDescription:
@@ -132,7 +132,7 @@ export const silaAppData: Record<string, SilaAppData> = {
   ar: {
     metaTitle: "تطبيق صلة الإسلامي — مواقيت الصلاة، القرآن، والتسميع بالذكاء الاصطناعي",
     metaDescription:
-      "حمّل تطبيق صلة الإسلامي المجاني — مواقيت صلاة دقيقة مع أذان تلقائي، قارئ القرآن الكريم، نظام حفظ تفاعلي بطريقة الظل، تسميع القرآن بالذكاء الاصطناعي، وأذكار الصباح والمساء.",
+      "حمّل تطبيق صلة الإسلامي المجاني: مواقيت صلاة دقيقة مع أذان تلقائي، قارئ القرآن الكريم، حفظ تفاعلي، تسميع بالذكاء الاصطناعي، وأذكار الصباح والمساء.",
     heroTitle: "تطبيق صِلَة",
     heroSubtitle: "تطبيق صلة الإسلامي — رفيقك لصلاتك وقرآنك",
     heroDescription:
@@ -214,7 +214,7 @@ export const silaAppData: Record<string, SilaAppData> = {
   tr: {
     metaTitle: "Sıla İslami Uygulaması — Namaz Vakitleri, Kur'an ve Yapay Zeka Hıfz",
     metaDescription:
-      "Sıla İslami Uygulamasını indirin — doğru namaz vakitleri ve otomatik ezan, Kur'an okuyucu, interaktif hıfz sistemi, yapay zeka destekli Kur'an dinleme doğrulaması ve günlük zikirler.",
+      "Sıla İslami Uygulamasını indirin: doğru namaz vakitleri, otomatik ezan, Kur'an okuyucu, interaktif hıfz, yapay zeka ile tilavet kontrolü ve günlük zikirler.",
     heroTitle: "Sıla İslami Uygulaması",
     heroSubtitle: "Eksiksiz Namaz Vakitleri ve Kur'an Yardımcınız",
     heroDescription:
