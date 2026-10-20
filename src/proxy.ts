@@ -6,6 +6,11 @@ const locales = ["en", "ar", "tr"];
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Handle Chrome DevTools workspace inspection gracefully
+  if (pathname.includes("com.chrome.devtools.json")) {
+    return NextResponse.json({}, { status: 200 });
+  }
+
   // Skip static files and API routes
   const skipPaths = [
     "/llms.txt",
@@ -23,8 +28,14 @@ export function proxy(request: NextRequest) {
 
   if (skipPaths.some((p) => pathname === p)) return;
   
-  // Skip any path that starts with /apps/ or /case-studies/ (for static assets like icons & images)
-  if (pathname.startsWith("/apps/") || pathname.startsWith("/case-studies/")) return;
+  // Skip any path that starts with /apps/ or /case-studies/ or /.well-known/ (for static assets)
+  if (
+    pathname.startsWith("/apps/") ||
+    pathname.startsWith("/case-studies/") ||
+    pathname.startsWith("/.well-known/")
+  ) {
+    return;
+  }
 
   // Check if there is any supported locale in the pathname
   const pathnameHasLocale = locales.some(
@@ -40,6 +51,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|static|api|apps|case-studies|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|rss\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_FullStack_NodeJS_CV\\.pdf|Hamed_Mohamed_CV\\.pdf).*)",
+    "/((?!_next|static|api|apps|case-studies|\\.well-known|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|rss\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|favicon\\.ico|Hamed_Mohamed_FullStack_NodeJS_CV\\.pdf|Hamed_Mohamed_CV\\.pdf).*)",
   ],
 };
