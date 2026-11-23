@@ -69,8 +69,18 @@ export default async function ServicePage({
         "@type": "BreadcrumbList",
         "@id": `${siteUrl}/${lang}/services/${slug}/#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/${lang}` },
-          { "@type": "ListItem", position: 2, name: "Hire", item: `${siteUrl}/${lang}/hire` },
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: lang === "ar" ? "الرئيسية" : lang === "tr" ? "Ana Sayfa" : "Home",
+            item: `${siteUrl}/${lang}`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: lang === "ar" ? "وظّفني" : lang === "tr" ? "Hizmetler" : "Hire",
+            item: `${siteUrl}/${lang}/hire`,
+          },
           {
             "@type": "ListItem",
             position: 3,

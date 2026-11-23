@@ -1,107 +1,54 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/seo-config";
 
 export default function robots(): MetadataRoute.Robots {
+  const disallow = ["/api/"];
+
   return {
     rules: [
+      // Traditional Search & Live AI Retrieval / Citation Crawlers
+      {
+        userAgent: [
+          "Googlebot",
+          "Bingbot",
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "PerplexityBot",
+          "Perplexity-User",
+          "Claude-SearchBot",
+          "Claude-User",
+          "Applebot",
+          "DuckAssistBot",
+        ],
+        allow: "/",
+        disallow,
+      },
+      // AI Model Training Crawlers (intentionally allowed for public portfolio & entity discovery)
+      {
+        userAgent: [
+          "GPTBot",
+          "ClaudeBot",
+          "Google-Extended",
+          "Applebot-Extended",
+          "CCBot",
+          "Meta-ExternalAgent",
+          "Amazonbot",
+          "Bytespider",
+          "cohere-ai",
+          "Diffbot",
+          "MistralBot",
+          "DeepSeekBot",
+        ],
+        allow: "/",
+        disallow,
+      },
+      // Fallback wildcard rule MUST come last
       {
         userAgent: "*",
         allow: "/",
-      },
-      // Explicitly allow AI search/retrieval bots & LLM agents for citation visibility
-      {
-        userAgent: "GPTBot",
-        allow: "/",
-      },
-      {
-        userAgent: "OAI-SearchBot",
-        allow: "/",
-      },
-      {
-        userAgent: "ChatGPT-User",
-        allow: "/",
-      },
-      {
-        userAgent: "ClaudeBot",
-        allow: "/",
-      },
-      {
-        userAgent: "Claude-SearchBot",
-        allow: "/",
-      },
-      {
-        userAgent: "Claude-User",
-        allow: "/",
-      },
-      {
-        userAgent: "PerplexityBot",
-        allow: "/",
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: "/",
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-      },
-      {
-        userAgent: "Applebot",
-        allow: "/",
-      },
-      {
-        userAgent: "Applebot-Extended",
-        allow: "/",
-      },
-      {
-        userAgent: "Amazonbot",
-        allow: "/",
-      },
-      {
-        userAgent: "Meta-ExternalAgent",
-        allow: "/",
-      },
-      {
-        userAgent: "FacebookBot",
-        allow: "/",
-      },
-      {
-        userAgent: "Bytespider",
-        allow: "/",
-      },
-      {
-        userAgent: "CCBot",
-        allow: "/",
-      },
-      {
-        userAgent: "cohere-ai",
-        allow: "/",
-      },
-      {
-        userAgent: "Diffbot",
-        allow: "/",
-      },
-      {
-        userAgent: "Omgilibot",
-        allow: "/",
-      },
-      {
-        userAgent: "DuckAssistBot",
-        allow: "/",
-      },
-      {
-        userAgent: "MistralBot",
-        allow: "/",
-      },
-      {
-        userAgent: "DeepSeekBot",
-        allow: "/",
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
+        disallow,
       },
     ],
-    sitemap: "https://www.hamedmohamed.dev/sitemap.xml",
-    host: "https://www.hamedmohamed.dev",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

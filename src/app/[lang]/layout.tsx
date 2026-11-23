@@ -50,110 +50,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       ? "Node.js, React ve Uygulama Güvenliği alanında uzmanlaşmış Full-Stack Mühendisi."
       : "Full-Stack Engineer specializing in Node.js, React, and App Security. Built production systems for 2,000+ users with 98% latency reduction. NodeSecure contributor.",
 
-    keywords: [
-      // English Names & Variations
-      "Hamed Mohamed",
-      "Hamed Mohamed Abdelalim",
-      "Hamed Mohamed Abdelalim Kamel",
-      "Hamed",
-      "Hamed the Egyptian",
-      
-      // Arabic Names & Variations
-      "حامد",
-      "حامد محمد",
-      "حامد محمد عبد العليم",
-      "حامد محمد عبدالعليم",
-      "حامد محمد عبدالعليم كامل",
-      "حامد المصري",
-      "حامد اللي درس في تركيا",
-      "حامد اللي درس ف تركيا",
-      "مبرمج مصري في تركيا",
-      "حامد محمد مصر",
-      "حامد محمد المنيا",
-      "حامد محمد قريه ابشاق",
-      "حامد محمد السعوديه",
-      "حامد محمد جده",
-      "حامد محمد الرياض",
-      "مبرمج المنيا",
-      "مبرمج ابشاق",
-
-      // Titles (English)
-      "Full-Stack Engineer",
-      "Full Stack Developer",
-      "Node.js Developer",
-      "React Developer",
-      "Backend Engineer",
-      "Security Researcher",
-      "Application Security Engineer",
-      "Software Engineer",
-      "Performance Engineer",
-      
-      // Titles (Arabic)
-      "مطور ويب",
-      "مطور برمجيات متكامل",
-      "مطور نود جي اس",
-      "مطور رياكت",
-      "مهندس برمجيات",
-      "باحث أمني",
-      "مهندس أمن سيبراني",
-      "مبرمج نود",
-      "مبرمج باك اند",
-      
-      // Technologies & Skills
-      "Node.js",
-      "React.js",
-      "Next.js",
-      "Express.js",
-      "TypeScript",
-      "JavaScript",
-      "PostgreSQL",
-      "Redis",
-      "MongoDB",
-      "MySQL",
-      "Python",
-      "Java",
-      "C#",
-      "Tailwind CSS",
-      "Redux",
-      "SAST",
-      "DAST",
-      "Circuit Breaker",
-      "Opossum",
-      "SSRF",
-      "AST Analysis",
-      "Threat Modeling",
-      "Docker",
-      "CI/CD",
-      
-      // Projects & Organizations
-      "NodeSecure",
-      "DragonSploit",
-      "QR Attendance System",
-      "Tokat Gaziosmanpaşa University",
-      "Open Source Contributor",
-
-      // Sila App
-      "Sila App",
-      "Sıla",
-      "تطبيق صلة",
-      "صلة",
-      "تطبيق اسلامي",
-      "مواقيت الصلاة",
-      "تطبيق قران",
-      "تطبيق قرآن",
-      "تسميع القران",
-      "حفظ القران",
-      "تطبيق اذكار",
-      "أذكار",
-      "Islamic app",
-      "prayer times app",
-      "Quran app",
-      "Quran memorization",
-      "namaz vakitleri",
-      "Kuran uygulaması",
-      "Flutter Islamic app",
-    ],
-
     authors: [
       {
         name: "Hamed Mohamed Abdelalim",
@@ -329,7 +225,11 @@ export default async function LangLayout({
         ],
         email: "hamed.m.abdelalim@gmail.com",
         telephone: "+905060453906",
-        description: "Hamed Mohamed (حامد محمد) is an Egyptian Full-Stack Engineer and Security Researcher who studied in Turkey. He specializes in Node.js, React, and building highly secure, scalable backend architectures. He shipped a high-throughput QR attendance platform serving 2,000+ users across 6 faculties with 98% latency reduction. He is an active open-source contributor to the NodeSecure ecosystem with 7 merged pull requests.",
+        description: lang === "ar"
+          ? "حامد محمد مهندس برمجيات متكامل (Full-Stack) وباحث أمني متخصص في Node.js وReact وبناء الأنظمة عالية الأداء. طوّر منصة حضور بالـ QR تخدم أكثر من 2000 مستخدم مع تقليل زمن الاستجابة بنسبة 98%، وساهم بـ 7 طلبات دمج في NodeSecure."
+          : lang === "tr"
+          ? "Hamed Mohamed; Node.js, React ve uygulama güvenliği alanında uzmanlaşmış Full-Stack yazılım mühendisidir. 2.000'den fazla kullanıcıya hizmet veren yüksek performanslı QR yoklama platformu geliştirdi (%98 gecikme azaltımı) ve NodeSecure açık kaynak ekosistemine 7 PR ile katkıda bulundu."
+          : "Hamed Mohamed is an Egyptian Full-Stack Engineer and Security Researcher who studied in Turkey. He specializes in Node.js, React, and building highly secure, scalable backend architectures. He shipped a high-throughput QR attendance platform serving 2,000+ users across 6 faculties with 98% latency reduction. He is an active open-source contributor to the NodeSecure ecosystem with 7 merged pull requests.",
         makesOffer: [
           { "@id": `${siteUrl}/#service-fullstack` },
           { "@id": `${siteUrl}/#service-backend` },
@@ -347,7 +247,7 @@ export default async function LangLayout({
         areaServed: "Worldwide",
         availableChannel: {
           "@type": "ServiceChannel",
-          serviceUrl: `${siteUrl}/en#contact`,
+          serviceUrl: `${siteUrl}/${lang}#contact`,
           servicePhone: "+905060453906"
         }
       },
@@ -359,7 +259,12 @@ export default async function LangLayout({
         description: "Scalable backend architecture with Node.js, Express.js, PostgreSQL, Redis, and MongoDB. Performance engineering achieving 98% latency reduction and +6,100% throughput improvement. Circuit Breaker patterns for 99.9% uptime.",
         provider: { "@id": `${siteUrl}/#person` },
         serviceType: "Backend Development",
-        areaServed: "Worldwide"
+        areaServed: "Worldwide",
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: `${siteUrl}/${lang}#contact`,
+          servicePhone: "+905060453906"
+        }
       },
       // Service: Security
       {
@@ -369,7 +274,12 @@ export default async function LangLayout({
         description: "Security-first development with SAST/DAST integration, SSRF prevention, AST analysis, Circuit Breaker patterns, and threat modeling. Active contributor to NodeSecure open-source security ecosystem. Built DragonSploit AI-powered vulnerability scanner.",
         provider: { "@id": `${siteUrl}/#person` },
         serviceType: "Application Security",
-        areaServed: "Worldwide"
+        areaServed: "Worldwide",
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: `${siteUrl}/${lang}#contact`,
+          servicePhone: "+905060453906"
+        }
       },
 
       // WebSite
@@ -378,7 +288,11 @@ export default async function LangLayout({
         "@id": `${siteUrl}/#website`,
         url: siteUrl,
         name: lang === "ar" ? "حامد محمد" : "Hamed Mohamed",
-        description: "Portfolio of Hamed Mohamed Abdelalim — Full-Stack Engineer & Security Researcher specializing in Node.js, React, and Application Security.",
+        description: lang === "ar"
+          ? "الموقع الشخصي لحامد محمد عبدالعليم — مهندس برمجيات متكامل وباحث أمني متخصص في Node.js وReact وأمن التطبيقات."
+          : lang === "tr"
+          ? "Hamed Mohamed Abdelalim portföyü — Node.js, React ve uygulama güvenliği alanında uzmanlaşmış Full-Stack yazılım mühendisi."
+          : "Portfolio of Hamed Mohamed Abdelalim — Full-Stack Engineer & Security Researcher specializing in Node.js, React, and Application Security.",
         inLanguage: ["en", "ar", "tr"],
         publisher: {
           "@id": `${siteUrl}/#person`

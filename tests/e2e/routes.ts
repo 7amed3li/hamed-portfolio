@@ -1,9 +1,9 @@
 /**
  * Route inventory for the site-audit regression suite.
  *
- * HISTORICAL_ROUTES is the 63-route inventory from the original diagnostic
- * audit (3 locales × 21 templates/slugs). It is kept explicit so that a route
- * silently disappearing is reported as a failure instead of being skipped.
+ * HISTORICAL_ROUTES is the 66-route inventory (3 locales × 22 templates/slugs).
+ * It is kept explicit so that a route silently disappearing is reported as a
+ * failure instead of being skipped.
  *
  * The SEO spec additionally re-discovers routes from /sitemap.xml at runtime
  * and asserts that both inventories agree.
@@ -32,6 +32,7 @@ export const CASE_STUDY_SLUGS = [
 ] as const;
 
 export const BLOG_SLUGS = [
+  "from-computer-repair-to-software-engineering",
   "refactoring-production-backend-lessons",
   "how-i-stopped-nodejs-from-freezing",
 ] as const;

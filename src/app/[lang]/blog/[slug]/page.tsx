@@ -73,21 +73,41 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   const siteUrl = "https://www.hamedmohamed.dev";
+  const url = `${siteUrl}/${post.lang}/blog/${resolvedParams.slug}`;
+  const homeLabel = post.lang === 'ar' ? 'الرئيسية' : post.lang === 'tr' ? 'Ana Sayfa' : 'Home';
+  const blogLabel = post.lang === 'ar' ? 'المدونة' : 'Blog';
 
   // Schema.org JSON-LD
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.description,
-    author: [{
-      '@type': 'Person',
-      name: post.author,
-      url: siteUrl
-    }],
-    datePublished: post.date,
-    dateModified: post.updated || post.date,
-    image: post.coverImage ? [`${siteUrl}${post.coverImage}`] : [],
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${url}/#article`,
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': url,
+        },
+        inLanguage: post.lang,
+        headline: post.title,
+        description: post.description,
+        keywords: post.tags.join(', '),
+        author: { '@id': `${siteUrl}/#person` },
+        publisher: { '@id': `${siteUrl}/#person` },
+        datePublished: post.date,
+        dateModified: post.updated || post.date,
+        image: post.coverImage ? [`${siteUrl}${post.coverImage}`] : [],
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}/#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: homeLabel, item: `${siteUrl}/${post.lang}` },
+          { '@type': 'ListItem', position: 2, name: blogLabel, item: `${siteUrl}/${post.lang}/blog` },
+          { '@type': 'ListItem', position: 3, name: post.title, item: url },
+        ],
+      },
+    ],
   }
 
   return (

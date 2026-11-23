@@ -2,11 +2,11 @@ import type { MetadataRoute } from "next";
 import { servicesData } from "@/lib/services-data";
 import { caseStudiesData } from "@/lib/case-studies-data";
 import { posts } from "#site/content";
+import { CONTENT_LAST_MODIFIED, SITE_URL } from "@/lib/seo-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.hamedmohamed.dev";
+  const baseUrl = SITE_URL;
   const locales = ["en", "ar", "tr"];
-  const now = new Date();
 
   const entries: MetadataRoute.Sitemap = [];
 
@@ -14,9 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     entries.push({
       url: `${baseUrl}/${locale}`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 1,
+      lastModified: new Date(CONTENT_LAST_MODIFIED.home),
       alternates: {
         languages: {
           "x-default": `${baseUrl}/en`,
@@ -27,9 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     entries.push({
       url: `${baseUrl}/${locale}/hire`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.95,
+      lastModified: new Date(CONTENT_LAST_MODIFIED.hire),
       alternates: {
         languages: {
           "x-default": `${baseUrl}/en/hire`,
@@ -40,9 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     entries.push({
       url: `${baseUrl}/${locale}/faq`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
+      lastModified: new Date(CONTENT_LAST_MODIFIED.faq),
       alternates: {
         languages: {
           "x-default": `${baseUrl}/en/faq`,
@@ -56,15 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const service of currentServices) {
       entries.push({
         url: `${baseUrl}/${locale}/services/${service.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.85,
+        lastModified: new Date(CONTENT_LAST_MODIFIED.services),
         alternates: {
           languages: {
             "x-default": `${baseUrl}/en/services/${service.slug}`,
-            "en": `${baseUrl}/en/services/${service.slug}`,
-            "ar": `${baseUrl}/ar/services/${service.slug}`,
-            "tr": `${baseUrl}/tr/services/${service.slug}`,
+            en: `${baseUrl}/en/services/${service.slug}`,
+            ar: `${baseUrl}/ar/services/${service.slug}`,
+            tr: `${baseUrl}/tr/services/${service.slug}`,
           },
         },
       });
@@ -75,9 +67,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const cs of currentCaseStudies) {
       entries.push({
         url: `${baseUrl}/${locale}/case-studies/${cs.slug}`,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.8,
+        lastModified: new Date(CONTENT_LAST_MODIFIED.caseStudies),
+        ...(cs.images && cs.images.length > 0
+          ? { images: cs.images.map((img) => `${baseUrl}${img.src}`) }
+          : {}),
         alternates: {
           languages: {
             "x-default": `${baseUrl}/en/case-studies/${cs.slug}`,
@@ -90,9 +83,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // App pages
     entries.push({
       url: `${baseUrl}/${locale}/apps/sila`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.85,
+      lastModified: new Date(CONTENT_LAST_MODIFIED.sila),
+      images: [`${baseUrl}/apps/sila/icon.png`],
       alternates: {
         languages: {
           "x-default": `${baseUrl}/en/apps/sila`,
@@ -101,12 +93,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     });
 
+    // Blog Post Pages & latest post date for blog index
+    const localePosts = posts.filter((post) => post.published && post.lang === locale);
+    const latestPostDate = localePosts.reduce((latest, p) => {
+      const d = new Date(p.updated || p.date);
+      return d > latest ? d : latest;
+    }, new Date("2026-10-15"));
+
     // Blog Main Page
     entries.push({
       url: `${baseUrl}/${locale}/blog`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
+      lastModified: latestPostDate,
       alternates: {
         languages: {
           "x-default": `${baseUrl}/en/blog`,
@@ -115,21 +112,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     });
 
-    // Blog Post Pages
-    const localePosts = posts.filter(post => post.published && post.lang === locale);
     for (const post of localePosts) {
-      const slug = post.slug.split('/').pop() || post.slug;
+      const slug = post.slug.split("/").pop() || post.slug;
       entries.push({
         url: `${baseUrl}/${locale}/blog/${slug}`,
         lastModified: new Date(post.updated || post.date),
-        changeFrequency: "monthly",
-        priority: 0.8,
+        ...(post.coverImage ? { images: [`${baseUrl}${post.coverImage}`] } : {}),
         alternates: {
           languages: {
             "x-default": `${baseUrl}/en/blog/${slug}`,
-            "en": `${baseUrl}/en/blog/${slug}`,
-            "ar": `${baseUrl}/ar/blog/${slug}`,
-            "tr": `${baseUrl}/tr/blog/${slug}`,
+            en: `${baseUrl}/en/blog/${slug}`,
+            ar: `${baseUrl}/ar/blog/${slug}`,
+            tr: `${baseUrl}/tr/blog/${slug}`,
           },
         },
       });
