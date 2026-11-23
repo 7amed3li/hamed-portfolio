@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/apps",
+        destination: "/en/apps/sila",
+        permanent: true,
+      },
+      {
         source: "/:lang(en|ar|tr)/apps",
         destination: "/:lang/apps/sila",
         permanent: true,
