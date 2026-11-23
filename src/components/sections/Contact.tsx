@@ -1,8 +1,11 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { Check, Copy, Send } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
+import { tactileButtonClasses } from "@/components/ui/TactilePrimitives";
 
 export function Contact() {
   const ref = useRef(null);
@@ -53,39 +56,39 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-40 px-8 md:px-20 lg:px-28 border-t border-border">
+    <section id="contact" className="py-16 md:py-24 lg:py-28 px-5 sm:px-8 md:px-20 lg:px-28 border-t border-border overflow-x-clip">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-28"
+          className="mb-8 md:mb-12"
         >
-          <p className="section-label mb-8">
+          <p className="section-label mb-4">
             <span className="section-line" />
             {tr.label}
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight uppercase leading-tight text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase leading-tight text-foreground">
             {tr.heading1}<br />
             <span className="accent-text">{tr.heading2}</span>
           </h2>
         </motion.div>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-20">
-          {/* Left — info */}
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+          {/* Left: info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="space-y-10"
+            className="space-y-8 sm:space-y-10"
           >
             <p className="text-base leading-relaxed text-muted-foreground">
               {tr.desc}
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {tr.info.map(({ label, value, href }) => (
-                <div key={label} className="flex gap-4 sm:gap-8 py-5 border-b border-border min-w-0">
+                <div key={label} className="flex gap-4 sm:gap-8 py-4 sm:py-5 border-b border-border min-w-0">
                   <span className="text-xs font-mono uppercase tracking-widest w-20 flex-shrink-0 mt-0.5 text-muted-foreground">{label}</span>
                   {href ? (
                     <a href={href} className="text-sm transition-colors text-foreground hover:text-accent break-all sm:break-normal min-w-0">
@@ -110,7 +113,8 @@ export function Contact() {
                   <div className="w-2.5 h-2.5 rounded-full bg-border" />
                   <span className="ml-2 text-[10px] uppercase tracking-widest opacity-50">Terminal</span>
                 </div>
-                <span className={`text-[10px] uppercase tracking-widest transition-colors ${copied ? 'text-accent' : 'opacity-0 group-hover:opacity-50'}`}>
+                <span className={`inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest transition-colors ${copied ? 'text-accent' : 'opacity-60 sm:opacity-0 sm:group-hover:opacity-60'}`}>
+                  {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                   {copied ? tr.copied : tr.copyHint}
                 </span>
               </div>
@@ -128,27 +132,35 @@ export function Contact() {
             </div>
 
             {/* Social links */}
-            <div className="flex gap-4">
+            <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4">
               <a
                 href="https://github.com/7amed3li"
                 target="_blank"
                 rel="noreferrer"
-                className="px-5 py-3 text-xs font-mono uppercase tracking-widest transition-colors border border-border text-muted-foreground hover:border-accent hover:text-accent"
+                className={tactileButtonClasses(
+                  "outline",
+                  "flex items-center justify-center gap-2 px-5 py-3 text-xs tracking-widest"
+                )}
               >
-                GitHub
+                <FaGithub className="w-3.5 h-3.5 shrink-0" />
+                <span>GitHub</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/h-amedmohamed/"
                 target="_blank"
                 rel="noreferrer"
-                className="px-5 py-3 text-xs font-mono uppercase tracking-widest transition-colors border border-border text-muted-foreground hover:border-accent hover:text-accent"
+                className={tactileButtonClasses(
+                  "outline",
+                  "flex items-center justify-center gap-2 px-5 py-3 text-xs tracking-widest"
+                )}
               >
-                LinkedIn
+                <FaLinkedin className="w-3.5 h-3.5 shrink-0" />
+                <span>LinkedIn</span>
               </a>
             </div>
           </motion.div>
 
-          {/* Right — form */}
+          {/* Right: form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -175,7 +187,7 @@ export function Contact() {
                 <p className="text-sm text-muted-foreground mb-6">{tr.form.errorSub}</p>
                 <button
                   onClick={() => setFormState('idle')}
-                  className="px-6 py-2 text-xs font-mono uppercase tracking-widest transition-colors border border-border text-foreground hover:border-accent hover:text-accent"
+                  className={tactileButtonClasses("outline", "px-6 py-2.5 text-xs tracking-widest")}
                 >
                   {lang === 'ar' ? 'إعادة المحاولة' : lang === 'tr' ? 'Tekrar Dene' : 'Try Again'}
                 </button>
@@ -197,7 +209,7 @@ export function Contact() {
                       required
                       disabled={formState === 'submitting'}
                       placeholder={placeholder}
-                      className="w-full px-4 py-3 text-sm outline-none transition-colors bg-surface border border-border text-foreground focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full px-4 py-3 text-sm outline-none transition-colors bg-surface border border-border text-foreground focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed rounded-[6px]"
                     />
                   </div>
                 ))}
@@ -212,13 +224,16 @@ export function Contact() {
                     required
                     disabled={formState === 'submitting'}
                     placeholder={tr.form.messagePlaceholder}
-                    className="w-full px-4 py-3 text-sm outline-none resize-none transition-colors bg-surface border border-border text-foreground focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 text-sm outline-none resize-none transition-colors bg-surface border border-border text-foreground focus:border-accent disabled:opacity-50 disabled:cursor-not-allowed rounded-[6px]"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={formState === 'submitting'}
-                  className="w-full py-4 text-sm flex items-center justify-center font-mono uppercase tracking-widest font-bold transition-colors bg-accent text-black hover:bg-foreground disabled:opacity-70 disabled:cursor-not-allowed"
+                  className={tactileButtonClasses(
+                    "primary",
+                    "w-full py-4 text-sm flex items-center justify-center gap-2 tracking-widest disabled:opacity-70 disabled:cursor-not-allowed"
+                  )}
                 >
                   {formState === 'submitting' ? (
                     <span className="flex items-center gap-3">
@@ -228,7 +243,12 @@ export function Contact() {
                       </svg>
                       {tr.form.submitting}
                     </span>
-                  ) : tr.form.submit}
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 shrink-0" />
+                      <span>{tr.form.submit}</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}

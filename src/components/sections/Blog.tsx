@@ -19,32 +19,32 @@ export function Blog({ initialPosts = [] }: BlogProps) {
   const tr = t[lang].blog;
 
   return (
-    <section id="blog" className="py-40 px-8 md:px-20 lg:px-28 border-t border-border">
+    <section id="blog" className="py-16 md:py-24 lg:py-28 px-5 sm:px-8 md:px-20 lg:px-28 border-t border-border overflow-x-clip">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-28 flex justify-between items-end"
+          className="mb-8 md:mb-12 flex justify-between items-end"
           ref={ref}
         >
           <div>
-            <p className="section-label mb-8">
+            <p className="section-label mb-4">
               <span className="section-line" />
               {tr.label}
             </p>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight uppercase leading-tight text-foreground">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight uppercase leading-tight text-foreground">
               {tr.heading1}<br />
               <span className="accent-text">{tr.heading2}</span>
             </h2>
           </div>
-          <Link 
+          <Link
             href={`/${lang}/blog`}
             className="hidden md:flex items-center gap-2 text-sm font-mono uppercase tracking-widest hover:text-accent transition-colors"
           >
             {lang === "ar" ? "عرض جميع المقالات" : lang === "tr" ? "Tüm yazıları görüntüle" : "View all posts"}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="rtl:rotate-180">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
         </motion.div>
@@ -66,8 +66,8 @@ export function Blog({ initialPosts = [] }: BlogProps) {
                 <Link href={post.permalink!} className="flex flex-col h-full">
                   {post.coverImage ? (
                     <div className="h-48 w-full overflow-hidden border-b border-border relative">
-                      <Image 
-                        src={post.coverImage} 
+                      <Image
+                        src={post.coverImage}
                         alt={post.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -76,14 +76,14 @@ export function Blog({ initialPosts = [] }: BlogProps) {
                     </div>
                   ) : (
                     <div className="h-48 w-full border-b border-border flex items-center justify-center bg-[#0a0a0a] group-hover:bg-border/20 transition-colors">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-muted-foreground opacity-20">
-                          <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M3 14.5L7.5 10L13.5 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M11.5 14L14.5 11L21 17.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" className="text-muted-foreground opacity-20">
+                        <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M3 14.5L7.5 10L13.5 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M11.5 14L14.5 11L21 17.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
                     </div>
                   )}
-                  
+
                   <div className="p-6 flex flex-col flex-1">
                     <div className="flex items-center gap-4 text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-4">
                       <span>{new Date(post.date).toLocaleDateString(lang === "ar" ? "ar-EG" : lang === "tr" ? "tr-TR" : "en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}</span>
@@ -94,17 +94,17 @@ export function Blog({ initialPosts = [] }: BlogProps) {
                         </>
                       )}
                     </div>
-                    
+
                     <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors line-clamp-2">
                       {post.title}
                     </h3>
-                    
+
                     <p className="text-sm text-muted-foreground mb-6 line-clamp-3 flex-1">
                       {post.description}
                     </p>
-                    
-                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
-                      <div className="flex gap-2">
+
+                    <div className="flex flex-wrap items-center justify-between gap-2 mt-auto pt-4 border-t border-border">
+                      <div className="flex flex-wrap gap-2">
                         {post.tags.slice(0, 2).map(tag => (
                           <span key={tag} className="text-[10px] font-mono text-muted-foreground bg-border/50 px-2 py-1 rounded-md">
                             #{tag}
@@ -113,8 +113,8 @@ export function Blog({ initialPosts = [] }: BlogProps) {
                       </div>
                       <span className="text-xs font-mono text-accent flex items-center gap-2 group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1">
                         {tr.readMore}
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="rtl:rotate-180">
+                          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </span>
                     </div>
@@ -124,15 +124,15 @@ export function Blog({ initialPosts = [] }: BlogProps) {
             ))}
           </div>
         )}
-        
-        <div className="mt-12 text-center md:hidden">
-          <Link 
+
+        <div className="mt-10 sm:mt-12 text-center md:hidden">
+          <Link
             href={`/${lang}/blog`}
             className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest hover:text-accent transition-colors"
           >
             {lang === "ar" ? "عرض جميع المقالات" : lang === "tr" ? "Tüm yazıları görüntüle" : "View all posts"}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="rtl:rotate-180">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
         </div>

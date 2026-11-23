@@ -48,13 +48,13 @@ export const SILA_PROMO_VIDEO_URL = "https://www.youtube.com/embed/9KujvcqH184";
 
 export const silaAppData: Record<string, SilaAppData> = {
   en: {
-    metaTitle: "Sila Islamic App — Prayer Times, Quran & AI Hifz Companion",
+    metaTitle: "Sila Islamic App | Prayer Times, Quran & AI Hifz Companion",
     metaDescription:
       "Download Sila Islamic App: prayer times with automatic Adhan, Quran reader, interactive Hifz, AI recitation verification, daily Azkar, and Ibadah tracking.",
     heroTitle: "Sila Islamic App",
     heroSubtitle: "Your Complete Prayer Times & Quran Companion",
     heroDescription:
-      "Prayer times with automatic Adhan, Quran reader, interactive Hifz memorization, AI-powered recitation verification, daily Azkar, and Ibadah tracking — all in one beautifully crafted app.",
+      "Prayer times with automatic Adhan, Quran reader, interactive Hifz memorization, AI-powered recitation verification, daily Azkar, and Ibadah tracking, all in one beautifully crafted app.",
     downloadLabel: "Download APK",
     watchDemoLabel: "Watch Demo",
     watchPromoLabel: "Watch Promo",
@@ -66,46 +66,46 @@ export const silaAppData: Record<string, SilaAppData> = {
     featuresHeading: "Everything You Need",
     features: [
       {
-        icon: "🕌",
+        icon: "prayer",
         title: "Prayer Times & Adhan",
         description:
           "Accurate prayer times based on your GPS location with automatic Adhan notifications. Supports multiple calculation methods.",
       },
       {
-        icon: "📖",
+        icon: "quran",
         title: "Quran Reader",
         description:
           "Full Quran with beautiful Uthmanic script, smooth page navigation, and comfortable reading experience.",
       },
       {
-        icon: "🧠",
+        icon: "hifz",
         title: "Interactive Hifz System",
         description:
-          "Memorize the Quran using the Interactive Shadow Method — a proven technique that guides you word by word.",
+          "Memorize the Quran using the Interactive Shadow Method, a proven technique that guides you word by word.",
       },
       {
-        icon: "🎤",
+        icon: "tasmi",
         title: "AI-Powered Tasmi",
         description:
           "Recite what you've memorized and let the AI verify your accuracy in real-time using Speech-to-Text technology.",
       },
       {
-        icon: "📿",
+        icon: "azkar",
         title: "Azkar & Daily Wird",
         description:
           "Morning and evening Azkar with counter, plus customizable daily Wird to build consistent worship habits.",
       },
       {
-        icon: "📊",
+        icon: "tracker",
         title: "Ibadah Tracker",
         description:
-          "Track your daily worship activities — prayers, Quran reading, Azkar — and monitor your spiritual progress.",
+          "Track your daily worship activities (prayers, Quran reading, Azkar) and monitor your spiritual progress.",
       },
     ],
     videosLabel: "See It In Action",
     videosHeading: "Sila Islamic App Preview",
-    demoVideoTitle: "Sila Islamic App Demo — Full Walkthrough",
-    promoVideoTitle: "Sila Islamic App — Official Promo",
+    demoVideoTitle: "Sila Islamic App Demo. Full Walkthrough",
+    promoVideoTitle: "Sila Islamic App. Official Promo",
     techLabel: "Built With",
     techHeading: "Technology Stack",
     techStack: [
@@ -130,13 +130,13 @@ export const silaAppData: Record<string, SilaAppData> = {
   },
 
   ar: {
-    metaTitle: "تطبيق صلة الإسلامي — مواقيت الصلاة، القرآن، والتسميع بالذكاء الاصطناعي",
+    metaTitle: "تطبيق صلة الإسلامي | مواقيت الصلاة، القرآن، والتسميع بالذكاء الاصطناعي",
     metaDescription:
       "حمّل تطبيق صلة الإسلامي المجاني: مواقيت صلاة دقيقة مع أذان تلقائي، قارئ القرآن الكريم، حفظ تفاعلي، تسميع بالذكاء الاصطناعي، وأذكار الصباح والمساء.",
     heroTitle: "تطبيق صِلَة",
-    heroSubtitle: "تطبيق صلة الإسلامي — رفيقك لصلاتك وقرآنك",
+    heroSubtitle: "تطبيق صلة الإسلامي: رفيقك لصلاتك وقرآنك",
     heroDescription:
-      "مواقيت الصلاة مع أذان تلقائي، قراءة القرآن الكريم، حفظ تفاعلي بطريقة الظل، تسميع بالذكاء الاصطناعي، أذكار يومية، وتتبع العبادات — كل ذلك في تطبيق واحد جميل.",
+      "مواقيت الصلاة مع أذان تلقائي، قراءة القرآن الكريم، حفظ تفاعلي بطريقة الظل، تسميع بالذكاء الاصطناعي، أذكار يومية، وتتبع العبادات، كل ذلك في تطبيق واحد جميل.",
     downloadLabel: "تحميل التطبيق",
     watchDemoLabel: "شاهد الديمو",
     watchPromoLabel: "شاهد الإعلان",
@@ -148,40 +148,40 @@ export const silaAppData: Record<string, SilaAppData> = {
     featuresHeading: "كل ما تحتاجه في تطبيق واحد",
     features: [
       {
-        icon: "🕌",
+        icon: "prayer",
         title: "مواقيت الصلاة والأذان",
         description:
           "مواقيت صلاة دقيقة بناءً على موقعك الجغرافي مع إشعارات أذان تلقائية. يدعم طرق حساب متعددة.",
       },
       {
-        icon: "📖",
+        icon: "quran",
         title: "قارئ القرآن الكريم",
         description:
           "القرآن الكريم كاملاً بخط عثماني جميل، مع تنقل سلس بين الصفحات وتجربة قراءة مريحة.",
       },
       {
-        icon: "🧠",
+        icon: "hifz",
         title: "نظام الحفظ التفاعلي",
         description:
-          "احفظ القرآن الكريم بطريقة الظل التفاعلية — تقنية مثبتة ترشدك كلمة بكلمة.",
+          "احفظ القرآن الكريم بطريقة الظل التفاعلية، تقنية مثبتة ترشدك كلمة بكلمة.",
       },
       {
-        icon: "🎤",
+        icon: "tasmi",
         title: "تسميع بالذكاء الاصطناعي",
         description:
           "سمّع ما حفظته ودع الذكاء الاصطناعي يتحقق من دقتك في الوقت الفعلي باستخدام تقنية تحويل الكلام إلى نص.",
       },
       {
-        icon: "📿",
+        icon: "azkar",
         title: "الأذكار والورد اليومي",
         description:
           "أذكار الصباح والمساء مع عدّاد، بالإضافة إلى ورد يومي قابل للتخصيص لبناء عادات عبادة ثابتة.",
       },
       {
-        icon: "📊",
+        icon: "tracker",
         title: "تتبع العبادات",
         description:
-          "تتبع عباداتك اليومية — الصلوات، قراءة القرآن، الأذكار — وراقب تقدمك الروحي.",
+          "تتبع عباداتك اليومية (الصلوات، قراءة القرآن، الأذكار) وراقب تقدمك الروحي.",
       },
     ],
     videosLabel: "شاهد التطبيق",
@@ -212,13 +212,13 @@ export const silaAppData: Record<string, SilaAppData> = {
   },
 
   tr: {
-    metaTitle: "Sıla İslami Uygulaması — Namaz Vakitleri, Kur'an ve Yapay Zeka Hıfz",
+    metaTitle: "Sıla İslami Uygulaması | Namaz Vakitleri, Kur'an ve Yapay Zeka Hıfz",
     metaDescription:
       "Sıla İslami Uygulamasını indirin: doğru namaz vakitleri, otomatik ezan, Kur'an okuyucu, interaktif hıfz, yapay zeka ile tilavet kontrolü ve günlük zikirler.",
     heroTitle: "Sıla İslami Uygulaması",
     heroSubtitle: "Eksiksiz Namaz Vakitleri ve Kur'an Yardımcınız",
     heroDescription:
-      "Otomatik ezanlı namaz vakitleri, Kur'an okuyucu, interaktif hıfz ezberleme, yapay zeka destekli tilavet doğrulama, günlük zikirler ve ibadet takibi — hepsi güzel tasarlanmış tek bir uygulamada.",
+      "Otomatik ezanlı namaz vakitleri, Kur'an okuyucu, interaktif hıfz ezberleme, yapay zeka destekli tilavet doğrulama, günlük zikirler ve ibadet takibi, hepsi güzel tasarlanmış tek bir uygulamada.",
     downloadLabel: "APK İndir",
     watchDemoLabel: "Demoyu İzle",
     watchPromoLabel: "Tanıtımı İzle",
@@ -230,46 +230,46 @@ export const silaAppData: Record<string, SilaAppData> = {
     featuresHeading: "İhtiyacınız Olan Her Şey",
     features: [
       {
-        icon: "🕌",
+        icon: "prayer",
         title: "Namaz Vakitleri ve Ezan",
         description:
           "GPS konumunuza dayalı doğru namaz vakitleri ve otomatik ezan bildirimleri. Birden fazla hesaplama yöntemini destekler.",
       },
       {
-        icon: "📖",
+        icon: "quran",
         title: "Kur'an Okuyucu",
         description:
           "Güzel Osmanlı hattıyla tam Kur'an, akıcı sayfa geçişleri ve konforlu okuma deneyimi.",
       },
       {
-        icon: "🧠",
+        icon: "hifz",
         title: "İnteraktif Hıfz Sistemi",
         description:
-          "İnteraktif Gölge Yöntemi ile Kur'an ezberleyin — sizi kelime kelime yönlendiren kanıtlanmış bir teknik.",
+          "İnteraktif Gölge Yöntemi ile Kur'an ezberleyin, sizi kelime kelime yönlendiren kanıtlanmış bir teknik.",
       },
       {
-        icon: "🎤",
+        icon: "tasmi",
         title: "Yapay Zeka Destekli Dinleme",
         description:
           "Ezberlediğinizi okuyun ve yapay zekanın konuşmadan metne teknolojisi ile doğruluğunuzu gerçek zamanlı olarak doğrulamasına izin verin.",
       },
       {
-        icon: "📿",
+        icon: "azkar",
         title: "Zikirler ve Günlük Vird",
         description:
           "Sayaçlı sabah ve akşam zikirleri, ayrıca tutarlı ibadet alışkanlıkları oluşturmak için özelleştirilebilir günlük vird.",
       },
       {
-        icon: "📊",
+        icon: "tracker",
         title: "İbadet Takipçisi",
         description:
-          "Günlük ibadetlerinizi takip edin — namazlar, Kur'an okuma, zikirler — ve manevi ilerlemenizi izleyin.",
+          "Günlük ibadetlerinizi takip edin (namazlar, Kur'an okuma, zikirler) ve manevi ilerlemenizi izleyin.",
       },
     ],
     videosLabel: "Uygulamayı Görün",
     videosHeading: "Sıla İslami Uygulama Önizlemesi",
-    demoVideoTitle: "Sıla İslami Uygulaması Demosu — Tam İnceleme",
-    promoVideoTitle: "Sıla İslami Uygulaması — Resmi Tanıtım",
+    demoVideoTitle: "Sıla İslami Uygulaması Demosu. Tam İnceleme",
+    promoVideoTitle: "Sıla İslami Uygulaması. Resmi Tanıtım",
     techLabel: "Kullanılan Teknolojiler",
     techHeading: "Teknoloji Yığını",
     techStack: [

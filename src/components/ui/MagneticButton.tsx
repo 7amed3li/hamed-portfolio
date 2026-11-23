@@ -16,6 +16,12 @@ export function MagneticButton({
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (
+      typeof window !== "undefined" &&
+      (window.innerWidth < 768 || window.matchMedia("(hover: none)").matches)
+    ) {
+      return;
+    }
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current!.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);

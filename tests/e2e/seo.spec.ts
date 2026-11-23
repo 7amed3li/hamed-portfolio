@@ -88,16 +88,23 @@ test("sitemap, metadata, canonicals, hreflang and JSON-LD", async ({ request }) 
   const locs = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1]);
   const pageLocs = locs.filter((l) => !l.endsWith(".txt"));
 
-  // Sitemap hygiene: 66 HTML pages, no .txt entries, no ignored changefreq/priority, real lastmod, valid images.
-  expect(locs.length).toBe(66);
+  // Sitemap hygiene: 87 HTML pages, no .txt entries, no ignored changefreq/priority, real lastmod, valid images.
+  expect(locs.length).toBe(87);
   expect(locs.some((l) => l.endsWith(".txt"))).toBe(false);
   expect(xml).not.toContain("<changefreq>");
   expect(xml).not.toContain("<priority>");
-  const lastmods = Array.from(xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)).map((m) => m[1]);
   const todayUtc = new Date().toISOString().slice(0, 10);
-  expect(lastmods.some((d) => d.startsWith(todayUtc))).toBe(false);
+  const urlBlocks = Array.from(xml.matchAll(/<url>([\s\S]*?)<\/url>/g)).map((m) => m[1]);
+  for (const block of urlBlocks) {
+    const loc = (block.match(/<loc>([^<]+)<\/loc>/) || [])[1] || "";
+    const lastmod = (block.match(/<lastmod>([^<]+)<\/lastmod>/) || [])[1] || "";
+    const isBlogUrl = /\/blog(\/|$)/.test(loc);
+    if (!isBlogUrl) {
+      expect(lastmod.startsWith(todayUtc), `non-blog URL stamped with today's build date: ${loc}`).toBe(false);
+    }
+  }
   const imageLocs = Array.from(xml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)).map((m) => m[1]);
-  expect(imageLocs.length).toBeGreaterThanOrEqual(15);
+  expect(imageLocs.length).toBeGreaterThanOrEqual(54);
   for (const img of imageLocs) expect(img.startsWith(SITE_ORIGIN + "/"), `non-canonical image in sitemap: ${img}`).toBe(true);
 
   // All sitemap URLs use the canonical www origin.

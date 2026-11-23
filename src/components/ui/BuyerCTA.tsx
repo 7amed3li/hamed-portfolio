@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { track } from "@vercel/analytics";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { tactileButtonClasses } from "./TactilePrimitives";
 
 type BuyerCTAProps = {
   lang: string;
@@ -73,50 +75,73 @@ export function BuyerCTA({
           rel="noopener noreferrer"
           data-cta="whatsapp"
           onClick={() => handleTrack("cta_whatsapp_click")}
-          className="block w-full text-center py-3 bg-accent text-black font-mono uppercase tracking-widest text-xs font-bold hover:bg-foreground transition-colors"
+          className={tactileButtonClasses(
+            "primary",
+            "flex items-center justify-center gap-2 w-full text-center py-3 px-4 tracking-widest text-xs"
+          )}
         >
-          {labels.whatsapp}
+          <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+          <span>{labels.whatsapp}</span>
         </a>
         <a
           href={mailtoHref}
           data-cta="email"
           onClick={() => handleTrack("cta_email_click")}
-          className="block w-full text-center py-3 border border-border text-foreground font-mono uppercase tracking-widest text-xs hover:border-accent hover:text-accent transition-colors"
+          className={tactileButtonClasses(
+            "outline",
+            "flex items-center justify-center gap-2 w-full text-center py-3 px-4 tracking-widest text-xs"
+          )}
         >
-          {labels.email}
+          <Mail className="w-3.5 h-3.5 shrink-0" />
+          <span>{labels.email}</span>
         </a>
       </div>
     );
   }
 
-  const paddingClass = variant === "bottom" ? "px-10 py-5" : "px-8 py-4";
+  const paddingClass =
+    variant === "bottom"
+      ? "px-2.5 py-3.5 sm:px-9 sm:py-4"
+      : "px-2.5 py-3.5 sm:px-7 sm:py-3.5";
 
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-4 w-full sm:w-auto">
       <a
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
         data-cta="whatsapp"
         onClick={() => handleTrack("cta_whatsapp_click")}
-        className={`${paddingClass} bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors inline-flex items-center gap-2`}
+        className={tactileButtonClasses(
+          "primary",
+          `${paddingClass} tracking-wide sm:tracking-widest text-[11px] sm:text-sm flex sm:inline-flex items-center justify-center text-center leading-tight min-h-[46px] gap-1.5 sm:gap-2`
+        )}
       >
-        {labels.whatsapp}
+        <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+        <span>{labels.whatsapp}</span>
       </a>
       <a
         href={mailtoHref}
         data-cta="email"
         onClick={() => handleTrack("cta_email_click")}
-        className={`${paddingClass} border border-border text-foreground font-mono uppercase tracking-widest text-sm hover:border-accent hover:text-accent transition-colors inline-flex items-center`}
+        className={tactileButtonClasses(
+          "outline",
+          `${paddingClass} tracking-wide sm:tracking-widest text-[11px] sm:text-sm flex sm:inline-flex items-center justify-center text-center leading-tight min-h-[46px] gap-1.5 sm:gap-2`
+        )}
       >
-        {labels.email}
+        <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+        <span>{labels.email}</span>
       </a>
       {secondaryLink && (
         <Link
           href={secondaryLink.href}
-          className={`${paddingClass} border border-border text-muted-foreground font-mono uppercase tracking-widest text-sm hover:border-foreground hover:text-foreground transition-colors inline-flex items-center`}
+          className={tactileButtonClasses(
+            "subtle",
+            `${paddingClass} col-span-2 sm:col-span-1 tracking-wide sm:tracking-widest text-[11px] sm:text-sm flex sm:inline-flex items-center justify-center text-center leading-tight min-h-[46px] gap-1.5 sm:gap-2`
+          )}
         >
-          {secondaryLink.label}
+          <span>{secondaryLink.label}</span>
+          <ArrowUpRight className="w-3.5 h-3.5 shrink-0 rtl:-scale-x-100" />
         </Link>
       )}
     </div>

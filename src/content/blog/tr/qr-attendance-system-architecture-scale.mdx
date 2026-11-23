@@ -1,0 +1,82 @@
+---
+title: "Yüksek Eşzamanlı QR Yoklama Mimarisi: %98 Daha Düşük Gecikme ve 653 req/s Hız"
+description: "6 fakültede 2.000+ kullanıcıya hizmet veren QR yoklama sisteminde Redis önbellekleme, Opossum Circuit Breaker ve 15 saniyelik dinamik QR token mimarisi."
+lang: "tr"
+translationKey: "qr-attendance-system-architecture-scale"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["node", "redis", "postgresql", "architecture", "qr-system"]
+coverImage: "/static/blog/qr-attendance-architecture-cover.png"
+published: true
+featured: false
+summary: "6 fakültede 2.000'den fazla kullanıcıya (günlük ~300 yoklama) hizmet veren üniversite QR yoklama sisteminin 1.53ms yanıt süresi ve %99.9 kesintisiz çalışma mimarisi."
+---
+
+**Özet:** Bir QR yoklama sistemi günlük ortalama trafikten değil, saat 09:00'da 200 öğrencinin aynı 10 saniye içinde projeksiyon ekranını taramasından çöker. **15 saniyede bir yenilenen kriptografik QR token'lar + konum doğrulama**, **Redis önbellekleme** ve **Opossum Circuit Breaker** mimarisiyle API gecikmesini **%98** düşürdük (`94.91ms → 1.53ms`) ve **653 req/s** hıza ulaştık.
+
+---
+
+## QR Yoklama Sistemlerindeki İki Kritik Problem
+
+1. **Fotoğraf Paylaşımı ile Hile:** Sabit bir QR kod 3 saniye içinde fotoğraflanıp sınıfta olmayan arkadaşlara gönderilebilir.
+2. **Eşzamanlı Yük Patlaması (Thundering Herd):** Ders başlangıcında yüzlerce anlık POST isteği PostgreSQL bağlantı havuzunu tüketir ve sistemi kilitler.
+
+---
+
+## Canlı Üretim Ölçümleri (Üniversite Platformu)
+
+Tokat Gaziosmanpaşa Üniversitesi'nde **6 fakülte, 13 bölüm ve 42 derste** **2.000'den fazla kullanıcıya** (günlük ortalama **~300 yoklama işlemi**) hizmet veren sistemin gerçek metrikleri:
+
+| Metrik | Optimizasyon Öncesi | Hibrit Mimari Sonrası | Kazanım |
+| :--- | :--- | :--- | :--- |
+| **Ortalama API Gecikmesi** | `94.91 ms` | **`1.53 ms`** | **%98 daha hızlı** |
+| **Maksimum İşlem Kapasitesi** | ~10 req/s | **`653 req/s`** | **+%6.100 kapasite** |
+| **Sistem Erişilebilirliği** | Yoğun saat kesintileri | **`%99.9`** | Derslerde sıfır kesinti |
+| **Toplu Veri Aktarımı** | Yavaş döngüler | **`25.019` kayıt `<1.5s`** | Otomatik akademik aktarım |
+
+---
+
+## 3 Katmanlı Güvenilir Mimari
+
+### 1. Hile Önleme (15 Saniyelik Dinamik QR + Geofencing)
+
+* Sınıfta gösterilen kriptografik QR token her **15 saniyede bir** yenilenir; ekran görüntüsü paylaşılsa bile geçersiz kalır.
+* Tarayıcı konum doğrulaması ile öğrencinin sınıfın **50–200 metre** çevresinde olduğu teyit edilir.
+
+### 2. Hibrit Doğrulama Hattı (`JWT + Redis + PostgreSQL`)
+
+```javascript
+// Yüksek eşzamanlılıkta hibrit yoklama doğrulama akışı
+async function verifyCheckIn(sessionToken, studentId) {
+  // 1. Bellek içi hızlı kriptografik imza doğrulaması (<0.2ms)
+  const payload = verifySignedQrToken(sessionToken);
+
+  // 2. Aktif oturum ve çift tarama kontrolü (Redis O(1))
+  const cachedSession = await redis.get(`session:${payload.sessionId}`);
+  if (!cachedSession) {
+    throw new Error("Oturum süresi doldu veya geçersiz");
+  }
+
+  // 3. Opossum Circuit Breaker korumalı veritabanı kaydı
+  return dbBreaker.fire({ sessionId: payload.sessionId, studentId });
+}
+```
+
+### 3. Opossum Circuit Breaker ile Kesintisiz Dayanıklılık
+
+Veritabanında anlık bir yavaşlama olduğunda **Opossum Circuit Breaker** devreye girer, Node.js Event Loop'un kilitlenmesini önler ve kayıtları güvenli bir yedek akışa yönlendirir.
+
+<Callout type="info">
+**Güvenlik ve Test Kalitesi:** Çekirdek yoklama ve oturum akışları entegrasyon testleriyle (%85 backend test kapsamı) korunur ve CI/CD hattındaki SAST/DAST taramalarıyla canlıya çıkmadan 15+ güvenlik açığı giderilmiştir.
+</Callout>
+
+---
+
+Detaylı inceleme için [QR Yoklama Sistemi Vaka Analizi](/tr/case-studies/qr-attendance-system) veya [QR Yoklama Sistemleri Geliştirme](/tr/services/qr-attendance-systems) sayfalarına göz atabilirsiniz.
+
+<CTA
+  topic="Yüksek Performanslı QR Yoklama Sistemi"
+  serviceSlug="qr-attendance-systems"
+  title="Kurumunuz için hileye karşı korumalı ve hızlı bir QR yoklama sistemi mi gerekiyor?"
+  description="Kullanıcı sayınızı ve raporlama ihtiyaçlarınızı WhatsApp'tan paylaşın; 24 saat içinde mimari ve teslim planını sunayım."
+/>

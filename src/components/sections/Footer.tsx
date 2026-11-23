@@ -21,7 +21,7 @@ export function Footer({ lang }: { lang: string }) {
       silaApp: "Sila Islamic App",
       aiContext: "AI Context (llms.txt)",
       copyright: "Hamed Mohamed. All rights reserved.",
-      location: "Tokat, Turkey / Global",
+      location: "Istanbul, Turkey / Global",
     },
     ar: {
       services: "الخدمات",
@@ -33,7 +33,7 @@ export function Footer({ lang }: { lang: string }) {
       silaApp: "تطبيق صلة الإسلامي",
       aiContext: "سياق الذكاء الاصطناعي (llms.txt)",
       copyright: "حامد محمد. جميع الحقوق محفوظة.",
-      location: "توكات، تركيا / عالمي",
+      location: "إسطنبول، تركيا / عالمي",
     },
     tr: {
       services: "Hizmetler",
@@ -45,7 +45,7 @@ export function Footer({ lang }: { lang: string }) {
       silaApp: "Sıla İslami Uygulaması",
       aiContext: "Yapay Zeka Bağlamı (llms.txt)",
       copyright: "Hamed Mohamed. Tüm hakları saklıdır.",
-      location: "Tokat, Türkiye / Küresel",
+      location: "İstanbul, Türkiye / Küresel",
     }
   };
   
@@ -53,8 +53,8 @@ export function Footer({ lang }: { lang: string }) {
 
   return (
     <footer className="border-t border-border bg-surface-2 mt-auto">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 lg:py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 py-12 lg:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-8">
           
           {/* Brand Column */}
           <div className="flex flex-col gap-6">
@@ -146,7 +146,7 @@ export function Footer({ lang }: { lang: string }) {
           </div>
         </div>
 
-        <div className={`mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] font-mono text-muted-foreground uppercase tracking-widest ${isRTL ? "md:flex-row-reverse" : ""}`}>
+        <div className={`mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] font-mono text-muted-foreground uppercase tracking-widest text-center md:text-start ${isRTL ? "md:flex-row-reverse" : ""}`}>
           <p>© {new Date().getFullYear()} {text.copyright}</p>
           <p>{text.location}</p>
         </div>

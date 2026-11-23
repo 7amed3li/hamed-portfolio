@@ -1,0 +1,104 @@
+---
+title: "How to Migrate WordPress to Next.js Without Losing Google Rankings"
+description: "A production migration blueprint: 25+ permanent 301 redirects, multilingual hreflang, Schema.org Local SEO, and IndexNow to protect every Google ranking."
+lang: "en"
+translationKey: "migrate-wordpress-to-nextjs-without-losing-seo"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "seo", "wordpress", "migration", "redirects"]
+coverImage: "/static/blog/wordpress-to-nextjs-migration-cover.png"
+published: true
+featured: false
+summary: "A field-tested checklist for migrating legacy WordPress sites to Next.js 16 App Router using 25+ permanent 301/308 redirects, Schema.org, hreflang, and instant IndexNow verification."
+---
+
+**TL;DR:** Migrating from WordPress to Next.js only hurts SEO when old URLs return `404` or drop structured metadata. By mapping every indexed WordPress route to a permanent `301`/`308` redirect in `next.config.ts`, preserving canonical and `hreflang` tags, and re-submitting `sitemap.xml` plus IndexNow on launch day, you keep 100% of existing Google equity while slashing load times.
+
+---
+
+## Why Most WordPress Migrations Drop Traffic
+
+Businesses rarely migrate away from WordPress because of design alone, they leave because plugin bloat pushes mobile page loads past 4 seconds, security patches pile up, and Core Web Vitals fail.
+
+Yet many teams break their organic traffic on launch day because they:
+
+1. Change URL slugs (`/menu-en/` → `/en/menu`) without server-side `301`/`308` redirects.
+2. Forget trailing-slash and category/tag archives that already hold backlinks.
+3. Ship a client-rendered shell without `Schema.org` JSON-LD or `hreflang` alternates.
+
+---
+
+## The Zero-Loss Migration Checklist (Used in Production)
+
+During the migration of **[Kardeşler Kebap & Cafe Cihangir](https://www.kardeslercihangir.com)** from a legacy WordPress site to **Next.js 16 (App Router) + Supabase**, we preserved all search rankings across 10 languages with **25+ permanent redirect rules** and zero `404` drops.
+
+### 1. Export Every Indexed URL Before Touching Code
+
+Pull URLs from three sources so no backlinked page is missed:
+
+* Old WordPress `sitemap_index.xml` and post/page sitemaps.
+* Google Search Console **Pages** and **Links → Top linked pages** exports.
+* Server access logs for top organic landing paths over the last 90 days.
+
+### 2. Map Exact 1-to-1 Permanent Redirects in `next.config.ts`
+
+In Next.js App Router, configure permanent redirects at the edge before page rendering:
+
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/menu-english/",
+        destination: "/en/menu",
+        permanent: true, // HTTP 308 permanent redirect
+      },
+      {
+        source: "/hakkimizda/",
+        destination: "/tr/about",
+        permanent: true,
+      },
+      {
+        source: "/wp-content/uploads/:path*",
+        destination: "/tr",
+        permanent: true,
+      },
+    ];
+  },
+};
+
+export default nextConfig;
+```
+
+<Callout type="warning">
+**Avoid soft-404 traps:** Never redirect dozens of unrelated dead URLs to the homepage (`/`). Redirect each legacy URL to its closest thematic match, and let truly obsolete spam/query URLs return a clean `404` or `410`.
+</Callout>
+
+### 3. Upgrade Technical SEO Beyond What WordPress Had
+
+Once URL parity is locked, Next.js lets you generate strict, code-verified SEO metadata:
+
+* **Self-referencing canonicals + reciprocal `hreflang`** (`en`, `ar`, `tr`, `x-default`) in `generateMetadata`.
+* **Typed `Schema.org` JSON-LD** (`Restaurant`, `Service`, `BreadcrumbList`, `FAQPage`) rendered server-side in initial HTML.
+* **Clean `sitemap.xml` with real `<lastmod>` dates**: never include `.txt` files, `404` routes, or build-time `new Date()` timestamps.
+
+### 4. Launch-Day Verification Protocol
+
+| Step | Check | Target |
+| :--- | :--- | :--- |
+| **1. Automated Crawl** | Test every legacy WordPress URL with `redirect: "manual"` | `100%` resolve in 1 hop (`301`/`308 → 200`) |
+| **2. Google Search Console** | Submit updated `sitemap.xml` & inspect key URLs | Zero unintended `noindex` or canonical mismatch |
+| **3. Bing + IndexNow** | Ping `api.indexnow.org` with all canonical URLs | Immediate discovery for Bing & ChatGPT Search |
+
+---
+
+Explore the live migration results in the [Kardeşler Platform Case Study](/en/case-studies/kardesler-restaurant-platform) or see [Website & Landing Page Development](/en/services/website-and-landing-page-development).
+
+<CTA
+  topic="WordPress to Next.js Migration"
+  serviceSlug="website-and-landing-page-development"
+  title="Planning to move off a slow WordPress site without losing Google traffic?"
+  description="Message me your current domain on WhatsApp and I will audit your indexed URLs, redirect map, and Next.js migration timeline within 24 hours."
+/>

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ExternalLink } from "lucide-react";
 import { getCaseStudyBySlug, caseStudies, caseStudiesData } from "@/lib/case-studies-data";
 import { BuyerCTA } from "@/components/ui/BuyerCTA";
+import { tactileButtonClasses } from "@/components/ui/TactilePrimitives";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -22,14 +24,14 @@ export async function generateMetadata({
     metadataBase: new URL(siteUrl),
     title: cs.metaTitle,
     description: cs.metaDescription,
-    alternates: { 
+    alternates: {
       canonical: `${siteUrl}/${lang}/case-studies/${slug}`,
       languages: {
         "x-default": `${siteUrl}/en/case-studies/${slug}`,
-        "en": `${siteUrl}/en/case-studies/${slug}`,
-        "ar": `${siteUrl}/ar/case-studies/${slug}`,
-        "tr": `${siteUrl}/tr/case-studies/${slug}`
-      }
+        en: `${siteUrl}/en/case-studies/${slug}`,
+        ar: `${siteUrl}/ar/case-studies/${slug}`,
+        tr: `${siteUrl}/tr/case-studies/${slug}`,
+      },
     },
     openGraph: {
       title: cs.metaTitle,
@@ -95,7 +97,7 @@ export default async function CaseStudyPage({
       home: "Home",
       hire: "Hire",
       caseStudyLabel: "Case Study",
-      visitLive: "Visit Live Website ↗",
+      visitLive: "Visit Live Website",
       theProblem: "The Problem",
       theSolution: "The Solution",
       technologiesUsed: "Technologies Used",
@@ -109,7 +111,7 @@ export default async function CaseStudyPage({
       home: "الرئيسية",
       hire: "وظّفني",
       caseStudyLabel: "دراسة حالة",
-      visitLive: "زيارة الموقع الحي ↗",
+      visitLive: "زيارة الموقع الحي",
       theProblem: "المشكلة",
       theSolution: "الحل الهندسي",
       technologiesUsed: "التقنيات المستخدمة",
@@ -123,7 +125,7 @@ export default async function CaseStudyPage({
       home: "Ana Sayfa",
       hire: "Hizmetler",
       caseStudyLabel: "Vaka Analizi",
-      visitLive: "Canlı Siteyi Ziyaret Et ↗",
+      visitLive: "Canlı Siteyi Ziyaret Et",
       theProblem: "Problem",
       theSolution: "Çözüm",
       technologiesUsed: "Kullanılan Teknolojiler",
@@ -144,7 +146,7 @@ export default async function CaseStudyPage({
 
       <main className="min-h-screen bg-background text-foreground" dir={isRTL ? "rtl" : "ltr"}>
         {/* Breadcrumb */}
-        <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+        <div className="px-5 md:px-20 lg:px-28 pt-24 md:pt-28 flex flex-wrap items-center gap-2 text-xs font-mono text-muted-foreground">
           <Link href={`/${lang}`} className="hover:text-accent transition-colors">
             {ui.home}
           </Link>
@@ -157,7 +159,7 @@ export default async function CaseStudyPage({
         </div>
 
         {/* Hero */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
+        <section className="px-5 md:px-20 lg:px-28 py-12 md:py-20 border-b border-border">
           <div className="max-w-4xl">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <p className="text-xs font-mono uppercase tracking-widest text-accent">
@@ -180,14 +182,14 @@ export default async function CaseStudyPage({
                 </span>
               ))}
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-8 text-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6 md:mb-8 text-foreground">
               {cs.title}
             </h1>
-            <p className="text-sm text-muted-foreground font-mono mb-10">{cs.category}</p>
+            <p className="text-sm text-muted-foreground font-mono mb-8 md:mb-10">{cs.category}</p>
 
             {/* Hero stat and live site action */}
-            <div className="flex flex-wrap items-center gap-5">
-              <div className="inline-flex flex-col border border-accent/30 px-8 py-5 bg-accent/5">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 md:gap-5">
+              <div className="inline-flex flex-col border border-accent/30 px-6 py-4 md:px-8 md:py-5 bg-accent/5">
                 <span className="text-4xl md:text-5xl font-bold accent-text tracking-tight">
                   {cs.heroStat.value}
                 </span>
@@ -200,10 +202,14 @@ export default async function CaseStudyPage({
                   href={cs.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-4 border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 font-mono text-xs uppercase tracking-widest font-bold hover:bg-emerald-500 hover:text-black transition-colors"
+                  className={tactileButtonClasses(
+                    "live",
+                    "inline-flex items-center justify-center gap-2 px-5 py-3.5 md:px-6 md:py-4 text-xs tracking-widest w-full sm:w-auto"
+                  )}
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   {ui.visitLive}
+                  <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 </a>
               )}
             </div>
@@ -211,12 +217,11 @@ export default async function CaseStudyPage({
         </section>
 
         {/* Content */}
-        <div className="px-6 md:px-20 lg:px-28 py-20">
-          <div className="max-w-4xl space-y-16">
+        <div className="px-5 md:px-20 lg:px-28 py-12 md:py-20">
+          <div className="max-w-4xl space-y-12 md:space-y-16">
             {/* Problem */}
             <div>
-              <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
-                <span className="inline-block w-6 h-px bg-accent" />
+              <h2 className="section-label mb-5">
                 {ui.theProblem}
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">{cs.problem}</p>
@@ -224,8 +229,7 @@ export default async function CaseStudyPage({
 
             {/* Solution */}
             <div>
-              <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
-                <span className="inline-block w-6 h-px bg-accent" />
+              <h2 className="section-label mb-5">
                 {ui.theSolution}
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">{cs.solution}</p>
@@ -233,8 +237,7 @@ export default async function CaseStudyPage({
 
             {/* Technologies */}
             <div>
-              <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
-                <span className="inline-block w-6 h-px bg-accent" />
+              <h2 className="section-label mb-6">
                 {ui.technologiesUsed}
               </h2>
               <ul className="space-y-2">
@@ -249,8 +252,7 @@ export default async function CaseStudyPage({
 
             {/* Results */}
             <div>
-              <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
-                <span className="inline-block w-6 h-px bg-accent" />
+              <h2 className="section-label mb-6">
                 {ui.results}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -269,8 +271,7 @@ export default async function CaseStudyPage({
             {/* Visual Showcase */}
             {cs.images && cs.images.length > 0 && (
               <div>
-                <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
-                  <span className="inline-block w-6 h-px bg-accent" />
+                <h2 className="section-label mb-6">
                   {ui.visualShowcase}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
@@ -323,18 +324,22 @@ export default async function CaseStudyPage({
             </div>
 
             {/* CTA */}
-            <div className="border-t border-border pt-12">
+            <div className="border-t border-border pt-10 md:pt-12">
               <p className="text-base text-muted-foreground mb-6 leading-relaxed">{cs.cta}</p>
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="space-y-4">
                 {cs.liveUrl && (
                   <a
                     href={cs.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-5 border border-emerald-500/60 bg-emerald-500/10 text-emerald-400 font-mono uppercase tracking-widest text-sm font-bold hover:bg-emerald-500 hover:text-black transition-colors flex items-center gap-2"
+                    className={tactileButtonClasses(
+                      "live",
+                      "inline-flex items-center justify-center gap-2.5 px-6 py-4 text-xs md:text-sm tracking-widest w-full sm:w-auto"
+                    )}
                   >
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     {ui.visitLive}
+                    <ExternalLink className="w-4 h-4 shrink-0" aria-hidden="true" />
                   </a>
                 )}
                 <BuyerCTA
@@ -349,7 +354,7 @@ export default async function CaseStudyPage({
             </div>
 
             {/* Other case studies */}
-            <div className="border-t border-border pt-12">
+            <div className="border-t border-border pt-10 md:pt-12">
               <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">
                 {ui.otherCaseStudies}
               </h2>

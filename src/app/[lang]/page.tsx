@@ -20,7 +20,7 @@ export default async function Home({ params }: { params: Promise<{ lang: 'en' | 
   return (
     <SmoothScrollProvider>
       <CustomCursor />
-      <main className="min-h-screen cursor-none">
+      <main className="min-h-screen">
         <Hero />
         <About />
         <EngineeringPrinciples />

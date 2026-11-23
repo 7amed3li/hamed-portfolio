@@ -30,18 +30,18 @@ Locally, with a dummy file of 5 rows, it was blazingly fast. We shipped it to pr
 
 The next day, an admin uploaded a real-world file containing **1,500 students**. 
 
-The server choked. The API timed out. The database connection pool was entirely exhausted, and every other user trying to use the app got a spinning wheel of death. 💀
+The server choked. The API timed out. The database connection pool was entirely exhausted, and every other user trying to use the app got an endless loading spinner.
 
 Here is exactly how I diagnosed the disaster and optimized the endpoint to handle thousands of rows efficiently.
 
-### 🚩 First wrong approach (The "Death Loop")
+### First wrong approach (The "Death Loop")
 
 When you look closely at the initial code, the problem wasn't parsing the Excel file. The problem was **I/O and network abuse inside a loop.**
 
 Here is a simplified version of my initial crime:
 
 ```javascript title="conference.service.js"
-// ❌ Don't do this
+// Avoid: blocking DB pool with per-row external calls
 const rows = excelParser.read(fileBuffer);
 
 for (const row of rows) {
@@ -78,12 +78,12 @@ To handle partial failures gracefully, I used raw SQL `SAVEPOINT`s inside the tr
 #### 3. Decoupling Emails
 Sending emails inside a DB transaction is a cardinal sin. I created an in-memory array `pendingEmails`. We push data to it during the loop, and only process the slow SMTP calls *after* the database transaction safely commits.
 
-### ✨ Code after
+### Code after
 
 Here is the battle-tested version:
 
 ```javascript title="conference.service.js"
-// ✅ The Optimized Way
+// Good: batched transaction + post-commit email dispatch
 const rows = excelParser.read(fileBuffer);
 const pendingEmails = [];
 const results = { success: 0, failed: 0, errors: [] };
@@ -127,7 +127,7 @@ for (const mail of pendingEmails) {
 return results;
 ```
 
-> **🛡️ Security Note on Passwords:**
+> **Security Note on Passwords:**
 > In the code above, the legacy system required emailing the generated temporary password. **In a modern production system, emailing plain passwords is an anti-pattern.** A much safer approach is saving the user without a password and pushing an `activationToken` to the queue, emailing them a secure *magic link* to set their own password.
 
 ## Result
@@ -138,7 +138,7 @@ The difference was night and day.
 - **Admin UX:** The endpoint now returns a clean JSON array of exactly which rows failed (e.g., `row 42: invalid email`), so the admin knows what to fix instead of getting a generic `500 Internal Server Error`.
 
 ## What I learned
-When building bulk-import features in Node.js, your enemy isn't Node—it's how you manage external I/O. 
+When building bulk-import features in Node.js, your enemy isn't Node, it's how you manage external I/O. 
 1. **Never put slow external APIs (like emails) inside a DB lock.**
 2. **Keep connection hold times as short as possible.**
 3. **Assume data is dirty** and design for partial failures using Savepoints.

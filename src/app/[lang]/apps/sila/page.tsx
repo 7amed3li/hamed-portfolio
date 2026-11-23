@@ -2,6 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import {
+  BarChart3,
+  BookOpen,
+  BrainCircuit,
+  Clock,
+  Download,
+  Mic,
+  Play,
+  Sparkles,
+} from "lucide-react";
+import {
   getSilaAppData,
   SILA_VERSION,
   SILA_SIZE,
@@ -10,18 +20,31 @@ import {
   SILA_DEMO_VIDEO_URL,
   SILA_PROMO_VIDEO_URL,
 } from "@/lib/sila-app-data";
+import {
+  tactileButtonClasses,
+  TactileIconBadge,
+} from "@/components/ui/TactilePrimitives";
+
+const SILA_FEATURE_ICONS = {
+  prayer: Clock,
+  quran: BookOpen,
+  hifz: BrainCircuit,
+  tasmi: Mic,
+  azkar: Sparkles,
+  tracker: BarChart3,
+} as const;
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
 // ────────────────────────────────────────
-// Static Params — generate for all 3 langs
+// Static Params: generate for all 3 langs
 // ────────────────────────────────────────
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "ar" }, { lang: "tr" }];
 }
 
 // ────────────────────────────────────────
-// Metadata — SEO title, description, OG, etc.
+// Metadata: SEO title, description, OG, etc.
 // ────────────────────────────────────────
 export async function generateMetadata({
   params,
@@ -96,7 +119,7 @@ export default async function SilaAppPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      // 1. SoftwareApplication — THE key schema for app visibility in Google
+      // 1. SoftwareApplication: THE key schema for app visibility in Google
       {
         "@type": "SoftwareApplication",
         "@id": `${siteUrl}/${lang}/apps/sila/#app`,
@@ -125,7 +148,7 @@ export default async function SilaAppPage({
         releaseNotes: `Version ${SILA_VERSION}`,
         permissions: "android.permission.INTERNET, android.permission.ACCESS_FINE_LOCATION, android.permission.RECORD_AUDIO",
       },
-      // 2. BreadcrumbList — helps Google understand site hierarchy
+      // 2. BreadcrumbList: helps Google understand site hierarchy
       {
         "@type": "BreadcrumbList",
         "@id": `${siteUrl}/${lang}/apps/sila/#breadcrumb`,
@@ -144,7 +167,7 @@ export default async function SilaAppPage({
           },
         ],
       },
-      // 3. VideoObject — for demo video (helps appear in Google Video results)
+      // 3. VideoObject: for demo video (helps appear in Google Video results)
       {
         "@type": "VideoObject",
         "@id": `${siteUrl}/${lang}/apps/sila/#demo-video`,
@@ -156,7 +179,7 @@ export default async function SilaAppPage({
         embedUrl: SILA_DEMO_VIDEO_URL,
         inLanguage: lang,
       },
-      // 4. VideoObject — for promo video
+      // 4. VideoObject: for promo video
       {
         "@type": "VideoObject",
         "@id": `${siteUrl}/${lang}/apps/sila/#promo-video`,
@@ -178,9 +201,9 @@ export default async function SilaAppPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="min-h-screen bg-background text-foreground" dir={isRTL ? "rtl" : "ltr"}>
         {/* ───── Breadcrumb ───── */}
-        <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+        <div className="px-5 sm:px-6 md:px-20 lg:px-28 pt-24 sm:pt-28 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-mono text-muted-foreground">
           <Link
             href={`/${lang}`}
             className="hover:text-accent transition-colors"
@@ -194,11 +217,11 @@ export default async function SilaAppPage({
         </div>
 
         {/* ───── HERO SECTION ───── */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
-          <div className="max-w-5xl flex flex-col md:flex-row items-start gap-10 md:gap-16">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20 border-b border-border">
+          <div className="max-w-5xl flex flex-col md:flex-row items-start gap-8 md:gap-16">
             {/* App Icon */}
             <div className="flex-shrink-0">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-[32px] overflow-hidden border border-border/50 bg-white flex items-center justify-center p-3 shadow-2xl shadow-accent/10">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-[24px] sm:rounded-[32px] overflow-hidden border border-border/50 bg-white flex items-center justify-center p-2.5 sm:p-3 shadow-2xl shadow-accent/10">
                 <Image
                   src="/apps/sila/icon.png"
                   alt={`${data.heroTitle} App Icon`}
@@ -211,30 +234,16 @@ export default async function SilaAppPage({
             </div>
 
             {/* Hero Text */}
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <p className="text-xs font-mono uppercase tracking-widest text-accent mb-4">
                 {data.freeLabel} · Android
               </p>
 
-              <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 text-foreground"
-                style={
-                  isRTL
-                    ? { fontFamily: "var(--font-cairo), sans-serif" }
-                    : undefined
-                }
-              >
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4 text-foreground">
                 {data.heroTitle}
               </h1>
 
-              <p
-                className="text-xl md:text-2xl font-light text-muted-foreground mb-4"
-                style={
-                  isRTL
-                    ? { fontFamily: "var(--font-cairo), sans-serif" }
-                    : undefined
-                }
-              >
+              <p className="text-lg sm:text-xl md:text-2xl font-light text-muted-foreground mb-4">
                 {data.heroSubtitle}
               </p>
 
@@ -243,48 +252,30 @@ export default async function SilaAppPage({
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4 mb-10">
+              <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-4 mb-8 sm:mb-10">
                 <a
                   id="sila-download-hero"
                   href={SILA_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
+                  className={tactileButtonClasses(
+                    "primary",
+                    "flex sm:inline-flex items-center justify-center text-center gap-2 sm:gap-3 px-3 py-3.5 sm:px-8 sm:py-4 tracking-wide sm:tracking-widest text-[11px] sm:text-sm leading-tight min-h-[46px]"
+                  )}
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="7 10 12 15 17 10" />
-                    <line x1="12" y1="15" x2="12" y2="3" />
-                  </svg>
-                  {data.downloadLabel}
+                  <Download className="w-4 h-4 shrink-0" />
+                  <span>{data.downloadLabel}</span>
                 </a>
                 <a
                   id="sila-watch-demo-hero"
                   href="#videos"
-                  className="inline-flex items-center gap-3 px-8 py-4 border border-border text-muted-foreground font-mono uppercase tracking-widest text-sm hover:border-accent hover:text-accent transition-colors"
+                  className={tactileButtonClasses(
+                    "outline",
+                    "flex sm:inline-flex items-center justify-center text-center gap-2 sm:gap-3 px-3 py-3.5 sm:px-8 sm:py-4 tracking-wide sm:tracking-widest text-[11px] sm:text-sm leading-tight min-h-[46px]"
+                  )}
                 >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polygon points="5 3 19 12 5 21 5 3" />
-                  </svg>
-                  {data.watchDemoLabel}
+                  <Play className="w-4 h-4 shrink-0" />
+                  <span>{data.watchDemoLabel}</span>
                 </a>
               </div>
 
@@ -313,38 +304,40 @@ export default async function SilaAppPage({
         </section>
 
         {/* ───── FEATURES GRID ───── */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20 border-b border-border">
           <div className="max-w-5xl">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-3 flex items-center gap-3">
-              <span className="inline-block w-6 h-px bg-accent" />
+            <h2 className="section-label mb-4">
               {data.featuresLabel}
             </h2>
-            <p
-              className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12"
-              style={
-                isRTL
-                  ? { fontFamily: "var(--font-cairo), sans-serif" }
-                  : undefined
-              }
-            >
+            <p className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">
               {data.featuresHeading}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {data.features.map((feature, i) => (
-                <div
-                  key={i}
-                  className="group p-6 border border-border bg-surface hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_0_1px_var(--accent),0_8px_32px_-8px_rgba(201,253,116,0.15)]"
-                >
-                  <div className="text-3xl mb-4">{feature.icon}</div>
-                  <h3 className="text-base font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
+              {data.features.map((feature, i) => {
+                const Icon =
+                  SILA_FEATURE_ICONS[
+                    feature.icon as keyof typeof SILA_FEATURE_ICONS
+                  ] || Sparkles;
+                return (
+                  <div
+                    key={i}
+                    className="group p-6 border border-border bg-surface hover:border-accent/50 transition-all duration-300 hover:shadow-[0_0_0_1px_var(--accent),0_8px_32px_-8px_rgba(201,253,116,0.15)] rounded-[6px]"
+                  >
+                    <div className="mb-4">
+                      <TactileIconBadge>
+                        <Icon className="w-5 h-5" />
+                      </TactileIconBadge>
+                    </div>
+                    <h3 className="text-base font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -352,26 +345,18 @@ export default async function SilaAppPage({
         {/* ───── VIDEOS SECTION ───── */}
         <section
           id="videos"
-          className="px-6 md:px-20 lg:px-28 py-20 border-b border-border"
+          className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20 border-b border-border"
         >
           <div className="max-w-5xl">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-3 flex items-center gap-3">
-              <span className="inline-block w-6 h-px bg-accent" />
+            <h2 className="section-label mb-4">
               {data.videosLabel}
             </h2>
-            <p
-              className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12"
-              style={
-                isRTL
-                  ? { fontFamily: "var(--font-cairo), sans-serif" }
-                  : undefined
-              }
-            >
+            <p className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-12">
               {data.videosHeading}
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-start">
-              {/* Promo Video — 16:9 horizontal */}
+              {/* Promo Video: 16:9 horizontal */}
               <div>
                 <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
                   {data.promoVideoTitle}
@@ -388,7 +373,7 @@ export default async function SilaAppPage({
                 </div>
               </div>
 
-              {/* Demo Video — 9:16 vertical (YouTube Short) */}
+              {/* Demo Video: 9:16 vertical (YouTube Short) */}
               <div className="flex flex-col items-center lg:items-start">
                 <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
                   {data.demoVideoTitle}
@@ -409,20 +394,12 @@ export default async function SilaAppPage({
         </section>
 
         {/* ───── TECH STACK ───── */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20 border-b border-border">
           <div className="max-w-5xl">
-            <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-3 flex items-center gap-3">
-              <span className="inline-block w-6 h-px bg-accent" />
+            <h2 className="section-label mb-4">
               {data.techLabel}
             </h2>
-            <p
-              className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-10"
-              style={
-                isRTL
-                  ? { fontFamily: "var(--font-cairo), sans-serif" }
-                  : undefined
-              }
-            >
+            <p className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-10">
               {data.techHeading}
             </p>
 
@@ -440,47 +417,30 @@ export default async function SilaAppPage({
         </section>
 
         {/* ───── BOTTOM CTA ───── */}
-        <section className="px-6 md:px-20 lg:px-28 py-24">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-14 sm:py-20 md:py-24">
           <div className="max-w-3xl">
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 text-foreground"
-              style={
-                isRTL
-                  ? { fontFamily: "var(--font-cairo), sans-serif" }
-                  : undefined
-              }
-            >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5 sm:mb-6 text-foreground">
               {data.ctaTitle}
             </h2>
-            <p className="text-base text-muted-foreground mb-10 leading-relaxed max-w-xl">
+            <p className="text-base text-muted-foreground mb-8 sm:mb-10 leading-relaxed max-w-xl">
               {data.ctaDescription}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-start gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <a
                 id="sila-download-cta"
                 href={SILA_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
+                className={tactileButtonClasses(
+                  "primary",
+                  "w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-4 sm:px-10 sm:py-5 tracking-widest text-xs sm:text-sm"
+                )}
               >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                {data.ctaButton}
+                <Download className="w-4 h-4 shrink-0" />
+                <span>{data.ctaButton}</span>
               </a>
-              <span className="text-xs font-mono text-[#a8a8a2] self-center">
+              <span className="text-xs font-mono text-[#a8a8a2] self-start sm:self-center">
                 {data.androidOnly}
               </span>
             </div>

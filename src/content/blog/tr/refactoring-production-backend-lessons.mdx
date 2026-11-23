@@ -38,7 +38,7 @@ Route dosyalarını incelerken, bu kalıbın her yerde tekrarlandığını fark 
 ```javascript
 // studentRoutes.js içinde
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient(); // ❌ Her dosyada yeni bir instance oluşturuluyor
+const prisma = new PrismaClient(); // Kaçının: her dosyada yeni bir instance oluşturuluyor
 
 router.post('/record', async (req, res) => {
     // ...
@@ -46,7 +46,7 @@ router.post('/record', async (req, res) => {
 
 // attendanceRoutes.js içinde
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient(); // ❌ Başka bir bağımsız bağlantı havuzu
+const prisma = new PrismaClient(); // Kaçının: başka bir bağımsız bağlantı havuzu
 ```
 
 Her route dosyası kendi `new PrismaClient()`'ını oluşturuyordu. Bu, uygulamanın istemeden veritabanına **birden fazla bağımsız bağlantı havuzu (connection pools)** açtığı anlamına geliyordu. Bir dersin başlangıcındaki eşzamanlı yoklamalar sırasında bu yaklaşım bağlantıları israf ediyor ve veritabanı sınırlarına erken ulaşma riskini taşıyordu.
@@ -57,7 +57,7 @@ Her route dosyası kendi `new PrismaClient()`'ını oluşturuyordu. Bu, uygulama
 // prisma/client.js
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-module.exports = prisma; // ✅ Tek ve genel bir havuz
+module.exports = prisma; // Doğru yol: tek ve genel bir havuz
 ```
 
 **Bu küçük kod değişikliği, veritabanı bağlantı kullanımını daha öngörülebilir hale getirdi ve yoğun kullanım saatlerinde bağlantı sınırlarına ulaşma riskini azalttı.**
@@ -80,7 +80,7 @@ Bu yeniden düzenleme sırasında fark ettiğim bir diğer önemli şey: "temiz 
 
 Bunu yönetmek için, özellikleri bir **"yeniden düzenleme risk seviyesine"** göre sınıflandırmaya başladım.
 
-Örneğin, `attendance` (yoklama) ve `session` (oturum) akışlarını yüksek riskli alanlar olarak değerlendirdim ve ilk önce entegrasyon testleri eklemeden onları değiştirmekten kaçındım. Çünkü bu akışlar gerçek öğrenci kayıtlarını etkiler; orada oluşan herhangi bir hata (bug) sadece bir log hatası değildir—yanlış akademik verilere dönüşür.
+Örneğin, `attendance` (yoklama) ve `session` (oturum) akışlarını yüksek riskli alanlar olarak değerlendirdim ve ilk önce entegrasyon testleri eklemeden onları değiştirmekten kaçındım. Çünkü bu akışlar gerçek öğrenci kayıtlarını etkiler; orada oluşan herhangi bir hata (bug) sadece bir log hatası değildir, yanlış akademik verilere dönüşür.
 
 Daha ilginç geçişlerden biri, ham SQL işlem (transactional) akışlarını değiştirmekti.
 

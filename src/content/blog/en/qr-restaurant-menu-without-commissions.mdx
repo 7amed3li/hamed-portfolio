@@ -1,0 +1,88 @@
+---
+title: "Commission-Free QR Restaurant Menus: 10 Languages & WhatsApp Orders"
+description: "How a Next.js 16 + Supabase QR menu platform eliminates delivery commissions with 10 languages, 6 live currencies, and direct WhatsApp ordering."
+lang: "en"
+translationKey: "qr-restaurant-menu-without-commissions"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "restaurant", "qr-menu", "seo", "whatsapp"]
+coverImage: "/static/blog/qr-restaurant-menu-cover.png"
+published: true
+featured: false
+summary: "Why restaurants in tourist and metropolitan hubs lose revenue to PDF menus and 20-30% aggregator fees, and how a custom Next.js 16 + Supabase platform solves it."
+---
+
+**TL;DR:** Restaurants lose 20% to 30% of every order on third-party delivery apps or frustrate international guests with unreadable PDF menus. Replacing both with a custom Next.js 16 QR menu platform gives customers instant browser access in 10 languages, live currency conversion, and zero-commission WhatsApp ordering in 1–3 weeks.
+
+---
+
+## Why PDF Menus and Delivery Apps Quietly Drain Margin
+
+When a diner scans a table QR code in Istanbul, Riyadh, or Cairo, two things usually happen:
+
+1. A heavy 15 MB PDF opens, forcing the guest to pinch-and-zoom on slow mobile data with zero language switching.
+2. Or the restaurant pushes diners toward aggregator apps that charge **20% to 30% commission** while owning the customer relationship.
+
+A custom web-based QR platform fixes both problems at once: **instant page loads under 1 second**, native Google search visibility (`Schema.org Menu` + `Restaurant`), and **0% commission** on direct orders.
+
+---
+
+## Comparison: PDF Menu vs. Commission Apps vs. Custom QR Platform
+
+| Criteria | Static PDF Menu | Delivery Apps | Custom Next.js QR Platform |
+| :--- | :--- | :--- | :--- |
+| **Order Commission** | 0% (no ordering) | **20% – 30% per order** | **0%** (direct WhatsApp / web) |
+| **Multilingual Support** | Separate heavy files | Limited / auto-translated | **10+ native languages + RTL** |
+| **Price & Stock Updates** | Re-export & re-upload PDF | Portal + commission lock-in | **Instant owner admin panel** |
+| **Google Local SEO** | Virtually invisible | Aggregator ranks, not you | **Full `Schema.org` + `hreflang`** |
+| **Live Currency Conversion** | None | Single currency | **Multi-currency (TRY, USD, EUR, SAR...)** |
+
+---
+
+## Production Proof: Kardeşler Kebap & Cafe Cihangir (Istanbul)
+
+This is not theoretical. I built and shipped this exact architecture for **[Kardeşler Kebap & Cafe Cihangir](https://www.kardeslercihangir.com)**, a 28-year-old restaurant in central Istanbul serving roughly **100 daily visitors** from around the world.
+
+<Callout type="info">
+**Production Deliverables:** Next.js 16 (App Router) + React 19 + Supabase, 10 dynamic languages (TR, EN, AR, RU, FR, FA, DE, IT, ES, ZH), 6 live currencies (TRY, USD, EUR, GBP, RUB, SAR), localized WhatsApp order templates, and 25+ 301 redirects from WordPress with zero ranking loss.
+</Callout>
+
+### How Zero-Commission Ordering Works
+
+Instead of forcing tourists to register an account or pay aggregator fees:
+
+1. The customer browses the menu in their native language and sees prices converted live in their preferred currency.
+2. They add items to a lightweight cart right in the browser.
+3. Tapping **Order via WhatsApp** generates a pre-formatted message in the restaurant's operational language with item names, quantities, and total price.
+
+```ts
+type CartItem = { name: string; qty: number; priceTry: number };
+
+export function buildWhatsAppOrderUrl(phone: string, items: CartItem[], table?: string) {
+  const lines = items.map((i) => `• ${i.qty}x ${i.name}, ${i.qty * i.priceTry} TRY`);
+  const total = items.reduce((sum, i) => sum + i.qty * i.priceTry, 0);
+  const header = table ? `Table #${table} Order:` : "New Direct Order:";
+  const text = [header, ...lines, `Total: ${total} TRY`].join("\n");
+  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+}
+```
+
+### How Non-Technical Owners Update Prices in 5 Seconds
+
+When ingredient costs change, the restaurant owner does not wait on a developer. A private Supabase-backed admin dashboard lets staff toggle item availability or adjust prices in real time across all 10 language views and 6 currencies simultaneously.
+
+---
+
+## Typical Timeline & Scope
+
+* **Simple digital QR menu (1–3 languages):** delivered in **a few days**.
+* **Full multilingual restaurant platform (admin panel, live currencies, WhatsApp ordering, Local SEO):** typically **1–3 weeks** from discovery to production launch.
+
+Read the full engineering breakdown in the [Kardeşler Restaurant Case Study](/en/case-studies/kardesler-restaurant-platform) or explore [Restaurant & Cafe Menu Website Development](/en/services/restaurant-menu-websites).
+
+<CTA
+  topic="Commission-Free QR Restaurant Menu"
+  serviceSlug="restaurant-menu-websites"
+  title="Want a commission-free QR menu platform for your restaurant?"
+  description="Send me your current menu or website link on WhatsApp and get a clear scope, timeline, and live demo walkthrough within 24 hours."
+/>

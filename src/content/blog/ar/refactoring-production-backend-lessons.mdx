@@ -38,7 +38,7 @@ featured: true
 ```javascript
 // داخل ملف studentRoutes.js
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient(); // ❌ يتم إنشاء نسخة جديدة في كل ملف
+const prisma = new PrismaClient(); // تجنّب: يتم إنشاء نسخة جديدة في كل ملف
 
 router.post('/record', async (req, res) => {
     // ...
@@ -46,7 +46,7 @@ router.post('/record', async (req, res) => {
 
 // داخل ملف attendanceRoutes.js
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient(); // ❌ Pool اتصالات مستقل تماماً
+const prisma = new PrismaClient(); // تجنّب: Pool اتصالات مستقل تماماً
 ```
 
 كل ملف Route كان يقوم بإنشاء `new PrismaClient()` خاص به. هذا يعني أن التطبيق كان يفتح **مجموعات اتصالات (Connection Pools) مستقلة ومتعددة** بقاعدة البيانات عن غير قصد. أثناء عمليات تسجيل الحضور المتزامنة في بداية المحاضرة، يؤدي هذا النهج إلى إهدار الاتصالات ويزيد من خطر الوصول للحد الأقصى لقاعدة البيانات بشكل مبكر.
@@ -57,7 +57,7 @@ const prisma = new PrismaClient(); // ❌ Pool اتصالات مستقل تما�
 // prisma/client.js
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-module.exports = prisma; // ✅ Pool واحد عام
+module.exports = prisma; // الحل الصحيح: Pool واحد عام
 ```
 
 **هذا التغيير البرمجي البسيط جعل استهلاك اتصالات قاعدة البيانات أكثر قابلية للتوقع، وقلل من خطر الوصول للحد الأقصى للاتصالات في أوقات الذروة.**

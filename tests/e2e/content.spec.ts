@@ -140,7 +140,14 @@ test.describe("sales page localization & buyer CTAs (Phase 2)", () => {
       });
     }
 
-    for (const slug of ["kardesler-restaurant-platform", "qr-attendance-system"]) {
+    for (const slug of [
+      "kardesler-restaurant-platform",
+      "genc-group-corporate-platform",
+      "healix-medical-platform",
+      "cihangir-ev-yemekleri-platform",
+      "lucky-sushi-multi-branch-platform",
+      "qr-attendance-system",
+    ]) {
       test(`/${lang}/case-studies/${slug} has localized chrome & WhatsApp/Email CTAs`, async ({ page }) => {
         await page.goto(`/${lang}/case-studies/${slug}`);
         const main = page.locator("main");
@@ -163,5 +170,18 @@ test.describe("sales page localization & buyer CTAs (Phase 2)", () => {
       expect(waHref).toMatch(/^https:\/\/wa\.me\/905060453906\?text=.+/);
       expect(emailHref).toMatch(/^mailto:hamed\.m\.abdelalim@gmail\.com/);
     });
+  }
+
+  for (const lang of ["ar", "tr"] as const) {
+    for (const slug of ["qr-restaurant-menu-without-commissions", "how-i-stopped-nodejs-from-freezing"]) {
+      test(`/${lang}/blog/${slug} renders localized CTA with WhatsApp link`, async ({ page }) => {
+        await page.goto(`/${lang}/blog/${slug}`);
+        const article = page.locator("article");
+        const text = await article.innerText();
+        expect(text).not.toContain("Need help with your backend?");
+        const waHref = await article.locator('[data-cta="whatsapp"]').first().getAttribute("href");
+        expect(waHref).toMatch(/^https:\/\/wa\.me\/905060453906\?text=.+/);
+      });
+    }
   }
 });

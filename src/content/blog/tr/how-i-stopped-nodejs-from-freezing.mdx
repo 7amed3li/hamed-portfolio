@@ -30,18 +30,18 @@ Lokal ortamda, 5 satırlık örnek bir dosya ile inanılmaz hızlıydı. Üretim
 
 Ertesi gün, bir yönetici **1.500 öğrenci** içeren gerçek bir dosya yükledi.
 
-Sunucu tıkandı. API zaman aşımına (timeout) uğradı. Veritabanı bağlantı havuzu tamamen tükendi ve uygulamayı kullanmaya çalışan diğer tüm kullanıcılar sonsuz yükleme ekranında kaldı. 💀
+Sunucu tıkandı. API zaman aşımına (timeout) uğradı. Veritabanı bağlantı havuzu tamamen tükendi ve uygulamayı kullanmaya çalışan diğer tüm kullanıcılar sonsuz yükleme ekranında kaldı.
 
 İşte bu felaketi nasıl teşhis ettiğim ve uç noktayı (endpoint) binlerce satırı verimli bir şekilde işleyecek şekilde nasıl optimize ettiğim.
 
-### 🚩 İlk Yanlış Yaklaşım ("Ölüm Döngüsü")
+### İlk Yanlış Yaklaşım ("Ölüm Döngüsü")
 
 Başlangıçtaki koda yakından baktığınızda, sorunun Excel dosyasını ayrıştırmak (parsing) olmadığını görürsünüz. Sorun, **bir döngü içindeki I/O ve ağ istismarıydı.**
 
 İşte ilk suçumun basitleştirilmiş bir versiyonu:
 
 ```javascript title="conference.service.js"
-// ❌ Bunu yapmayın
+// Kaçının: döngü içinde dış I/O ile havuzu kilitlemeyin
 const rows = excelParser.read(fileBuffer);
 
 for (const row of rows) {
@@ -78,12 +78,12 @@ Kısmi hataları zarif bir şekilde yönetmek için transaction içinde ham SQL 
 #### 3. E-postaları Ayırma (Decoupling)
 Bir veritabanı transaction'ı içinde e-posta göndermek affedilmez bir günahtır. Bellek içi (in-memory) bir `pendingEmails` dizisi oluşturdum. Döngü sırasında veriyi bu diziye atıyoruz ve yavaş SMTP çağrılarını sadece veritabanı transaction'ı güvenli bir şekilde onaylandıktan (commit) *sonra* işliyoruz.
 
-### ✨ Sonraki Kod
+### Sonraki Kod
 
 İşte savaş testinden geçmiş versiyon:
 
 ```javascript title="conference.service.js"
-// ✅ Optimize Edilmiş Yol
+// Optimize edilmiş yol
 const rows = excelParser.read(fileBuffer);
 const pendingEmails = [];
 const results = { success: 0, failed: 0, errors: [] };
@@ -127,7 +127,7 @@ for (const mail of pendingEmails) {
 return results;
 ```
 
-> **🛡️ Şifreler Üzerine Güvenlik Notu:**
+> **Şifreler Üzerine Güvenlik Notu:**
 > Yukarıdaki kodda, eski sistem (legacy) oluşturulan geçici şifrenin e-posta ile gönderilmesini gerektiriyordu. **Modern bir üretim (production) sisteminde, şifreleri düz metin (plain text) olarak e-postalamak bir anti-pattern'dir (kötü uygulama).** Çok daha güvenli bir yaklaşım, kullanıcıyı şifresiz kaydetmek ve kuyruğa bir `activationToken` ekleyerek, kendi şifrelerini belirlemeleri için onlara güvenli bir *sihirli bağlantı (magic link)* e-postası göndermektir.
 
 ## Sonuç
@@ -138,7 +138,7 @@ Aradaki fark gece ve gündüz gibiydi.
 - **Admin UX (Kullanıcı Deneyimi):** Endpoint artık genel bir `500 Internal Server Error` döndürmek yerine, tam olarak hangi satırların başarısız olduğunu gösteren temiz bir JSON dizisi döndürüyor (örneğin, `row 42: invalid email`), böylece yönetici neyi düzelteceğini biliyor.
 
 ## Ne Öğrendim
-Node.js'te toplu içe aktarma (bulk-import) özellikleri oluştururken düşmanınız Node değildir—harici I/O (girdi/çıktı) işlemlerini nasıl yönettiğinizdir.
+Node.js'te toplu içe aktarma (bulk-import) özellikleri oluştururken düşmanınız Node değildir, harici I/O (girdi/çıktı) işlemlerini nasıl yönettiğinizdir.
 1. **Asla yavaş dış API'leri (e-postalar gibi) bir DB kilidinin (lock) içine koymayın.**
 2. **Bağlantı tutma sürelerini (connection hold times) olabildiğince kısa tutun.**
 3. **Verinin kirli olduğunu varsayın** ve Savepoint'leri kullanarak kısmi hatalar (partial failures) için tasarım yapın.

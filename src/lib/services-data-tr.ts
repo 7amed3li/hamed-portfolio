@@ -4,7 +4,7 @@ export const servicesData: ServicePage[] = [
   {
     slug: "website-and-landing-page-development",
     title: "Web Sitesi ve Açılış Sayfası Geliştirme",
-    metaTitle: "Web Sitesi ve Açılış Sayfası Geliştiricisi — Hamed Mohamed",
+    metaTitle: "Web Sitesi ve Açılış Sayfası Geliştiricisi | Hamed Mohamed",
     metaDescription:
       "Hamed Mohamed, React ve Next.js kullanarak işletmeler için hızlı, mobil uyumlu ve modern web siteleri ile açılış sayfaları geliştirir.",
     h1: "İşletmeler ve Girişimler için Web Sitesi ve Açılış Sayfası Geliştiricisi",
@@ -25,7 +25,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Hızlı ve iyi oluşturulmuş bir web sitesi müşterilerinize güven verir ve Google'da bulunmanıza yardımcı olur. Hamed'in yaptığı siteler hızlı yüklenir, mobil uyumludur ve ilk günden itibaren SEO'ya hazırdır.",
     proof:
-      "İstanbul'da 28 yıllık bir restoran için 10 dil desteği, canlı döviz çevirisi, WhatsApp doğrudan sipariş ve Schema.org Yerel SEO ile günlük ~100 ziyaretçiye hizmet veren kardeslercihangir.com üretim platformunu tasarlayıp yayına aldı. Ayrıca, 2.000'den fazla öğrencinin kullandığı üniversite QR yoklama sisteminin ön yüzünü ve bu çok dilli portföyü geliştirdi.",
+      "İstanbul merkezli Genç Group (gencgroupinsaat.com.tr. Genç Group İnşaat ve AutoClub Merter için etkileşimli 3D/AI mimari stüdyolu 3 dilli kurumsal şirket platformu) ile birlikte cihangirevyemekler.com.tr (10 dilde 970+ statik sayfa), luckysushichinese.com.tr (3 İstanbul şubesi, 5 dil) ve kardeslercihangir.com canlı üretim sitelerini geliştirip yayına aldı. Ayrıca 2.000'den fazla öğrencinin kullandığı üniversite QR yoklama sistemini inşa etti.",
     faq: [
       {
         q: "Küçük bir işletme için web sitesi oluşturabilir misiniz?",
@@ -52,12 +52,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "restaurant-menu-websites",
     title: "Restoran Menü Web Sitesi Geliştirme",
-    metaTitle: "Restoran Menü Web Sitesi Geliştiricisi — Hamed Mohamed",
+    metaTitle: "Restoran Menü Web Sitesi Geliştiricisi | Hamed Mohamed",
     metaDescription:
       "Dijital bir menüye veya restoran web sitesine mi ihtiyacınız var? Hamed Mohamed, uygulama indirmeden telefonda çalışan hızlı restoran menü siteleri geliştirir.",
     h1: "Restoran ve Kafe Menü Web Sitesi Geliştiricisi",
     intro:
-      "Bir restoran, kafe veya gıda işletmesi yönetiyorsanız ve müşterilerin telefonlarıyla tarayabileceği temiz bir dijital menü istiyorsanız — Hamed Mohamed bunu yapabilir. Uygulama indirmeye gerek yok. Müşteriler bir QR kodunu tarar ve tüm menünüz anında ekranlarında belirir.",
+      "Bir restoran, kafe veya gıda işletmesi yönetiyorsanız ve müşterilerin telefonlarıyla tarayabileceği temiz bir dijital menü istiyorsanız, Hamed Mohamed bunu yapabilir. Uygulama indirmeye gerek yok. Müşteriler bir QR kodunu tarar ve tüm menünüz anında ekranlarında belirir.",
     forWho:
       "Restoranlar, kafeler, yemek arabaları, fırınlar, meyve suyu barları ve profesyonel bir dijital menü isteyen her türlü gıda işletmesi.",
     whatIBuild: [
@@ -74,7 +74,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Dijital bir menüyü güncellemek, yeni menüler yazdırmaktan daha ucuzdur, daha profesyonel görünür ve müşteriler QR kodu tarayarak anında erişebilir. Ayrıca, restoranınızın Google aramalarında görünmesine yardımcı olur.",
     proof:
-      "Cihangir, İstanbul'daki 28 yıllık köklü Kardeşler Kebap için kardeslercihangir.com üretim platformunu sıfırdan geliştirdi. Platform 10 dil, 6 para birimi için anlık döviz çevirisi, WhatsApp doğrudan sipariş akışı, sahip yönetici paneli ve eski WordPress'ten 0 sıralama kaybıyla tam taşınma sağlayan 25+ yönlendirmeli Yerel SEO içerir. Günlük ~100 gerçek ziyaretçiye hizmet vermektedir.",
+      "İstanbul'da üç canlı üretim restoran platformu geliştirdi: Cihangir Ev Yemekleri & Pide (cihangirevyemekler.com.tr, 10 dilde 970+ SSG sayfası, 6 canlı döviz kuru ve PostgreSQL + Prisma 7 & Argon2 yönetici paneli), Lucky Sushi & Chinese (luckysushichinese.com.tr. Alibeyköy, Zeytinburnu ve Sarıyer şubeleri için 5 dilli ve şubeye özel WhatsApp sipariş akışı) ve Kardeşler Cihangir (kardeslercihangir.com, 10 dil, 6 para birimi ve 25+ 301 WordPress yönlendirmesi).",
     faq: [
       {
         q: "Müşterilerin menüyü görmek için bir uygulama indirmesi gerekiyor mu?",
@@ -97,7 +97,7 @@ export const servicesData: ServicePage[] = [
   {
     slug: "full-stack-web-development",
     title: "Full-Stack Web Geliştirme",
-    metaTitle: "Full-Stack Web Geliştiricisi — Hamed Mohamed",
+    metaTitle: "Full-Stack Web Geliştiricisi | Hamed Mohamed",
     metaDescription:
       "Bir Full-Stack web geliştiricisine mi ihtiyacınız var? Hamed Mohamed; ön yüz, arka yüz ve veritabanından oluşan eksiksiz web uygulamaları oluşturur.",
     h1: "Özel Web Uygulamaları için Full-Stack Geliştirici",
@@ -141,12 +141,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "nodejs-backend-development",
     title: "Node.js Backend Geliştirme",
-    metaTitle: "Node.js Backend Geliştiricisi — Hamed Mohamed",
+    metaTitle: "Node.js Backend Geliştiricisi | Hamed Mohamed",
     metaDescription:
       "Bir Node.js backend geliştiricisine mi ihtiyacınız var? Hamed Mohamed, Node.js, Express.js ve PostgreSQL kullanarak hızlı, güvenilir backend sistemleri oluşturur.",
     h1: "API'ler, Veritabanları ve Sunucu Mantığı için Node.js Backend Geliştiricisi",
     intro:
-      "Projenizin sağlam bir arka yüze (backend) — istekleri işleyen, veri depolayan, kullanıcıları yöneten ve ön yüzünüze bağlanan bir sunucuya — ihtiyacı varsa, Hamed Mohamed güvenilir ve çökmeden ölçeklenen hızlı Node.js arka yüzleri oluşturma konusunda uzmandır.",
+      "Projenizin sağlam bir arka yüze (backend), istekleri işleyen, veri depolayan, kullanıcıları yöneten ve ön yüzünüze bağlanan bir sunucuya, ihtiyacı varsa, Hamed Mohamed güvenilir ve çökmeden ölçeklenen hızlı Node.js arka yüzleri oluşturma konusunda uzmandır.",
     forWho:
       "Bir backend API'si oluşturulmasına ihtiyaç duyan girişimler ve işletmeler, ön yüzü olup arkasında bir sisteme ihtiyaç duyan ekipler ve mevcut backend sistemlerini iyileştirmek veya onarmak isteyenler.",
     whatIBuild: [
@@ -186,12 +186,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "dashboard-and-admin-panel-development",
     title: "Kontrol Paneli (Dashboard) ve Yönetim Paneli Geliştirme",
-    metaTitle: "Kontrol Paneli ve Yönetici Paneli Geliştiricisi — Hamed Mohamed",
+    metaTitle: "Kontrol Paneli ve Yönetici Paneli Geliştiricisi | Hamed Mohamed",
     metaDescription:
       "Bir yönetici paneline mi ihtiyacınız var? Hamed Mohamed, işletmeler için React ve Node.js kullanarak özel kontrol panelleri geliştirir.",
     h1: "İşletmeler için Kontrol Paneli ve Yönetim Paneli Geliştiricisi",
     intro:
-      "Verilerinizi, kullanıcılarınızı, siparişlerinizi veya sistem ayarlarınızı yönetmek için bir alana ihtiyacınız varsa — Hamed Mohamed, her değişiklik için bir geliştiriciye ihtiyaç duymadan işiniz üzerinde tam kontrol sahibi olmanızı sağlayan özel kontrol panelleri ve yönetici panelleri oluşturur.",
+      "Verilerinizi, kullanıcılarınızı, siparişlerinizi veya sistem ayarlarınızı yönetmek için bir alana ihtiyacınız varsa, Hamed Mohamed, her değişiklik için bir geliştiriciye ihtiyaç duymadan işiniz üzerinde tam kontrol sahibi olmanızı sağlayan özel kontrol panelleri ve yönetici panelleri oluşturur.",
     forWho:
       "Verilerini görsel olarak yönetmek isteyen işletme sahipleri, bir yönetici alanına ihtiyaç duyan SaaS kurucuları, öğrenci kayıtlarını yöneten okullar ve üniversiteler ve şirket içi bir kontrol paneline ihtiyaç duyan ekipler.",
     whatIBuild: [
@@ -211,7 +211,7 @@ export const servicesData: ServicePage[] = [
     faq: [
       {
         q: "Yönetici paneli (Admin panel) nedir?",
-        a: "Yönetici paneli, koda dokunmadan uygulamanızın verilerini — kullanıcılar, içerik, siparişler, raporlar — sizin ve ekibinizin yönetebileceği özel bir web sayfasıdır.",
+        a: "Yönetici paneli, koda dokunmadan uygulamanızın verilerini (kullanıcılar, içerik, siparişler, raporlar) sizin ve ekibinizin yönetebileceği özel bir web sayfasıdır.",
       },
       {
         q: "Yönetici panelini aynı anda birden fazla kişi kullanabilir mi?",
@@ -230,12 +230,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "bug-fixing-and-debugging",
     title: "Hata Ayıklama ve Hata Giderme (Bug Fixing)",
-    metaTitle: "Web Sitesi Hata Giderme ve Onarım Hizmetleri — Hamed Mohamed",
+    metaTitle: "Web Sitesi Hata Giderme ve Onarım Hizmetleri | Hamed Mohamed",
     metaDescription:
       "Web siteniz veya uygulamanız bozuk mu? Hamed Mohamed, React, Node.js ve full-stack web uygulamaları için hata ayıklama (debugging) hizmetleri sunar.",
     h1: "Web Sitesi Hata Giderme ve Sorun Çözme Hizmetleri",
     intro:
-      "Web sitenizde veya uygulamanızda çalışmayan bir şeyler mi var? Hamed Mohamed, React ön yüzlerindeki, Node.js arka yüzlerindeki, API'lerdeki, veritabanlarındaki ve sunucu dağıtım kurulumlarındaki hataları tespit edebilir ve çözebilir. Sorununuzu paylaşın — problemi bulup onaracaktır.",
+      "Web sitenizde veya uygulamanızda çalışmayan bir şeyler mi var? Hamed Mohamed, React ön yüzlerindeki, Node.js arka yüzlerindeki, API'lerdeki, veritabanlarındaki ve sunucu dağıtım kurulumlarındaki hataları tespit edebilir ve çözebilir. Sorununuzu paylaşın, problemi bulup onaracaktır.",
     forWho:
       "Bozuk bir web sitesi olan, hatalı bir uygulaması olan, başarısız bir API'si olan, çalışmayan bir dağıtımı (deployment) olan veya çözemediği performans sorunları yaşayan herkes.",
     whatIBuild: [
@@ -267,19 +267,19 @@ export const servicesData: ServicePage[] = [
       },
       {
         q: "Sürekli çöken bir Node.js API'sini düzeltebilir misiniz?",
-        a: "Evet. Node.js API'nizin neden çöktüğünü — bunun bir bellek sızıntısı mı (memory leak), işlenmemiş söz (unhandled promise) mü, veritabanı zaman aşımı mı yoksa yapılandırma sorunu mu olduğunu — teşhis edebilir ve düzeltebilirim.",
+        a: "Evet. Node.js API'nizin neden çöktüğünü, bunun bir bellek sızıntısı mı (memory leak), işlenmemiş söz (unhandled promise) mü, veritabanı zaman aşımı mı yoksa yapılandırma sorunu mu olduğunu, teşhis edebilir ve düzeltebilirim.",
       },
     ],
   },
   {
     slug: "performance-optimization",
     title: "Performans Optimizasyonu",
-    metaTitle: "Web Sitesi ve Backend Performans Optimizasyonu — Hamed Mohamed",
+    metaTitle: "Web Sitesi ve Backend Performans Optimizasyonu | Hamed Mohamed",
     metaDescription:
       "Web siteniz yavaş mı? Hamed Mohamed, web sitesi ve backend performansını optimize ederek daha hızlı yükleme süreleri sağlar.",
     h1: "Web Sitesi ve Backend Performans Optimizasyonu",
     intro:
-      "Web sitenizin yüklenmesi yavaşsa, API'nizin yanıt vermesi çok uzun sürüyorsa veya kullanıcılarınız sürekli gecikmelerden şikayet ediyorsa — Hamed Mohamed darboğazları belirleyebilir ve sistemi önemli ölçüde hızlandırabilir. Yavaş web siteleri müşteri kaybettirir. Hızlı web siteleri kazandırır.",
+      "Web sitenizin yüklenmesi yavaşsa, API'nizin yanıt vermesi çok uzun sürüyorsa veya kullanıcılarınız sürekli gecikmelerden şikayet ediyorsa, Hamed Mohamed darboğazları belirleyebilir ve sistemi önemli ölçüde hızlandırabilir. Yavaş web siteleri müşteri kaybettirir. Hızlı web siteleri kazandırır.",
     forWho:
       "Yavaş web siteleri olan işletmeler, yavaş API'lerle uğraşan geliştiriciler, yüksek sunucu yükü yaşayan ekipler ve web uygulamasının çökmeden daha fazla trafiği kaldırabilmesini isteyen herkes.",
     whatIBuild: [
@@ -318,7 +318,7 @@ export const servicesData: ServicePage[] = [
   {
     slug: "application-security-review",
     title: "Uygulama Güvenlik İncelemesi",
-    metaTitle: "Web Uygulamaları için Güvenlik İncelemesi — Hamed Mohamed",
+    metaTitle: "Web Uygulamaları için Güvenlik İncelemesi | Hamed Mohamed",
     metaDescription:
       "Hamed Mohamed, Node.js ve React web uygulamalarınızdaki güvenlik açıklarını canlıya geçmeden önce tespit edip çözen kapsamlı güvenlik incelemeleri sunar.",
     h1: "Web Uygulamaları ve API'ler için Güvenlik İncelemesi",
@@ -337,7 +337,7 @@ export const servicesData: ServicePage[] = [
     ],
     technologies: ["Node.js", "SAST/DAST Araçları", "AST Analysis", "Docker", "GitHub Actions", "Opossum Circuit Breaker"],
     businessValue:
-      "Bir güvenlik ihlali (hacklenmek), bir güvenlik incelemesinden — para, itibar ve kullanıcı güveni açısından — çok daha maliyetlidir. Lansmandan önce açıkları bulup kapatmak, daha sonra bir veri sızıntısıyla uğraşmaktan her zaman daha ucuzdur.",
+      "Bir güvenlik ihlali (hacklenmek), bir güvenlik incelemesinden (para, itibar ve kullanıcı güveni açısından) çok daha maliyetlidir. Lansmandan önce açıkları bulup kapatmak, daha sonra bir veri sızıntısıyla uğraşmaktan her zaman daha ucuzdur.",
     proof:
       "7 birleştirilmiş (merged) pull request ile NodeSecure açık kaynak güvenlik ekosistemine aktif bir şekilde katkıda bulunmaktadır. Güvensiz kod desenlerini tespit eden özel güvenlik probları geliştirdi. Gerçek bir üniversite sisteminde canlıya çıkmadan önce 15'ten fazla güvenlik açığını yakalayıp düzeltti.",
     faq: [
@@ -362,12 +362,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "qr-attendance-systems",
     title: "QR Kodlu Yoklama Sistemi Geliştirme",
-    metaTitle: "QR Yoklama Sistemi Geliştiricisi — Hamed Mohamed",
+    metaTitle: "QR Yoklama Sistemi Geliştiricisi | Hamed Mohamed",
     metaDescription:
       "Bir QR yoklama sistemine mi ihtiyacınız var? Hamed Mohamed, Node.js ve React kullanarak okullar ve şirketler için özel sistemler geliştirir.",
     h1: "Okullar, Şirketler ve Etkinlikler için QR Yoklama Sistemi Geliştiricisi",
     intro:
-      "Öğrencilerin, çalışanların veya etkinlik katılımcılarının telefonlarını kullanarak giriş yapmaları (yoklama) için bir yola ihtiyacınız varsa — Hamed Mohamed eksiksiz bir QR yoklama sistemi kurabilir. Kağıt yok. Manuel kayıt defterleri yok. Katılımcılar bir QR kodunu tarar ve yoklamaları anında kaydedilir.",
+      "Öğrencilerin, çalışanların veya etkinlik katılımcılarının telefonlarını kullanarak giriş yapmaları (yoklama) için bir yola ihtiyacınız varsa, Hamed Mohamed eksiksiz bir QR yoklama sistemi kurabilir. Kağıt yok. Manuel kayıt defterleri yok. Katılımcılar bir QR kodunu tarar ve yoklamaları anında kaydedilir.",
     forWho:
       "Okullar ve üniversiteler, şirket içi İK ekipleri, konferans ve etkinlik organizatörleri, eğitim programları ve kimin katıldığını takip etmesi gereken her türlü organizasyon.",
     whatIBuild: [
@@ -406,12 +406,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "custom-business-systems",
     title: "Özel İş Sistemleri Geliştirme",
-    metaTitle: "Özel İşletme Sistemi Geliştiricisi — Hamed Mohamed",
+    metaTitle: "Özel İşletme Sistemi Geliştiricisi | Hamed Mohamed",
     metaDescription:
       "İşletmeniz için özel bir sisteme mi ihtiyacınız var? Hamed Mohamed, envanter, rezervasyon ve yönetim için web tabanlı özel işletme sistemleri oluşturur.",
     h1: "Şirketler ve Organizasyonlar için Özel İş Sistemi Geliştiricisi",
     intro:
-      "İşletmenizin şu anda Excel tablolarında, kağıt üzerinde veya tam olarak uymayan hazır bir yazılımla yürüttüğü süreçleri varsa — Hamed Mohamed, işinizin işleyiş şekline özel olarak tasarlanmış web tabanlı bir sistem oluşturabilir. Hazır bir yazılım değil. Tamamen size özel geliştirilir.",
+      "İşletmenizin şu anda Excel tablolarında, kağıt üzerinde veya tam olarak uymayan hazır bir yazılımla yürüttüğü süreçleri varsa, Hamed Mohamed, işinizin işleyiş şekline özel olarak tasarlanmış web tabanlı bir sistem oluşturabilir. Hazır bir yazılım değil. Tamamen size özel geliştirilir.",
     forWho:
       "Excel tablolarına sığmayan şirketler, benzersiz iş akışlarına sahip işletmeler, mevcut yazılımların kapsamadığı bir sisteme ihtiyaç duyan organizasyonlar ve manuel işlemleri otomatikleştirmek isteyen ekipler.",
     whatIBuild: [
@@ -427,11 +427,11 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Özel iş akışınız için oluşturulmuş özel bir sistem; hazır ve genel bir aracı uyarlamaya çalışmaktan daha hızlı, kullanımı daha kolay ve daha güvenilirdir. Manuel adımları ortadan kaldırır, insan hatasını azaltır ve verilerinizin tam mülkiyetini size verir.",
     proof:
-      "Bir üniversite için sıfırdan eksiksiz bir yoklama yönetim sistemi oluşturdu — birden fazla fakülteyi, binlerce öğrenciyi, yönetici kontrolünü ve otomatik raporlamayı kapsıyor. Her gün gerçek üretim (production) trafiğinde güvenilir bir şekilde çalışıyor.",
+      "Bir üniversite için sıfırdan eksiksiz bir yoklama yönetim sistemi oluşturdu, birden fazla fakülteyi, binlerce öğrenciyi, yönetici kontrolünü ve otomatik raporlamayı kapsıyor. Her gün gerçek üretim (production) trafiğinde güvenilir bir şekilde çalışıyor.",
     faq: [
       {
         q: "Özel bir sisteme ihtiyacım olup olmadığını nasıl anlarım?",
-        a: "Önemli iş verilerini devasa Excel tablolarında yönetiyorsanız, ekibiniz otomatikleştirilebilecek tekrarlayan manuel işler yapıyorsa veya mevcut araçları denediyseniz ve size uymadılarsa — özel bir sistem oluşturmaya değerdir.",
+        a: "Önemli iş verilerini devasa Excel tablolarında yönetiyorsanız, ekibiniz otomatikleştirilebilecek tekrarlayan manuel işler yapıyorsa veya mevcut araçları denediyseniz ve size uymadılarsa, özel bir sistem oluşturmaya değerdir.",
       },
       {
         q: "Daha sonra özellikler ekleyebilir miyim?",

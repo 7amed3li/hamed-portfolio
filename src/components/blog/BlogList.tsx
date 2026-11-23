@@ -28,9 +28,9 @@ export function BlogList({ posts, lang, allTags }: BlogListProps) {
   return (
     <div>
       {/* Search and Filter Controls */}
-      <div className="mb-12 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+      <div className="mb-10 sm:mb-12 flex flex-col md:flex-row gap-4 sm:gap-6 items-start md:items-center justify-between">
         <div className="relative w-full md:max-w-md">
-          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
@@ -38,14 +38,14 @@ export function BlogList({ posts, lang, allTags }: BlogListProps) {
             placeholder={lang === 'ar' ? 'ابحث في المقالات...' : lang === 'tr' ? 'Makalelerde ara...' : 'Search articles...'}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-surface-2 border border-border rounded-full py-3 pl-12 pr-6 text-sm focus:outline-none focus:border-accent transition-colors"
+            className="w-full bg-surface-2 border border-border rounded-full py-3 ps-12 pe-6 text-sm focus:outline-none focus:border-accent transition-colors"
           />
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-nowrap overflow-x-auto pb-2 sm:pb-0 sm:flex-wrap gap-2 w-full sm:w-auto">
           <button
             onClick={() => setSelectedTag(null)}
-            className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors ${
+            className={`shrink-0 px-4 py-1.5 rounded-full text-xs font-mono transition-colors ${
               selectedTag === null ? 'bg-accent text-background' : 'bg-surface-2 border border-border text-muted-foreground hover:border-accent'
             }`}
           >
@@ -55,7 +55,7 @@ export function BlogList({ posts, lang, allTags }: BlogListProps) {
             <button
               key={tag}
               onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors ${
+              className={`shrink-0 px-4 py-1.5 rounded-full text-xs font-mono transition-colors ${
                 selectedTag === tag ? 'bg-accent text-background' : 'bg-surface-2 border border-border text-muted-foreground hover:border-accent'
               }`}
             >

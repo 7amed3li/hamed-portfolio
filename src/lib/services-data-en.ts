@@ -4,12 +4,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "website-and-landing-page-development",
     title: "Website & Landing Page Development",
-    metaTitle: "Website and Landing Page Developer — Hamed Mohamed",
+    metaTitle: "Website and Landing Page Developer | Hamed Mohamed",
     metaDescription:
       "Need a website or landing page? Hamed Mohamed builds fast, professional websites and landing pages for businesses, startups, and brands using React and Next.js.",
     h1: "Website and Landing Page Developer for Businesses & Startups",
     intro:
-      "If you need a website or landing page built, Hamed Mohamed can help. Whether it's your first business website, a product landing page, or a personal portfolio — he builds fast, professional sites using React and Next.js that look great on every screen and load quickly.",
+      "If you need a website or landing page built, Hamed Mohamed can help. Whether it's your first business website, a product landing page, or a personal portfolio, he builds fast, professional sites using React and Next.js that look great on every screen and load quickly.",
     forWho:
       "Small businesses, startups, freelancers, consultants, restaurants, cafes, coaches, and anyone who needs a professional online presence.",
     whatIBuild: [
@@ -25,7 +25,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A fast, well-built website builds trust with your clients and helps you get found on Google. Sites built by Hamed load quickly, are mobile-friendly, and are ready for SEO from day one.",
     proof:
-      "Built and deployed kardeslercihangir.com — a production digital platform for a 28-year-old restaurant in Istanbul with 10 languages, live currency conversion, direct WhatsApp ordering, and comprehensive Schema.org Local SEO, serving ~100 daily visitors. Also built the frontend for a university QR attendance platform serving 2,000+ students and this multilingual portfolio.",
+      "Built the unified trilingual corporate holding platform for Genç Group in Istanbul (gencgroupinsaat.com.tr, uniting Genç Group İnşaat & AutoClub Merter with an interactive 3D/AI architectural lab), alongside live restaurant platforms including cihangirevyemekler.com.tr (970+ static pages across 10 languages), luckysushichinese.com.tr (3 Istanbul branches, 5 languages), and kardeslercihangir.com (~100 daily visitors), plus a university QR system serving 2,000+ students.",
     faq: [
       {
         q: "Can you build a website for a small business?",
@@ -41,7 +41,7 @@ export const servicesData: ServicePage[] = [
       },
       {
         q: "Will the website work on mobile?",
-        a: "Yes. Every website Hamed builds is responsive — it looks and works great on phones, tablets, and desktops.",
+        a: "Yes. Every website Hamed builds is responsive, it looks and works great on phones, tablets, and desktops.",
       },
       {
         q: "Can you build a website in Arabic?",
@@ -52,12 +52,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "restaurant-menu-websites",
     title: "Restaurant Menu Website Development",
-    metaTitle: "Restaurant Menu Website Developer — Hamed Mohamed",
+    metaTitle: "Restaurant Menu Website Developer | Hamed Mohamed",
     metaDescription:
       "Need a digital menu or restaurant website? Hamed Mohamed builds clean, fast restaurant and cafe menu websites that work on any phone without an app download.",
     h1: "Restaurant and Cafe Menu Website Developer",
     intro:
-      "If you run a restaurant, cafe, or food business and want a clean digital menu that customers can scan with their phone — Hamed Mohamed can build it. No app download needed. Customers scan a QR code and your full menu appears instantly on their screen.",
+      "If you run a restaurant, cafe, or food business and want a clean digital menu that customers can scan with their phone, Hamed Mohamed can build it. No app download needed. Customers scan a QR code and your full menu appears instantly on their screen.",
     forWho:
       "Restaurants, cafes, food trucks, bakeries, juice bars, and any food business that wants a professional digital presence.",
     whatIBuild: [
@@ -74,7 +74,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A digital menu is cheaper to update than printing new menus, looks more professional, and customers can access it instantly by scanning a QR code. It also helps your restaurant appear in Google searches.",
     proof:
-      "Built and deployed kardeslercihangir.com — a production restaurant platform for a 28-year-old Turkish restaurant in Cihangir, Istanbul. The platform features dynamic 10-language support, real-time currency conversion for 6 currencies, direct WhatsApp ordering with localized templates, non-technical owner admin panel, and complete Schema.org Local SEO with zero Google ranking loss after migrating from legacy WordPress. The site serves ~100 real visitors every day.",
+      "Built and deployed three live restaurant platforms in Istanbul: Cihangir Ev Yemekleri & Pide (cihangirevyemekler.com.tr, 970+ SSG pages, 10 languages, 6 live currencies, PostgreSQL + Prisma 7 & Argon2 owner portal), Lucky Sushi & Chinese (luckysushichinese.com.tr, 3 Istanbul branches, 5 languages including RTL & Chinese, branch-aware WhatsApp ordering), and Kardeşler Kebap & Cafe Cihangir (kardeslercihangir.com, 10 languages, 6 currencies, 25+ WordPress 301 redirects).",
     faq: [
       {
         q: "Do customers need to download an app to see the menu?",
@@ -97,14 +97,14 @@ export const servicesData: ServicePage[] = [
   {
     slug: "full-stack-web-development",
     title: "Full-Stack Web Development",
-    metaTitle: "Full-Stack Web Developer — Hamed Mohamed",
+    metaTitle: "Full-Stack Web Developer | Hamed Mohamed",
     metaDescription:
-      "Need a full-stack web developer? Hamed Mohamed builds complete web applications — frontend, backend, database, and deployment — using React, Next.js, and Node.js.",
+      "Need a full-stack web developer? Hamed Mohamed builds complete web applications (frontend, backend, database, and deployment) using React, Next.js, and Node.js.",
     h1: "Full-Stack Web Developer for Custom Web Applications",
     intro:
-      "Need someone who can handle the entire project — from the interface your users see to the database and server running behind it? Hamed Mohamed is a Full-Stack Engineer who can build, connect, and deploy your complete web application from scratch.",
+      "Need someone who can handle the entire project, from the interface your users see to the database and server running behind it? Hamed Mohamed is a Full-Stack Engineer who can build, connect, and deploy your complete web application from scratch.",
     forWho:
-      "Startups, founders, small businesses, and teams who need a complete web application built — not just a frontend or just a backend, but everything connected and working together.",
+      "Startups, founders, small businesses, and teams who need a complete web application built, not just a frontend or just a backend, but everything connected and working together.",
     whatIBuild: [
       "Complete web applications (frontend + backend + database)",
       "SaaS products and subscription platforms",
@@ -118,7 +118,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Instead of hiring a frontend developer, a backend developer, and a DevOps engineer separately, Hamed handles the full stack. One point of contact. One consistent codebase. Faster delivery.",
     proof:
-      "Built a complete QR attendance web system — React frontend, Node.js backend, PostgreSQL database, admin dashboard, and deployed to production — serving 2,000+ users across 6 faculties with 98% latency improvement.",
+      "Built a complete QR attendance web system, React frontend, Node.js backend, PostgreSQL database, admin dashboard, and deployed to production, serving 2,000+ users across 6 faculties with 98% latency improvement.",
     faq: [
       {
         q: "What does full-stack mean?",
@@ -141,12 +141,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "nodejs-backend-development",
     title: "Node.js Backend Development",
-    metaTitle: "Node.js Backend Developer — Hamed Mohamed",
+    metaTitle: "Node.js Backend Developer | Hamed Mohamed",
     metaDescription:
       "Need a Node.js backend developer? Hamed Mohamed builds fast, reliable backend systems and APIs using Node.js, Express.js, PostgreSQL, and Redis.",
     h1: "Node.js Backend Developer for APIs, Databases, and Server Logic",
     intro:
-      "If your project needs a solid backend — the server that processes requests, stores data, handles users, and connects to your frontend — Hamed Mohamed specializes in building reliable, fast Node.js backends that scale without breaking.",
+      "If your project needs a solid backend, the server that processes requests, stores data, handles users, and connects to your frontend, Hamed Mohamed specializes in building reliable, fast Node.js backends that scale without breaking.",
     forWho:
       "Startups and businesses who need a backend API built, teams with a frontend that needs a backend connected to it, and projects that need their existing backend improved or fixed.",
     whatIBuild: [
@@ -163,7 +163,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A well-built backend is what makes your app reliable, fast, and secure. Hamed focuses on keeping response times low and the database efficient so your app stays responsive even when traffic grows.",
     proof:
-      "Built the Node.js backend for a QR attendance system that went from 94ms response time down to 1.5ms — a 98% improvement — while handling 653 requests per second at peak load.",
+      "Built the Node.js backend for a QR attendance system that went from 94ms response time down to 1.5ms, a 98% improvement, while handling 653 requests per second at peak load.",
     faq: [
       {
         q: "What is a backend and why do I need it?",
@@ -186,12 +186,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "dashboard-and-admin-panel-development",
     title: "Dashboard & Admin Panel Development",
-    metaTitle: "Dashboard and Admin Panel Developer — Hamed Mohamed",
+    metaTitle: "Dashboard and Admin Panel Developer | Hamed Mohamed",
     metaDescription:
       "Need a dashboard or admin panel? Hamed Mohamed builds custom dashboards and admin panels for businesses using React, Next.js, and Node.js.",
     h1: "Dashboard and Admin Panel Developer for Businesses",
     intro:
-      "If you need a place to manage your data, users, orders, or system settings — Hamed Mohamed builds custom dashboards and admin panels that give you full control over your business without needing a developer for every change.",
+      "If you need a place to manage your data, users, orders, or system settings, Hamed Mohamed builds custom dashboards and admin panels that give you full control over your business without needing a developer for every change.",
     forWho:
       "Business owners who want to manage their data visually, SaaS founders who need an admin area, schools and universities managing student records, and any team that needs an internal control panel.",
     whatIBuild: [
@@ -207,11 +207,11 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A good dashboard saves hours of manual work. Instead of exporting spreadsheets or asking a developer to pull data, you get a visual interface that shows you exactly what's happening in your business in real time.",
     proof:
-      "Built a full admin dashboard for a QR attendance system used by university staff across 42 courses, 13 departments & 6 faculties. The panel allows managing students, viewing attendance records, and monitoring system health — all from a browser.",
+      "Built a full admin dashboard for a QR attendance system used by university staff across 42 courses, 13 departments & 6 faculties. The panel allows managing students, viewing attendance records, and monitoring system health, all from a browser.",
     faq: [
       {
         q: "What is an admin panel?",
-        a: "An admin panel is a private web page where you and your team can manage your application's data — users, content, orders, reports — without touching code.",
+        a: "An admin panel is a private web page where you and your team can manage your application's data (users, content, orders, reports) without touching code.",
       },
       {
         q: "Can multiple people use the admin panel at the same time?",
@@ -230,12 +230,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "bug-fixing-and-debugging",
     title: "Bug Fixing & Debugging",
-    metaTitle: "Website Bug Fixing and Debugging Services — Hamed Mohamed",
+    metaTitle: "Website Bug Fixing and Debugging Services | Hamed Mohamed",
     metaDescription:
       "Is your website or app broken? Hamed Mohamed offers bug fixing and debugging services for React, Next.js, Node.js, and full-stack web applications.",
     h1: "Website Bug Fixing and Debugging Services",
     intro:
-      "Is something broken in your website or application? Hamed Mohamed can identify and fix bugs in React frontends, Node.js backends, APIs, databases, and deployment setups. Share your issue — he'll find the problem and fix it.",
+      "Is something broken in your website or application? Hamed Mohamed can identify and fix bugs in React frontends, Node.js backends, APIs, databases, and deployment setups. Share your issue, he'll find the problem and fix it.",
     forWho:
       "Anyone with a broken website, a buggy app, a failing API, a deployment that isn't working, or performance issues they can't figure out.",
     whatIBuild: [
@@ -249,7 +249,7 @@ export const servicesData: ServicePage[] = [
     ],
     technologies: ["React.js", "Next.js", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "Redis", "Docker", "Nginx"],
     businessValue:
-      "A broken application loses customers and revenue every minute it's down. Hamed focuses on diagnosing the root cause quickly and fixing it properly — not just applying patches that break again.",
+      "A broken application loses customers and revenue every minute it's down. Hamed focuses on diagnosing the root cause quickly and fixing it properly, not just applying patches that break again.",
     proof:
       "Identified and fixed 15+ security vulnerabilities and bugs before production deployment in a high-traffic system. Debugged complex performance bottlenecks that were causing 94ms response times and brought them down to 1.5ms.",
     faq: [
@@ -267,19 +267,19 @@ export const servicesData: ServicePage[] = [
       },
       {
         q: "Can you fix a Node.js API that keeps crashing?",
-        a: "Yes. Hamed can diagnose why your Node.js API is crashing — whether it's a memory leak, unhandled promise, database timeout, or configuration issue — and fix it.",
+        a: "Yes. Hamed can diagnose why your Node.js API is crashing (whether it's a memory leak, unhandled promise, database timeout, or configuration issue) and fix it.",
       },
     ],
   },
   {
     slug: "performance-optimization",
     title: "Performance Optimization",
-    metaTitle: "Website and Backend Performance Optimization — Hamed Mohamed",
+    metaTitle: "Website and Backend Performance Optimization | Hamed Mohamed",
     metaDescription:
-      "Is your website slow? Hamed Mohamed optimizes website and backend performance — faster load times, faster APIs, and better user experience.",
+      "Is your website slow? Hamed Mohamed optimizes website and backend performance, faster load times, faster APIs, and better user experience.",
     h1: "Website and Backend Performance Optimization",
     intro:
-      "If your website is slow to load, your API takes too long to respond, or your users keep complaining about lag — Hamed Mohamed can identify the bottlenecks and make things significantly faster. Slow websites lose users. Fast websites convert.",
+      "If your website is slow to load, your API takes too long to respond, or your users keep complaining about lag, Hamed Mohamed can identify the bottlenecks and make things significantly faster. Slow websites lose users. Fast websites convert.",
     forWho:
       "Businesses with slow websites, developers with slow APIs, teams experiencing high server load, and anyone who wants their web application to handle more traffic without crashing.",
     whatIBuild: [
@@ -295,7 +295,7 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "Every second your page takes to load, a portion of your visitors leaves. Google also ranks faster websites higher in search results. Improving performance directly impacts your revenue and your SEO ranking.",
     proof:
-      "Reduced API response time from 94.91ms to 1.53ms — a 98% improvement — and increased throughput from slow baseline to 653 requests per second (+6,100%) through caching, query optimization, and architecture changes.",
+      "Reduced API response time from 94.91ms to 1.53ms, a 98% improvement, and increased throughput from slow baseline to 653 requests per second (+6,100%) through caching, query optimization, and architecture changes.",
     faq: [
       {
         q: "How do you make a website faster?",
@@ -318,7 +318,7 @@ export const servicesData: ServicePage[] = [
   {
     slug: "application-security-review",
     title: "Application Security Review",
-    metaTitle: "Application Security Review for Web Apps — Hamed Mohamed",
+    metaTitle: "Application Security Review for Web Apps | Hamed Mohamed",
     metaDescription:
       "Professional security reviews for Node.js and React web apps. Hamed Mohamed finds and fixes vulnerabilities before they become problems in production.",
     h1: "Application Security Review for Web Apps and APIs",
@@ -337,7 +337,7 @@ export const servicesData: ServicePage[] = [
     ],
     technologies: ["Node.js", "SAST/DAST tools", "AST Analysis", "Docker", "GitHub Actions", "Opossum Circuit Breaker"],
     businessValue:
-      "A security breach can cost far more than a security review — in money, reputation, and user trust. Reviewing and fixing vulnerabilities before launch is always cheaper than dealing with a data breach after.",
+      "A security breach can cost far more than a security review, in money, reputation, and user trust. Reviewing and fixing vulnerabilities before launch is always cheaper than dealing with a data breach after.",
     proof:
       "Active contributor to the NodeSecure open-source security ecosystem with 7 merged pull requests. Built custom security probes that detect unsafe code patterns. Caught and fixed 15+ vulnerabilities before production in a live university system.",
     faq: [
@@ -351,7 +351,7 @@ export const servicesData: ServicePage[] = [
       },
       {
         q: "Can you review a Node.js application?",
-        a: "Yes. Hamed specializes in Node.js security and is a contributor to NodeSecure — open-source security tooling for the Node.js ecosystem.",
+        a: "Yes. Hamed specializes in Node.js security and is a contributor to NodeSecure, open-source security tooling for the Node.js ecosystem.",
       },
       {
         q: "Will you explain the issues in simple terms?",
@@ -362,12 +362,12 @@ export const servicesData: ServicePage[] = [
   {
     slug: "qr-attendance-systems",
     title: "QR Attendance System Development",
-    metaTitle: "QR Attendance System Developer — Hamed Mohamed",
+    metaTitle: "QR Attendance System Developer | Hamed Mohamed",
     metaDescription:
       "Need a QR attendance system? Hamed Mohamed builds custom QR-based attendance systems for schools, universities, companies, and events using Node.js and React.",
     h1: "QR Attendance System Developer for Schools, Companies, and Events",
     intro:
-      "If you need a way for students, employees, or event attendees to check in using their phones — Hamed Mohamed can build a complete QR attendance system. No paper. No manual registers. Participants scan a QR code and their attendance is recorded instantly.",
+      "If you need a way for students, employees, or event attendees to check in using their phones, Hamed Mohamed can build a complete QR attendance system. No paper. No manual registers. Participants scan a QR code and their attendance is recorded instantly.",
     forWho:
       "Schools and universities, corporate HR teams, conference and event organizers, training programs, and any organization that needs to track who showed up.",
     whatIBuild: [
@@ -399,19 +399,19 @@ export const servicesData: ServicePage[] = [
       },
       {
         q: "Can it handle hundreds of students scanning at the same time?",
-        a: "Yes. The system Hamed built handles high concurrency — tested at 653 requests per second — so hundreds of students can scan at the same time without issues.",
+        a: "Yes. The system Hamed built handles high concurrency, tested at 653 requests per second, so hundreds of students can scan at the same time without issues.",
       },
     ],
   },
   {
     slug: "custom-business-systems",
     title: "Custom Business System Development",
-    metaTitle: "Custom Business System Developer — Hamed Mohamed",
+    metaTitle: "Custom Business System Developer | Hamed Mohamed",
     metaDescription:
-      "Need a custom system built for your business? Hamed Mohamed builds custom web-based business systems — inventory, booking, management, and more.",
+      "Need a custom system built for your business? Hamed Mohamed builds custom web-based business systems, inventory, booking, management, and more.",
     h1: "Custom Business System Developer for Companies and Organizations",
     intro:
-      "If your business has a process that currently runs on spreadsheets, paper, or a tool that doesn't quite fit — Hamed Mohamed can build a custom web system designed specifically for how your business works. No off-the-shelf software. Built exactly for you.",
+      "If your business has a process that currently runs on spreadsheets, paper, or a tool that doesn't quite fit, Hamed Mohamed can build a custom web system designed specifically for how your business works. No off-the-shelf software. Built exactly for you.",
     forWho:
       "Companies that have outgrown spreadsheets, businesses with unique workflows, organizations that need a system no existing software covers, and teams that want to automate manual processes.",
     whatIBuild: [
@@ -427,11 +427,11 @@ export const servicesData: ServicePage[] = [
     businessValue:
       "A custom system built for your specific workflow is faster, easier to use, and more reliable than adapting a generic tool. It removes manual steps, reduces human error, and gives you full ownership of your data.",
     proof:
-      "Built a complete attendance management system from scratch for a university — covering multiple faculties, thousands of students, admin control, and automated reporting. Handles real production traffic reliably every day.",
+      "Built a complete attendance management system from scratch for a university, covering multiple faculties, thousands of students, admin control, and automated reporting. Handles real production traffic reliably every day.",
     faq: [
       {
         q: "How do I know if I need a custom system?",
-        a: "If you're managing important business data in spreadsheets, if your team does repetitive manual work that could be automated, or if you've tried existing tools and they don't fit — a custom system is likely worth building.",
+        a: "If you're managing important business data in spreadsheets, if your team does repetitive manual work that could be automated, or if you've tried existing tools and they don't fit, a custom system is likely worth building.",
       },
       {
         q: "Can I add features later?",

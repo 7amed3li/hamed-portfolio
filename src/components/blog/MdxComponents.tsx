@@ -17,13 +17,13 @@ const components = {
   // CTA is injected in MDXContent to receive the lang prop
   // Custom styling for standard Markdown elements
   h1: ({ className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className={`mt-2 scroll-m-20 text-4xl font-bold tracking-tight ${className}`} {...props} />
+    <h1 className={`mt-2 scroll-m-20 text-2xl sm:text-4xl font-bold tracking-tight ${className}`} {...props} />
   ),
   h2: ({ className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className={`mt-10 scroll-m-20 border-b border-border pb-1 text-3xl font-semibold tracking-tight first:mt-0 ${className}`} {...props} />
+    <h2 className={`mt-10 scroll-m-20 border-b border-border pb-1 text-xl sm:text-3xl font-semibold tracking-tight first:mt-0 ${className}`} {...props} />
   ),
   h3: ({ className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className={`mt-8 scroll-m-20 text-2xl font-semibold tracking-tight ${className}`} {...props} />
+    <h3 className={`mt-8 scroll-m-20 text-lg sm:text-2xl font-semibold tracking-tight ${className}`} {...props} />
   ),
   a: ({ className = '', ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
     <a className={`font-medium text-accent underline underline-offset-4 hover:text-accent/80 ${className}`} {...props} />
@@ -32,13 +32,33 @@ const components = {
     <p className={`leading-7 [&:not(:first-child)]:mt-6 ${className}`} {...props} />
   ),
   ul: ({ className = '', ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={`my-6 ml-6 list-disc [&>li]:mt-2 ${className}`} {...props} />
+    <ul className={`my-6 ms-6 list-disc [&>li]:mt-2 ${className}`} {...props} />
   ),
   ol: ({ className = '', ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={`my-6 ml-6 list-decimal [&>li]:mt-2 ${className}`} {...props} />
+    <ol className={`my-6 ms-6 list-decimal [&>li]:mt-2 ${className}`} {...props} />
   ),
   blockquote: ({ className = '', ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote className={`mt-6 border-l-2 border-accent pl-6 italic text-muted-foreground ${className}`} {...props} />
+    <blockquote className={`mt-6 border-s-2 border-accent ps-5 sm:ps-6 italic text-muted-foreground ${className}`} {...props} />
+  ),
+  table: ({ className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) => (
+    <div className="my-6 w-full overflow-x-auto rounded-lg border border-border">
+      <table className={`w-full text-xs sm:text-sm text-start border-collapse ${className}`} {...props} />
+    </div>
+  ),
+  thead: ({ className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <thead className={`bg-surface-2 border-b border-border ${className}`} {...props} />
+  ),
+  tbody: ({ className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
+    <tbody className={className} {...props} />
+  ),
+  tr: ({ className = '', ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
+    <tr className={`border-b border-border/60 last:border-b-0 ${className}`} {...props} />
+  ),
+  th: ({ className = '', ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
+    <th className={`px-3 py-2.5 sm:px-4 sm:py-3 font-mono text-xs uppercase tracking-wider text-foreground whitespace-nowrap text-start ${className}`} {...props} />
+  ),
+  td: ({ className = '', ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
+    <td className={`px-3 py-2.5 sm:px-4 sm:py-3 border-t border-border/60 text-muted-foreground align-top ${className}`} {...props} />
   ),
   pre: ({ className = '', ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre

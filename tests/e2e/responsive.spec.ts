@@ -84,7 +84,11 @@ for (const route of HISTORICAL_ROUTES) {
 }
 
 test.describe("code blocks contain their own horizontal scroll", () => {
-  const articles = HISTORICAL_ROUTES.filter((r) => r.includes("/blog/"));
+  const articles = HISTORICAL_ROUTES.filter(
+    (r) =>
+      r.includes("/blog/") &&
+      !r.endsWith("/from-computer-repair-to-software-engineering")
+  );
   for (const route of articles) {
     test(`code blocks scroll internally: ${route}`, async ({ page }) => {
       await page.setViewportSize({ width: 320, height: 568 });

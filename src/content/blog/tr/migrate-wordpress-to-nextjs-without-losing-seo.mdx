@@ -1,0 +1,96 @@
+---
+title: "WordPress'ten Next.js'e Google Sıralaması Kaybetmeden Geçiş Rehberi (301)"
+description: "25+ kalıcı 301 yönlendirme, çok dilli hreflang, Schema.org ve IndexNow ile WordPress sitenizi SEO kaybı olmadan Next.js 16'ya taşıma kontrol listesi."
+lang: "tr"
+translationKey: "migrate-wordpress-to-nextjs-without-losing-seo"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "seo", "wordpress", "migration", "redirects"]
+coverImage: "/static/blog/wordpress-to-nextjs-migration-cover.png"
+published: true
+featured: false
+summary: "Eski WordPress sitelerini 25+ kalıcı 301/308 yönlendirme, Schema.org ve IndexNow ile sıfır sıralama kaybıyla Next.js 16 App Router'a taşıma rehberi."
+---
+
+**Özet:** WordPress'ten Next.js'e geçiş yalnızca eski URL'ler `404` döndürdüğünde veya yapılandırılmış veriler silindiğinde SEO kaybına yol açar. İndekslenen her eski rotayı `next.config.ts` içinde kalıcı `301`/`308` yönlendirmeye bağlayıp `canonical`, `hreflang` ve IndexNow adımlarını uygulayarak Google otoritenizi %100 koruyabilirsiniz.
+
+---
+
+## WordPress Geçişlerinde Trafik Neden Düşer?
+
+İşletmeler WordPress'ten genellikle eklenti şişkinliği, mobilde 4 saniyeyi aşan yükleme süreleri ve sürekli güvenlik güncellemeleri yüzünden ayrılır. Ancak geçiş gününde şu hatalar yapılırsa organik trafik düşer:
+
+1. URL yapısının kalıcı yönlendirme olmadan değiştirilmesi (`/menu-tr/` → `/tr/menu`).
+2. Dış bağlantı (backlink) alan alt sayfaların unutulması.
+3. Yeni sitede `Schema.org` JSON-LD ve `hreflang` etiketlerinin eksik bırakılması.
+
+---
+
+## Canlıda Kanıtlanmış Sıfır Kayıplı Geçiş Kontrol Listesi
+
+İstanbul'daki **[Kardeşler Kebap & Cafe Cihangir](https://www.kardeslercihangir.com)** platformunu eski WordPress altyapısından **Next.js 16 (App Router) + Supabase** mimarisine taşırken, **25'ten fazla kalıcı yönlendirme kuralı** ile 10 dilde sıfır sıralama kaybı sağladık.
+
+### 1. Kod Yazmadan Önce Tüm URL'leri Envantere Alın
+
+* Eski WordPress `sitemap.xml` dosyası.
+* Google Search Console **Sayfalar** ve **En çok bağlantı alan sayfalar** dışa aktarımı.
+* Son 90 günde organik trafik getiren açılış sayfaları.
+
+### 2. `next.config.ts` İçinde Bire Bir Kalıcı Yönlendirmeler Kurun
+
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/menu-turkce/",
+        destination: "/tr/menu",
+        permanent: true, // HTTP 308 kalıcı yönlendirme
+      },
+      {
+        source: "/hakkimizda/",
+        destination: "/tr/about",
+        permanent: true,
+      },
+      {
+        source: "/wp-content/uploads/:path*",
+        destination: "/tr",
+        permanent: true,
+      },
+    ];
+  },
+};
+
+export default nextConfig;
+```
+
+<Callout type="warning">
+**Soft-404 tuzağından kaçının:** İlgisiz tüm eski linkleri topluca ana sayfaya (`/`) yönlendirmeyin. Her eski URL'yi en yakın konulu yeni sayfaya yönlendirin; gerçekten gereksiz eski sorgu URL'lerinin `404` dönmesine izin verin.
+</Callout>
+
+### 3. Teknik SEO'yu Eski Sitenin Ötesine Taşıyın
+
+* `generateMetadata` ile kendine referans veren `canonical` ve karşılıklı `hreflang` (`en`, `ar`, `tr`, `x-default`).
+* Sunucu tarafında basılan `Schema.org` JSON-LD (`Restaurant`, `Service`, `BreadcrumbList`).
+* Gerçek `<lastmod>` tarihlerine sahip temiz `sitemap.xml`.
+
+### 4. Canlıya Alma Doğrulama Tablosu
+
+| Adım | Kontrol | Hedef |
+| :--- | :--- | :--- |
+| **1. Otomatik Yönlendirme Testi** | Her eski WordPress URL'sini `redirect: "manual"` ile test et | `100%` tek adımda `301`/`308 → 200` |
+| **2. Google Search Console** | Yeni `sitemap.xml` gönder ve ana URL'leri denetle | Sıfır hatalı `noindex` veya canonical uyuşmazlığı |
+| **3. Bing + IndexNow** | Tüm canonical URL'leri `api.indexnow.org` ile bildir | Bing ve ChatGPT Search için hızlı indeksleme |
+
+---
+
+Detaylı proje incelemesi için [Kardeşler Platformu Vaka Analizi](/tr/case-studies/kardesler-restaurant-platform) veya [Web Sitesi ve Açılış Sayfası Geliştirme](/tr/services/website-and-landing-page-development) sayfalarını inceleyebilirsiniz.
+
+<CTA
+  topic="WordPress'ten Next.js'e SEO Kayıpsız Geçiş"
+  serviceSlug="website-and-landing-page-development"
+  title="Yavaş WordPress sitenizi SEO kaybı olmadan Next.js'e taşımak ister misiniz?"
+  description="Mevcut alan adınızı WhatsApp üzerinden gönderin; 24 saat içinde URL haritanızı inceleyip net bir geçiş planı sunayım."
+/>

@@ -7,7 +7,7 @@ export function StatusWidget() {
 
   useEffect(() => {
     const updateTime = () => {
-      // Tokat, Turkey is in UTC+3 (same as Riyadh, KSA)
+      // Istanbul, Turkey is in UTC+3 (same as Riyadh, KSA)
       const date = new Date();
       const options: Intl.DateTimeFormatOptions = {
         timeZone: 'Europe/Istanbul',
@@ -39,7 +39,7 @@ export function StatusWidget() {
       </div>
       <div className="w-px h-4 bg-border" />
       <div className="text-xs font-mono tracking-widest text-muted-foreground uppercase flex gap-2">
-        <span>{lang === "ar" ? "توكات، تركيا" : "Tokat, TR"}</span>
+        <span>{lang === "ar" ? "إسطنبول، تركيا" : lang === "tr" ? "İstanbul, TR" : "Istanbul, TR"}</span>
         <span className="text-foreground">{time}</span>
       </div>
     </div>

@@ -11,8 +11,9 @@
   --color-accent-dim: #a3cc5c;
   --color-dangerous: #ff3366;
   --color-brand: #c9fd74;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--lang-font-display, var(--font-display-en)), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--lang-font-sans, var(--font-sans-en)), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--lang-font-mono, var(--font-jetbrains-mono)), ui-monospace, SFMono-Regular, monospace;
 }
 
 @layer base {
@@ -25,6 +26,27 @@
     --border: #1e1e1e;
     --accent: #c9fd74;
     --dangerous: #ff3366;
+    --lang-font-display: var(--font-display-en);
+    --lang-font-sans: var(--font-sans-en);
+    --lang-font-mono: var(--font-jetbrains-mono);
+  }
+
+  html[lang="en"] {
+    --lang-font-display: var(--font-display-en);
+    --lang-font-sans: var(--font-sans-en);
+    --lang-font-mono: var(--font-jetbrains-mono);
+  }
+
+  html[lang="ar"] {
+    --lang-font-display: var(--font-display-ar);
+    --lang-font-sans: var(--font-sans-ar);
+    --lang-font-mono: var(--font-jetbrains-mono), var(--font-sans-ar);
+  }
+
+  html[lang="tr"] {
+    --lang-font-display: var(--font-display-tr);
+    --lang-font-sans: var(--font-sans-tr);
+    --lang-font-mono: var(--font-jetbrains-mono);
   }
 
   * {
@@ -42,10 +64,31 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+
+  /* Arabic typographic craft: keep cursive ligatures crisp and unspaced */
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] .section-label,
+  html[lang="ar"] .tracking-widest,
+  html[lang="ar"] .tracking-wider {
+    letter-spacing: 0 !important;
+  }
+
+  html[lang="ar"] body {
+    line-height: 1.72;
   }
 
   ::selection {
@@ -91,20 +134,26 @@ html.lenis body {
 }
 
 .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   color: var(--accent);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #1b1b1b 0%, #111111 100%);
+  border: 1px solid #2b2b2b;
+  box-shadow:
+    0 2px 0 0 #050505,
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .section-line {
-  width: 2rem;
-  height: 1px;
-  background: var(--accent);
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 0.75rem;
+  display: none;
 }
 
 /* Noise texture overlay (Desktop only for performance) */

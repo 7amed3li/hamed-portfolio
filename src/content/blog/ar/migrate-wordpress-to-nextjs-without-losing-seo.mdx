@@ -1,0 +1,102 @@
+---
+title: "كيف تنقل موقعك من WordPress إلى Next.js بدون خسارة ترتيبك في جوجل؟ (دليل عملي)"
+description: "دليل عملي لنقل المواقع من ووردبريس إلى Next.js App Router عبر 25+ قاعدة 301 Redirect ووسوم hreflang وSchema.org وIndexNow مع الحفاظ الكامل على الأرشفة."
+lang: "ar"
+translationKey: "migrate-wordpress-to-nextjs-without-losing-seo"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "seo", "wordpress", "migration", "redirects"]
+coverImage: "/static/blog/wordpress-to-nextjs-migration-cover.png"
+published: true
+featured: false
+summary: "خطة عملية مجرّبة في الإنتاج لترحيل مواقع WordPress البطيئة إلى Next.js 16 مع الحفاظ على 100% من ترتيب Google باستخدام قواعد Redirect دائمة وSchema.org وIndexNow."
+---
+
+**الخلاصة:** الترحيل من WordPress إلى Next.js لا يضر السيو إلا عندما تعطي الروابط القديمة خطأ `404` أو تفقد بياناتها المنظمة. عند حصر كل رابط مفهرس وتحويله بتوجيه دائم (`301`/`308`) داخل `next.config.ts`، مع الحفاظ على الكانونيكال ووسوم `hreflang` وإعادة إرسال `sitemap.xml` وIndexNow يوم الإطلاق، تحفظ 100% من قوة موقعك في جوجل وتضاعف سرعته.
+
+---
+
+## لماذا تفقد بعض المواقع زوارها يوم الانتقال من ووردبريس؟
+
+تلجأ الشركات لترك WordPress غالباً بسبب تضخم الإضافات (Plugins)، بطء التحميل على الجوال، فشل مؤشرات Core Web Vitals، وثغرات الأمان المتكررة. لكن الخطأ القاتل يحدث يوم الإطلاق عندما:
+
+1. تتغير بنية الروابط (مثلاً `/menu-ar/` إلى `/ar/menu`) بدون تحويلات دائمة من الخادم.
+2. تُنسى روابط الصفحات الفرعية والأرشيفات التي تملك روابط خارجية (Backlinks).
+3. تُنشر الواجهة بدون بيانات `Schema.org` المنظمة أو بدون `hreflang` للغات.
+
+---
+
+## قائمة الفحص المجربة لترحيل صفري الخسارة
+
+عند ترحيل موقع **[Kardeşler Kebap & Cafe Cihangir](https://www.kardeslercihangir.com)** من WordPress القديم إلى **Next.js 16 وSupabase**، حافظنا على جميع المراتب في جوجل عبر **10 لغات** من خلال تطبيق **أكثر من 25 قاعدة إعادة توجيه دائمة** بدون أي سقوط في الفهرسة.
+
+### 1. جرد كل الروابط المفهرسة قبل كتابة سطر كود واحد
+
+اجمع قائمة الروابط من 3 مصادر:
+
+* ملف `sitemap.xml` القديم في ووردبريس.
+* تقارير **الصفحات** و**أهم الصفحات المرتبطة** من Google Search Console.
+* سجلات الزوار لآخر 90 يوماً لأعلى الصفحات استقبالاً للترافيك.
+
+### 2. إعداد تحويلات دائمة 1-إلى-1 في `next.config.ts`
+
+في Next.js App Router يتم تنفيذ التحويلات على مستوى الشبكة قبل تحميل أي صفحة:
+
+```typescript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/menu-arabic/",
+        destination: "/ar/menu",
+        permanent: true, // HTTP 308 توجيه دائم يحفظ قوة السيو
+      },
+      {
+        source: "/hakkimizda/",
+        destination: "/tr/about",
+        permanent: true,
+      },
+      {
+        source: "/wp-content/uploads/:path*",
+        destination: "/tr",
+        permanent: true,
+      },
+    ];
+  },
+};
+
+export default nextConfig;
+```
+
+<Callout type="warning">
+**تجنّب فخ Soft-404:** لا تقم أبداً بتحويل عشرات الروابط الميتة غير المرتبطة إلى الصفحة الرئيسية (`/`). حوّل كل رابط قديم إلى أقرب صفحة مطابقة لموضوعه فقط، واترك الروابط الوهمية غير الموجودة ترجع `404` نظيفة.
+</Callout>
+
+### 3. ترقية السيو التقني فوق ما كان يقدمه ووردبريس
+
+بعد تثبيت التحويلات، يتيح لك Next.js توليد سيو صارم لا يعتمد على إضافات هشة:
+
+* **روابط Canonical ذاتية و`hreflang` تبادلية** لكل اللغات (`en`, `ar`, `tr`, `x-default`).
+* **بيانات منظمة `Schema.org` JSON-LD** مطبوعة داخل HTML من الخادم (`Service`, `Restaurant`, `BreadcrumbList`).
+* **خريطة موقع `sitemap.xml` نظيفة** بتواريخ تعديل `<lastmod>` حقيقية وبلا أي ملفات `.txt` أو مسارات محولة.
+
+### 4. خطوات التحقق يوم الإطلاق
+
+| المرحلة | الفحص المطلوب | النتيجة المستهدفة |
+| :--- | :--- | :--- |
+| **1. فحص التحويلات آلياً** | اختبار كل رابط ووردبريس قديم مع `redirect: "manual"` | `100%` تتحول في قفزة واحدة (`301`/`308 ← 200`) |
+| **2. Google Search Console** | إرسال `sitemap.xml` الجديد وفحص أهم الصفحات | صفر `noindex` خاطئ وصفر تضارب كانونيكال |
+| **3. Bing وIndexNow** | إرسال جميع الروابط إلى `api.indexnow.org` | تسريع الأرشفة في Bing وChatGPT Search خلال ساعات |
+
+---
+
+يمكنك الاطلاع على تفاصيل المشروع الحي في [دراسة حالة منصة Kardeşler](/ar/case-studies/kardesler-restaurant-platform) أو خدمة [تطوير المواقع وصفحات الهبوط](/ar/services/website-and-landing-page-development).
+
+<CTA
+  topic="ترحيل موقع من WordPress إلى Next.js"
+  serviceSlug="website-and-landing-page-development"
+  title="تخطط لنقل موقعك البطيء من ووردبريس إلى Next.js بدون خسارة زوار جوجل؟"
+  description="أرسل لي رابط موقعك الحالي على واتساب لأفحص لك الروابط المفهرسة وأضع لك خطة الترحيل وخريطة الـ 301 Redirects خلال 24 ساعة."
+/>

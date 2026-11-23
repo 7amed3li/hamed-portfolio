@@ -1,0 +1,92 @@
+---
+title: "Scaling a QR Attendance System to 653 req/s and 98% Lower API Latency"
+description: "Architecture behind a university QR attendance platform serving 2,000+ users: Redis hot-path caching, Opossum circuit breakers, and 15s rotating QR tokens."
+lang: "en"
+translationKey: "qr-attendance-system-architecture-scale"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["node", "redis", "postgresql", "architecture", "qr-system"]
+coverImage: "/static/blog/qr-attendance-architecture-cover.png"
+published: true
+featured: false
+summary: "How we engineered a university QR attendance platform serving 2,000+ users (~300 daily check-ins) across 6 faculties with 1.53ms average response time and 99.9% uptime."
+---
+
+**TL;DR:** A classroom QR attendance system does not fail from average daily traffic: it fails at 09:00 AM when 200 students scan the projector screen in the exact same 10 seconds. By pairing **15-second rotating cryptographic QR tokens + geofencing** with a **Redis hot-path cache** and **Opossum Circuit Breaker** fallback, we cut API latency by **98%** (from `94.91ms` to `1.53ms`) and scaled throughput to **653 req/s** with **99.9% uptime**.
+
+---
+
+## The Two Hard Problems in QR Attendance Systems
+
+Whether for a university, training center, or corporate office, naive QR attendance implementations fail in two ways:
+
+1. **Cheating via Photo Sharing:** A static QR code gets photographed and sent to absent peers in a group chat within 3 seconds.
+2. **Thundering Herd Check-In Spikes:** Hundreds of concurrent HTTP POST requests hit PostgreSQL at once at lecture start, exhausting the DB connection pool and timing out every user.
+
+---
+
+## Measured Production Benchmarks (TOGÜ Platform)
+
+At Tokat Gaziosmanpaşa University, our platform serves **2,000+ users** (averaging **~300 daily check-ins**) across **6 faculties, 13 departments, and 42 courses**:
+
+| Metric | Before Optimization | After Hybrid Architecture | Impact |
+| :--- | :--- | :--- | :--- |
+| **Average API Latency** | `94.91 ms` | **`1.53 ms`** | **98% faster** |
+| **Peak Throughput** | ~10 req/s | **`653 req/s`** | **+6,100% capacity** |
+| **Service Uptime** | Frequent peak timeouts | **`99.9%`** | Zero lecture disruptions |
+| **Bulk Academic Import** | Manual / slow loops | **`25,019` records in `<1.5s`** | Automated onboarding |
+
+---
+
+## The 3-Pillar Architecture That Solves Both Problems
+
+### 1. Anti-Cheat Verification (15s Rotating QR + Geofencing)
+
+* Every classroom session displays a cryptographic token that **rotates every 15 seconds** (signed server-side), making forwarded screenshots useless before they arrive.
+* Browser/device geolocation validates the participant is within **50–200 meters** of the classroom coordinates before the check-in is accepted.
+
+### 2. Hybrid Hot-Path Verification Pipeline (`JWT + Redis + DB`)
+
+Instead of hitting PostgreSQL on every token validation during a burst:
+
+```javascript
+// Simplified hybrid check-in verification flow
+async function verifyCheckIn(sessionToken, studentId) {
+  // 1. Fast cryptographic signature check (CPU only, <0.2ms)
+  const payload = verifySignedQrToken(sessionToken);
+
+  // 2. O(1) Redis lookup for active session & duplicate-scan guard
+  const cachedSession = await redis.get(`session:${payload.sessionId}`);
+  if (!cachedSession) {
+    throw new Error("Session expired or invalid");
+  }
+
+  // 3. Protected persistence behind Opossum Circuit Breaker
+  return dbBreaker.fire({ sessionId: payload.sessionId, studentId });
+}
+```
+
+### 3. Resilience Under Failure (Opossum Circuit Breaker)
+
+If PostgreSQL experiences transient lock contention during a spike, the **Opossum Circuit Breaker** prevents cascading timeouts across the Express.js event loop and routes verified check-ins through an automated temporary fallback buffer until normal DB health resumes.
+
+<Callout type="info">
+**Security & Testing Rigor:** Core verification and session flows are covered by integration tests (~85% backend coverage), with SAST/DAST checks integrated into CI/CD: catching and fixing 15+ issues before production rollout.
+</Callout>
+
+---
+
+## Who Needs a Custom QR Attendance System?
+
+* **Universities & Schools:** Replace paper sheets across faculties with instant browser check-ins (no student app install needed).
+* **Corporate Offices & Factories:** Shift/site check-ins with geofencing and exportable HR reports.
+* **Conferences & Training Centers:** Fast door validation and live attendance analytics.
+
+Read the full breakdown in the [QR Attendance System Case Study](/en/case-studies/qr-attendance-system) or check [QR Attendance System Development](/en/services/qr-attendance-systems).
+
+<CTA
+  topic="Custom QR Attendance System"
+  serviceSlug="qr-attendance-systems"
+  title="Need a fast, anti-cheat QR attendance system for your institution?"
+  description="Message me on WhatsApp with your student/employee count and reporting needs, I will outline the architecture and timeline within 24 hours."
+/>

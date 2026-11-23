@@ -1,7 +1,7 @@
 /**
  * Route inventory for the site-audit regression suite.
  *
- * HISTORICAL_ROUTES is the 66-route inventory (3 locales × 22 templates/slugs).
+ * HISTORICAL_ROUTES is the 75-route inventory (3 locales × 25 templates/slugs).
  * It is kept explicit so that a route silently disappearing is reported as a
  * failure instead of being skipped.
  *
@@ -27,11 +27,18 @@ export const SERVICE_SLUGS = [
 export const CASE_STUDY_SLUGS = [
   "qr-attendance-system",
   "kardesler-restaurant-platform",
+  "genc-group-corporate-platform",
+  "healix-medical-platform",
+  "cihangir-ev-yemekleri-platform",
+  "lucky-sushi-multi-branch-platform",
   "nodesecure-open-source",
   "dragonsploit",
 ] as const;
 
 export const BLOG_SLUGS = [
+  "qr-restaurant-menu-without-commissions",
+  "migrate-wordpress-to-nextjs-without-losing-seo",
+  "qr-attendance-system-architecture-scale",
   "from-computer-repair-to-software-engineering",
   "refactoring-production-backend-lessons",
   "how-i-stopped-nodejs-from-freezing",

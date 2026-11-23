@@ -1,6 +1,6 @@
 export const faqData = {
   en: {
-    metaTitle: "FAQ — Hamed Mohamed, Full-Stack Developer",
+    metaTitle: "FAQ | Hamed Mohamed, Full-Stack Developer",
     metaDesc: "Frequently asked questions about hiring Hamed Mohamed for web development, performance optimization, Node.js backend architecture, and custom QR systems.",
     backToPortfolio: "← Back to Portfolio",
     faqHead: "FAQ",
@@ -8,7 +8,7 @@ export const faqData = {
     desc: "Questions clients commonly ask before working with Hamed Mohamed. Can't find your answer?",
     emailDirectly: "Email Hamed directly.",
     stillQuestion: "Still have a question?",
-    stillDesc: "Describe what you need in plain language — Hamed will respond and let you know if and how he can help.",
+    stillDesc: "Describe what you need in plain language, Hamed will respond and let you know if and how he can help.",
     contactHamed: "Contact Hamed",
     groups: [
       {
@@ -49,7 +49,7 @@ export const faqData = {
           },
           {
             q: "Can Hamed Mohamed build a restaurant or cafe menu website?",
-            a: "Yes. Hamed can build a digital menu where customers scan a QR code with their phone and see your full menu instantly — no app download needed.",
+            a: "Yes. Hamed can build a digital menu where customers scan a QR code with their phone and see your full menu instantly, no app download needed.",
           },
           {
             q: "Can Hamed Mohamed build a website in Arabic?",
@@ -62,7 +62,7 @@ export const faqData = {
         questions: [
           {
             q: "Can Hamed Mohamed build a full-stack web application?",
-            a: "Yes. Hamed handles the complete stack — React/Next.js frontend, Node.js/Express backend, PostgreSQL database, and deployment. One developer, full project.",
+            a: "Yes. Hamed handles the complete stack, React/Next.js frontend, Node.js/Express backend, PostgreSQL database, and deployment. One developer, full project.",
           },
           {
             q: "Can Hamed Mohamed build a dashboard or admin panel?",
@@ -100,7 +100,7 @@ export const faqData = {
         questions: [
           {
             q: "Can Hamed Mohamed fix website bugs?",
-            a: "Yes. Hamed can debug and fix issues in React, Next.js, Node.js, and full-stack applications — including frontend bugs, API errors, and database issues.",
+            a: "Yes. Hamed can debug and fix issues in React, Next.js, Node.js, and full-stack applications, including frontend bugs, API errors, and database issues.",
           },
           {
             q: "Can Hamed Mohamed fix React or Next.js bugs?",
@@ -108,7 +108,7 @@ export const faqData = {
           },
           {
             q: "Can Hamed Mohamed fix a Node.js API that keeps crashing?",
-            a: "Yes. Hamed can diagnose why a Node.js API is failing — memory leaks, unhandled promises, database timeouts — and fix the root cause.",
+            a: "Yes. Hamed can diagnose why a Node.js API is failing (memory leaks, unhandled promises, database timeouts) and fix the root cause.",
           },
           {
             q: "My website is down. Can you help?",
@@ -121,7 +121,7 @@ export const faqData = {
         questions: [
           {
             q: "Can Hamed Mohamed make a website faster?",
-            a: "Yes. Hamed optimizes frontend load times and backend response times. He achieved a 98% latency reduction in a production system — from 94ms down to 1.5ms.",
+            a: "Yes. Hamed optimizes frontend load times and backend response times. He achieved a 98% latency reduction in a production system, from 94ms down to 1.5ms.",
           },
           {
             q: "Can Hamed Mohamed reduce API latency?",
@@ -159,14 +159,14 @@ export const faqData = {
           },
           {
             q: "Can Hamed Mohamed build a custom business management system?",
-            a: "Yes. Hamed builds custom web-based systems for inventory, booking, HR, CRM, and any workflow specific to your business — replacing spreadsheets with a proper application.",
+            a: "Yes. Hamed builds custom web-based systems for inventory, booking, HR, CRM, and any workflow specific to your business, replacing spreadsheets with a proper application.",
           },
         ],
       },
     ],
   },
   ar: {
-    metaTitle: "الأسئلة الشائعة — حامد محمد، مطور الويب",
+    metaTitle: "الأسئلة الشائعة | حامد محمد، مطور الويب",
     metaDesc: "الأسئلة الشائعة حول توظيف حامد محمد. هل يبني المواقع؟ هل يصلح الأخطاء؟ تجد الإجابات هنا.",
     backToPortfolio: "← العودة إلى المعرض",
     faqHead: "أسئلة شائعة (FAQ)",
@@ -174,7 +174,7 @@ export const faqData = {
     desc: "أسئلة يطرحها العملاء عادةً قبل العمل مع حامد محمد. ألم تجد إجابتك؟",
     emailDirectly: "راسل حامد مباشرة.",
     stillQuestion: "هل لا يزال لديك سؤال؟",
-    stillDesc: "اشرح ما تحتاجه بلغة بسيطة — سيرد عليك حامد ويخبرك كيف يمكنه المساعدة.",
+    stillDesc: "اشرح ما تحتاجه بلغة بسيطة، سيرد عليك حامد ويخبرك كيف يمكنه المساعدة.",
     contactHamed: "تواصل مع حامد",
     groups: [
       {
@@ -215,7 +215,7 @@ export const faqData = {
           },
           {
             q: "هل يمكن لحامد بناء موقع قائمة طعام (Menu) لمطعم أو مقهى؟",
-            a: "نعم. يمكن لحامد بناء قائمة رقمية يمسح فيها الزبائن كود QR بهواتفهم ليروا القائمة كاملة على الفور — دون الحاجة لتحميل تطبيق.",
+            a: "نعم. يمكن لحامد بناء قائمة رقمية يمسح فيها الزبائن كود QR بهواتفهم ليروا القائمة كاملة على الفور، دون الحاجة لتحميل تطبيق.",
           },
           {
             q: "هل يستطيع حامد بناء موقع باللغة العربية؟",
@@ -228,7 +228,7 @@ export const faqData = {
         questions: [
           {
             q: "هل يمكن لحامد بناء تطبيق ويب متكامل (Full-Stack)؟",
-            a: "نعم. يتعامل حامد مع كافة أجزاء النظام — الواجهة الأمامية بـ React/Next.js، الخلفية بـ Node.js، قاعدة البيانات PostgreSQL، والرفع على الخادم. مبرمج واحد، مشروع كامل.",
+            a: "نعم. يتعامل حامد مع كافة أجزاء النظام، الواجهة الأمامية بـ React/Next.js، الخلفية بـ Node.js، قاعدة البيانات PostgreSQL، والرفع على الخادم. مبرمج واحد، مشروع كامل.",
           },
           {
             q: "هل يمكن لحامد بناء لوحة تحكم أو نظام إدارة؟",
@@ -266,7 +266,7 @@ export const faqData = {
         questions: [
           {
             q: "هل يستطيع حامد إصلاح الأخطاء في موقع الويب؟",
-            a: "نعم. يمكن لحامد اكتشاف الأخطاء وإصلاحها في React، Next.js، Node.js — بما في ذلك أخطاء الواجهات، أخطاء الـ API، وقواعد البيانات.",
+            a: "نعم. يمكن لحامد اكتشاف الأخطاء وإصلاحها في React، Next.js، Node.js، بما في ذلك أخطاء الواجهات، أخطاء الـ API، وقواعد البيانات.",
           },
           {
             q: "هل يمكن لحامد إصلاح مشاكل في تطبيق React أو Next.js؟",
@@ -274,7 +274,7 @@ export const faqData = {
           },
           {
             q: "هل يمكنه إصلاح نظام Node.js API يتوقف (Crash) باستمرار؟",
-            a: "نعم. يمكن لحامد تشخيص سبب فشل نظام Node.js — سواء كان تسريب ذاكرة، وعود غير معالجة، مشاكل اتصال — وإصلاح السبب الجذري.",
+            a: "نعم. يمكن لحامد تشخيص سبب فشل نظام Node.js (سواء كان تسريب ذاكرة، وعود غير معالجة، مشاكل اتصال) وإصلاح السبب الجذري.",
           },
           {
             q: "موقعي تعطل فجأة، هل يمكنك المساعدة؟",
@@ -287,7 +287,7 @@ export const faqData = {
         questions: [
           {
             q: "هل يستطيع حامد جعل موقعي أسرع؟",
-            a: "نعم. يقوم حامد بتحسين أوقات التحميل الأمامية والخلفية. حقق تقليلًا بنسبة 98% في زمن استجابة نظام حقيقي — من 94ms إلى 1.5ms.",
+            a: "نعم. يقوم حامد بتحسين أوقات التحميل الأمامية والخلفية. حقق تقليلًا بنسبة 98% في زمن استجابة نظام حقيقي، من 94ms إلى 1.5ms.",
           },
           {
             q: "هل تحسين الأداء يساعد في محركات البحث (SEO)؟",
@@ -324,7 +324,7 @@ export const faqData = {
     ],
   },
   tr: {
-    metaTitle: "SSS — Hamed Mohamed, Full-Stack Geliştirici",
+    metaTitle: "SSS | Hamed Mohamed, Full-Stack Geliştirici",
     metaDesc: "Hamed Mohamed'i işe alma hakkında sık sorulan sorular. Web sitesi kurabilir mi, hata düzeltebilir mi? Yanıtları burada bulun.",
     backToPortfolio: "← Portföye Dön",
     faqHead: "SSS",
@@ -332,7 +332,7 @@ export const faqData = {
     desc: "Müşterilerin Hamed Mohamed ile çalışmadan önce sorduğu ortak sorular. Cevabınızı bulamadınız mı?",
     emailDirectly: "Doğrudan Hamed'e E-posta Gönderin.",
     stillQuestion: "Hâlâ sorunuz mu var?",
-    stillDesc: "Neye ihtiyacınız olduğunu sade bir dille anlatın — Hamed yanıtlayacak ve nasıl yardımcı olabileceğini söyleyecektir.",
+    stillDesc: "Neye ihtiyacınız olduğunu sade bir dille anlatın, Hamed yanıtlayacak ve nasıl yardımcı olabileceğini söyleyecektir.",
     contactHamed: "Hamed ile İletişime Geç",
     groups: [
       {
@@ -369,7 +369,7 @@ export const faqData = {
           },
           {
             q: "Hamed Mohamed bir restoran veya kafe menüsü yapabilir mi?",
-            a: "Evet. Müşterilerin telefonlarıyla bir QR kodu tarayarak menünüzün tamamını anında görebildiği dijital bir menü sitesi yapabilir — uygulama indirmeye gerek yoktur.",
+            a: "Evet. Müşterilerin telefonlarıyla bir QR kodu tarayarak menünüzün tamamını anında görebildiği dijital bir menü sitesi yapabilir, uygulama indirmeye gerek yoktur.",
           },
           {
             q: "Hamed Mohamed çok dilli (Arapça) bir web sitesi yapabilir mi?",
@@ -382,7 +382,7 @@ export const faqData = {
         questions: [
           {
             q: "Hamed Mohamed full-stack bir web uygulaması geliştirebilir mi?",
-            a: "Evet. Hamed uygulamanın tüm katmanlarını — React/Next.js ön yüz (frontend), Node.js arka yüz (backend), PostgreSQL veritabanı ve dağıtım (deployment) — yönetir. Tek bir geliştirici, eksiksiz bir proje.",
+            a: "Evet. Hamed uygulamanın tüm katmanlarını, React/Next.js ön yüz (frontend), Node.js arka yüz (backend), PostgreSQL veritabanı ve dağıtım (deployment), yönetir. Tek bir geliştirici, eksiksiz bir proje.",
           },
           {
             q: "Hamed Mohamed bir yönetim veya kontrol paneli yapabilir mi?",
@@ -408,7 +408,7 @@ export const faqData = {
         questions: [
           {
             q: "Hamed Mohamed web sitesi hatalarını düzeltebilir mi?",
-            a: "Evet. Hamed React, Next.js, Node.js ve full-stack uygulamalardaki — arayüz hataları, API sorunları ve veritabanı sorunları dahil — hataları bulup çözebilir.",
+            a: "Evet. Hamed React, Next.js, Node.js ve full-stack uygulamalardaki (arayüz hataları, API sorunları ve veritabanı sorunları dahil) hataları bulup çözebilir.",
           },
           {
             q: "Web sitem çöktü. Yardımcı olabilir misiniz?",
@@ -438,7 +438,7 @@ export const faqData = {
           },
           {
             q: "Hamed Mohamed özel bir iş yönetim sistemi yapabilir mi?",
-            a: "Evet. Hamed envanter, rezervasyon, İK veya işletmenize özel herhangi bir iş akışı için web tabanlı sistemler geliştirir — dev Excel dosyalarının yerini düzgün bir uygulama alır.",
+            a: "Evet. Hamed envanter, rezervasyon, İK veya işletmenize özel herhangi bir iş akışı için web tabanlı sistemler geliştirir, dev Excel dosyalarının yerini düzgün bir uygulama alır.",
           },
         ],
       },

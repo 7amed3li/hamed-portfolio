@@ -1,11 +1,11 @@
 export const hireData = {
   en: {
-    metaTitle: "Hire Hamed Mohamed — Full-Stack Developer for Websites, Dashboards & Web Apps",
+    metaTitle: "Hire Hamed Mohamed | Full-Stack Developer for Websites, Dashboards & Web Apps",
     metaDesc: "Hire Hamed Mohamed: Full-Stack Engineer building websites, dashboards, Node.js backends, and QR systems with React, Next.js, and PostgreSQL. Available for hire.",
     backToPortfolio: "← Back to Portfolio",
     availableForHire: "Available for Hire",
     hireHamed: "Hire Hamed Mohamed",
-    introText: "If you need someone to build a website, landing page, restaurant menu, dashboard, admin panel, backend API, QR attendance system, or secure full-stack web application —",
+    introText: "If you need someone to build a website, landing page, restaurant menu, dashboard, admin panel, backend API, QR attendance system, or secure full-stack web application, ",
     introBold: "Hamed Mohamed can help",
     introEnd: "turn your idea into a working product using React, Next.js, Node.js, and PostgreSQL.",
     startProject: "Start a Project",
@@ -13,14 +13,14 @@ export const hireData = {
     viewProjects: "View Projects",
     whoIs: "Who is Hamed Mohamed?",
     whoIsH2: "A Full-Stack Engineer who builds things that actually work in production.",
-    p1: "Hamed Mohamed is an Egyptian Full-Stack Engineer based in Turkey with over a year of production experience building and securing web systems. He has built complete applications used by real people — not just demo projects.",
+    p1: "Hamed Mohamed is an Egyptian Full-Stack Engineer based in Turkey with over a year of production experience building and securing web systems. He has built complete applications used by real people, not just demo projects.",
     p2_1: "His most recent project is a QR-based attendance system running daily for ",
     p2_bold1: "2,000+ students across 6 university faculties",
-    p2_2: ". He took the API response time from 94ms down to 1.5ms — a ",
+    p2_2: ". He took the API response time from 94ms down to 1.5ms, a ",
     p2_bold2: "98% improvement",
-    p2_3: " — and kept the system at 99.9% uptime under heavy load.",
+    p2_3: ", and kept the system at 99.9% uptime under heavy load.",
     p3: "He also contributes to open-source security tools in the Node.js ecosystem, which means he stays sharp on security best practices and writes code that's safe, not just functional.",
-    p4: "Hamed works with non-technical clients regularly. He explains what he's building in plain language, asks the right questions, and delivers working products — not excuses.",
+    p4: "Hamed works with non-technical clients regularly. He explains what he's building in plain language, asks the right questions, and delivers working products, not excuses.",
     whatCanBuild: "What Hamed Can Build for You",
     servicesH2: "Services",
     learnMore: "Learn more →",
@@ -33,7 +33,7 @@ export const hireData = {
       },
       {
         title: "One person who handles the full picture",
-        desc: "Frontend, backend, database, deployment — Hamed handles the entire stack. No coordination overhead between a frontend dev, a backend dev, and a DevOps person.",
+        desc: "Frontend, backend, database, deployment, Hamed handles the entire stack. No coordination overhead between a frontend dev, a backend dev, and a DevOps person.",
       },
       {
         title: "Security is built in, not added later",
@@ -45,14 +45,14 @@ export const hireData = {
       },
       {
         title: "Multilingual: Arabic, English, Turkish",
-        desc: "Hamed is fluent in Arabic (native), English, and Turkish — making communication easy for clients across the Middle East, Turkey, and beyond.",
+        desc: "Hamed is fluent in Arabic (native), English, and Turkish, making communication easy for clients across the Middle East, Turkey, and beyond.",
       },
     ],
     commonQuestions: "Common Questions",
     faqH2: "FAQ",
     readyToStart: "Ready to start?",
     letsTalk: " Let's talk.",
-    contactDesc: "Describe what you need — even in plain, non-technical language. Hamed will respond, ask the right questions, and tell you honestly whether he can help and how long it will take.",
+    contactDesc: "Describe what you need, even in plain, non-technical language. Hamed will respond, ask the right questions, and tell you honestly whether he can help and how long it will take.",
     sendMessage: "Send a Message",
     stats: [
       { value: "2,000+", label: "Users on a system I built" },
@@ -67,11 +67,11 @@ export const hireData = {
       },
       {
         q: "Do you only work with developers and tech companies?",
-        a: "No. Hamed works with restaurants, universities, small businesses, startups, and individual founders — anyone who needs something built.",
+        a: "No. Hamed works with restaurants, universities, small businesses, startups, and individual founders, anyone who needs something built.",
       },
       {
         q: "Can I hire you for a small project?",
-        a: "Yes. Whether it's a single landing page, a bug fix, or a performance audit — project size is not a barrier. Contact Hamed and describe what you need.",
+        a: "Yes. Whether it's a single landing page, a bug fix, or a performance audit, project size is not a barrier. Contact Hamed and describe what you need.",
       },
       {
         q: "Are you available for freelance projects?",
@@ -79,17 +79,17 @@ export const hireData = {
       },
       {
         q: "What information do I need to start?",
-        a: "Just describe what you want to build or fix. You don't need a technical spec — a plain-language description of the problem or goal is enough to start the conversation.",
+        a: "Just describe what you want to build or fix. You don't need a technical spec, a plain-language description of the problem or goal is enough to start the conversation.",
       },
     ],
   },
   ar: {
-    metaTitle: "وظف حامد محمد — مطور مواقع وتطبيقات ويب متكاملة (Full-Stack)",
+    metaTitle: "وظف حامد محمد | مطور مواقع وتطبيقات ويب متكاملة (Full-Stack)",
     metaDesc: "توظيف حامد محمد: مهندس برمجيات يبني مواقع، لوحات تحكم، أنظمة حضور QR، وتطبيقات ويب متكاملة باستخدام React و Node.js و PostgreSQL. متاح للعمل الحر والدوام.",
     backToPortfolio: "← العودة لمعرض الأعمال",
     availableForHire: "متاح للتوظيف",
     hireHamed: "وظّف حامد محمد",
-    introText: "إذا كنت تبحث عن شخص لبناء موقعك، صفحة هبوط، منيو مطعم، لوحة تحكم، نظام خلفي (API)، نظام حضور بالـ QR، أو تطبيق ويب متكامل وآمن —",
+    introText: "إذا كنت تبحث عن شخص لبناء موقعك، صفحة هبوط، منيو مطعم، لوحة تحكم، نظام خلفي (API)، نظام حضور بالـ QR، أو تطبيق ويب متكامل وآمن، ",
     introBold: "حامد محمد هو الخيار الأنسب",
     introEnd: "لتحويل فكرتك إلى منتج حقيقي باستخدام React، Next.js، Node.js، و PostgreSQL.",
     startProject: "ابدأ مشروعك",
@@ -97,14 +97,14 @@ export const hireData = {
     viewProjects: "تصفح المشاريع",
     whoIs: "من هو حامد محمد؟",
     whoIsH2: "مهندس برمجيات (Full-Stack) يبني مشاريع حقيقية تعمل بكفاءة في بيئة الإنتاج.",
-    p1: "حامد محمد هو مهندس برمجيات مصري مقيم في تركيا، يمتلك خبرة عملية في بناء وتأمين أنظمة الويب. قام بتطوير تطبيقات متكاملة تُستخدم فعلياً من قِبل آلاف المستخدمين — وليست مجرد مشاريع تجريبية.",
+    p1: "حامد محمد هو مهندس برمجيات مصري مقيم في تركيا، يمتلك خبرة عملية في بناء وتأمين أنظمة الويب. قام بتطوير تطبيقات متكاملة تُستخدم فعلياً من قِبل آلاف المستخدمين، وليست مجرد مشاريع تجريبية.",
     p2_1: "أحدث مشاريعه كان بناء نظام لتسجيل الحضور عبر الـ QR، ويُستخدم من قِبل ",
     p2_bold1: "أكثر من 2000 طالب في 6 كليات جامعية",
-    p2_2: ". نجح في تقليل زمن استجابة النظام من 94ms إلى 1.5ms — ",
+    p2_2: ". نجح في تقليل زمن استجابة النظام من 94ms إلى 1.5ms، ",
     p2_bold2: "نسبة تحسن بلغت 98%",
-    p2_3: " — مع الحفاظ على استقرار النظام بنسبة 99.9% حتى تحت الضغط العالي.",
+    p2_3: "، مع الحفاظ على استقرار النظام بنسبة 99.9% حتى تحت الضغط العالي.",
     p3: "إلى جانب ذلك، يساهم حامد في تطوير أدوات الحماية مفتوحة المصدر الخاصة ببيئة Node.js، مما يجعله مطلعاً دائماً على أحدث معايير الأمان، ليكتب أكواداً محمية بالكامل وليست مجرد أكواد تؤدي وظيفتها.",
-    p4: "يتعامل حامد بانتظام مع عملاء غير تقنيين، حيث يمكنه تبسيط المفاهيم المعقدة، طرح الأسئلة المناسبة لفهم الفكرة، وتسليم مشاريع تعمل بكفاءة — بدون أي أعذار.",
+    p4: "يتعامل حامد بانتظام مع عملاء غير تقنيين، حيث يمكنه تبسيط المفاهيم المعقدة، طرح الأسئلة المناسبة لفهم الفكرة، وتسليم مشاريع تعمل بكفاءة، بدون أي أعذار.",
     whatCanBuild: "ماذا يمكن لحامد أن يبني لك؟",
     servicesH2: "الخدمات",
     learnMore: "التفاصيل ←",
@@ -117,7 +117,7 @@ export const hireData = {
       },
       {
         title: "مطور واحد يدير المنظومة بالكامل",
-        desc: "واجهات المستخدم، الأنظمة الخلفية، قواعد البيانات، والرفع على الخوادم — حامد يتكفل بكل شيء، مما يوفر عليك عناء التنسيق بين عدة مبرمجين.",
+        desc: "واجهات المستخدم، الأنظمة الخلفية، قواعد البيانات، والرفع على الخوادم، حامد يتكفل بكل شيء، مما يوفر عليك عناء التنسيق بين عدة مبرمجين.",
       },
       {
         title: "الأمان هو الأساس وليس مجرد إضافة",
@@ -129,14 +129,14 @@ export const hireData = {
       },
       {
         title: "متعدد اللغات: العربية، الإنجليزية، التركية",
-        desc: "يتقن حامد اللغات العربية (اللغة الأم)، والإنجليزية، والتركية — مما يجعل التواصل سهلاً للعملاء من الشرق الأوسط، وتركيا، وما وراءها.",
+        desc: "يتقن حامد اللغات العربية (اللغة الأم)، والإنجليزية، والتركية، مما يجعل التواصل سهلاً للعملاء من الشرق الأوسط، وتركيا، وما وراءها.",
       },
     ],
     commonQuestions: "الأسئلة الشائعة",
     faqH2: "أسئلة شائعة",
     readyToStart: "جاهز للبدء؟",
     letsTalk: " لنتحدث.",
-    contactDesc: "اشرح ما تحتاجه — حتى بلغة بسيطة وغير تقنية. سيرد عليك حامد، ويطرح الأسئلة المناسبة، ويخبرك بصدق ما إذا كان بإمكانه المساعدة والمدة التي سيستغرقها العمل.",
+    contactDesc: "اشرح ما تحتاجه: حتى بلغة بسيطة وغير تقنية. سيرد عليك حامد، ويطرح الأسئلة المناسبة، ويخبرك بصدق ما إذا كان بإمكانه المساعدة والمدة التي سيستغرقها العمل.",
     sendMessage: "أرسل رسالة",
     stats: [
       { value: "+2,000", label: "طالب مسجل على نظام بنيته" },
@@ -151,11 +151,11 @@ export const hireData = {
       },
       {
         q: "هل تعمل فقط مع المطورين وشركات التقنية؟",
-        a: "لا. يعمل حامد مع المطاعم، الجامعات، الشركات الصغيرة، الشركات الناشئة، والمؤسسين الأفراد — أي شخص يحتاج لبناء شيء.",
+        a: "لا. يعمل حامد مع المطاعم، الجامعات، الشركات الصغيرة، الشركات الناشئة، والمؤسسين الأفراد، أي شخص يحتاج لبناء شيء.",
       },
       {
         q: "هل يمكنني توظيفك لمشروع صغير؟",
-        a: "نعم. سواء كانت صفحة هبوط واحدة، إصلاح خطأ، أو مراجعة أداء — حجم المشروع ليس عائقاً. تواصل مع حامد واشرح ما تحتاجه.",
+        a: "نعم. سواء كانت صفحة هبوط واحدة، إصلاح خطأ، أو مراجعة أداء، حجم المشروع ليس عائقاً. تواصل مع حامد واشرح ما تحتاجه.",
       },
       {
         q: "هل أنت متاح للعمل الحر (Freelance)؟",
@@ -163,17 +163,17 @@ export const hireData = {
       },
       {
         q: "ما المعلومات اللازمة للبدء؟",
-        a: "فقط اشرح ما تريد بناءه أو إصلاحه. لا تحتاج لمواصفات تقنية — وصف بسيط بلغتك للمشكلة أو الهدف يكفي لبدء المحادثة.",
+        a: "فقط اشرح ما تريد بناءه أو إصلاحه. لا تحتاج لمواصفات تقنية، وصف بسيط بلغتك للمشكلة أو الهدف يكفي لبدء المحادثة.",
       },
     ],
   },
   tr: {
-    metaTitle: "Hamed Mohamed'i İşe Al — Web Siteleri ve Web Uygulamaları için Full-Stack Geliştirici",
+    metaTitle: "Hamed Mohamed'i İşe Al | Web Siteleri ve Web Uygulamaları için Full-Stack Geliştirici",
     metaDesc: "Hamed Mohamed: React, Next.js, Node.js ve PostgreSQL ile web siteleri, yönetim panelleri ve güvenli arka uç sistemleri geliştiren Full-Stack Mühendis.",
     backToPortfolio: "← Portföye Dön",
     availableForHire: "İşe Alıma Açık",
     hireHamed: "Hamed Mohamed'i İşe Al",
-    introText: "Eğer bir web sitesi, açılış sayfası, restoran menüsü, yönetim paneli, arka uç (backend) API, QR yoklama sistemi veya güvenli bir full-stack web uygulaması oluşturacak birine ihtiyacınız varsa — ",
+    introText: "Eğer bir web sitesi, açılış sayfası, restoran menüsü, yönetim paneli, arka uç (backend) API, QR yoklama sistemi veya güvenli bir full-stack web uygulaması oluşturacak birine ihtiyacınız varsa, ",
     introBold: "Hamed Mohamed",
     introEnd: " fikrinizi React, Next.js, Node.js ve PostgreSQL kullanarak çalışan bir ürüne dönüştürmenize yardımcı olabilir.",
     startProject: "Bir Proje Başlat",
@@ -201,7 +201,7 @@ export const hireData = {
       },
       {
         title: "Tüm resmi yöneten tek kişi",
-        desc: "Ön uç, arka uç, veritabanı, dağıtım — Hamed tüm yığını (stack) yönetir. Farklı geliştiriciler arasında koordinasyon yükü yoktur.",
+        desc: "Ön uç, arka uç, veritabanı, dağıtım, Hamed tüm yığını (stack) yönetir. Farklı geliştiriciler arasında koordinasyon yükü yoktur.",
       },
       {
         title: "Güvenlik sonradan eklenmez, baştan inşa edilir",
@@ -235,11 +235,11 @@ export const hireData = {
       },
       {
         q: "Sadece geliştiriciler ve teknoloji şirketleri ile mi çalışıyorsunuz?",
-        a: "Hayır. Hamed restoranlar, üniversiteler, küçük işletmeler, startup'lar ve bireysel kurucularla çalışır — bir şey yaptırmaya ihtiyacı olan herkes.",
+        a: "Hayır. Hamed restoranlar, üniversiteler, küçük işletmeler, startup'lar ve bireysel kurucularla çalışır, bir şey yaptırmaya ihtiyacı olan herkes.",
       },
       {
         q: "Küçük bir proje için sizi işe alabilir miyim?",
-        a: "Evet. İster tek bir açılış sayfası, ister bir hata düzeltme, ister performans denetimi olsun — proje büyüklüğü engel değildir. Hamed ile iletişime geçin ve neye ihtiyacınız olduğunu açıklayın.",
+        a: "Evet. İster tek bir açılış sayfası, ister bir hata düzeltme, ister performans denetimi olsun, proje büyüklüğü engel değildir. Hamed ile iletişime geçin ve neye ihtiyacınız olduğunu açıklayın.",
       },
       {
         q: "Freelance projeler için müsait misiniz?",
@@ -247,7 +247,7 @@ export const hireData = {
       },
       {
         q: "Başlamak için hangi bilgilere ihtiyacım var?",
-        a: "Sadece ne yaptırmak veya düzeltmek istediğinizi anlatın. Teknik bir dokümana ihtiyacınız yok — sorunun veya hedefinizin sade bir dille açıklaması sohbeti başlatmak için yeterlidir.",
+        a: "Sadece ne yaptırmak veya düzeltmek istediğinizi anlatın. Teknik bir dokümana ihtiyacınız yok, sorunun veya hedefinizin sade bir dille açıklaması sohbeti başlatmak için yeterlidir.",
       },
     ],
   }

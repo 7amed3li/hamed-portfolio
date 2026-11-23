@@ -112,14 +112,14 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <article className="container mx-auto px-4 pt-32 pb-24 max-w-4xl min-w-0 w-full">
+      <article className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-24 max-w-4xl min-w-0 w-full">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         
-        <div className="mb-12 text-center min-w-0">
-          <div className="mb-4 flex justify-center items-center gap-2 text-sm font-mono text-muted-foreground">
+        <div className="mb-8 sm:mb-12 text-center min-w-0">
+          <div className="mb-4 flex flex-wrap justify-center items-center gap-2 text-xs sm:text-sm font-mono text-muted-foreground">
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString(
                 resolvedParams.lang === 'ar' ? 'ar-EG' : resolvedParams.lang === 'tr' ? 'tr-TR' : 'en-US',
@@ -130,17 +130,17 @@ export default async function PostPage({ params }: PostPageProps) {
             <span>{post.author}</span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight break-words">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight break-words">
             {post.title}
           </h1>
           
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto">
             {post.description}
           </p>
 
-          <div className="mt-8 flex justify-center flex-wrap gap-2">
+          <div className="mt-6 sm:mt-8 flex justify-center flex-wrap gap-2">
             {post.tags.map(tag => (
-              <span key={tag} className="rounded-md bg-accent/10 text-accent px-3 py-1 text-sm font-mono">
+              <span key={tag} className="rounded-md bg-accent/10 text-accent px-2.5 sm:px-3 py-1 text-xs sm:text-sm font-mono">
                 #{tag}
               </span>
             ))}
@@ -148,7 +148,7 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
 
         {post.coverImage && (
-          <div className="mb-16 aspect-[2/1] w-full overflow-hidden rounded-2xl border border-border relative">
+          <div className="mb-10 sm:mb-16 aspect-[2/1] w-full overflow-hidden rounded-xl sm:rounded-2xl border border-border relative">
             <Image 
               src={post.coverImage} 
               alt={post.title}

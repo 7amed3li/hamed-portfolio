@@ -1,89 +1,125 @@
 "use client";
-import { motion } from "framer-motion";
-import { useState } from "react";
+
+import Link from "next/link";
+import {
+  ArrowUpRight,
+  Bug,
+  Building2,
+  Gauge,
+  Globe,
+  Layers,
+  LayoutDashboard,
+  QrCode,
+  Server,
+  ShieldCheck,
+  UtensilsCrossed,
+} from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
-import { t } from "@/lib/translations";
+import { servicesData } from "@/lib/services-data";
+import { TactileIconBadge } from "@/components/ui/TactilePrimitives";
+
+const SERVICE_ICONS = [
+  Globe,
+  UtensilsCrossed,
+  Layers,
+  Server,
+  LayoutDashboard,
+  Bug,
+  Gauge,
+  ShieldCheck,
+  QrCode,
+  Building2,
+];
 
 export function EngineeringPrinciples() {
-  const [hovered, setHovered] = useState<number | null>(0); // Default open first one
   const { lang } = useLang();
-  const tr = t[lang].services;
+  const langServices = servicesData[lang] || servicesData.en;
+
+  const ui = {
+    en: {
+      eyebrow: "What I Build",
+      heading: "Services",
+      subtitle:
+        "Production websites, backend systems, and security-hardened web apps. Click any service for scope, deliverables, and live proof.",
+      learnMore: "View service details",
+      allDetails: "Full hiring guide, process & FAQ",
+    },
+    ar: {
+      eyebrow: "ماذا أبني لك",
+      heading: "الخدمات",
+      subtitle:
+        "مواقع إنتاجية حقيقية، أنظمة خلفية، وتطبيقات ويب آمنة. اضغط على أي خدمة لمعرفة التفاصيل والأمثلة الحية.",
+      learnMore: "تفاصيل الخدمة",
+      allDetails: "دليل التعاقد الكامل والأسئلة الشائعة",
+    },
+    tr: {
+      eyebrow: "Neler Geliştiriyorum",
+      heading: "Hizmetler",
+      subtitle:
+        "Canlı kurumsal web siteleri, backend sistemleri ve güvenli web uygulamaları. Kapsam ve canlı örnekler için hizmete tıklayın.",
+      learnMore: "Hizmet detayları",
+      allDetails: "Tüm işe alım rehberi ve SSS",
+    },
+  }[lang];
 
   return (
-    <section id="services" className="py-40 px-8 md:px-20 lg:px-28 border-t border-border">
+    <section
+      id="services"
+      className="py-16 md:py-24 lg:py-28 px-5 sm:px-8 md:px-20 lg:px-28 border-t border-border overflow-x-clip"
+    >
       <div className="max-w-6xl mx-auto">
-        <div className="divide-y divide-border">
-          {tr.items.map((s, i) => {
-            const isOpen = hovered === i;
+        <div className="mb-8 md:mb-12">
+          <div className="mb-4">
+            <span className="section-label">{ui.eyebrow}</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-4">
+            {ui.heading}
+          </h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
+            {ui.subtitle}
+          </p>
+        </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          {langServices.map((s, index) => {
+            const Icon = SERVICE_ICONS[index % SERVICE_ICONS.length];
             return (
-              <div
-                key={s.num}
-                role="button"
-                tabIndex={0}
-                aria-expanded={isOpen}
-                className="relative py-10 cursor-pointer transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-sm"
-                onMouseEnter={() => setHovered(i)}
-                onClick={() => setHovered(hovered === i ? null : i)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setHovered(hovered === i ? null : i);
-                  }
-                }}
+              <Link
+                key={s.slug}
+                href={`/${lang}/services/${s.slug}`}
+                className="group p-5 sm:p-6 border border-border hover:border-accent/80 transition-all duration-200 bg-surface rounded-[6px] flex flex-col justify-between"
               >
-                <div className="grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-6 md:gap-8 items-start">
-                  {/* Number */}
-                  <span className="text-3xl md:text-5xl font-bold font-mono text-foreground" aria-hidden="true">
-                    {s.num}
-                  </span>
-
-                  {/* Title & Expandable Content */}
-                  <div>
-                    <h2 
-                      className={`text-4xl md:text-6xl font-bold tracking-tight transition-colors duration-300 ${isOpen ? 'text-foreground' : 'text-muted-foreground'}`}
-                    >
-                      {s.title}
-                    </h2>
-
-                    <motion.div
-                      initial={false}
-                      animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pt-6 max-w-2xl">
-                        <p className="text-sm md:text-base leading-relaxed text-muted-foreground mb-8">
-                          {s.desc}
-                        </p>
-
-                        <div className="space-y-4">
-                          {s.subServices.map((sub, j) => (
-                            <div key={j} className="border-b border-border/50 pb-4 hover-glow hover:border-accent/50 px-2 -mx-2 rounded-sm transition-all">
-                              <span className="text-lg md:text-2xl font-bold text-foreground flex items-center gap-3">
-                                <span className="text-sm font-mono text-accent">{sub.substring(0, 2)}</span>
-                                <span>{sub.substring(3)}</span>
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
+                <div>
+                  <div className="mb-4">
+                    <TactileIconBadge>
+                      <Icon className="w-5 h-5" />
+                    </TactileIconBadge>
                   </div>
-
-                  {/* Expand/Collapse Icon - Positioned at top-right on mobile */}
-                  <div
-                    aria-hidden="true"
-                    className={`absolute top-11 right-0 rtl:right-auto rtl:left-0 md:static md:mt-2 transition-transform duration-500 ${isOpen ? 'rotate-45 opacity-100' : 'opacity-50'}`}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={isOpen ? "text-accent" : "text-muted-foreground"}>
-                      <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
+                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                    {s.intro}
+                  </p>
                 </div>
-              </div>
+
+                <div className="mt-5 pt-3 border-t border-border/50 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent">
+                  <span>{ui.learnMore}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 rtl:-scale-x-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
+              </Link>
             );
           })}
+        </div>
+
+        <div className="mt-10 md:mt-12 pt-6 border-t border-border/60 flex justify-start">
+          <Link
+            href={`/${lang}/hire`}
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-muted-foreground hover:text-accent transition-colors group"
+          >
+            <span>{ui.allDetails}</span>
+            <ArrowUpRight className="w-4 h-4 shrink-0 rtl:-scale-x-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

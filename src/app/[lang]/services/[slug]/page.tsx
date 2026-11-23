@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ExternalLink } from "lucide-react";
 import { getServiceBySlug, servicesData } from "@/lib/services-data";
 import { BuyerCTA } from "@/components/ui/BuyerCTA";
 
@@ -121,7 +122,7 @@ export default async function ServicePage({
       viewAllServices: "View all services →",
       readyTitle: "Ready to get started?",
       readyDesc:
-        "Describe your project in plain language — Hamed will respond within 24 hours and let you know exactly what he can build, how long it will take, and what it involves.",
+        "Describe your project in plain language, Hamed will respond within 24 hours and let you know exactly what he can build, how long it will take, and what it involves.",
       quickResponseLabel: "Response Time",
       quickResponseValue: "< 24 Hours",
       quickWorkflowLabel: "Execution",
@@ -145,7 +146,7 @@ export default async function ServicePage({
       viewAllServices: "عرض جميع الخدمات ←",
       readyTitle: "جاهز لبدء مشروعك؟",
       readyDesc:
-        "اشرح فكرتك أو مشكلتك ببساطة — وسيرد عليك حامد خلال 24 ساعة ليوضح لك خطة التنفيذ والمدة والتفاصيل بوضوح تام.",
+        "اشرح فكرتك أو مشكلتك ببساطة، وسيرد عليك حامد خلال 24 ساعة ليوضح لك خطة التنفيذ والمدة والتفاصيل بوضوح تام.",
       quickResponseLabel: "سرعة الرد",
       quickResponseValue: "خلال 24 ساعة",
       quickWorkflowLabel: "آلية العمل",
@@ -169,7 +170,7 @@ export default async function ServicePage({
       viewAllServices: "Tüm hizmetleri gör →",
       readyTitle: "Başlamaya hazır mısınız?",
       readyDesc:
-        "Projenizi sade bir dille anlatın — Hamed 24 saat içinde yanıt vererek tam olarak ne geliştirebileceğini, süreyi ve kapsamı netleştirsin.",
+        "Projenizi sade bir dille anlatın, Hamed 24 saat içinde yanıt vererek tam olarak ne geliştirebileceğini, süreyi ve kapsamı netleştirsin.",
       quickResponseLabel: "Yanıt Süresi",
       quickResponseValue: "24 Saat İçinde",
       quickWorkflowLabel: "Çalışma Modeli",
@@ -188,7 +189,7 @@ export default async function ServicePage({
 
       <main className="min-h-screen bg-background text-foreground" dir={isRTL ? "rtl" : "ltr"}>
         {/* Breadcrumb */}
-        <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+        <div className="px-5 sm:px-6 md:px-20 lg:px-28 pt-24 sm:pt-28 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-mono text-muted-foreground">
           <Link href={`/${lang}`} className="hover:text-accent transition-colors">
             {ui.home}
           </Link>
@@ -201,15 +202,15 @@ export default async function ServicePage({
         </div>
 
         {/* Hero */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20 border-b border-border">
           <div className="max-w-4xl">
-            <p className="text-xs font-mono uppercase tracking-widest text-accent mb-6">
+            <p className="text-xs font-mono uppercase tracking-widest text-accent mb-4 sm:mb-6">
               {ui.serviceLabel}
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-8 text-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6 sm:mb-8 text-foreground">
               {service.h1}
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mb-10">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mb-8 sm:mb-10">
               {service.intro}
             </p>
             <BuyerCTA
@@ -220,20 +221,20 @@ export default async function ServicePage({
               variant="hero"
               secondaryLink={{ href: `/${lang}/hire`, label: ui.allServices }}
             />
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-border">
-              <div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-border">
+              <div className="order-1">
                 <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-1">
                   {ui.quickResponseLabel}
                 </p>
                 <p className="text-sm font-mono font-bold text-foreground">{ui.quickResponseValue}</p>
               </div>
-              <div>
+              <div className="order-3 sm:order-2 col-span-2 sm:col-span-1">
                 <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-1">
                   {ui.quickWorkflowLabel}
                 </p>
                 <p className="text-sm font-mono font-bold text-foreground">{ui.quickWorkflowValue}</p>
               </div>
-              <div>
+              <div className="order-2 sm:order-3">
                 <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-1">
                   {ui.quickLanguagesLabel}
                 </p>
@@ -244,14 +245,13 @@ export default async function ServicePage({
         </section>
 
         {/* Main Content */}
-        <div className="px-6 md:px-20 lg:px-28 py-20">
-          <div className="max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-16">
-            {/* Left — main info */}
-            <div className="lg:col-span-2 space-y-16">
+        <div className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20">
+          <div className="max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
+            {/* Left: main info */}
+            <div className="lg:col-span-2 space-y-12 sm:space-y-16">
               {/* For who */}
               <div>
-                <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
-                  <span className="inline-block w-6 h-px bg-accent" />
+                <h2 className="section-label mb-5">
                   {ui.whoThisIsFor}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">{service.forWho}</p>
@@ -259,8 +259,7 @@ export default async function ServicePage({
 
               {/* What I build */}
               <div>
-                <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
-                  <span className="inline-block w-6 h-px bg-accent" />
+                <h2 className="section-label mb-6">
                   {ui.whatHamedCanBuild}
                 </h2>
                 <ul className="space-y-3">
@@ -275,8 +274,7 @@ export default async function ServicePage({
 
               {/* Business Value */}
               <div>
-                <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
-                  <span className="inline-block w-6 h-px bg-accent" />
+                <h2 className="section-label mb-5">
                   {ui.businessValue}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
@@ -292,20 +290,59 @@ export default async function ServicePage({
                 <p className="text-sm text-muted-foreground leading-relaxed">{service.proof}</p>
 
                 {slug === "restaurant-menu-websites" && (
-                  <div className="mt-5 pt-4 border-t border-accent/20 flex flex-wrap items-center gap-4">
+                  <div className="mt-5 pt-4 border-t border-accent/20 flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <Link
+                      href={`/${lang}/case-studies/cihangir-ev-yemekleri-platform`}
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline font-bold"
+                    >
+                      {lang === 'ar' ? '← دراسة حالة جيهانغير للأكلات المنزلية' : lang === 'tr' ? 'Cihangir Ev Yemekleri Vaka Analizi →' : 'Cihangir Ev Yemekleri Case Study →'}
+                    </Link>
+                    <Link
+                      href={`/${lang}/case-studies/lucky-sushi-multi-branch-platform`}
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline font-bold"
+                    >
+                      {lang === 'ar' ? '← دراسة حالة لاكي سوشي (3 فروع)' : lang === 'tr' ? 'Lucky Sushi (3 Şube) Vaka Analizi →' : 'Lucky Sushi (3 Branches) Case Study →'}
+                    </Link>
                     <Link
                       href={`/${lang}/case-studies/kardesler-restaurant-platform`}
                       className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline font-bold"
                     >
-                      {lang === 'ar' ? '← قراءة دراسة الحالة كاملة' : lang === 'tr' ? 'Vaka Analizini İncele →' : 'Read Full Case Study →'}
+                      {lang === 'ar' ? '← دراسة حالة كاردشلر جيهانغير' : lang === 'tr' ? 'Kardeşler Cihangir Vaka Analizi →' : 'Kardeşler Cihangir Case Study →'}
+                    </Link>
+                  </div>
+                )}
+
+                {(slug === "website-and-landing-page-development" || slug === "full-stack-web-development" || slug === "custom-business-systems") && (
+                  <div className="mt-5 pt-4 border-t border-accent/20 flex flex-wrap items-center gap-x-4 gap-y-2">
+                    <Link
+                      href={`/${lang}/case-studies/genc-group-corporate-platform`}
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline font-bold"
+                    >
+                      {lang === 'ar' ? '← دراسة حالة شركة Genç Group' : lang === 'tr' ? 'Genç Group Kurumsal Vaka Analizi →' : 'Genç Group Corporate Case Study →'}
+                    </Link>
+                    <Link
+                      href={`/${lang}/case-studies/healix-medical-platform`}
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline font-bold"
+                    >
+                      {lang === 'ar' ? '← دراسة حالة شركة Healix Medical (5 لغات)' : lang === 'tr' ? 'Healix Medical (5 Dil) Vaka Analizi →' : 'Healix Medical (5 Languages) Case Study →'}
                     </Link>
                     <a
-                      href="https://www.kardeslercihangir.com"
+                      href="https://www.gencgroupinsaat.com.tr"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground hover:underline"
                     >
-                      {lang === 'ar' ? 'زيارة الموقع الحي (kardeslercihangir.com) ↗' : lang === 'tr' ? 'Canlı Siteyi Ziyaret Et (kardeslercihangir.com) ↗' : 'Visit Live Site (kardeslercihangir.com) ↗'}
+                      <span>{lang === 'ar' ? 'زيارة gencgroupinsaat.com.tr' : lang === 'tr' ? 'gencgroupinsaat.com.tr' : 'Visit gencgroupinsaat.com.tr'}</span>
+                      <ExternalLink className="w-3 h-3 shrink-0" />
+                    </a>
+                    <a
+                      href="https://www.healixistanbul.com.tr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground hover:underline"
+                    >
+                      <span>{lang === 'ar' ? 'زيارة healixistanbul.com.tr' : lang === 'tr' ? 'healixistanbul.com.tr' : 'Visit healixistanbul.com.tr'}</span>
+                      <ExternalLink className="w-3 h-3 shrink-0" />
                     </a>
                   </div>
                 )}
@@ -324,8 +361,7 @@ export default async function ServicePage({
 
               {/* FAQ */}
               <div>
-                <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-8 flex items-center gap-3">
-                  <span className="inline-block w-6 h-px bg-accent" />
+                <h2 className="section-label mb-8">
                   {ui.commonQuestions}
                 </h2>
                 <div className="space-y-6">
@@ -339,7 +375,7 @@ export default async function ServicePage({
               </div>
             </div>
 
-            {/* Right — sidebar */}
+            {/* Right: sidebar */}
             <div className="space-y-8">
               {/* Technologies */}
               <div className="p-6 border border-border bg-surface">
@@ -402,7 +438,7 @@ export default async function ServicePage({
                         href={`/${lang}/services/${s.slug}`}
                         className="block text-sm text-muted-foreground hover:text-accent transition-colors py-1"
                       >
-                        → {s.title}
+                        {isRTL ? "←" : "→"} {s.title}
                       </Link>
                     ))}
                   <Link
@@ -418,9 +454,9 @@ export default async function ServicePage({
         </div>
 
         {/* Bottom CTA */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-t border-border">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-14 sm:py-20 border-t border-border">
           <div className="max-w-3xl">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-5 sm:mb-6 text-foreground">
               {ui.readyTitle}
             </h2>
             <p className="text-base text-muted-foreground mb-8 leading-relaxed">

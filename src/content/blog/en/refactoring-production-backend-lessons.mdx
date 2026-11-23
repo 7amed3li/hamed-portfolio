@@ -38,7 +38,7 @@ While reviewing the route files, I noticed this pattern repeated everywhere:
 ```javascript
 // Inside studentRoutes.js
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient(); // ❌ Creating a new instance per file
+const prisma = new PrismaClient(); // Avoid: creating a new instance per file
 
 router.post('/record', async (req, res) => {
     // ...
@@ -46,7 +46,7 @@ router.post('/record', async (req, res) => {
 
 // Inside attendanceRoutes.js
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient(); // ❌ Another independent connection pool
+const prisma = new PrismaClient(); // Avoid: another independent connection pool
 ```
 
 Every route file was creating its own `new PrismaClient()`. This meant the application was inadvertently opening **multiple independent connection pools** to the database. During simultaneous check-ins at the start of a lecture, this approach wastes connections and risks hitting database limits prematurely.
@@ -57,7 +57,7 @@ The fix was straightforward: extracting a single Prisma instance (Singleton patt
 // prisma/client.js
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-module.exports = prisma; // ✅ One global pool
+module.exports = prisma; // Good: one shared global pool
 ```
 
 This tiny code change made database connection usage more predictable and reduced the risk of hitting connection limits during peak usage.
@@ -80,7 +80,7 @@ Another major realization I had during this refactor: implementing "clean archit
 
 To manage this, I started categorizing features by a **"refactor risk level"**. 
 
-For example, I treated the `attendance` and `session` flows as high-risk areas and avoided changing them before adding integration tests first. Because those flows affect real student records, any bug introduced there isn't just a log error—it translates to incorrect academic data.
+For example, I treated the `attendance` and `session` flows as high-risk areas and avoided changing them before adding integration tests first. Because those flows affect real student records, any bug introduced there isn't just a log error, it translates to incorrect academic data.
 
 One of the more interesting migrations was replacing raw SQL transactional flows.
 

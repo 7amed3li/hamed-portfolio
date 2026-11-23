@@ -1,26 +1,71 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Cairo } from "next/font/google";
+import {
+  Inter,
+  JetBrains_Mono,
+  Space_Grotesk,
+  IBM_Plex_Sans_Arabic,
+  Readex_Pro,
+  Plus_Jakarta_Sans,
+  DM_Sans,
+} from "next/font/google";
 import "@/app/globals.css";
 import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { GsapPageAnimator } from "@/components/providers/GsapPageAnimator";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-const inter = Inter({
-  variable: "--font-inter",
+// English: Space Grotesk (display) + Inter (body)
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display-en",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
 });
 
+const inter = Inter({
+  variable: "--font-sans-en",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Arabic: Readex Pro (modern geometric display) + IBM Plex Sans Arabic (crisp editorial body)
+const readexPro = Readex_Pro({
+  variable: "--font-display-ar",
+  subsets: ["arabic", "latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const ibmPlexArabic = IBM_Plex_Sans_Arabic({
+  variable: "--font-sans-ar",
+  subsets: ["arabic", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+// Turkish: Plus Jakarta Sans (display, latin-ext) + DM Sans (body, latin-ext)
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-display-tr",
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700", "800"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-sans-tr",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+// Shared Technical Monospace (with Turkish latin-ext glyphs)
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-});
-
-const cairo = Cairo({
-  variable: "--font-cairo",
-  subsets: ["arabic"],
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
 });
 
 const siteUrl = "https://www.hamedmohamed.dev";
@@ -101,7 +146,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
           url: "/logo.png",
           width: 1200,
           height: 630,
-          alt: "Hamed Mohamed — Full-Stack Engineer & Security Researcher",
+          alt: "Hamed Mohamed: Full-Stack Engineer & Security Researcher",
           type: "image/png",
         },
       ],
@@ -169,7 +214,7 @@ export default async function LangLayout({
         },
         worksFor: {
           "@type": "Organization",
-          name: "AI & Digital Transformation Unit — Tokat Gaziosmanpaşa University"
+          name: "AI & Digital Transformation Unit: Tokat Gaziosmanpaşa University"
         },
         alumniOf: {
           "@type": "CollegeOrUniversity",
@@ -289,10 +334,10 @@ export default async function LangLayout({
         url: siteUrl,
         name: lang === "ar" ? "حامد محمد" : "Hamed Mohamed",
         description: lang === "ar"
-          ? "الموقع الشخصي لحامد محمد عبدالعليم — مهندس برمجيات متكامل وباحث أمني متخصص في Node.js وReact وأمن التطبيقات."
+          ? "الموقع الشخصي لحامد محمد عبدالعليم، مهندس برمجيات متكامل وباحث أمني متخصص في Node.js وReact وأمن التطبيقات."
           : lang === "tr"
-          ? "Hamed Mohamed Abdelalim portföyü — Node.js, React ve uygulama güvenliği alanında uzmanlaşmış Full-Stack yazılım mühendisi."
-          : "Portfolio of Hamed Mohamed Abdelalim — Full-Stack Engineer & Security Researcher specializing in Node.js, React, and Application Security.",
+          ? "Hamed Mohamed Abdelalim portföyü, Node.js, React ve uygulama güvenliği alanında uzmanlaşmış Full-Stack yazılım mühendisi."
+          : "Portfolio of Hamed Mohamed Abdelalim. Full-Stack Engineer & Security Researcher specializing in Node.js, React, and Application Security.",
         inLanguage: ["en", "ar", "tr"],
         publisher: {
           "@id": `${siteUrl}/#person`
@@ -301,8 +346,18 @@ export default async function LangLayout({
     ]
   };
 
+  const fontVars = [
+    spaceGrotesk.variable,
+    inter.variable,
+    readexPro.variable,
+    ibmPlexArabic.variable,
+    plusJakarta.variable,
+    dmSans.variable,
+    jetbrainsMono.variable,
+  ].join(" ");
+
   return (
-    <html lang={lang} dir={isRTL ? "rtl" : "ltr"} data-scroll-behavior="smooth" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable} ${cairo.variable} h-full antialiased dark`}>
+    <html lang={lang} dir={isRTL ? "rtl" : "ltr"} data-scroll-behavior="smooth" suppressHydrationWarning className={`${fontVars} h-full antialiased dark`}>
       <head>
         <script
           type="application/ld+json"
@@ -311,6 +366,7 @@ export default async function LangLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <LanguageProvider>
+          <GsapPageAnimator />
           <ConsoleMessage />
           <Nav />
           <div className="flex-1 flex flex-col">

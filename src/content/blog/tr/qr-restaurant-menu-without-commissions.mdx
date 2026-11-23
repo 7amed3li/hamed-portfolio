@@ -1,0 +1,86 @@
+---
+title: "Komisyonsuz QR Restoran Menüsü: 10 Dil, Canlı Kur ve WhatsApp Sipariş Mimarisi"
+description: "Next.js 16 ve Supabase ile 10 dil, 6 para birimi ve doğrudan WhatsApp siparişi sunan, komisyonsuz dijital restoran menüsü nasıl geliştirilir? Canlı vaka."
+lang: "tr"
+translationKey: "qr-restaurant-menu-without-commissions"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "restaurant", "qr-menu", "seo", "whatsapp"]
+coverImage: "/static/blog/qr-restaurant-menu-cover.png"
+published: true
+featured: false
+summary: "Restoranların yavaş PDF menüler ve %20-30 komisyon alan platformlar yüzünden nasıl gelir kaybettiğini ve özel Next.js 16 + Supabase QR platformunun bunu nasıl çözdüğünü inceleyin."
+---
+
+**Özet:** Restoranlar üçüncü parti sipariş uygulamalarına her siparişte **%20 ila %30 komisyon** ödüyor ya da turist müşterileri mobilde okunması zor PDF menülerle kaybediyor. Özel geliştirilen bir **Next.js 16 + Supabase** QR menü platformu; 10 dilde anında açılan menü, canlı döviz çevirici ve **%0 komisyonlu WhatsApp siparişi** ile bu kaybı 1–3 haftada ortadan kaldırır.
+
+---
+
+## PDF Menüler ve Komisyonlu Uygulamalar Neden Gelir Kaybettirir?
+
+İstanbul, Antalya veya turistik bir bölgede masadaki QR kodu okutan bir müşteri genellikle iki kötü deneyimden biriyle karşılaşır:
+
+1. **Ağır PDF Dosyaları:** Mobil internette geç açılır, yakınlaştırma gerektirir ve yabancı misafire dil seçeneği sunmaz.
+2. **Yüksek Komisyonlu Platformlar:** Sipariş başına **%20–%30 pay** alır ve müşteri sadakatini kendi markası altında tutar.
+
+Özel web tabanlı QR menü ise **1 saniyenin altında açılır**, Google Yerel SEO (`Schema.org Menu` ve `Restaurant`) ile organik müşteri çeker ve sipariş kârını tamamen işletmede bırakır.
+
+---
+
+## Karşılaştırma: PDF Menü vs. Komisyonlu Platformlar vs. Özel QR Menü
+
+| Kriter | Statik PDF Menü | Sipariş Uygulamaları | Özel Next.js QR Platformu |
+| :--- | :--- | :--- | :--- |
+| **Sipariş Komisyonu** | %0 (sipariş yok) | **Sipariş başına %20 – %30** | **%0** (doğrudan WhatsApp / web) |
+| **Çoklu Dil Desteği** | Ayrı ağır dosyalar | Kısıtlı / otomatik çeviri | **10+ gerçek dil + Arapça RTL** |
+| **Fiyat Güncelleme** | PDF yeniden yükleme | Komisyonlu panel | **Anında yönetici paneli** |
+| **Google Görünürlüğü** | Neredeyse yok | Aracı platform sıralanır | **Tam `Schema.org` + `hreflang`** |
+| **Canlı Para Birimi** | Yok | Tek para birimi | **TRY, USD, EUR, GBP, RUB, SAR** |
+
+---
+
+## Canlı Üretim Kanıtı: Kardeşler Kebap & Cafe Cihangir (İstanbul)
+
+Bu mimariyi Cihangir, İstanbul'daki 28 yıllık **[Kardeşler Kebap & Cafe Cihangir](https://www.kardeslercihangir.com)** restoranı için sıfırdan inşa edip canlıya aldım. Platform şu anda günde ortalama **~100 gerçek ziyaretçiye** hizmet veriyor.
+
+<Callout type="info">
+**Canlıya Alınan Özellikler:** Next.js 16 (App Router) + React 19 + Supabase, 10 dil desteği (TR, EN, AR, RU, FR, FA, DE, IT, ES, ZH), 6 para birimi için canlı kur dönüşümü, ziyaretçi diline özel WhatsApp sipariş şablonları, kod bilmeyen işletme sahibi paneli ve WordPress'ten 25+ `301` yönlendirmesiyle sıfır SEO kaybı.
+</Callout>
+
+### Komisyonsuz WhatsApp Sipariş Akışı
+
+1. Turist veya yerel müşteri menüyü kendi dilinde ve tercih ettiği para biriminde görüntüler.
+2. Ürünleri tarayıcıdaki sepete ekler.
+3. **WhatsApp ile Sipariş Ver** butonuna bastığında, ürün adları ve toplam tutar otomatik olarak düzenli bir WhatsApp mesajına dönüşür.
+
+```ts
+type CartItem = { name: string; qty: number; priceTry: number };
+
+export function buildWhatsAppOrderUrl(phone: string, items: CartItem[], table?: string) {
+  const lines = items.map((i) => `• ${i.qty}x ${i.name}, ${i.qty * i.priceTry} TRY`);
+  const total = items.reduce((sum, i) => sum + i.qty * i.priceTry, 0);
+  const header = table ? `Table #${table} Order:` : "New Direct Order:";
+  const text = [header, ...lines, `Total: ${total} TRY`].join("\n");
+  return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+}
+```
+
+### İşletme Sahibi Fiyatları 5 Saniyede Nasıl Günceller?
+
+Maliyetler değiştiğinde geliştirici beklemeden **Supabase** destekli yönetim paneline girilir; tek güncelleme ile tüm 10 dildeki ve 6 para birimindeki fiyatlar anında senkronize olur.
+
+---
+
+## Ortalama Teslim Süresi
+
+* **Temel dijital QR menü (1–3 dil):** **birkaç gün** içinde hazır.
+* **Tam kapsamlı çok dilli restoran platformu (yönetici paneli, canlı kur, WhatsApp sipariş, Yerel SEO):** genellikle **1–3 hafta**.
+
+Detaylı inceleme için [Kardeşler Restoran Vaka Analizi](/tr/case-studies/kardesler-restaurant-platform) sayfasına veya [Restoran ve Kafe Menü Web Sitesi Geliştirme](/tr/services/restaurant-menu-websites) hizmetine göz atabilirsiniz.
+
+<CTA
+  topic="Komisyonsuz QR Restoran Menüsü"
+  serviceSlug="restaurant-menu-websites"
+  title="Restoranınız için komisyonsuz ve çok dilli bir QR menü mü kurmak istiyorsunuz?"
+  description="Mevcut menünüzü veya web sitenizi WhatsApp üzerinden paylaşın; 24 saat içinde net kapsam ve teslim süresi planı alın."
+/>

@@ -47,12 +47,16 @@ async function run() {
   const smRes = await fetch(`${baseUrl}/sitemap.xml`, { headers: UA });
   const smText = await smRes.text();
   const locs = [...smText.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  const lastmods = [...smText.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map((m) => m[1]);
+  const urlBlocks = [...smText.matchAll(/<url>([\s\S]*?)<\/url>/g)].map((m) => m[1]);
   const txtEntriesCount = locs.filter((l) => l.endsWith(".txt")).length;
   const changefreqCount = (smText.match(/<changefreq>/g) || []).length;
   const priorityCount = (smText.match(/<priority>/g) || []).length;
   const imageEntriesCount = (smText.match(/<image:image>/g) || []).length;
-  const lastmodMatchingTodayCount = lastmods.filter((d) => d.startsWith(todayUtc)).length;
+  const staticLastmodMatchingTodayCount = urlBlocks.filter((block) => {
+    const loc = (block.match(/<loc>([^<]+)<\/loc>/) || [])[1] || "";
+    const lastmod = (block.match(/<lastmod>([^<]+)<\/lastmod>/) || [])[1] || "";
+    return !/\/blog(\/|$)/.test(loc) && lastmod.startsWith(todayUtc);
+  }).length;
 
   // 2. Robots.txt
   const robRes = await fetch(`${baseUrl}/robots.txt`, { headers: UA });
@@ -89,10 +93,13 @@ async function run() {
   const llmsRelativePathLines = (llmsText.match(/^-\s+\/[a-z]{2}\//gm) || []).length;
 
   const expectedBlogSlugs = [
-    "from-computer-repair-to-software-engineering",
-    "how-i-stopped-nodejs-from-freezing",
-    "refactoring-production-backend-lessons",
+    ...new Set(
+      locs
+        .map((l) => l.match(/\/(?:en|ar|tr)\/blog\/([^/]+)$/)?.[1])
+        .filter(Boolean)
+    ),
   ];
+  const totalBlogVariants = expectedBlogSlugs.length * 3;
   let llmsBlogUrlsCovered = 0;
   for (const lang of ["en", "ar", "tr"]) {
     for (const slug of expectedBlogSlugs) {
@@ -120,6 +127,7 @@ async function run() {
   let nonWwwLeaks = 0;
   let blogPostsWithCompleteSchema = 0;
   let arTrLocalizedBreadcrumbs = 0;
+  let arTrBreadcrumbTotal = 0;
   let arTrLocalizedServiceUrl = 0;
 
   await Promise.all(
@@ -172,8 +180,9 @@ async function run() {
         if (hasCompleteBp && hasValidBc) blogPostsWithCompleteSchema++;
       }
 
-      // AR/TR service & case-study localized BreadcrumbList check (28 pages)
+      // AR/TR service & case-study localized BreadcrumbList check
       if (/^\/(ar|tr)\/(services|case-studies)\/[^/]+$/.test(p)) {
+        arTrBreadcrumbTotal++;
         const bc = nodes.find((n) => n["@type"] === "BreadcrumbList");
         const firstName = bc?.itemListElement?.[0]?.name;
         if (firstName && firstName !== "Home") arTrLocalizedBreadcrumbs++;
@@ -208,7 +217,7 @@ async function run() {
       txtEntriesCount,
       ignoredTagsCount: changefreqCount + priorityCount,
       imageEntriesCount,
-      lastmodMatchingTodayCount,
+      staticLastmodMatchingTodayCount,
       xmlBytes: Buffer.byteLength(smText, "utf8"),
     },
     robots: {
@@ -225,7 +234,7 @@ async function run() {
       llmsXRobotsNoindex: /noindex/i.test(llmsXRobots),
       llmsFullXRobotsNoindex: /noindex/i.test(llmsFullXRobots),
       llmsRelativePathLines,
-      llmsBlogUrlsCovered: `${llmsBlogUrlsCovered}/9`,
+      llmsBlogUrlsCovered: `${llmsBlogUrlsCovered}/${totalBlogVariants}`,
       llmsLocalizedCoreLangs: `${llmsLocalizedCoreLangs}/3`,
       llmsFullHypePhrases,
       llmsFullInaccurateApiClaim,
@@ -240,9 +249,9 @@ async function run() {
     structuredData: {
       validJsonLdPages: `${validJsonLdPages}/${pagePaths.length}`,
       nonWwwLeaks,
-      blogPostsWithCompleteSchema: `${blogPostsWithCompleteSchema}/9`,
-      arTrLocalizedBreadcrumbs: `${arTrLocalizedBreadcrumbs}/28`,
-      arTrLocalizedServiceUrl: `${arTrLocalizedServiceUrl}/44`,
+      blogPostsWithCompleteSchema: `${blogPostsWithCompleteSchema}/${totalBlogVariants}`,
+      arTrLocalizedBreadcrumbs: `${arTrLocalizedBreadcrumbs}/${arTrBreadcrumbTotal}`,
+      arTrLocalizedServiceUrl: `${arTrLocalizedServiceUrl}/${(pagePaths.length * 2) / 3}`,
     },
     instantIndexingAndRedirects: {
       indexNowKeyStatus: idxRes.status,

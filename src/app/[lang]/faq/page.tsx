@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Mail } from "lucide-react";
 import { faqData } from "@/lib/faq-data";
+import { tactileButtonClasses } from "@/components/ui/TactilePrimitives";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -62,7 +64,7 @@ export default async function FAQPage({
 
       <main className="min-h-screen bg-background text-foreground" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         {/* Nav back link */}
-        <div className="px-6 md:px-20 lg:px-28 pt-28">
+        <div className="px-5 sm:px-6 md:px-20 lg:px-28 pt-24 sm:pt-28">
           <Link
             href={`/${lang}`}
             className="text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors flex items-center gap-2"
@@ -72,9 +74,9 @@ export default async function FAQPage({
         </div>
 
         {/* Header */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
-          <p className="text-xs font-mono uppercase tracking-widest text-accent mb-6">{data.faqHead}</p>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-foreground">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20 border-b border-border">
+          <p className="text-xs font-mono uppercase tracking-widest text-accent mb-4 sm:mb-6">{data.faqHead}</p>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-5 sm:mb-6 text-foreground">
             {data.h1}
           </h1>
           <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
@@ -89,12 +91,11 @@ export default async function FAQPage({
         </section>
 
         {/* FAQ Groups */}
-        <section className="px-6 md:px-20 lg:px-28 py-20">
-          <div className="max-w-4xl space-y-16">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20">
+          <div className="max-w-4xl space-y-12 sm:space-y-16">
             {data.groups.map((group: Group) => (
               <div key={group.category}>
-                <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-8 flex items-center gap-3">
-                  <span className="inline-block w-8 h-px bg-accent" />
+                <h2 className="section-label mb-6 sm:mb-8">
                   {group.category}
                 </h2>
                 <div className="space-y-6">
@@ -114,9 +115,9 @@ export default async function FAQPage({
         </section>
 
         {/* CTA */}
-        <section className="px-6 md:px-20 lg:px-28 py-20 border-t border-border">
+        <section className="px-5 sm:px-6 md:px-20 lg:px-28 py-14 sm:py-20 border-t border-border">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight mb-4 text-foreground">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-foreground">
               {data.stillQuestion}
             </h2>
             <p className="text-base text-muted-foreground mb-8">
@@ -124,9 +125,13 @@ export default async function FAQPage({
             </p>
             <a
               href="mailto:hamed.m.abdelalim@gmail.com"
-              className="inline-block px-8 py-4 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
+              className={tactileButtonClasses(
+                "primary",
+                "inline-flex items-center justify-center gap-2 w-full sm:w-auto text-center px-6 py-4 sm:px-8 tracking-widest text-xs sm:text-sm"
+              )}
             >
-              {data.contactHamed}
+              <Mail className="w-4 h-4 shrink-0" />
+              <span>{data.contactHamed}</span>
             </a>
           </div>
         </section>

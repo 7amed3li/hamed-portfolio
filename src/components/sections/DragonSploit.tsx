@@ -1,8 +1,11 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Download, Mail } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
+import { tactileButtonClasses } from "@/components/ui/TactilePrimitives";
 
 export function About() {
   const ref = useRef(null);
@@ -11,37 +14,22 @@ export function About() {
   const tr = t[lang].about;
 
   return (
-    <section id="about" className="py-40 px-8 md:px-20 lg:px-28 border-t border-border">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <section id="about" className="py-16 md:py-24 lg:py-28 px-5 sm:px-8 md:px-20 lg:px-28 border-t border-border overflow-x-clip">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <p className="section-label mb-8">
+          <p className="section-label mb-4">
             <span className="section-line" />
             {tr.label}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-12 text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6 sm:mb-8 text-foreground">
             {tr.heading1}<br />
-            <span className="relative inline-block accent-text">
+            <span className="accent-text">
               {tr.heading2}
-              <svg
-                className="absolute -bottom-2 left-0 w-full overflow-visible"
-                viewBox="0 0 200 10"
-                fill="none"
-              >
-                <motion.path
-                  d="M2 7C50 3 150 2 198 6"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-                />
-              </svg>
             </span>
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
@@ -53,40 +41,47 @@ export function About() {
               <strong className="accent-text">{tr.bio2strong2}</strong>
               {tr.bio2part3}
             </p>
-            <div className="p-5 border-l-2 border-accent bg-accent/5 rounded-r-lg my-6">
+            <div className="p-4 sm:p-5 border-s-2 border-accent bg-accent/5 rounded-e-lg my-6">
               <h3 className="text-foreground font-mono text-sm uppercase tracking-widest mb-2">
                 {tr.philosophyTitle}
               </h3>
               <p className="text-sm">{tr.philosophyText}</p>
             </div>
           </div>
-          <div className="mt-14 flex flex-wrap gap-4">
+          <div className="mt-10 sm:mt-14 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-4">
             <a
               href="mailto:hamed.m.abdelalim@gmail.com"
-              className="text-xs font-mono uppercase tracking-widest px-6 py-3 transition-colors bg-accent text-black hover:bg-foreground"
+              className={tactileButtonClasses(
+                "primary",
+                "flex items-center justify-center text-center gap-1.5 text-[11px] sm:text-xs tracking-wider sm:tracking-widest px-3 py-3 sm:px-6 sm:py-3 min-h-[44px]"
+              )}
             >
-              {tr.cta_talk}
+              <Mail className="w-3.5 h-3.5 shrink-0" />
+              <span>{tr.cta_talk}</span>
             </a>
             <a
               href="https://github.com/7amed3li"
               target="_blank"
               rel="noreferrer"
-              className="text-xs font-mono uppercase tracking-widest px-6 py-3 transition-colors border border-border text-muted-foreground hover:border-foreground hover:text-foreground"
+              className={tactileButtonClasses(
+                "outline",
+                "flex items-center justify-center text-center gap-1.5 text-[11px] sm:text-xs tracking-wider sm:tracking-widest px-3 py-3 sm:px-6 sm:py-3 min-h-[44px]"
+              )}
             >
-              {tr.cta_github}
+              <FaGithub className="w-3.5 h-3.5 shrink-0" />
+              <span>{tr.cta_github}</span>
             </a>
             <a
               href="/Hamed_Mohamed_FullStack_NodeJS_CV.pdf"
               target="_blank"
               rel="noreferrer"
-              className="text-xs font-mono uppercase tracking-widest px-6 py-3 transition-colors border border-border text-muted-foreground hover:border-accent hover:text-accent flex items-center gap-2"
+              className={tactileButtonClasses(
+                "subtle",
+                "col-span-2 sm:col-span-1 flex items-center justify-center text-center gap-1.5 text-[11px] sm:text-xs tracking-wider sm:tracking-widest px-3 py-3 sm:px-6 sm:py-3 min-h-[44px]"
+              )}
             >
-              {tr.cta_cv}
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
+              <span>{tr.cta_cv}</span>
+              <Download className="w-3.5 h-3.5 shrink-0" />
             </a>
           </div>
         </motion.div>
@@ -95,13 +90,13 @@ export function About() {
           initial={{ opacity: 0, x: 30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-          className="space-y-12"
+          className="space-y-10 sm:space-y-12"
         >
           {/* Quick Info */}
           <div className="space-y-4">
             {tr.info.map(({ label, value }) => (
-              <div key={label} className="flex gap-6 py-4 border-b border-border">
-                <span className="text-xs font-mono uppercase tracking-widest w-28 flex-shrink-0 mt-0.5 text-muted-foreground">{label}</span>
+              <div key={label} className="flex flex-col sm:flex-row gap-1 sm:gap-6 py-3.5 sm:py-4 border-b border-border">
+                <span className="text-xs font-mono uppercase tracking-widest sm:w-28 flex-shrink-0 mt-0.5 text-muted-foreground">{label}</span>
                 <span className="text-sm text-foreground">{value}</span>
               </div>
             ))}

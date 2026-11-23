@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Briefcase, Download } from "lucide-react";
+import { tactileButtonClasses } from "@/components/ui/TactilePrimitives";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
 
@@ -28,12 +30,13 @@ export function Nav() {
     }
   }
 
+  const hireLabel = lang === "ar" ? "وظّفني" : lang === "tr" ? "İşe Al" : "Hire Me";
+
   const links = [
     { label: tr.about, href: `/${lang}#about` },
     { label: tr.services, href: `/${lang}#services` },
-    { label: tr.experience, href: `/${lang}#experience` },
     { label: tr.projects, href: `/${lang}#projects` },
-    { label: tr.stack, href: `/${lang}#stack` },
+    { label: hireLabel, href: `/${lang}/hire` },
     { label: tr.blog, href: `/${lang}/blog` },
     { label: tr.contact, href: `/${lang}#contact` },
   ];
@@ -105,7 +108,7 @@ export function Nav() {
                 href={l.href}
                 onMouseEnter={() => setHoveredLink(l.href)}
                 onMouseLeave={() => setHoveredLink(null)}
-                className={`relative px-4 py-2 text-xs font-mono uppercase tracking-widest transition-colors ${isHovered ? "text-black" : "text-muted-foreground"}`}
+                className={`relative px-3.5 lg:px-4 py-2 text-xs font-mono uppercase tracking-widest whitespace-nowrap transition-colors ${isHovered ? "text-black" : "text-muted-foreground"}`}
               >
                 {isHovered && (
                   <motion.div
@@ -146,6 +149,7 @@ export function Nav() {
             }}
             className="group flex items-center gap-2 w-[4.5rem] justify-center px-0 py-2 text-xs font-mono uppercase tracking-widest border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-300"
             aria-label={lang === "en" ? "EN - Switch language" : lang === "tr" ? "TR - Dili değiştir" : "ع - تبديل اللغة"}
+
             title="Switch Language"
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-70 group-hover:rotate-180 transition-transform duration-500">
@@ -225,9 +229,9 @@ export function Nav() {
               transition={{ type: "tween", duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
               className={`fixed top-0 ${isRTL ? "left-0" : "right-0"} h-full w-[340px] max-w-[85vw] z-50 flex flex-col bg-surface-2 border-${isRTL ? "r" : "l"} border-border`}
             >
-              <div className="flex items-center justify-between px-8 h-16 border-b border-border">
-                <span className="font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                  {lang === "ar" ? "القائمة" : "Menu"}
+              <div className="flex items-center justify-between px-6 h-16 border-b border-border">
+                <span className="font-mono text-xs tracking-[0.2em] uppercase text-accent/90">
+                  {lang === "ar" ? "استكشف الموقع" : lang === "tr" ? "Keşfet" : "Directory"}
                 </span>
                 <button
                   ref={closeBtnRef}
@@ -240,26 +244,26 @@ export function Nav() {
                   aria-label={lang === "ar" ? "إغلاق القائمة" : lang === "tr" ? "Menüyü Kapat" : "Close menu"}
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5"/>
+                    <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5" />
                   </svg>
                 </button>
               </div>
 
               <nav
                 aria-label={lang === "ar" ? "التنقل الرئيسي" : lang === "tr" ? "Ana Gezinme" : "Main navigation"}
-                className="flex-1 flex flex-col justify-center px-8 gap-2"
+                className="flex-1 overflow-y-auto flex flex-col justify-center px-6 gap-1"
               >
                 {links.map((l, i) => (
                   <motion.div
                     key={l.href}
                     initial={{ opacity: 0, x: isRTL ? -20 : 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + i * 0.06 }}
+                    transition={{ delay: 0.08 + i * 0.05 }}
                   >
                     <Link
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className="group flex items-center justify-between py-4 border-b border-border text-2xl font-bold tracking-tight text-foreground hover:text-accent transition-colors"
+                      className="group flex items-center justify-between py-3.5 border-b border-border text-xl sm:text-2xl font-bold tracking-tight text-foreground hover:text-accent transition-colors"
                     >
                       <span>{l.label}</span>
                       <span className="text-xs font-mono opacity-30 group-hover:opacity-100 transition-opacity accent-text">
@@ -270,10 +274,35 @@ export function Nav() {
                 ))}
               </nav>
 
-              <div className="px-8 py-8 border-t border-border">
+              <div className="px-6 py-5 border-t border-border space-y-4">
+                <div className="grid grid-cols-2 gap-2.5">
+                  <a
+                    href="/Hamed_Mohamed_FullStack_NodeJS_CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={tactileButtonClasses(
+                      "outline",
+                      "flex items-center justify-center gap-1.5 px-3 py-2.5 text-[11px] tracking-wider"
+                    )}
+                  >
+                    <span>{tr.resume}</span>
+                    <Download className="w-3.5 h-3.5 shrink-0" />
+                  </a>
+                  <Link
+                    href={`/${lang}/hire`}
+                    onClick={() => setOpen(false)}
+                    className={tactileButtonClasses(
+                      "primary",
+                      "flex items-center justify-center gap-1.5 px-3 py-2.5 text-[11px] tracking-wider"
+                    )}
+                  >
+                    <Briefcase className="w-3.5 h-3.5 shrink-0" />
+                    <span>{hireLabel}</span>
+                  </Link>
+                </div>
                 <a
                   href="mailto:hamed.m.abdelalim@gmail.com"
-                  className="text-xs font-mono tracking-wider text-muted-foreground break-all"
+                  className="block text-[11px] sm:text-xs font-mono tracking-normal text-muted-foreground hover:text-accent transition-colors whitespace-nowrap"
                 >
                   hamed.m.abdelalim@gmail.com
                 </a>
