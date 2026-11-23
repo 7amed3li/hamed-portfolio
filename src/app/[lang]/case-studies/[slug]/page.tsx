@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCaseStudyBySlug, caseStudies, caseStudiesData } from "@/lib/case-studies-data";
+import { BuyerCTA } from "@/components/ui/BuyerCTA";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -87,6 +88,53 @@ export default async function CaseStudyPage({
     ],
   };
 
+  const safeLang = lang === "ar" || lang === "tr" ? lang : "en";
+  const isRTL = safeLang === "ar";
+  const ui = {
+    en: {
+      home: "Home",
+      hire: "Hire",
+      caseStudyLabel: "Case Study",
+      visitLive: "Visit Live Website ↗",
+      theProblem: "The Problem",
+      theSolution: "The Solution",
+      technologiesUsed: "Technologies Used",
+      results: "Results",
+      visualShowcase: "Visual Showcase",
+      whatThisProves: "What This Proves",
+      viewAllServices: "View All Services",
+      otherCaseStudies: "Other Case Studies",
+    },
+    ar: {
+      home: "الرئيسية",
+      hire: "وظّفني",
+      caseStudyLabel: "دراسة حالة",
+      visitLive: "زيارة الموقع الحي ↗",
+      theProblem: "المشكلة",
+      theSolution: "الحل الهندسي",
+      technologiesUsed: "التقنيات المستخدمة",
+      results: "النتائج بالأرقام",
+      visualShowcase: "معرض الشاشات الحية للمشروع",
+      whatThisProves: "ما يثبته هذا المشروع",
+      viewAllServices: "عرض جميع الخدمات",
+      otherCaseStudies: "دراسات حالة أخرى",
+    },
+    tr: {
+      home: "Ana Sayfa",
+      hire: "Hizmetler",
+      caseStudyLabel: "Vaka Analizi",
+      visitLive: "Canlı Siteyi Ziyaret Et ↗",
+      theProblem: "Problem",
+      theSolution: "Çözüm",
+      technologiesUsed: "Kullanılan Teknolojiler",
+      results: "Ölçülen Sonuçlar",
+      visualShowcase: "Canlı Görsel Vitrin",
+      whatThisProves: "Bu Proje Neyi Kanıtlar?",
+      viewAllServices: "Tüm Hizmetler",
+      otherCaseStudies: "Diğer Vaka Analizleri",
+    },
+  }[safeLang];
+
   return (
     <>
       <script
@@ -94,15 +142,15 @@ export default async function CaseStudyPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="min-h-screen bg-background text-foreground" dir={isRTL ? "rtl" : "ltr"}>
         {/* Breadcrumb */}
         <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
           <Link href={`/${lang}`} className="hover:text-accent transition-colors">
-            Home
+            {ui.home}
           </Link>
           <span>/</span>
           <Link href={`/${lang}/hire`} className="hover:text-accent transition-colors">
-            Hire
+            {ui.hire}
           </Link>
           <span>/</span>
           <span className="text-foreground">{cs.title}</span>
@@ -113,7 +161,7 @@ export default async function CaseStudyPage({
           <div className="max-w-4xl">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <p className="text-xs font-mono uppercase tracking-widest text-accent">
-                Case Study · {cs.year}
+                {ui.caseStudyLabel} · {cs.year}
               </p>
               {cs.statusBadge && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400">
@@ -155,7 +203,7 @@ export default async function CaseStudyPage({
                   className="inline-flex items-center gap-2 px-6 py-4 border border-emerald-500/50 bg-emerald-500/10 text-emerald-400 font-mono text-xs uppercase tracking-widest font-bold hover:bg-emerald-500 hover:text-black transition-colors"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Visit Live Website ↗
+                  {ui.visitLive}
                 </a>
               )}
             </div>
@@ -169,7 +217,7 @@ export default async function CaseStudyPage({
             <div>
               <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
                 <span className="inline-block w-6 h-px bg-accent" />
-                The Problem
+                {ui.theProblem}
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">{cs.problem}</p>
             </div>
@@ -178,7 +226,7 @@ export default async function CaseStudyPage({
             <div>
               <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
                 <span className="inline-block w-6 h-px bg-accent" />
-                The Solution
+                {ui.theSolution}
               </h2>
               <p className="text-base text-muted-foreground leading-relaxed">{cs.solution}</p>
             </div>
@@ -187,7 +235,7 @@ export default async function CaseStudyPage({
             <div>
               <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
                 <span className="inline-block w-6 h-px bg-accent" />
-                Technologies Used
+                {ui.technologiesUsed}
               </h2>
               <ul className="space-y-2">
                 {cs.technologies.map((tech) => (
@@ -203,7 +251,7 @@ export default async function CaseStudyPage({
             <div>
               <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
                 <span className="inline-block w-6 h-px bg-accent" />
-                Results
+                {ui.results}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {cs.results.map((r) => (
@@ -223,7 +271,7 @@ export default async function CaseStudyPage({
               <div>
                 <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
                   <span className="inline-block w-6 h-px bg-accent" />
-                  {lang === "ar" ? "معرض الشاشات الحية للمشروع" : lang === "tr" ? "Canlı Görsel Vitrin" : "Visual Showcase"}
+                  {ui.visualShowcase}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
                   {cs.images.map((img, idx) => {
@@ -267,9 +315,9 @@ export default async function CaseStudyPage({
             )}
 
             {/* Client Proof */}
-            <div className="p-6 border-l-2 border-accent bg-accent/5">
+            <div className="p-6 border-s-2 border-accent bg-accent/5">
               <p className="text-xs font-mono uppercase tracking-widest text-accent mb-3">
-                What This Proves
+                {ui.whatThisProves}
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">{cs.clientProof}</p>
             </div>
@@ -277,37 +325,33 @@ export default async function CaseStudyPage({
             {/* CTA */}
             <div className="border-t border-border pt-12">
               <p className="text-base text-muted-foreground mb-6 leading-relaxed">{cs.cta}</p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 {cs.liveUrl && (
                   <a
                     href={cs.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 border border-emerald-500/60 bg-emerald-500/10 text-emerald-400 font-mono uppercase tracking-widest text-sm font-bold hover:bg-emerald-500 hover:text-black transition-colors flex items-center gap-2"
+                    className="px-8 py-5 border border-emerald-500/60 bg-emerald-500/10 text-emerald-400 font-mono uppercase tracking-widest text-sm font-bold hover:bg-emerald-500 hover:text-black transition-colors flex items-center gap-2"
                   >
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Visit Live Website ↗
+                    {ui.visitLive}
                   </a>
                 )}
-                <a
-                  href="mailto:hamed.m.abdelalim@gmail.com"
-                  className="px-8 py-4 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
-                >
-                  Hire Hamed
-                </a>
-                <Link
-                  href={`/${lang}/hire`}
-                  className="px-8 py-4 border border-border text-muted-foreground font-mono uppercase tracking-widest text-sm hover:border-foreground hover:text-foreground transition-colors"
-                >
-                  View All Services
-                </Link>
+                <BuyerCTA
+                  lang={lang}
+                  page="case-study"
+                  slug={slug}
+                  contextTitle={cs.title}
+                  variant="bottom"
+                  secondaryLink={{ href: `/${lang}/hire`, label: ui.viewAllServices }}
+                />
               </div>
             </div>
 
             {/* Other case studies */}
             <div className="border-t border-border pt-12">
               <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-6">
-                Other Case Studies
+                {ui.otherCaseStudies}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {(caseStudiesData[lang] || caseStudiesData.en)

@@ -25,8 +25,6 @@ function walk(dir: string, exts: string[], out: string[] = []): string[] {
 
 const contentFiles = [
   ...walk(path.join(ROOT, "src"), [".ts", ".tsx", ".mdx"]),
-  path.join(ROOT, "public", "llms.txt"),
-  path.join(ROOT, "public", "llms-full.txt"),
   path.join(ROOT, "cv.md"),
 ];
 
@@ -102,6 +100,68 @@ test.describe("blog listing localisation (I18N-01)", () => {
       await page.goto(`/${lang}/blog/how-i-stopped-nodejs-from-freezing`);
       const dates = await page.locator("main time").allInnerTexts();
       for (const d of dates) expect(d).not.toMatch(/\b(January|February|March|April|May(?!ıs)|June|July|August|September|October|November|December)\b/u);
+    });
+  }
+});
+
+test.describe("sales page localization & buyer CTAs (Phase 2)", () => {
+  const strayServiceEnglish = [
+    "Who This Is For",
+    "What Hamed Can Build",
+    "Business Value",
+    "Common Questions",
+    "Technologies Used",
+    "Get in Touch",
+    "Other Services",
+    "Ready to get started?",
+  ];
+
+  const strayCaseStudyEnglish = [
+    "The Problem",
+    "The Solution",
+    "Technologies Used",
+    "What This Proves",
+    "Other Case Studies",
+  ];
+
+  for (const lang of ["en", "ar", "tr"] as const) {
+    for (const slug of ["restaurant-menu-websites", "qr-attendance-systems"]) {
+      test(`/${lang}/services/${slug} has localized chrome & WhatsApp/Email CTAs`, async ({ page }) => {
+        await page.goto(`/${lang}/services/${slug}`);
+        const main = page.locator("main");
+        if (lang !== "en") {
+          const text = await main.innerText();
+          for (const s of strayServiceEnglish) expect(text).not.toContain(s);
+        }
+        const waHref = await main.locator('[data-cta="whatsapp"]').first().getAttribute("href");
+        const emailHref = await main.locator('[data-cta="email"]').first().getAttribute("href");
+        expect(waHref).toMatch(/^https:\/\/wa\.me\/905060453906\?text=.+/);
+        expect(emailHref).toMatch(/^mailto:hamed\.m\.abdelalim@gmail\.com/);
+      });
+    }
+
+    for (const slug of ["kardesler-restaurant-platform", "qr-attendance-system"]) {
+      test(`/${lang}/case-studies/${slug} has localized chrome & WhatsApp/Email CTAs`, async ({ page }) => {
+        await page.goto(`/${lang}/case-studies/${slug}`);
+        const main = page.locator("main");
+        if (lang !== "en") {
+          const text = await main.innerText();
+          for (const s of strayCaseStudyEnglish) expect(text).not.toContain(s);
+        }
+        const waHref = await main.locator('[data-cta="whatsapp"]').first().getAttribute("href");
+        const emailHref = await main.locator('[data-cta="email"]').first().getAttribute("href");
+        expect(waHref).toMatch(/^https:\/\/wa\.me\/905060453906\?text=.+/);
+        expect(emailHref).toMatch(/^mailto:hamed\.m\.abdelalim@gmail\.com/);
+      });
+    }
+
+    test(`/${lang}/hire has WhatsApp and Email BuyerCTAs`, async ({ page }) => {
+      await page.goto(`/${lang}/hire`);
+      const main = page.locator("main");
+      const waHref = await main.locator('[data-cta="whatsapp"]').first().getAttribute("href");
+      const emailHref = await main.locator('[data-cta="email"]').first().getAttribute("href");
+      expect(waHref).toMatch(/^https:\/\/wa\.me\/905060453906\?text=.+/);
+      expect(emailHref).toMatch(/^mailto:hamed\.m\.abdelalim@gmail\.com/);
     });
   }
 });

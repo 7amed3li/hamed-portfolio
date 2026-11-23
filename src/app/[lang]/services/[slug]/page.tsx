@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getServiceBySlug, servicesData } from "@/lib/services-data";
+import { BuyerCTA } from "@/components/ui/BuyerCTA";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -101,6 +102,83 @@ export default async function ServicePage({
     ],
   };
 
+  const safeLang = lang === "ar" || lang === "tr" ? lang : "en";
+  const isRTL = safeLang === "ar";
+  const ui = {
+    en: {
+      home: "Home",
+      hire: "Hire",
+      serviceLabel: "Service",
+      allServices: "All Services",
+      whoThisIsFor: "Who This Is For",
+      whatHamedCanBuild: "What Hamed Can Build",
+      businessValue: "Business Value",
+      realWorldProof: "Real-World Experience",
+      commonQuestions: "Common Questions",
+      technologiesUsed: "Technologies Used",
+      getInTouch: "Get in Touch",
+      otherServices: "Other Services",
+      viewAllServices: "View all services →",
+      readyTitle: "Ready to get started?",
+      readyDesc:
+        "Describe your project in plain language — Hamed will respond within 24 hours and let you know exactly what he can build, how long it will take, and what it involves.",
+      quickResponseLabel: "Response Time",
+      quickResponseValue: "< 24 Hours",
+      quickWorkflowLabel: "Execution",
+      quickWorkflowValue: "Direct Engineer · No Middlemen",
+      quickLanguagesLabel: "Communication",
+      quickLanguagesValue: "EN · AR · TR",
+    },
+    ar: {
+      home: "الرئيسية",
+      hire: "وظّفني",
+      serviceLabel: "الخدمة",
+      allServices: "جميع الخدمات",
+      whoThisIsFor: "لمن هذه الخدمة؟",
+      whatHamedCanBuild: "ما الذي سأبنيه لك",
+      businessValue: "القيمة التجارية",
+      realWorldProof: "خبرة حقيقية ومشاريع حية",
+      commonQuestions: "أسئلة شائعة",
+      technologiesUsed: "التقنيات المستخدمة",
+      getInTouch: "تواصل مباشر",
+      otherServices: "خدمات أخرى",
+      viewAllServices: "عرض جميع الخدمات ←",
+      readyTitle: "جاهز لبدء مشروعك؟",
+      readyDesc:
+        "اشرح فكرتك أو مشكلتك ببساطة — وسيرد عليك حامد خلال 24 ساعة ليوضح لك خطة التنفيذ والمدة والتفاصيل بوضوح تام.",
+      quickResponseLabel: "سرعة الرد",
+      quickResponseValue: "خلال 24 ساعة",
+      quickWorkflowLabel: "آلية العمل",
+      quickWorkflowValue: "تواصل مباشر مع المهندس",
+      quickLanguagesLabel: "لغات التواصل",
+      quickLanguagesValue: "العربية · EN · TR",
+    },
+    tr: {
+      home: "Ana Sayfa",
+      hire: "Hizmetler",
+      serviceLabel: "Hizmet",
+      allServices: "Tüm Hizmetler",
+      whoThisIsFor: "Kimler İçin Uygun?",
+      whatHamedCanBuild: "Neler Geliştirebilirim?",
+      businessValue: "İş Değeri",
+      realWorldProof: "Gerçek Dünya Deneyimi",
+      commonQuestions: "Sıkça Sorulan Sorular",
+      technologiesUsed: "Kullanılan Teknolojiler",
+      getInTouch: "İletişime Geçin",
+      otherServices: "Diğer Hizmetler",
+      viewAllServices: "Tüm hizmetleri gör →",
+      readyTitle: "Başlamaya hazır mısınız?",
+      readyDesc:
+        "Projenizi sade bir dille anlatın — Hamed 24 saat içinde yanıt vererek tam olarak ne geliştirebileceğini, süreyi ve kapsamı netleştirsin.",
+      quickResponseLabel: "Yanıt Süresi",
+      quickResponseValue: "24 Saat İçinde",
+      quickWorkflowLabel: "Çalışma Modeli",
+      quickWorkflowValue: "Doğrudan Mühendis · Aracısız",
+      quickLanguagesLabel: "İletişim Dilleri",
+      quickLanguagesValue: "TR · AR · EN",
+    },
+  }[safeLang];
+
   return (
     <>
       <script
@@ -108,15 +186,15 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="min-h-screen bg-background text-foreground" dir={isRTL ? "rtl" : "ltr"}>
         {/* Breadcrumb */}
         <div className="px-6 md:px-20 lg:px-28 pt-28 flex items-center gap-2 text-xs font-mono text-muted-foreground">
           <Link href={`/${lang}`} className="hover:text-accent transition-colors">
-            Home
+            {ui.home}
           </Link>
           <span>/</span>
           <Link href={`/${lang}/hire`} className="hover:text-accent transition-colors">
-            Hire
+            {ui.hire}
           </Link>
           <span>/</span>
           <span className="text-foreground">{service.title}</span>
@@ -126,7 +204,7 @@ export default async function ServicePage({
         <section className="px-6 md:px-20 lg:px-28 py-20 border-b border-border">
           <div className="max-w-4xl">
             <p className="text-xs font-mono uppercase tracking-widest text-accent mb-6">
-              Service
+              {ui.serviceLabel}
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-8 text-foreground">
               {service.h1}
@@ -134,19 +212,33 @@ export default async function ServicePage({
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mb-10">
               {service.intro}
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="mailto:hamed.m.abdelalim@gmail.com"
-                className="px-8 py-4 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
-              >
-                Start a Project
-              </a>
-              <Link
-                href={`/${lang}/hire`}
-                className="px-8 py-4 border border-border text-muted-foreground font-mono uppercase tracking-widest text-sm hover:border-foreground hover:text-foreground transition-colors"
-              >
-                All Services
-              </Link>
+            <BuyerCTA
+              lang={lang}
+              page="service"
+              slug={slug}
+              contextTitle={service.title}
+              variant="hero"
+              secondaryLink={{ href: `/${lang}/hire`, label: ui.allServices }}
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-border">
+              <div>
+                <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                  {ui.quickResponseLabel}
+                </p>
+                <p className="text-sm font-mono font-bold text-foreground">{ui.quickResponseValue}</p>
+              </div>
+              <div>
+                <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                  {ui.quickWorkflowLabel}
+                </p>
+                <p className="text-sm font-mono font-bold text-foreground">{ui.quickWorkflowValue}</p>
+              </div>
+              <div>
+                <p className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                  {ui.quickLanguagesLabel}
+                </p>
+                <p className="text-sm font-mono font-bold text-foreground">{ui.quickLanguagesValue}</p>
+              </div>
             </div>
           </div>
         </section>
@@ -160,7 +252,7 @@ export default async function ServicePage({
               <div>
                 <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
                   <span className="inline-block w-6 h-px bg-accent" />
-                  Who This Is For
+                  {ui.whoThisIsFor}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">{service.forWho}</p>
               </div>
@@ -169,7 +261,7 @@ export default async function ServicePage({
               <div>
                 <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-6 flex items-center gap-3">
                   <span className="inline-block w-6 h-px bg-accent" />
-                  What Hamed Can Build
+                  {ui.whatHamedCanBuild}
                 </h2>
                 <ul className="space-y-3">
                   {service.whatIBuild.map((item) => (
@@ -185,7 +277,7 @@ export default async function ServicePage({
               <div>
                 <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-5 flex items-center gap-3">
                   <span className="inline-block w-6 h-px bg-accent" />
-                  Business Value
+                  {ui.businessValue}
                 </h2>
                 <p className="text-base text-muted-foreground leading-relaxed">
                   {service.businessValue}
@@ -193,9 +285,9 @@ export default async function ServicePage({
               </div>
 
               {/* Proof */}
-              <div className="p-6 border-l-2 border-accent bg-accent/5">
+              <div className="p-6 border-s-2 border-accent bg-accent/5">
                 <p className="text-xs font-mono uppercase tracking-widest text-accent mb-3">
-                  {lang === 'ar' ? 'خبرة حقيقية ومشاريع حية' : lang === 'tr' ? 'Gerçek Dünya Deneyimi' : 'Real-World Experience'}
+                  {ui.realWorldProof}
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">{service.proof}</p>
 
@@ -218,7 +310,7 @@ export default async function ServicePage({
                   </div>
                 )}
 
-                {(slug === "qr-code-systems" || slug === "attendance-tracking-systems") && (
+                {(slug === "qr-code-systems" || slug === "attendance-tracking-systems" || slug === "qr-attendance-systems") && (
                   <div className="mt-5 pt-4 border-t border-accent/20 flex flex-wrap items-center gap-4">
                     <Link
                       href={`/${lang}/case-studies/qr-attendance-system`}
@@ -234,7 +326,7 @@ export default async function ServicePage({
               <div>
                 <h2 className="text-xs font-mono uppercase tracking-widest text-accent mb-8 flex items-center gap-3">
                   <span className="inline-block w-6 h-px bg-accent" />
-                  Common Questions
+                  {ui.commonQuestions}
                 </h2>
                 <div className="space-y-6">
                   {service.faq.map((f) => (
@@ -252,7 +344,7 @@ export default async function ServicePage({
               {/* Technologies */}
               <div className="p-6 border border-border bg-surface">
                 <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-5">
-                  Technologies Used
+                  {ui.technologiesUsed}
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {service.technologies.map((tech) => (
@@ -269,7 +361,7 @@ export default async function ServicePage({
               {/* Contact card */}
               <div className="p-6 border border-border bg-surface">
                 <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-5">
-                  Get in Touch
+                  {ui.getInTouch}
                 </h2>
                 <div className="space-y-3 mb-6">
                   <a
@@ -281,22 +373,24 @@ export default async function ServicePage({
                   <a
                     href="tel:+905060453906"
                     className="block text-sm text-foreground hover:text-accent transition-colors"
+                    dir="ltr"
                   >
                     +90 506 045 3906
                   </a>
                 </div>
-                <a
-                  href="mailto:hamed.m.abdelalim@gmail.com"
-                  className="block w-full text-center py-3 bg-accent text-black font-mono uppercase tracking-widest text-xs font-bold hover:bg-foreground transition-colors"
-                >
-                  Contact Hamed
-                </a>
+                <BuyerCTA
+                  lang={lang}
+                  page="service"
+                  slug={slug}
+                  contextTitle={service.title}
+                  variant="sidebar"
+                />
               </div>
 
               {/* Other services */}
               <div className="p-6 border border-border bg-surface">
                 <h2 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-5">
-                  Other Services
+                  {ui.otherServices}
                 </h2>
                 <div className="space-y-2">
                   {(servicesData[lang] || servicesData.en)
@@ -315,7 +409,7 @@ export default async function ServicePage({
                     href={`/${lang}/hire`}
                     className="block text-sm text-accent hover:underline py-1 mt-2"
                   >
-                    View all services →
+                    {ui.viewAllServices}
                   </Link>
                 </div>
               </div>
@@ -327,18 +421,18 @@ export default async function ServicePage({
         <section className="px-6 md:px-20 lg:px-28 py-20 border-t border-border">
           <div className="max-w-3xl">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
-              Ready to get started?
+              {ui.readyTitle}
             </h2>
             <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-              Describe your project in plain language — Hamed will respond and let you know exactly
-              what he can build, how long it will take, and what it involves.
+              {ui.readyDesc}
             </p>
-            <a
-              href="mailto:hamed.m.abdelalim@gmail.com"
-              className="inline-block px-10 py-5 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
-            >
-              Start a Conversation
-            </a>
+            <BuyerCTA
+              lang={lang}
+              page="service"
+              slug={slug}
+              contextTitle={service.title}
+              variant="bottom"
+            />
           </div>
         </section>
       </main>

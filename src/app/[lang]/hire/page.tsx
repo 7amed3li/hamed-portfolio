@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { servicesData } from "@/lib/services-data";
 import { hireData } from "@/lib/hire-data";
+import { BuyerCTA } from "@/components/ui/BuyerCTA";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -97,26 +98,13 @@ export default async function HirePage({
               <strong className="text-foreground">{data.introBold}</strong>{" "}
               {data.introEnd}
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="mailto:hamed.m.abdelalim@gmail.com"
-                className="px-8 py-4 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
-              >
-                {data.startProject}
-              </a>
-              <a
-                href="mailto:hamed.m.abdelalim@gmail.com"
-                className="px-8 py-4 border border-border text-muted-foreground font-mono uppercase tracking-widest text-sm hover:border-foreground hover:text-foreground transition-colors"
-              >
-                {data.contactHamed}
-              </a>
-              <Link
-                href={`/${lang}#projects`}
-                className="px-8 py-4 border border-border text-muted-foreground font-mono uppercase tracking-widest text-sm hover:border-accent hover:text-accent transition-colors"
-              >
-                {data.viewProjects}
-              </Link>
-            </div>
+            <BuyerCTA
+              lang={lang}
+              page="hire"
+              contextTitle={data.hireHamed}
+              variant="hero"
+              secondaryLink={{ href: `/${lang}#projects`, label: data.viewProjects }}
+            />
           </div>
         </section>
 
@@ -243,7 +231,21 @@ export default async function HirePage({
             </p>
             <div className="space-y-4 mb-10">
               <div className="flex items-center gap-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground w-20 inline-block text-left">
+                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground w-24 inline-block text-start">
+                  WhatsApp
+                </span>
+                <a
+                  href="https://wa.me/905060453906"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-accent hover:underline transition-colors"
+                  dir="ltr"
+                >
+                  +90 506 045 3906
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground w-24 inline-block text-start">
                   Email
                 </span>
                 <a
@@ -254,18 +256,19 @@ export default async function HirePage({
                 </a>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground w-20 inline-block text-left">
+                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground w-24 inline-block text-start">
                   Phone
                 </span>
                 <a
                   href="tel:+905060453906"
                   className="text-sm text-foreground hover:text-accent transition-colors"
+                  dir="ltr"
                 >
                   +90 506 045 3906
                 </a>
               </div>
               <div className="flex items-center gap-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground w-20 inline-block text-left">
+                <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground w-24 inline-block text-start">
                   LinkedIn
                 </span>
                 <a
@@ -273,17 +276,18 @@ export default async function HirePage({
                   target="_blank"
                   rel="noreferrer"
                   className="text-sm text-foreground hover:text-accent transition-colors"
+                  dir="ltr"
                 >
                   linkedin.com/in/h-amedmohamed
                 </a>
               </div>
             </div>
-            <a
-              href="mailto:hamed.m.abdelalim@gmail.com"
-              className="inline-block px-10 py-5 bg-accent text-black font-mono uppercase tracking-widest text-sm font-bold hover:bg-foreground transition-colors"
-            >
-              {data.sendMessage}
-            </a>
+            <BuyerCTA
+              lang={lang}
+              page="hire"
+              contextTitle={data.hireHamed}
+              variant="bottom"
+            />
           </div>
         </section>
       </main>
