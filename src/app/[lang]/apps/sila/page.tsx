@@ -177,12 +177,6 @@ export default async function SilaAppPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: data.breadcrumbApps,
-            item: `${siteUrl}/${lang}/apps`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
             name: data.heroTitle,
             item: `${siteUrl}/${lang}/apps/sila`,
           },
