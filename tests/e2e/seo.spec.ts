@@ -88,8 +88,8 @@ test("sitemap, metadata, canonicals, hreflang and JSON-LD", async ({ request }) 
   const locs = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1]);
   const pageLocs = locs.filter((l) => !l.endsWith(".txt"));
 
-  // Sitemap hygiene: 87 HTML pages, no .txt entries, no ignored changefreq/priority, real lastmod, valid images.
-  expect(locs.length).toBe(87);
+  // Sitemap hygiene: 96 HTML pages, no .txt entries, no ignored changefreq/priority, real lastmod, valid images.
+  expect(locs.length).toBe(96);
   expect(locs.some((l) => l.endsWith(".txt"))).toBe(false);
   expect(xml).not.toContain("<changefreq>");
   expect(xml).not.toContain("<priority>");

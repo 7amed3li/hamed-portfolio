@@ -1,0 +1,78 @@
+---
+title: "Çok Şubeli Restoran Sipariş Mimarisi: Şube Yönlendirme ve 970+ SSG Sayfası"
+description: "Next.js 16 ile teslimat bölgesine göre şube WhatsApp yönlendirmesi, 10 dilde 970+ statik SEO sayfası ve PostgreSQL yönetim paneli nasıl kurulur."
+lang: "tr"
+translationKey: "multi-branch-restaurant-whatsapp-ordering-system"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "restaurant", "postgresql", "seo", "whatsapp"]
+coverImage: "/case-studies/lucky-sushi/hero.png"
+published: true
+featured: true
+summary: "Çok şubeli restoran zincirleri ve geniş menülü işletmeler için %30 komisyonu ortadan kaldıran şube bazlı WhatsApp yönlendirme ve 970+ statik SEO sayfası mimarisi."
+---
+
+**Özet:** Bir restoran birden fazla şubeye ulaştığında veya uluslararası müşterilere 85'ten fazla günlük yemek sunduğunda tek sayfalık basit QR menüler yetersiz kalır. Müşteriler yanlış şubeye sipariş verir, gece çalışma saatleri karışır ve aracı platformlar cironun %30'una kadar komisyon alır. Teslimat bölgesine duyarlı şube yönlendirmesi, 5 ila 10 yerel dil desteği ve her yemek için statik SEO sayfaları üreten bir Next.js 16 platformu hem operasyonu hem de Google görünürlüğünü tek yapıda çözer.
+
+---
+
+## Büyüyen Restoran Markalarında İki Operasyonel Darboğaz
+
+İstanbul'da çok şubeli ve yüksek hacimli restoranlar için canlı platformlar geliştirirken geliri doğrudan etkileyen iki temel sorun öne çıkar:
+
+1. **Çok Şubeli Sipariş ve Bölge Karmaşası:** Marka farklı ilçelerde (örneğin Alibeyköy 04:00'e kadar, Zeytinburnu 03:00'e kadar ve Sarıyer) mutfak işletirken tüm siparişleri tek numaraya toplamak gece siparişlerinde gecikmeye yol açar.
+2. **Yemek Bazlı Google Aramalarında Görünmezlik:** 85+ çeşit yemeği tek bir PDF veya pop-up içine hapsetmek Google'ın yemekleri ayrı ayrı dizine eklemesini engeller. Her yemek × dil kombinasyonunu (`970+ statik SSG sayfası`) önceden üretmek menüyü organik trafik motoruna dönüştürür.
+
+---
+
+## Karşılaştırma: Aracı Uygulamalar vs. Basit QR Menü vs. Çok Şubeli Next.js 16 Platformu
+
+| Özellik | Aracı Sipariş Uygulamaları | Basit Tek Sayfa QR Menü | Özel Çok Şubeli Next.js 16 Platformu |
+| :--- | :--- | :--- | :--- |
+| **Sipariş Komisyonu** | **Sipariş başına %20 – %30** | %0 | **%0 (doğrudan şube mutfağına)** |
+| **Şube & Bölge Seçimi** | Uygulama yönetir | Tek WhatsApp hattı | **İlçe ve saate göre otomatik yönlendirme** |
+| **Google Yemek İndeksi** | Aracı siteyi sıralar | Yalnızca 1 sayfa | **10 dilde 970+ statik yemek sayfası** |
+| **Fiyat & Stok Yönetimi** | Yavaş dış panel | Sabit JSON dosyası | **PostgreSQL + Prisma 7 + Argon2 panel** |
+
+---
+
+## Şube ve Teslimat Bölgesine Duyarlı WhatsApp Sipariş Yönlendiricisi
+
+Her şubenin çalışma saatlerini, kapsadığı mahalleleri ve mutfak WhatsApp hattını tip güvenli bir yapıda tanımlayarak mobil sepetin siparişi doğrudan ilgili mutfağa iletmesini sağlıyoruz:
+
+```ts
+// Çok şubeli restoranlar için şube bazlı WhatsApp sipariş yönlendiricisi
+export interface RestaurantBranch {
+  id: "alibeykoy" | "zeytinburnu" | "sariyer";
+  name: string;
+  whatsappE164: string;
+  closesAtHour: number;
+  districts: readonly string[];
+}
+
+export function resolveBranchOrderUrl(
+  branch: RestaurantBranch,
+  items: ReadonlyArray<{ title: string; qty: number; priceTry: number }>,
+  deliveryAddress: string
+): string {
+  const totalTry = items.reduce((sum, item) => sum + item.qty * item.priceTry, 0);
+  const lines = [
+    `[${branch.name.toUpperCase()} ORDER]`,
+    ...items.map((i) => `${i.qty}x ${i.title} (${i.qty * i.priceTry} TRY)`),
+    `Total: ${totalTry} TRY`,
+    `Address: ${deliveryAddress}`,
+  ];
+  return `https://wa.me/${branch.whatsappE164}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
+```
+
+---
+
+## Canlı Üretim Kanıtı: Lucky Sushi (3 Şube) & Cihangir Ev Yemekleri (970+ Sayfa)
+
+Her iki mimariyi de İstanbul'da canlı üretim ortamında teslim ettim:
+
+1. **[Lucky Sushi & Chinese (3 İstanbul Şubesi)](https://www.luckysushichinese.com.tr):** **Alibeyköy (04:00'e kadar açık)**, **Zeytinburnu** ve **Reşitpaşa / Sarıyer** şubelerini **5 dilde** (`TR`, `EN`, `AR` RTL, `RU`, `中文`) şube bazlı teslimat bölgeleri ve doğrudan mutfak WhatsApp hattıyla koordine eder. **[Lucky Sushi Vaka Analizi](/tr/case-studies/lucky-sushi-multi-branch-platform)** sayfasını inceleyin.
+2. **[Cihangir Ev Yemekleri & Pide](https://www.cihangirevyemekler.com.tr):** **Next.js 16 + PostgreSQL + Prisma 7** altyapısıyla **10 dilde 970+ statik sayfa**, **6 canlı döviz kuru** ve **Argon2 korumalı yönetim paneli** sunar. **[Cihangir Ev Yemekleri Vaka Analizi](/tr/case-studies/cihangir-ev-yemekleri-platform)** sayfasını inceleyin.
+
+<CTA />

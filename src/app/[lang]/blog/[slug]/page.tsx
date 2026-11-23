@@ -1,9 +1,24 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import { getPostBySlug } from '@/lib/blog'
+import { getCaseStudyBySlug } from '@/lib/case-studies-data'
 import { MDXContent } from '@/components/blog/MdxComponents'
 import { posts } from '#site/content'
+
+const RELATED_CASE_STUDIES_BY_POST: Record<string, string[]> = {
+  'multilingual-medical-tourism-website-architecture': ['healix-medical-platform', 'genc-group-corporate-platform'],
+  'corporate-construction-3d-web-platform-nextjs': ['genc-group-corporate-platform', 'healix-medical-platform'],
+  'multi-branch-restaurant-whatsapp-ordering-system': ['lucky-sushi-multi-branch-platform', 'cihangir-ev-yemekleri-platform'],
+  'qr-restaurant-menu-without-commissions': ['kardesler-restaurant-platform', 'cihangir-ev-yemekleri-platform'],
+  'migrate-wordpress-to-nextjs-without-losing-seo': ['kardesler-restaurant-platform', 'healix-medical-platform'],
+  'qr-attendance-system-architecture-scale': ['qr-attendance-system', 'cihangir-ev-yemekleri-platform'],
+  'how-i-stopped-nodejs-from-freezing': ['qr-attendance-system', 'nodesecure-open-source'],
+  'refactoring-production-backend-lessons': ['qr-attendance-system', 'dragonsploit'],
+  'from-computer-repair-to-software-engineering': ['qr-attendance-system', 'kardesler-restaurant-platform'],
+};
 
 interface PostPageProps {
   params: Promise<{
@@ -161,6 +176,80 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className="prose prose-neutral dark:prose-invert prose-lg max-w-none prose-headings:font-bold prose-a:text-accent hover:prose-a:text-accent/80 mx-auto min-w-0 w-full">
           <MDXContent code={post.body} lang={post.lang as 'en' | 'ar' | 'tr'} />
         </div>
+
+        {/* Contextual Live Case Study Proof Cards */}
+        {(() => {
+          const relatedSlugs = RELATED_CASE_STUDIES_BY_POST[resolvedParams.slug] || ['healix-medical-platform', 'qr-attendance-system'];
+          const relatedStudies = relatedSlugs
+            .map((csSlug) => getCaseStudyBySlug(csSlug, post.lang))
+            .filter((cs): cs is NonNullable<ReturnType<typeof getCaseStudyBySlug>> => Boolean(cs));
+          if (relatedStudies.length === 0) return null;
+
+          const sectionTitle =
+            post.lang === 'ar'
+              ? 'دراسات حالة حية مرتبطة بهذا المقال'
+              : post.lang === 'tr'
+              ? 'Bu Makaleyle İlgili Canlı Vaka Analizleri'
+              : 'Related Live Production Case Studies';
+          const readCaseStudyLabel =
+            post.lang === 'ar' ? 'قراءة دراسة الحالة' : post.lang === 'tr' ? 'Vaka Analizini İncele' : 'Read Case Study';
+          const liveSiteLabel =
+            post.lang === 'ar' ? 'الموقع الحي' : post.lang === 'tr' ? 'Canlı Site' : 'Live Website';
+
+          return (
+            <section
+              dir={post.lang === 'ar' ? 'rtl' : 'ltr'}
+              className="mt-12 sm:mt-16 pt-10 border-t border-border"
+            >
+              <div className="mb-6">
+                <span className="section-label">{sectionTitle}</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                {relatedStudies.map((cs) => (
+                  <div
+                    key={cs.slug}
+                    className="p-5 sm:p-6 rounded-[6px] border border-border bg-surface hover:border-accent/60 transition-colors flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <span className="text-xs font-mono text-accent">{cs.heroStat.value}</span>
+                        {cs.liveUrl && (
+                          <a
+                            href={cs.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-400 hover:underline"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            <span>{liveSiteLabel}</span>
+                            <ExternalLink className="w-3 h-3 shrink-0" />
+                          </a>
+                        )}
+                      </div>
+                      <h2 className="text-base sm:text-lg font-bold text-foreground mb-2">
+                        <Link href={`/${post.lang}/case-studies/${cs.slug}`} className="hover:text-accent transition-colors">
+                          {cs.title}
+                        </Link>
+                      </h2>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                        {cs.metaDescription}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-border/50">
+                      <Link
+                        href={`/${post.lang}/case-studies/${cs.slug}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:underline"
+                      >
+                        <span>{readCaseStudyLabel}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 shrink-0 rtl:-scale-x-100" />
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
       </article>
     </main>
   )

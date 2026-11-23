@@ -36,6 +36,9 @@ export const CASE_STUDY_SLUGS = [
 ] as const;
 
 export const BLOG_SLUGS = [
+  "multilingual-medical-tourism-website-architecture",
+  "corporate-construction-3d-web-platform-nextjs",
+  "multi-branch-restaurant-whatsapp-ordering-system",
   "qr-restaurant-menu-without-commissions",
   "migrate-wordpress-to-nextjs-without-losing-seo",
   "qr-attendance-system-architecture-scale",

@@ -1,0 +1,71 @@
+---
+title: "Kurumsal İnşaat ve Otomotiv Web Platformları: Next.js 16 ve Etkileşimli 3D"
+description: "İnşaat ve otomotiv grupları neden klasik sitelerini 3 dilli Next.js 16 platformları ve Draco sıkıştırmalı Three.js 3D stüdyolarıyla değiştiriyor."
+lang: "tr"
+translationKey: "corporate-construction-3d-web-platform-nextjs"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "threejs", "corporate", "seo", "architecture"]
+coverImage: "/case-studies/genc-group/hero.png"
+published: true
+featured: false
+summary: "İnşaat ve otomotiv grup şirketlerini 3 dilli (TR/EN/AR RTL) hızlı bir Next.js 16 mimarisi ve etkileşimli Three.js 3D vitrinleri altında birleştirme rehberi."
+---
+
+**Özet:** İnşaat, gayrimenkul ve otomotiv mühendisliği alanlarında faaliyet gösteren şirket grupları, statik broşür web sitelerinin sınırlarını hızla aşar. Yatırımcılar ve kurumsal müşteriler hızlı mobil performans, 3 dilli doğal gezinme (Türkçe, İngilizce ve Arapça RTL) ve mühendislik kalitesini kanıtlayan etkileşimli 3D vitrinler bekler. Next.js 16 Server Components ile Draco sıkıştırmalı Three.js 3D sahnelerini birleştirmek hem kurumsal prestij hem de yüksek Core Web Vitals skorları sağlar.
+
+---
+
+## Şirket Grupları Neden Klasik Kurumsal Şablonları Geride Bırakıyor?
+
+Kentsel dönüşüm inşaat projeleri ve otomotiv mühendisliği gibi yüksek güven gerektiren iki sektörde faaliyet gösteren bir grup için geleneksel şablonlar üç darboğaz yaratır:
+
+1. **Dağınık Marka Otoritesi:** Sektörleri kopuk alt sitelere veya eski PDF kataloglara bölmek grubun ölçeğini yatırımcılara yansıtamaz.
+2. **Soyut Kalite İddiaları:** Stok fotoğraflar mimari kütle kararlarını, cephe malzemelerini veya milimetrik otomotiv kalibrasyonunu gösteremez.
+3. **Mobili Donduran Ağır 3D Dosyalar:** Dinamik yükleme ve Draco geometri sıkıştırması olmadan eklenen WebGL sahneleri mobil tarayıcıları kilitler.
+
+---
+
+## Karşılaştırma: Klasik Kurumsal Site vs. Ağır WebGL Ajans Sitesi vs. Next.js 16 + Draco 3D
+
+| Ölçüt | Klasik WordPress Site | Ağır WebGL Ajans Sitesi | Next.js 16 + İzole Draco 3D |
+| :--- | :--- | :--- | :--- |
+| **Açılış Hızı & SEO** | Yavaş eklentiler, zayıf şema | JS yüklenene kadar boş ekran | **Anında SSR HTML + JSON-LD** |
+| **3D Mimari Kanıt** | Yalnızca sabit görseller | Masaüstü odaklı, mobilde çöker | **Draco sıkıştırmalı, 60fps uyumlu** |
+| **Çok Dilli & RTL** | Ayrı kurulumlar | Arapça RTL genellikle bozuk | **Tek çatı altında TR / EN / AR RTL** |
+| **Talep Yönlendirme** | Basit iletişim formu | Sektör ayrımı yok | **Zod doğrulamalı sektörel form** |
+
+---
+
+## SSR ve LCP Hızını Korumak İçin Three.js & Draco 3D Sahnelerini İzole Etmek
+
+Kurumsal ana sayfanın Google tarafından anında dizine eklenmesini sağlarken etkileşimli 3D mimari stüdyo sunmak için poligon bütçesini (`LOD Budget`) ekran boyutuna göre dinamik ayarlıyoruz:
+
+```ts
+// Mobil hızı koruyan dinamik Draco 3D poligon bütçesi hesaplayıcısı
+export interface ArchitecturalPreset {
+  id: "residential-tower" | "commercial-podium" | "industrial-shell";
+  facadeMaterial: "travertine" | "brushed-aluminum" | "low-e-glass";
+  sunAzimuthDeg: number;
+  targetTriangles: number;
+}
+
+export function computeLodBudget(viewportWidth: number, preset: ArchitecturalPreset): number {
+  const isMobile = viewportWidth < 768;
+  const scaleFactor = isMobile ? 0.45 : 1.0;
+  return Math.round(preset.targetTriangles * scaleFactor);
+}
+```
+
+---
+
+## Canlı Üretim Kanıtı: Genç Group (Genç Group İnşaat & AutoClub Merter, İstanbul)
+
+Bu 3 dilli kurumsal platformu İstanbul merkezli **[Genç Group](https://www.gencgroupinsaat.com.tr)** için tasarlayıp canlıya aldım:
+
+- **Genç Group İnşaat:** Kütle, cephe malzemesi ve güneş açısını gerçek zamanlı değiştiren etkileşimli **[3D Mimari Tasarım Laboratuvarı](https://www.gencgroupinsaat.com.tr/case-study)** ile kentsel dönüşüm projeleri vitrini.
+- **AutoClub Merter:** `±0.05 mm` kalibrasyon hassasiyetini gösteren 4 aşamalı etkileşimli otomotiv mühendisliği anatomisi.
+- **3 Dilli Doğal Deneyim:** Türkçe, İngilizce ve Arapça RTL desteği ile `Organization` ve `BreadcrumbList` yapılandırılmış verileri.
+- Tüm teknik detayları **[Genç Group Kurumsal Vaka Analizi](/tr/case-studies/genc-group-corporate-platform)** sayfasında inceleyebilirsiniz.
+
+<CTA />

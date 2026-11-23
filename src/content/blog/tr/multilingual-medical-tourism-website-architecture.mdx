@@ -1,0 +1,86 @@
+---
+title: "5 Dilli Sağlık Turizmi Web Platformu Mimarisi: Doğal Arapça RTL ve Gizlilik"
+description: "Next.js 16 ile 5 dilde (doğal Arapça RTL), 142 statik sayfa, 33 anlaşmalı hastane rehberi ve gizlilik öncelikli hasta koordinasyon platformu nasıl kurulur."
+lang: "tr"
+translationKey: "multilingual-medical-tourism-website-architecture"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "healthcare", "i18n", "rtl", "seo"]
+coverImage: "/case-studies/healix-medical/hero-en.png"
+published: true
+featured: true
+summary: "Uluslararası hasta koordinasyon ve sağlık turizmi platformları için mühendislik rehberi: 5 dilde statik üretim, 0.00 CLS Arapça RTL, derleme zamanı çeviri kontrolü ve gizlilik mimarisi."
+---
+
+**Özet:** Türkiye'de tedavi araştıran uluslararası hastalar ve aileleri kendi ana dillerinde (Arapça, İngilizce, Fransızca, Rusça veya Türkçe) arama yapar. Sağlık turizmi şirketlerinin çoğu, yavaş tek dilli siteler veya otomatik çeviri eklentili WordPress temaları yüzünden potansiyel hastalarını aracı pazar yerlerine kaptırır. Doğal Arapça RTL desteğine, derleme zamanı çeviri doğrulamasına ve gizlilik öncelikli iletişim yapısına sahip özel bir Next.js 16 platformu, markayı Google'da kendi adıyla #1 sıraya taşır.
+
+---
+
+## Uluslararası Hasta Koordinasyon Siteleri Neden Hazır Temalarda Başarısız Olur?
+
+Yurt خارجındaki bir hasta Türkiye'deki organ nakli mevzuatını, onkoloji koordinasyonunu veya anlaşmalı hastaneleri araştırırken üç teknik hata güveni anında zedeler:
+
+1. **Bozuk Sağdan Sola (RTL) Arapça Görünüm:** Otomatik çeviri eklentileri metni çevirir ancak mantıksal boşlukları ve çift yönlü tıbbi terimleri (`<bdi>`) korumaz; bu da kaymalara (`CLS`) yol açar.
+2. **Belirsiz Yasal ve Tıbbi Sınırlar:** Koordinasyon rolü ile tıbbi karar sınırlarının net ayrılmaması veya form üzerinden hassas tıbbi dosya toplanması veri güvenliği riski doğurur.
+3. **Eksik Çok Dilli Teknik SEO:** Dille özelleştirilmiş statik URL'ler, karşılıklı `hreflang` etiketleri ve yapay zeka botlarına uygun SSR yanıtları olmadan yabancı dil sayfaları dizine eklenmez.
+
+---
+
+## Mimari Karşılaştırma: Aracı Pazar Yeri vs. WordPress vs. Özel Next.js 16 SSG
+
+| Kriter | Aracı Pazar Yerleri | WordPress + Çeviri Eklentisi | Özel Next.js 16 SSG Platformu |
+| :--- | :--- | :--- | :--- |
+| **Marka Sahipliği** | Hasta kaydı aracıya gider | Kendi alan adı, yavaş açılış | **%100 marka kontrolü, 1 sn altı açılış** |
+| **Arapça RTL Kalitesi** | Standart şablon | Yazı tipi ve hizalama kayması | **0.00 CLS sunucu taraflı mantıksal RTL** |
+| **Çeviri Bütünlüğü** | Manuel kopyجalama | Çalışma anında eksik metinler | **Derleme zamanı kontrol (4.395 metin)** |
+| **Hasta Gizliliği** | Paylaşılan veri tabanı | Eklenti güvenlik riskleri | **Sıfır tıbbi dosya kaydı, güvenli API** |
+| **Google & AI Arama (GEO)** | Aracı siteyi yükseltir | Ağır HTML çıktısı | **135 URL XML site haritası + `llms.txt`** |
+
+---
+
+## Derleme Zamanı Çok Dilli Doğrulama Kapısı (`validate-i18n.mjs`)
+
+5 dil, 12 branş ve 3 hukuki rehberi kapsayan (`142 statik sayfa`) bir sağlık platformunda tek bir eksik çeviri anahtarı bile kurumsal güveni sarsar. Bu yüzden `prebuild` aşamasında tüm dillerin anahtar eşleşmesini zorunlu kılıyoruz:
+
+```ts
+// scripts/validate-i18n.mjs: Derleme öncesi 5 dilde %100 anahtar eşleşme kontrolü
+const LOCALES = ["ar", "en", "fr", "ru", "tr"] as const;
+const SERVICE_IDS = [
+  "liver-transplantation",
+  "kidney-transplantation",
+  "oncology",
+  "cardiology",
+  "neurosurgery",
+  "orthopedic-surgery",
+] as const;
+
+export function assertLocaleParity(
+  baseKeys: Map<string, string>,
+  targetLocale: string,
+  targetKeys: Map<string, string>
+): void {
+  for (const [keyPath, expectedType] of baseKeys.entries()) {
+    const actualType = targetKeys.get(keyPath);
+    if (!actualType) {
+      throw new Error(`[i18n-gate] Missing key "${keyPath}" in locale "${targetLocale}"`);
+    }
+    if (actualType !== expectedType) {
+      throw new Error(`[i18n-gate] Type mismatch at "${keyPath}" in "${targetLocale}"`);
+    }
+  }
+}
+```
+
+---
+
+## Canlı Üretim Kanıtı: Healix Medical (İstanbul)
+
+Bu mimariyi İstanbul merkezli uluslararası hasta koordinasyon şirketi **[Healix Medical](https://www.healixistanbul.com.tr)** için sıfırdan tasarlayıp geliştirdim:
+
+- **5 dilde** (`AR` doğal RTL, `EN`, `FR`, `RU`, `TR`) önceden üretilmiş **142 statik sayfa (SSG)**.
+- Her dilde **12 tıbbi koordinasyon branşı** + **3 Türkiye organ nakli mevzuatı ve Etik Komisyon rehberi**.
+- 13 şehirdeki **33 anlaşmalı sağlık kurumunu** (Medical Park, Liv Hospital, İstinye ve Aydın Üniversitesi merkezleri) filtreleyen etkileşimli rehber.
+- Marka aramasında **Google #1 sıralaması** ve Search Console'da keşfedilen 110+ çok dilli URL.
+- Tüm teknik detayları **[Healix Medical Vaka Analizi](/tr/case-studies/healix-medical-platform)** sayfasında veya doğrudan müşteri alan adındaki **[Canlı Geliştirici Referansı](https://www.healixistanbul.com.tr/en/tasarim-gelistirme)** sayfasında inceleyebilirsiniz.
+
+<CTA />

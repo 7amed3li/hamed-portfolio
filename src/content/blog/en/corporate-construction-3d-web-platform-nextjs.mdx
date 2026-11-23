@@ -1,0 +1,71 @@
+---
+title: "Corporate Construction & Automotive Web Platforms: Next.js 16 & Interactive 3D"
+description: "Why multi-division construction and automotive groups replace slow brochure sites with trilingual Next.js 16 platforms and Draco-compressed Three.js 3D labs."
+lang: "en"
+translationKey: "corporate-construction-3d-web-platform-nextjs"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "threejs", "corporate", "seo", "architecture"]
+coverImage: "/case-studies/genc-group/hero.png"
+published: true
+featured: false
+summary: "How multi-sector holding companies unify construction and automotive divisions under a fast trilingual Next.js 16 platform with interactive Three.js 3D spatial showcases."
+---
+
+**TL;DR:** Multi-division corporate groups in construction, real estate, and automotive engineering outgrow static brochure websites quickly. Investors and commercial clients expect instant mobile performance, native trilingual navigation (Turkish, English, and Arabic RTL), and interactive visual proof of engineering quality. Pairing Next.js 16 Server Components with lazy-loaded, Draco-compressed Three.js 3D viewports delivers both architectural credibility and fast Core Web Vitals.
+
+---
+
+## Why Holding Companies Outgrow Legacy Corporate Brochure Sites
+
+When a corporate group operates across multiple high-trust sectors, such as urban residential construction and flagship automotive engineering, traditional corporate templates create three bottlenecks:
+
+1. **Fragmented Brand Authority:** Running disconnected mini-sites or outdated PDF catalogs fails to communicate unified financial and operational scale to investors.
+2. **Unproven Quality Claims:** Generic stock photos and text paragraphs cannot demonstrate architectural massing, facade materials, or sub-millimeter automotive calibration.
+3. **Heavy 3D Assets That Freeze Mobile Browsers:** Naive WebGL embeds block the main thread and ruin mobile Core Web Vitals unless isolated behind dynamic imports and Draco geometry compression.
+
+---
+
+## Comparison: Legacy Corporate Template vs. Heavy Agency WebGL vs. Next.js 16 + Draco 3D
+
+| Dimension | Legacy WordPress Brochure | Heavy Agency WebGL Site | Next.js 16 + Isolated Draco 3D |
+| :--- | :--- | :--- | :--- |
+| **Initial Load & SEO** | Slow plugins, weak schema | Blank canvas until JS loads | **Instant SSR HTML + JSON-LD** |
+| **3D Architectural Proof** | Static renders only | Desktop-only, crashes mobile | **Draco-compressed, 60fps responsive** |
+| **Multilingual & RTL** | Separate installs | Rarely supports Arabic RTL | **Unified TR / EN / AR native RTL** |
+| **Lead Qualification** | Basic contact form | No structured routing | **Zod-validated division routing** |
+
+---
+
+## Isolating Three.js & Draco 3D Viewports Without Blocking SSR or LCP
+
+To keep the corporate homepage indexing cleanly while offering an interactive 3D architectural workbench, the WebGL canvas is dynamically loaded client-side with explicit memory disposal:
+
+```ts
+// Progressive Draco 3D loader pattern keeping SSR & LCP fast
+export interface ArchitecturalPreset {
+  id: "residential-tower" | "commercial-podium" | "industrial-shell";
+  facadeMaterial: "travertine" | "brushed-aluminum" | "low-e-glass";
+  sunAzimuthDeg: number;
+  targetTriangles: number;
+}
+
+export function computeLodBudget(viewportWidth: number, preset: ArchitecturalPreset): number {
+  const isMobile = viewportWidth < 768;
+  const scaleFactor = isMobile ? 0.45 : 1.0;
+  return Math.round(preset.targetTriangles * scaleFactor);
+}
+```
+
+---
+
+## Production Proof: Genç Group (Genç Group İnşaat & AutoClub Merter, Istanbul)
+
+I built and shipped this trilingual corporate platform for **[Genç Group](https://www.gencgroupinsaat.com.tr)** in Istanbul, uniting two distinct operating divisions under one high-performance architecture:
+
+- **Genç Group İnşaat:** Residential and commercial construction showcase with an interactive **[3D Architectural Design Lab](https://www.gencgroupinsaat.com.tr/case-study)** switching volumetric massing, facade materials, and lighting in real time.
+- **AutoClub Merter:** 4-stage interactive automotive engineering anatomy (`±0.05 mm` alignment tolerances, ceramic protection, and mechanical telemetry).
+- **Trilingual Native UX:** Full Turkish, English, and Arabic RTL support with `Organization` and `BreadcrumbList` structured data.
+- Explore the full architecture in the **[Genç Group Corporate Case Study](/en/case-studies/genc-group-corporate-platform)**.
+
+<CTA />

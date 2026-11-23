@@ -1,0 +1,78 @@
+---
+title: "Multi-Branch Restaurant Ordering Architecture: Branch Routing & 970+ SSG Pages"
+description: "How to engineer a multi-branch restaurant ordering platform in Next.js 16 with delivery-zone WhatsApp routing, 970+ static SEO pages, and PostgreSQL."
+lang: "en"
+translationKey: "multi-branch-restaurant-whatsapp-ordering-system"
+date: "2026-11-23"
+author: "Hamed Mohamed"
+tags: ["nextjs", "restaurant", "postgresql", "seo", "whatsapp"]
+coverImage: "/case-studies/lucky-sushi/hero.png"
+published: true
+featured: true
+summary: "How multi-branch restaurant chains and high-volume daily kitchens eliminate 30% delivery app commissions using branch-aware WhatsApp routing and 970+ static multilingual SEO pages."
+---
+
+**TL;DR:** Once a restaurant expands to multiple branches or serves 85+ daily dishes to international customers, basic single-page QR menus break down. Diners order from the wrong kitchen, late-night branch hours get confused, and third-party apps take up to 30% of gross revenue. Engineering a branch-aware Next.js 16 platform with delivery-zone routing, 5 to 10 native languages, and per-dish static SEO pages solves operations and customer acquisition in one build.
+
+---
+
+## The Two Operational Bottlenecks in Growing Restaurant Brands
+
+From engineering production platforms for multi-branch and high-volume Istanbul restaurants, two operational problems consistently hurt revenue:
+
+1. **Multi-Branch Dispatch Confusion:** When a brand operates kitchens across different districts (for example Alibeyköy until 04:00 AM, Zeytinburnu until 03:00 AM, and Sarıyer), sending all orders to a single phone number causes delayed preparation and lost late-night orders.
+2. **Invisible Per-Dish Local Search:** When 85+ daily dishes live inside a single client-rendered modal or PDF, Google cannot index individual dishes across languages. Pre-rendering every dish × language combination (`970+ static SSG pages`) turns the menu into an organic traffic engine.
+
+---
+
+## Comparison: Aggregator Apps vs. Basic Single-Branch QR vs. Multi-Branch Next.js Platform
+
+| Capability | Delivery Aggregator Apps | Basic Single-Page QR Menu | Custom Multi-Branch Next.js 16 Platform |
+| :--- | :--- | :--- | :--- |
+| **Commission Fee** | **20% – 30% per order** | 0% | **0% (direct to branch kitchen)** |
+| **Branch & Zone Routing** | Handled by aggregator | Single WhatsApp number only | **Automatic routing by district & hours** |
+| **Google Dish Indexing** | Ranks aggregator page | 1 page indexed | **970+ SSG dish pages across 10 locales** |
+| **Admin & Stock Control** | Slow third-party portal | Hardcoded JSON | **PostgreSQL + Prisma 7 + Argon2 admin** |
+
+---
+
+## Branch-Aware Delivery Zone & Kitchen WhatsApp Router
+
+By modeling each branch's operating window, covered neighborhoods, and dedicated kitchen WhatsApp line in a typed configuration, the mobile cart routes itemized orders directly to the active branch:
+
+```ts
+// Branch-aware WhatsApp order dispatch for multi-branch restaurant platforms
+export interface RestaurantBranch {
+  id: "alibeykoy" | "zeytinburnu" | "sariyer";
+  name: string;
+  whatsappE164: string;
+  closesAtHour: number;
+  districts: readonly string[];
+}
+
+export function resolveBranchOrderUrl(
+  branch: RestaurantBranch,
+  items: ReadonlyArray<{ title: string; qty: number; priceTry: number }>,
+  deliveryAddress: string
+): string {
+  const totalTry = items.reduce((sum, item) => sum + item.qty * item.priceTry, 0);
+  const lines = [
+    `[${branch.name.toUpperCase()} ORDER]`,
+    ...items.map((i) => `${i.qty}x ${i.title} (${i.qty * i.priceTry} TRY)`),
+    `Total: ${totalTry} TRY`,
+    `Address: ${deliveryAddress}`,
+  ];
+  return `https://wa.me/${branch.whatsappE164}?text=${encodeURIComponent(lines.join("\n"))}`;
+}
+```
+
+---
+
+## Production Proof: Lucky Sushi (3 Branches) & Cihangir Ev Yemekleri (970+ Pages)
+
+I shipped both architectural patterns in live production across Istanbul:
+
+1. **[Lucky Sushi & Chinese (3 Istanbul Branches)](https://www.luckysushichinese.com.tr):** Coordinates **Alibeyköy HQ (open till 04:00 AM)**, **Zeytinburnu**, and **Reşitpaşa / Sarıyer** across **5 languages** (`TR`, `EN`, `AR` RTL, `RU`, `中文`) with branch-aware delivery zones and direct kitchen WhatsApp routing. Read the **[Lucky Sushi Case Study](/en/case-studies/lucky-sushi-multi-branch-platform)**.
+2. **[Cihangir Ev Yemekleri & Pide](https://www.cihangirevyemekler.com.tr):** Full-stack **Next.js 16 + PostgreSQL + Prisma 7** platform generating **970+ static pages** across **10 languages** (`TR`, `EN`, `AR`, `RU`, `DE`, `FR`, `ES`, `FA`, `AZ`, `ZH`), **6 live currencies**, and an **Argon2-secured admin panel**. Read the **[Cihangir Ev Yemekleri Case Study](/en/case-studies/cihangir-ev-yemekleri-platform)**.
+
+<CTA />
