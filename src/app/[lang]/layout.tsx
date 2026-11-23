@@ -5,7 +5,7 @@ import { ConsoleMessage } from "@/components/ui/ConsoleMessage";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({
