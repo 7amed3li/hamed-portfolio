@@ -159,7 +159,7 @@ export default async function CaseStudyPage({
         </div>
 
         {/* Hero */}
-        <section className="px-5 md:px-20 lg:px-28 py-12 md:py-20 border-b border-border">
+        <section className="px-5 md:px-20 lg:px-28 py-8 sm:py-12 md:py-20 border-b border-border">
           <div className="max-w-4xl">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <p className="text-xs font-mono uppercase tracking-widest text-accent">
@@ -172,26 +172,16 @@ export default async function CaseStudyPage({
                 </span>
               )}
             </div>
-            <div className="flex flex-wrap gap-2 mb-6">
-              {cs.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-xs font-mono border border-border text-muted-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-6 md:mb-8 text-foreground">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-3 sm:mb-4 text-foreground">
               {cs.title}
             </h1>
-            <p className="text-sm text-muted-foreground font-mono mb-8 md:mb-10">{cs.category}</p>
+            <p className="text-xs sm:text-sm text-muted-foreground font-mono mb-6 md:mb-8">{cs.category}</p>
 
             {/* Hero stat and live site action */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 md:gap-5">
-              <div className="inline-flex flex-col border border-accent/30 px-6 py-4 md:px-8 md:py-5 bg-accent/5">
-                <span className="text-4xl md:text-5xl font-bold accent-text tracking-tight">
-                  {cs.heroStat.value}
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-4 md:gap-5 mb-6 md:mb-8">
+              <div className="inline-flex flex-col border border-accent/30 px-5 py-3.5 sm:px-6 sm:py-4 md:px-8 md:py-5 bg-accent/5">
+                <span className="text-2xl sm:text-3xl md:text-5xl font-bold accent-text tracking-tight">
+                  {cs.heroStat.value.replace(/^#1/, "\u200E#1")}
                 </span>
                 <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-1">
                   {cs.heroStat.label}
@@ -212,6 +202,17 @@ export default async function CaseStudyPage({
                   <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 </a>
               )}
+            </div>
+
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {cs.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-2.5 py-1 sm:px-3 text-[11px] sm:text-xs font-mono border border-border bg-surface text-muted-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         </section>

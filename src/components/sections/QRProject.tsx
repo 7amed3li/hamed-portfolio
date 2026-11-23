@@ -85,17 +85,17 @@ function ProjectCard({ p, index, onInView }: { p: ProjectData, index: number, on
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-4 sm:gap-6 mt-4">
+      <div className="flex flex-wrap items-center gap-3 sm:gap-5 mt-2">
         {p.links?.map((l, i: number) => (
           <a 
             key={i}
             href={l.url} 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-xs sm:text-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-[6px] border border-border bg-surface hover:border-accent text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-xs"
           >
-            {l.label}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <span>{l.label}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 rtl:-scale-x-100">
               <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
@@ -106,10 +106,10 @@ function ProjectCard({ p, index, onInView }: { p: ProjectData, index: number, on
             href={p.link} 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-xs sm:text-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-[6px] border border-border bg-surface hover:border-accent text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-xs"
           >
-            {tr.viewRepo}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <span>{tr.viewRepo}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 rtl:-scale-x-100">
               <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
@@ -118,10 +118,10 @@ function ProjectCard({ p, index, onInView }: { p: ProjectData, index: number, on
         {/* Case Study Links */}
         <a 
           href={`/${lang}/case-studies/${p.slug || (p.num === "1" ? "qr-attendance-system" : p.num === "2" ? "nodesecure-open-source" : "dragonsploit")}`}
-          className="inline-flex items-center gap-3 text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-xs sm:text-sm"
+          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-[6px] border border-accent/40 bg-accent/10 hover:border-accent text-accent hover:text-foreground transition-colors font-mono uppercase tracking-widest text-xs"
         >
-          {lang === "ar" ? "اقرأ دراسة الحالة" : lang === "tr" ? "Örnek Olayı Oku" : "Read Case Study"}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="rtl:rotate-180">
+          <span>{lang === "ar" ? "اقرأ دراسة الحالة" : lang === "tr" ? "Örnek Olayı Oku" : "Read Case Study"}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 rtl:rotate-180">
             <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </a>

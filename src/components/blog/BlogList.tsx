@@ -54,6 +54,7 @@ export function BlogList({ posts, lang, allTags }: BlogListProps) {
           {allTags.map(tag => (
             <button
               key={tag}
+              dir="ltr"
               onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
               className={`shrink-0 px-4 py-1.5 rounded-full text-xs font-mono transition-colors ${
                 selectedTag === tag ? 'bg-accent text-background' : 'bg-surface-2 border border-border text-muted-foreground hover:border-accent'
@@ -118,7 +119,7 @@ export function BlogList({ posts, lang, allTags }: BlogListProps) {
                   </p>
                   <div className="mt-auto flex flex-wrap gap-2">
                     {post.tags.slice(0, 3).map(tag => (
-                      <span key={tag} className="rounded-md bg-border/50 px-2 py-1 text-[10px] font-mono text-muted-foreground">
+                      <span key={tag} dir="ltr" className="rounded-md bg-border/50 px-2 py-1 text-[10px] font-mono text-muted-foreground">
                         #{tag}
                       </span>
                     ))}

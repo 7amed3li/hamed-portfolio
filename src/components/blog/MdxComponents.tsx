@@ -20,14 +20,24 @@ const components = {
     <h1 className={`mt-2 scroll-m-20 text-2xl sm:text-4xl font-bold tracking-tight ${className}`} {...props} />
   ),
   h2: ({ className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className={`mt-10 scroll-m-20 border-b border-border pb-1 text-xl sm:text-3xl font-semibold tracking-tight first:mt-0 ${className}`} {...props} />
+    <h2 className={`mt-10 scroll-m-20 border-b border-border pb-2 text-xl sm:text-3xl font-bold tracking-tight text-foreground first:mt-0 ${className}`} {...props} />
   ),
   h3: ({ className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className={`mt-8 scroll-m-20 text-lg sm:text-2xl font-semibold tracking-tight ${className}`} {...props} />
+    <h3 className={`mt-8 scroll-m-20 text-lg sm:text-2xl font-bold tracking-tight text-foreground ${className}`} {...props} />
   ),
-  a: ({ className = '', ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a className={`font-medium text-accent underline underline-offset-4 hover:text-accent/80 ${className}`} {...props} />
-  ),
+  a: ({ className = '', ...props }: React.HTMLAttributes<HTMLAnchorElement>) => {
+    const isHeadingAnchor = className.includes('subheading-anchor')
+    return (
+      <a
+        className={
+          isHeadingAnchor
+            ? `text-foreground no-underline hover:text-foreground font-bold ${className}`
+            : `font-medium text-accent underline underline-offset-4 hover:text-accent/80 ${className}`
+        }
+        {...props}
+      />
+    )
+  },
   p: ({ className = '', ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p className={`leading-7 [&:not(:first-child)]:mt-6 ${className}`} {...props} />
   ),
@@ -41,8 +51,8 @@ const components = {
     <blockquote className={`mt-6 border-s-2 border-accent ps-5 sm:ps-6 italic text-muted-foreground ${className}`} {...props} />
   ),
   table: ({ className = '', ...props }: React.TableHTMLAttributes<HTMLTableElement>) => (
-    <div className="my-6 w-full overflow-x-auto rounded-lg border border-border">
-      <table className={`w-full text-xs sm:text-sm text-start border-collapse ${className}`} {...props} />
+    <div className="my-6 w-full overflow-x-auto rounded-lg border border-border bg-surface/60">
+      <table className={`min-w-[540px] sm:min-w-full w-full text-xs sm:text-sm text-start border-collapse ${className}`} {...props} />
     </div>
   ),
   thead: ({ className = '', ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
@@ -58,7 +68,7 @@ const components = {
     <th className={`px-3 py-2.5 sm:px-4 sm:py-3 font-mono text-xs uppercase tracking-wider text-foreground whitespace-nowrap text-start ${className}`} {...props} />
   ),
   td: ({ className = '', ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
-    <td className={`px-3 py-2.5 sm:px-4 sm:py-3 border-t border-border/60 text-muted-foreground align-top ${className}`} {...props} />
+    <td className={`px-3 py-2.5 sm:px-4 sm:py-3 border-t border-border/60 text-muted-foreground align-top min-w-[120px] sm:min-w-0 first:font-medium first:text-foreground ${className}`} {...props} />
   ),
   pre: ({ className = '', ...props }: React.HTMLAttributes<HTMLPreElement>) => (
     <pre

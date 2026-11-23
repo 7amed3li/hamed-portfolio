@@ -81,12 +81,12 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: 'en
   }[lang];
   
   return (
-    <main className="container mx-auto px-4 pt-32 pb-24 max-w-5xl min-w-0">
-      <div className="mb-16">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+    <main className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-24 max-w-5xl min-w-0" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <div className="mb-10 sm:mb-16">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-3 sm:mb-4">
           {content.h1Part1}<span className="text-accent">{content.h1Part2}</span>
         </h1>
-        <p className="text-xl text-muted-foreground">
+        <p className="text-base sm:text-xl text-muted-foreground">
           {content.desc}
         </p>
       </div>

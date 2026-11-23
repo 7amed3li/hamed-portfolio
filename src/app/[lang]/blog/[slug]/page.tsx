@@ -126,7 +126,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground" dir={post.lang === 'ar' ? 'rtl' : 'ltr'}>
       <article className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-24 max-w-4xl min-w-0 w-full">
         <script
           type="application/ld+json"
@@ -155,7 +155,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
           <div className="mt-6 sm:mt-8 flex justify-center flex-wrap gap-2">
             {post.tags.map(tag => (
-              <span key={tag} className="rounded-md bg-accent/10 text-accent px-2.5 sm:px-3 py-1 text-xs sm:text-sm font-mono">
+              <span key={tag} dir="ltr" className="rounded-md bg-accent/10 text-accent px-2.5 sm:px-3 py-1 text-xs sm:text-sm font-mono">
                 #{tag}
               </span>
             ))}
@@ -163,12 +163,12 @@ export default async function PostPage({ params }: PostPageProps) {
         </div>
 
         {post.coverImage && (
-          <div className="mb-10 sm:mb-16 aspect-[2/1] w-full overflow-hidden rounded-xl sm:rounded-2xl border border-border relative">
+          <div className="mb-10 sm:mb-16 aspect-[16/10] sm:aspect-video w-full overflow-hidden rounded-xl sm:rounded-2xl border border-border relative bg-surface">
             <Image 
               src={post.coverImage} 
               alt={post.title}
               fill
-              className="object-cover"
+              className="object-cover object-top"
             />
           </div>
         )}
@@ -212,7 +212,9 @@ export default async function PostPage({ params }: PostPageProps) {
                   >
                     <div>
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                        <span className="text-xs font-mono text-accent">{cs.heroStat.value}</span>
+                        <span className="text-xs font-mono text-accent">
+                          {cs.heroStat.value.replace(/^#1/, "\u200E#1")}
+                        </span>
                         {cs.liveUrl && (
                           <a
                             href={cs.liveUrl}
