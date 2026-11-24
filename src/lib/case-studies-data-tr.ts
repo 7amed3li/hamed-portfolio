@@ -419,7 +419,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Healix Medical: 5 Dilli Uluslararası Hasta Koordinasyon Platformu",
     metaTitle: "Healix Medical Vaka Analizi | 5 Dilli Next.js Sağlık Platformu | Hamed Mohamed",
     metaDescription:
-      "İstanbul'da 5 dilde (Arapça RTL), 142 statik sayfa, 33 anlaşmalı kurum rehberi ve Google #1 marka sıralamasına sahip hasta koordinasyon platformu.",
+      "İstanbul'da 5 dilde (Arapça RTL), 337 statik sayfa, 33 anlaşmalı kurum rehberi ve Google #1 marka sıralamasına sahip hasta koordinasyon platformu.",
     category: "Kurumsal & Sağlık Platformları · Next.js 16 · Çok Dilli SEO & GEO",
     year: "2026",
     tags: [
@@ -433,20 +433,20 @@ export const caseStudies: CaseStudy[] = [
       "Gizlilik Öncelikli İletişim API",
     ],
     heroStat: {
-      value: "Google #1 · 142 SSG Sayfa",
-      label: "5 dil (doğal Arapça RTL), 12 tıbbi branş, 3 yasal rehber ve 33 anlaşmalı sağlık kurumu",
+      value: "Google #1 · 337 SSG Sayfa",
+      label: "5 dil (doğal Arapça RTL), 12 tıbbi branş, 8 rehber ve 33 anlaşmalı sağlık kurumu",
     },
     problem:
-      "İstanbul merkezli uluslararası hasta koordinasyon şirketi Healix Medical'in resmi bir web sitesi yoktu ve yurt خارجından araştırma yapan hastalar aracı pazar yerlerine yöneliyordu. Şirketin 5 dilde (Arapça RTL, İngilizce, Fransızca, Rusça ve Türkçe) 12 koordinasyon branşını, Türkiye organ nakli mevzuatı rehberlerini ve 33 anlaşmalı hastaneyi sunan; tıbbi vaat içermeyen ve hasta dosyası depolamayan güvenilir bir platforma ihtiyacı vardı.",
+      "İstanbul merkezli uluslararası hasta koordinasyon şirketi Healix Medical'in resmi bir web sitesi yoktu ve yurt خارجından araştırma yapan hastalar aracı pazar yerlerine yöneliyordu. Şirketin 5 dilde (Arapça RTL, İngilizce, Fransızca, Rusça ve Türkçe) 12 koordinasyon branşını, 8 rehberi ve her birine özel sayfası olan 33 anlaşmalı sağlık tesisini sunan; tıbbi vaat içermeyen ve hasta dosyası depolamayan güvenilir bir platforma ihtiyacı vardı.",
     solution:
-      "Platformu Next.js 16.4 App Router, React 19 Server Components ve Tailwind CSS v4 mantıksal özellikleri ile sıfırdan tasarlayıp geliştirdim. Derleme öncesinde 5 dildeki 4.395 çeviri anahtarını doğrulayan sıfır bağımlılıklı bir i18n kontrol betiği (validate-i18n.mjs) kurdum. Karşılıklı hreflang etiketlerine sahip 135 URL'lik görsel site haritası, www kanonik hizalaması, yapay zeka botlarına 200 OK SSR yanıtı veren Edge Proxy, llms.txt dosyaları ve bot korumalı gizlilik-öncelikli iletişim API'si uyguladım.",
+      "Platformu Next.js 16.4 App Router, React 19 Server Components ve Tailwind CSS v4 mantıksal özellikleri ile sıfırdan tasarlayıp geliştirdim. Derleme öncesinde 5 dilin her birindeki 1.556 içerik anahtarını doğrulayan sıfır bağımlılıklı bir i18n kontrol betiği (validate-i18n.mjs) kurdum. Karşılıklı hreflang etiketlerine sahip 330 URL'lik görsel site haritası, www kanonik hizalaması, yapay zeka botlarına 200 OK SSR yanıtı veren Edge Proxy, llms.txt dosyaları ve bot korumalı gizlilik-öncelikli iletişim API'si uyguladım.",
     technologies: [
       "Next.js 16.4 (App Router & Statik Sayfa Üretimi)",
       "React 19 Server Components",
       "TypeScript 5",
       "Tailwind CSS v4 Logical Properties (0.00 CLS Doğal Arapça RTL)",
       "Derleme Zamanı i18n Doğrulayıcı (validate-i18n.mjs · 4.395 metin)",
-      "135 URL Görsel XML Site Haritası & Karşılıklı Hreflang",
+      "330 URL Görsel XML Site Haritası & Karşılıklı Hreflang",
       "AI Bot Edge Proxy + /llms.txt & /llms-full.txt (GEO)",
       "Gizlilik Öncelikli Webhook / Resend API + Anti-Bot Koruması",
     ],
@@ -454,17 +454,17 @@ export const caseStudies: CaseStudy[] = [
       {
         metric: "Google Marka Aramalarında #1 Sıralama",
         description:
-          "Yayına alındıktan kısa süre sonra 'healix istanbul' aramasında Google'da #1 sıraya yerleşti ve Search Console'da 110+ URL keşfedildi.",
+          "Yayına alındıktan kısa süre sonra 'healix istanbul' aramasında Google'da #1 sıraya yerleşti ve 330 URL'lik site haritasının tamamı Google Search Console ve Bing Webmaster Tools'a kaydedildi.",
       },
       {
-        metric: "5 Dilde 142 Statik Sayfa (SSG)",
+        metric: "5 Dilde 337 Statik Sayfa (SSG)",
         description:
-          "Arapça (tam RTL), İngilizce, Fransızca, Rusça ve Türkçe dillerinde 12 branş ve 3 hukuki/etik rehber sayfası üretildi.",
+          "Arapça (tam RTL), İngilizce, Fransızca, Rusça ve Türkçe dillerinde 12 branş, 8 rehber ve 33 anlaşmalı sağlık tesisinin her birine özel sayfa üretildi.",
       },
       {
         metric: "33 Anlaşmalı Sağlık Kurumu Rehberi",
         description:
-          "13 Türkiye şehrindeki 33 anlaşmalı hastane ve üniversite merkezini (Medical Park, Liv Hospital, İstinye ve Aydın Üniversitesi) filtreleyen etkileşimli rehber.",
+          "13 Türkiye şehrindeki 33 anlaşmalı sağlık tesisini (Medical Park, Liv Hospital, İstinye ve Aydın Üniversitesi) filtreleyen etkileşimli rehber.",
       },
       {
         metric: "Gizlilik Öncelikli Mimari & Sıfır Veri Riski",
@@ -496,7 +496,7 @@ export const caseStudies: CaseStudy[] = [
       {
         src: "/case-studies/healix-medical/tablet-facilities.png",
         alt: "Healix Medical Tablet Görünümü: 33 Anlaşmalı Sağlık Kurumu Rehberi",
-        caption: "Tablet (820×1080) görünümünde 13 şehirdeki 33 anlaşmalı hastaneyi filtreleyen etkileşimli rehber",
+        caption: "Tablet (820×1080) görünümünde 13 şehirdeki 33 anlaşmalı sağlık tesisini filtreleyen etkileşimli rehber",
       },
       {
         src: "/case-studies/healix-medical/mobile-en.jpg",

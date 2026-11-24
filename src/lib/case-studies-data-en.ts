@@ -419,7 +419,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Healix Medical: 5-Language International Patient Coordination Platform",
     metaTitle: "Healix Medical Case Study | 5-Language Next.js Healthcare Platform | Hamed Mohamed",
     metaDescription:
-      "Case study: 5-language international patient coordination platform in Istanbul with 142 static pages, Arabic RTL, 33 facilities, and #1 Google brand rank.",
+      "Case study: 5-language international patient coordination platform in Istanbul with 337 static pages, Arabic RTL, 33 facilities, and #1 Google brand rank.",
     category: "Corporate & Healthcare Platforms · Next.js 16 · Multilingual SEO & GEO",
     year: "2026",
     tags: [
@@ -433,20 +433,20 @@ export const caseStudies: CaseStudy[] = [
       "Privacy-First Enquiry API",
     ],
     heroStat: {
-      value: "#1 on Google · 142 SSG Pages",
-      label: "5 languages (native Arabic RTL), 12 medical specialties, 3 legal guides & 33 contracted facilities",
+      value: "#1 on Google · 337 SSG Pages",
+      label: "5 languages (native Arabic RTL), 12 medical specialties, 8 guides & 33 contracted facilities",
     },
     problem:
-      "Healix Medical, an Istanbul-based international patient coordination company, had no official website, causing prospective international patients to land on third-party marketplaces instead. They needed an authoritative, privacy-first platform across 5 languages (Arabic RTL, English, French, Russian, and Turkish) covering 12 medical coordination specialties, 3 Turkish transplant law guides, and a searchable directory of 33 contracted hospitals without collecting sensitive medical files on-site or making clinical promises.",
+      "Healix Medical, an Istanbul-based international patient coordination company, had no official website, causing prospective international patients to land on third-party marketplaces instead. They needed an authoritative, privacy-first platform across 5 languages (Arabic RTL, English, French, Russian, and Turkish) covering 12 medical coordination specialties, 8 guides, and a directory of 33 contracted healthcare facilities — each with its own page — without collecting sensitive medical files on-site or making clinical promises.",
     solution:
-      "I designed and engineered the platform end-to-end using Next.js 16.4 App Router, React 19 Server Components, and Tailwind CSS v4 logical properties. I built a zero-dependency prebuild i18n verification gate (validate-i18n.mjs) enforcing 100% key parity across 4,395 translated strings before compilation. For search and AI discovery, I implemented a 135-URL multilingual XML image sitemap with reciprocal hreflang tags, resolved www vs non-www canonical alignment, added an AI-crawler-aware Edge Proxy serving instant 200 OK SSR responses, and shipped a privacy-first enquiry API with honeypot and fill-duration anti-bot guards.",
+      "I designed and engineered the platform end-to-end using Next.js 16.4 App Router, React 19 Server Components, and Tailwind CSS v4 logical properties. I built a zero-dependency prebuild i18n verification gate (validate-i18n.mjs) enforcing 100% key parity across 1,556 content keys in each of the 5 locales before compilation. For search and AI discovery, I implemented a 330-URL multilingual XML image sitemap with reciprocal hreflang tags, resolved www vs non-www canonical alignment, added an AI-crawler-aware Edge Proxy serving instant 200 OK SSR responses, and shipped a privacy-first enquiry API with honeypot and fill-duration anti-bot guards.",
     technologies: [
       "Next.js 16.4 (App Router & Static Site Generation)",
       "React 19 Server Components",
       "TypeScript 5",
       "Tailwind CSS v4 Logical Properties (0.00 CLS Native Arabic RTL)",
-      "Build-Time i18n Schema Verifier (validate-i18n.mjs · 4,395 strings)",
-      "135-URL Multilingual XML Image Sitemap & Reciprocal Hreflang",
+      "Build-Time i18n Schema Verifier (validate-i18n.mjs · 1,556 keys per locale)",
+      "330-URL Multilingual XML Image Sitemap & Reciprocal Hreflang",
       "AI-Crawler Edge Proxy + /llms.txt & /llms-full.txt (GEO)",
       "Privacy-First Webhook / Resend Enquiry API + Anti-Bot Guards",
     ],
@@ -454,17 +454,17 @@ export const caseStudies: CaseStudy[] = [
       {
         metric: "#1 Google Ranking for Brand Queries",
         description:
-          "Ranked #1 on Google for 'healix istanbul' shortly after launch, with 110+ localized URLs discovered and indexed in Google Search Console.",
+          "Ranked #1 on Google for 'healix istanbul' shortly after launch, with the full 330-URL sitemap registered in Google Search Console and Bing Webmaster Tools.",
       },
       {
-        metric: "142 Static Pages Across 5 Languages",
+        metric: "337 Static Pages Across 5 Languages",
         description:
-          "Pre-rendered across Arabic (100% native RTL), English, French, Russian, and Turkish covering 12 specialties and 3 Turkish transplant law guides.",
+          "Pre-rendered across Arabic (100% native RTL), English, French, Russian, and Turkish covering 12 specialties, 8 guides, and a dedicated page for each of the 33 contracted healthcare facilities.",
       },
       {
         metric: "33-Facility Interactive Healthcare Directory",
         description:
-          "Searchable registry of 33 contracted hospitals and university centers across 13 Turkish cities (Medical Park, Liv Hospital, İstinye & Aydın University).",
+          "Searchable registry of 33 contracted healthcare facilities across 13 Turkish cities (Medical Park, Liv Hospital, İstinye & Aydın University), each with its own page in 5 languages.",
       },
       {
         metric: "Privacy-First Architecture & Zero Clinical Drift",
@@ -496,7 +496,7 @@ export const caseStudies: CaseStudy[] = [
       {
         src: "/case-studies/healix-medical/tablet-facilities.png",
         alt: "Healix Medical Tablet View of 33 Contracted Healthcare Facilities Directory",
-        caption: "Tablet (820×1080) interactive directory filtering 33 contracted hospitals across 13 Turkish cities",
+        caption: "Tablet (820×1080) interactive directory filtering 33 contracted healthcare facilities across 13 Turkish cities",
       },
       {
         src: "/case-studies/healix-medical/mobile-en.jpg",
