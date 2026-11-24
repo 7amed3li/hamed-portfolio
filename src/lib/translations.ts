@@ -81,7 +81,7 @@ export const t = {
           period: "2026",
           type: "Corporate · Contract",
           highlights: [
-            "Engineered Healix Medical (healixistanbul.com.tr): 5-language international patient coordination platform (AR native RTL, EN, FR, RU, TR) with 142 static pages, 12 specialties, 33 contracted facilities directory, and #1 Google brand rank",
+            "Engineered Healix Medical (healixistanbul.com.tr): 5-language international patient coordination platform (AR native RTL, EN, FR, RU, TR) with 337 static pages, 12 specialties, 33 contracted facilities directory, and #1 Google brand rank",
             "Engineered the unified trilingual corporate platform (TR/EN/AR RTL) uniting Genç Group İnşaat and AutoClub Merter at gencgroupinsaat.com.tr",
             "Built an interactive 3D/AI architectural spatial lab (/case-study) with Three.js & Draco plus a 4-stage automotive engineering showcase and privacy-first enquiry APIs",
           ],
@@ -205,11 +205,11 @@ export const t = {
           slug: "healix-medical-platform",
           title: "Healix Medical: Patient Coordination Platform",
           category: "Corporate & Healthcare · Next.js 16 · 5 Languages",
-          tags: ["Next.js 16.4", "React 19", "5 Languages (AR RTL)", "142 SSG Pages", "SEO & GEO"],
+          tags: ["Next.js 16.4", "React 19", "5 Languages (AR RTL)", "337 SSG Pages", "SEO & GEO"],
           year: "2026",
-          summary: "5-language international patient coordination platform in Istanbul (Arabic native RTL, English, French, Russian, Turkish) generating 142 static pages across 12 medical specialties, 3 Turkish transplant law guides, and an interactive directory of 33 contracted hospitals across 13 cities.",
+          summary: "5-language international patient coordination platform in Istanbul (Arabic native RTL, English, French, Russian, Turkish) generating 337 static pages across 12 medical specialties, 8 guides, and an interactive directory of 33 contracted healthcare facilities across 13 cities, each facility with its own page.",
           lesson: "Lesson Learned: International healthcare coordination demands strict clinical boundaries and build-time i18n verification (4,395 validated strings) so families get accurate legal and hospital guidance in their native language.",
-          metrics: ["#1 on Google", "142 Static Pages", "5 Languages (RTL)", "33 Contracted Facilities"],
+          metrics: ["#1 on Google", "337 Static Pages", "5 Languages (RTL)", "33 Contracted Facilities"],
           links: [
             { label: "Live Website", url: "https://www.healixistanbul.com.tr" },
             { label: "Developer Case Study", url: "https://www.healixistanbul.com.tr/en/tasarim-gelistirme" }
@@ -405,7 +405,7 @@ export const t = {
           period: "2026",
           type: "تعاقد شركات (Corporate)",
           highlights: [
-            "تصميم وبرمجة منصة Healix Medical (healixistanbul.com.tr) لتنسيق المرضى الدوليين بـ 5 لغات (عربي RTL أصلي) و142 صفحة ثابتة ودليل 33 مستشفى متعاقداً مع تصدّر المركز #1 في جوجل",
+            "تصميم وبرمجة منصة Healix Medical (healixistanbul.com.tr) لتنسيق المرضى الدوليين بـ 5 لغات (عربي RTL أصلي) و337 صفحة ثابتة ودليل 33 منشأة صحية متعاقدة مع تصدّر المركز #1 في جوجل",
             "هندسة وبناء المنصة المؤسسية الموحدة لشركة Genç Group بـ 3 لغات (التركية والإنجليزية والعربية RTL) لربط قطاعي الإنشاءات والسيارات على gencgroupinsaat.com.tr",
             "تطوير مختبر التصميم المعماري التفاعلي 3D / AI (/case-study) باستخدام Three.js و Draco مع واجهات تواصل آمنة وتحسين SEO ووكلاء الذكاء الاصطناعي (GEO)",
           ],
@@ -529,11 +529,11 @@ export const t = {
           slug: "healix-medical-platform",
           title: "Healix Medical: منصة تنسيق المرضى الدوليين",
           category: "منصات الشركات والرعاية الصحية · Next.js 16 · 5 لغات",
-          tags: ["Next.js 16.4", "React 19", "5 لغات (عربي RTL)", "142 صفحة SSG", "SEO & GEO"],
+          tags: ["Next.js 16.4", "React 19", "5 لغات (عربي RTL)", "337 صفحة SSG", "SEO & GEO"],
           year: "2026",
-          summary: "منصة تنسيق طبي دولي في إسطنبول بـ 5 لغات (العربية RTL، الإنجليزية، الفرنسية، الروسية، التركية) تولّد 142 صفحة ثابتة عبر 12 تخصصاً طبياً و3 أدلة قانونية لزراعة الأعضاء في تركيا ودليل تفاعلي لـ 33 مستشفى متعاقداً في 13 مدينة.",
+          summary: "منصة تنسيق طبي دولي في إسطنبول بـ 5 لغات (العربية RTL، الإنجليزية، الفرنسية، الروسية، التركية) تولّد 337 صفحة ثابتة عبر 12 تخصصاً طبياً و8 أدلة ودليل تفاعلي لـ 33 منشأة صحية متعاقدة في 13 مدينة، لكل منها صفحتها الخاصة.",
           lesson: "الدرس المستفاد: منصات التنسيق الطبي الدولي تتطلب حدوداً قانونية واضحة وفحصاً آلياً للترجمات وقت البناء (4,395 نصاً محققاً) لتقديم معلومات دقيقة للمرضى بلغتهم الأم.",
-          metrics: ["#1 في جوجل", "142 صفحة ثابتة", "5 لغات (RTL)", "33 منشأة متعاقدة"],
+          metrics: ["#1 في جوجل", "337 صفحة ثابتة", "5 لغات (RTL)", "33 منشأة متعاقدة"],
           links: [
             { label: "الموقع الحي", url: "https://www.healixistanbul.com.tr" },
             { label: "دراسة الحالة", url: "https://www.healixistanbul.com.tr/ar/tasarim-gelistirme" }
@@ -729,7 +729,7 @@ export const t = {
           period: "2026",
           type: "Kurumsal · Şirket",
           highlights: [
-            "Healix Medical (healixistanbul.com.tr): 5 dilde (doğal Arapça RTL) 142 statik sayfa, 12 tıbbi branş, 33 anlaşmalı hastane rehberi ve Google #1 marka sıralamasına sahip uluslararası hasta koordinasyon platformu",
+            "Healix Medical (healixistanbul.com.tr): 5 dilde (doğal Arapça RTL) 337 statik sayfa, 12 tıbbi branş, 33 anlaşmalı sağlık tesisi rehberi ve Google #1 marka sıralamasına sahip uluslararası hasta koordinasyon platformu",
             "Genç Group İnşaat ve AutoClub Merter'i birleştiren 3 dilli (TR/EN/AR RTL) kurumsal platform gencgroupinsaat.com.tr sıfırdan geliştirildi",
             "Three.js & Draco ile etkileşimli 3D/AI mimari tasarım laboratuvarı (/case-study), gizlilik-öncelikli iletişim API'leri ve Teknik SEO + GEO (llms.txt) uygulandı",
           ],
@@ -853,11 +853,11 @@ export const t = {
           slug: "healix-medical-platform",
           title: "Healix Medical: Hasta Koordinasyon Platformu",
           category: "Kurumsal & Sağlık · Next.js 16 · 5 Dil",
-          tags: ["Next.js 16.4", "React 19", "5 Dil (AR RTL)", "142 SSG Sayfa", "SEO & GEO"],
+          tags: ["Next.js 16.4", "React 19", "5 Dil (AR RTL)", "337 SSG Sayfa", "SEO & GEO"],
           year: "2026",
-          summary: "İstanbul merkezli 5 dilli (doğal Arapça RTL, İngilizce, Fransızca, Rusça, Türkçe) uluslararası hasta koordinasyon platformu; 12 tıbbi branş, 3 Türkiye organ nakli mevzuatı rehberi ve 13 şehirdeki 33 anlaşmalı hastanenin etkileşimli rehberiyle 142 statik sayfa üretir.",
+          summary: "İstanbul merkezli 5 dilli (doğal Arapça RTL, İngilizce, Fransızca, Rusça, Türkçe) uluslararası hasta koordinasyon platformu; 12 tıbbi branş, 8 rehber ve 13 şehirdeki 33 anlaşmalı sağlık tesisinin her birine özel sayfayla etkileşimli rehberiyle 337 statik sayfa üretir.",
           lesson: "Öğrenilen Ders: Uluslararası sağlık koordinasyonunda net yasal sınırlar ve derleme zamanı i18n doğrulaması (4.395 metin kontrolü), hastaların kendi dillerinde güvenilir bilgiye ulaşması için kritiktir.",
-          metrics: ["Google #1", "142 Statik Sayfa", "5 Dil (RTL)", "33 Anlaşmalı Kurum"],
+          metrics: ["Google #1", "337 Statik Sayfa", "5 Dil (RTL)", "33 Anlaşmalı Kurum"],
           links: [
             { label: "Canlı Web Sitesi", url: "https://www.healixistanbul.com.tr" },
             { label: "Geliştirici Vaka Analizi", url: "https://www.healixistanbul.com.tr/en/tasarim-gelistirme" }
