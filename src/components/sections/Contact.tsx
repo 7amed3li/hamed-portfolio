@@ -5,6 +5,7 @@ import { Check, Copy, Send } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useLang } from "@/contexts/LanguageContext";
 import { t } from "@/lib/translations";
+import { trackConversion } from "@/lib/ads-tracking";
 import { tactileButtonClasses } from "@/components/ui/TactilePrimitives";
 
 export function Contact() {
@@ -46,6 +47,7 @@ export function Contact() {
       });
 
       if (response.ok) {
+        trackConversion("hire_submit");
         setFormState('success');
       } else {
         setFormState('error');
