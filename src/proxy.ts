@@ -34,6 +34,7 @@ export function proxy(request: NextRequest) {
   if (
     pathname.startsWith("/apps/") ||
     pathname.startsWith("/case-studies/") ||
+    pathname.startsWith("/ad-images/") ||
     pathname.startsWith("/.well-known/")
   ) {
     return;
@@ -53,6 +54,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|static|api|apps|case-studies|\\.well-known|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|rss\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|BingSiteAuth\\.xml|8f4c2e19a7b64d309e51c8a2f7b4d6e3\\.txt|favicon\\.ico|Hamed_Mohamed_FullStack_NodeJS_CV\\.pdf|Hamed_Mohamed_CV\\.pdf).*)",
+    "/((?!_next|static|api|apps|case-studies|ad-images|\\.well-known|icon\\.png|logo\\.png|robots\\.txt|sitemap\\.xml|rss\\.xml|llms\\.txt|llms-full\\.txt|google25a857f9c98e0560\\.html|BingSiteAuth\\.xml|8f4c2e19a7b64d309e51c8a2f7b4d6e3\\.txt|favicon\\.ico|Hamed_Mohamed_FullStack_NodeJS_CV\\.pdf|Hamed_Mohamed_CV\\.pdf).*)",
   ],
 };
