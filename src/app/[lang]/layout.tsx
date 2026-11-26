@@ -90,10 +90,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       template: "%s | Hamed Mohamed",
     },
     description: lang === "ar"
-      ? "مطور برمجيات متكامل (Node.js & React) وباحث أمني. قمت ببناء أنظمة عالية الأداء تخدم أكثر من 2000 مستخدم مع تقليل زمن الاستجابة بنسبة 98%."
+      ? "مطور برمجيات متكامل (Node.js & React) وباحث أمني. طوّرت منصة حضور جامعية بالـ QR وخفّضت زمن الاستجابة بنسبة 98%."
       : lang === "tr"
       ? "Node.js, React ve Uygulama Güvenliği alanında uzmanlaşmış Full-Stack Mühendisi."
-      : "Full-Stack Engineer specializing in Node.js, React, and App Security. Built production systems for 2,000+ users with 98% latency reduction. NodeSecure contributor.",
+      : "Full-Stack Engineer specializing in Node.js, React, and App Security. Built a university QR attendance platform with 98% latency reduction. NodeSecure contributor.",
 
     authors: [
       {
@@ -271,10 +271,10 @@ export default async function LangLayout({
         email: "hamed.m.abdelalim@gmail.com",
         telephone: "+905060453906",
         description: lang === "ar"
-          ? "حامد محمد مهندس برمجيات متكامل (Full-Stack) وباحث أمني متخصص في Node.js وReact وبناء الأنظمة عالية الأداء. طوّر منصة حضور بالـ QR تخدم أكثر من 2000 مستخدم مع تقليل زمن الاستجابة بنسبة 98%، وساهم بـ 7 طلبات دمج في NodeSecure."
+          ? "حامد محمد مهندس برمجيات متكامل (Full-Stack) وباحث أمني متخصص في Node.js وReact وبناء الأنظمة عالية الأداء. طوّر منصة حضور جامعية بالـ QR مع تقليل زمن الاستجابة بنسبة 98%، وساهم بـ 7 طلبات دمج في NodeSecure."
           : lang === "tr"
-          ? "Hamed Mohamed; Node.js, React ve uygulama güvenliği alanında uzmanlaşmış Full-Stack yazılım mühendisidir. 2.000'den fazla kullanıcıya hizmet veren yüksek performanslı QR yoklama platformu geliştirdi (%98 gecikme azaltımı) ve NodeSecure açık kaynak ekosistemine 7 PR ile katkıda bulundu."
-          : "Hamed Mohamed is an Egyptian Full-Stack Engineer and Security Researcher who studied in Turkey. He specializes in Node.js, React, and building highly secure, scalable backend architectures. He shipped a high-throughput QR attendance platform serving 2,000+ users across 6 faculties with 98% latency reduction. He is an active open-source contributor to the NodeSecure ecosystem with 7 merged pull requests.",
+          ? "Hamed Mohamed; Node.js, React ve uygulama güvenliği alanında uzmanlaşmış Full-Stack yazılım mühendisidir. Bir üniversite için yüksek performanslı bir QR yoklama platformu geliştirdi (%98 gecikme azaltımı) ve NodeSecure açık kaynak ekosistemine 7 PR ile katkıda bulundu."
+          : "Hamed Mohamed is an Egyptian Full-Stack Engineer and Security Researcher who studied in Turkey. He specializes in Node.js, React, and building highly secure, scalable backend architectures. He shipped a high-throughput QR attendance platform for 6 university faculties with 98% latency reduction. He is an active open-source contributor to the NodeSecure ecosystem with 7 merged pull requests.",
         makesOffer: [
           { "@id": `${siteUrl}/#service-fullstack` },
           { "@id": `${siteUrl}/#service-backend` },
@@ -286,7 +286,7 @@ export default async function LangLayout({
         "@type": "Service",
         "@id": `${siteUrl}/#service-fullstack`,
         name: "Full-Stack Web Application Development",
-        description: "End-to-end web application development using Node.js, Express.js, React, Next.js, and TypeScript. From database design and REST API architecture to dynamic, responsive frontends. Proven track record building systems serving 2,000+ users across 6 faculties.",
+        description: "End-to-end web application development using Node.js, Express.js, React, Next.js, and TypeScript. From database design and REST API architecture to dynamic, responsive frontends. Proven track record building production systems for 6 university faculties.",
         provider: { "@id": `${siteUrl}/#person` },
         serviceType: "Web Development",
         areaServed: "Worldwide",

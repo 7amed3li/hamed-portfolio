@@ -4,28 +4,28 @@ export const servicesData: ServicePage[] = [
   {
     slug: "website-and-landing-page-development",
     title: "Website & Landing Page Development",
-    metaTitle: "Website and Landing Page Developer | Hamed Mohamed",
+    metaTitle: "Websites That Take Direct Orders & Bookings — No Commission | Hamed Mohamed",
     metaDescription:
-      "Need a website or landing page? Hamed Mohamed builds fast, professional websites and landing pages for businesses, startups, and brands using React and Next.js.",
-    h1: "Website and Landing Page Developer for Businesses & Startups",
+      "I build multilingual websites for restaurants, hotels, and small businesses that take orders and bookings directly — no platform commission. You work with me directly, no agency.",
+    h1: "Take Orders and Bookings From Your Own Website — No Platform Commission",
     intro:
-      "If you need a website or landing page built, Hamed Mohamed can help. Whether it's your first business website, a product landing page, or a personal portfolio, he builds fast, professional sites using React and Next.js that look great on every screen and load quickly.",
+      "I'm Hamed Mohamed, a full-stack developer in Istanbul building websites for restaurants, hotels, and small businesses. On the sites I build, orders and bookings come straight to you instead of to middleman platforms: the customer sees your menu and orders via WhatsApp, and you pay no commission. You work directly with me, not an agency, and I reply within 24 hours.",
     forWho:
-      "Small businesses, startups, freelancers, consultants, restaurants, cafes, coaches, and anyone who needs a professional online presence.",
+      "Restaurant and cafe owners, small hotels and apart-hotels, and any small business that doesn't want to give a cut of every order and booking to platform middlemen.",
     whatIBuild: [
-      "Business websites with multiple pages",
-      "Product or service landing pages",
-      "Personal portfolio websites",
-      "Restaurant and cafe websites",
-      "Coming-soon and waitlist pages",
-      "Pricing and feature comparison pages",
-      "Multi-language websites (Arabic, English, Turkish)",
+      "Restaurant websites with commission-free WhatsApp ordering",
+      "Hotel and apart-hotel websites with direct booking requests",
+      "Multi-page business websites",
+      "Product and service landing pages",
+      "An admin panel so you can update prices and menus yourself",
+      "Multilingual websites in up to 10 languages (Turkish, Arabic, English)",
+      "An SEO-ready structure so customers can find you on Google",
     ],
     technologies: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Vercel / Nginx"],
     businessValue:
-      "A fast, well-built website builds trust with your clients and helps you get found on Google. Sites built by Hamed load quickly, are mobile-friendly, and are ready for SEO from day one.",
+      "Instead of paying a platform commission on every order, you take orders from your own website and keep the difference. Your site loads fast, works perfectly on phones, and is delivered ready to be found on Google — customers find you and order from you directly, commission-free.",
     proof:
-      "Built the unified trilingual corporate holding platform for Genç Group in Istanbul (gencgroupinsaat.com.tr, uniting Genç Group İnşaat & AutoClub Merter with an interactive 3D/AI architectural lab), alongside live restaurant platforms including cihangirevyemekler.com.tr (970+ static pages across 10 languages), luckysushichinese.com.tr (3 Istanbul branches, 5 languages), and kardeslercihangir.com (~100 daily visitors), plus a university QR system serving 2,000+ students.",
+      "My work is live and you can inspect it yourself: Kardeşler Kebap Cihangir (kardeslercihangir.com — 10 languages, prices in 6 currencies, 106 products, commission-free WhatsApp ordering), Cihangir Ev Yemekleri (cihangirevyemekler.com.tr — 10 languages, 970+ pages, daily menu), Lucky Sushi & Chinese (luckysushichinese.com.tr — 3 branches, 5 languages, 140+ products, admin panel), and Genç Group (gencgroupinsaat.com.tr — a dual-brand corporate site for construction and automotive, with a live 8-stage project diary).",
     faq: [
       {
         q: "Can you build a website for a small business?",
@@ -46,6 +46,10 @@ export const servicesData: ServicePage[] = [
       {
         q: "Can you build a website in Arabic?",
         a: "Yes. Hamed has built multilingual websites with full RTL (right-to-left) support for Arabic, as well as English and Turkish.",
+      },
+      {
+        q: "How is the price determined?",
+        a: "The price depends on scope: the number of pages, languages, and features like ordering or booking. Message me on WhatsApp with a few lines about your business and I'll reply with a clear scope and a fixed quote — with no obligation.",
       },
     ],
   },

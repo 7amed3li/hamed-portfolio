@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { getServiceBySlug, servicesData } from "@/lib/services-data";
 import { BuyerCTA } from "@/components/ui/BuyerCTA";
+import { ProjectProofStrip, HowItWorks } from "@/components/ui/LandingProof";
 
 const siteUrl = "https://www.hamedmohamed.dev";
 
@@ -53,6 +54,8 @@ export default async function ServicePage({
   const { slug, lang } = await params;
   const service = getServiceBySlug(slug, lang);
   if (!service) notFound();
+
+  const isLandingPage = slug === "website-and-landing-page-development";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -219,6 +222,7 @@ export default async function ServicePage({
               slug={slug}
               contextTitle={service.title}
               variant="hero"
+              showPhone={isLandingPage}
               secondaryLink={{ href: `/${lang}/hire`, label: ui.allServices }}
             />
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-border">
@@ -243,6 +247,14 @@ export default async function ServicePage({
             </div>
           </div>
         </section>
+
+        {/* Landing page conversion sections: live proof + how it works */}
+        {isLandingPage && (
+          <>
+            <ProjectProofStrip lang={lang} />
+            <HowItWorks lang={lang} />
+          </>
+        )}
 
         {/* Main Content */}
         <div className="px-5 sm:px-6 md:px-20 lg:px-28 py-12 sm:py-16 md:py-20">
@@ -312,7 +324,7 @@ export default async function ServicePage({
                   </div>
                 )}
 
-                {(slug === "website-and-landing-page-development" || slug === "full-stack-web-development" || slug === "custom-business-systems") && (
+                {(slug === "full-stack-web-development" || slug === "custom-business-systems") && (
                   <div className="mt-5 pt-4 border-t border-accent/20 flex flex-wrap items-center gap-x-4 gap-y-2">
                     <Link
                       href={`/${lang}/case-studies/genc-group-corporate-platform`}
@@ -468,6 +480,7 @@ export default async function ServicePage({
               slug={slug}
               contextTitle={service.title}
               variant="bottom"
+              showPhone={isLandingPage}
             />
           </div>
         </section>

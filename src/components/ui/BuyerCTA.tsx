@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { track } from "@vercel/analytics";
-import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react";
 import { tactileButtonClasses } from "./TactilePrimitives";
 
 type BuyerCTAProps = {
@@ -12,9 +12,11 @@ type BuyerCTAProps = {
   contextTitle: string;
   variant?: "hero" | "bottom" | "sidebar";
   secondaryLink?: { href: string; label: string };
+  showPhone?: boolean;
 };
 
 const WHATSAPP_NUMBER = "905060453906";
+const PHONE_NUMBER = "+905060453906";
 const EMAIL = "hamed.m.abdelalim@gmail.com";
 
 export function BuyerCTA({
@@ -24,6 +26,7 @@ export function BuyerCTA({
   contextTitle,
   variant = "hero",
   secondaryLink,
+  showPhone = false,
 }: BuyerCTAProps) {
   const safeLang = lang === "ar" || lang === "tr" ? lang : "en";
 
@@ -41,14 +44,17 @@ export function BuyerCTA({
     en: {
       whatsapp: variant === "sidebar" ? "Message on WhatsApp" : "Chat on WhatsApp",
       email: "Send Email",
+      call: "Call Now",
     },
     ar: {
       whatsapp: variant === "sidebar" ? "راسلني على واتساب" : "تواصل عبر واتساب",
       email: "أرسل بريداً إلكترونياً",
+      call: "اتصل الآن",
     },
     tr: {
       whatsapp: variant === "sidebar" ? "WhatsApp ile İletişim" : "WhatsApp'tan Yaz",
       email: "E-posta Gönder",
+      call: "Hemen Ara",
     },
   }[safeLang];
 
@@ -58,7 +64,7 @@ export function BuyerCTA({
     slug: slug || "index",
   };
 
-  const handleTrack = (eventName: "cta_whatsapp_click" | "cta_email_click") => {
+  const handleTrack = (eventName: "cta_whatsapp_click" | "cta_email_click" | "cta_call_click") => {
     try {
       track(eventName, eventProps);
     } catch {
@@ -120,6 +126,20 @@ export function BuyerCTA({
         <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
         <span>{labels.whatsapp}</span>
       </a>
+      {showPhone && (
+        <a
+          href={`tel:${PHONE_NUMBER}`}
+          data-cta="call"
+          onClick={() => handleTrack("cta_call_click")}
+          className={tactileButtonClasses(
+            "outline",
+            `${paddingClass} tracking-wide sm:tracking-widest text-[11px] sm:text-sm flex sm:inline-flex items-center justify-center text-center leading-tight min-h-[46px] gap-1.5 sm:gap-2`
+          )}
+        >
+          <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+          <span>{labels.call}</span>
+        </a>
+      )}
       <a
         href={mailtoHref}
         data-cta="email"

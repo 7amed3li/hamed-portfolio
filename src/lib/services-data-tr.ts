@@ -4,28 +4,28 @@ export const servicesData: ServicePage[] = [
   {
     slug: "website-and-landing-page-development",
     title: "Web Sitesi ve Açılış Sayfası Geliştirme",
-    metaTitle: "Web Sitesi ve Açılış Sayfası Geliştiricisi | Hamed Mohamed",
+    metaTitle: "Komisyonsuz Sipariş ve Rezervasyon Alan Web Siteleri | Hamed Mohamed",
     metaDescription:
-      "Hamed Mohamed, React ve Next.js kullanarak işletmeler için hızlı, mobil uyumlu ve modern web siteleri ile açılış sayfaları geliştirir.",
-    h1: "İşletmeler ve Girişimler için Web Sitesi ve Açılış Sayfası Geliştiricisi",
+      "Restoran, otel ve küçük işletmeler için komisyonsuz sipariş ve rezervasyon alan, çok dilli web siteleri yapıyorum. Aracı yok — doğrudan benimle çalışırsınız.",
+    h1: "Komisyon Ödemeden Kendi Sitenizden Sipariş ve Rezervasyon Alın",
     intro:
-      "Bir web sitesine veya açılış sayfasına (landing page) ihtiyacınız varsa, Hamed Mohamed size yardımcı olabilir. İster ilk işletme web siteniz, ister ürün açılış sayfanız, ister kişisel portföyünüz olsun; her ekranda harika görünen ve hızlı yüklenen siteleri React ve Next.js ile oluşturur.",
+      "Ben Hamed Mohamed — İstanbul'da restoranlar, oteller ve küçük işletmeler için web siteleri yapan bir full-stack geliştiriciyim. Yaptığım sitelerde sipariş ve rezervasyonlar aracı platformlara değil, doğrudan size gelir: müşteri menünüzü görür, siparişini WhatsApp'tan size gönderir; siz komisyon ödemezsiniz. Ajansla değil, doğrudan benimle çalışırsınız ve mesajınıza 24 saat içinde dönerim.",
     forWho:
-      "Küçük işletmeler, girişimler, serbest çalışanlar, danışmanlar, restoranlar, kafeler, eğitmenler ve profesyonel bir çevrimiçi varlığa ihtiyaç duyan herkes.",
+      "Restoran ve kafe sahipleri, küçük oteller ve apartlar; sipariş ve rezervasyonlarını aracı platformların komisyonuna bırakmak istemeyen küçük işletmeler.",
     whatIBuild: [
+      "Komisyonsuz WhatsApp siparişli restoran web siteleri",
+      "Doğrudan rezervasyon talebi alan otel ve apart web siteleri",
       "Çok sayfalı işletme web siteleri",
       "Ürün veya hizmet açılış sayfaları",
-      "Kişisel portföy web siteleri",
-      "Restoran ve kafe web siteleri",
-      "Çok yakında ve bekleme listesi sayfaları",
-      "Fiyatlandırma ve özellik karşılaştırma sayfaları",
-      "Çok dilli web siteleri (Arapça, İngilizce, Türkçe)",
+      "Fiyatları ve menüyü kendiniz güncelleyebileceğiniz yönetim paneli",
+      "10 dile kadar çok dilli web siteleri (Türkçe, Arapça, İngilizce dahil)",
+      "Google'da bulunmanızı sağlayan SEO'ya hazır yapı",
     ],
     technologies: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "Vercel / Nginx"],
     businessValue:
-      "Hızlı ve iyi oluşturulmuş bir web sitesi müşterilerinize güven verir ve Google'da bulunmanıza yardımcı olur. Hamed'in yaptığı siteler hızlı yüklenir, mobil uyumludur ve ilk günden itibaren SEO'ya hazırdır.",
+      "Her siparişte aracı platforma komisyon ödemek yerine kendi sitenizden sipariş alırsınız; aradaki fark doğrudan kasanızda kalır. Siteniz hızlı açılır, telefonda kusursuz çalışır ve Google'da bulunacak şekilde teslim edilir — müşteriniz sizi bulur, siparişini komisyonsuz verir.",
     proof:
-      "İstanbul merkezli Genç Group (gencgroupinsaat.com.tr. Genç Group İnşaat ve AutoClub Merter için etkileşimli 3D/AI mimari stüdyolu 3 dilli kurumsal şirket platformu) ile birlikte cihangirevyemekler.com.tr (10 dilde 970+ statik sayfa), luckysushichinese.com.tr (3 İstanbul şubesi, 5 dil) ve kardeslercihangir.com canlı üretim sitelerini geliştirip yayına aldı. Ayrıca 2.000'den fazla öğrencinin kullandığı üniversite QR yoklama sistemini inşa etti.",
+      "Yaptığım işler yayında ve incelenebilir durumda: Kardeşler Kebap Cihangir (kardeslercihangir.com — 10 dil, 6 para biriminde fiyat, 106 ürün, komisyonsuz WhatsApp siparişi), Cihangir Ev Yemekleri (cihangirevyemekler.com.tr — 10 dil, 970+ sayfa, günlük menü), Lucky Sushi & Chinese (luckysushichinese.com.tr — 3 şube, 5 dil, 140+ ürün, yönetim paneli) ve Genç Group (gencgroupinsaat.com.tr — inşaat ve otomotiv için iki markalı kurumsal site, 8 aşamalı canlı proje günlüğü).",
     faq: [
       {
         q: "Küçük bir işletme için web sitesi oluşturabilir misiniz?",
@@ -46,6 +46,10 @@ export const servicesData: ServicePage[] = [
       {
         q: "Arapça bir web sitesi yapabilir misiniz?",
         a: "Evet. İngilizce ve Türkçe'nin yanı sıra Arapça (sağdan sola) (RTL) tam destekli çok dilli web siteleri geliştirdim.",
+      },
+      {
+        q: "Fiyat nasıl belirleniyor?",
+        a: "Fiyat; sayfa sayısı, dil sayısı ve sipariş/rezervasyon gibi özelliklere göre, kapsama göre netleşir. Bana WhatsApp'tan işletmenizi kısaca anlatın; size net bir kapsam ve fiyat teklifiyle döneyim — karar vermek zorunda değilsiniz.",
       },
     ],
   },
