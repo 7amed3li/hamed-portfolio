@@ -62,6 +62,18 @@ const projects: Project[] = [
       en: "Dual-brand corporate site for construction and automotive — a live 8-stage project diary",
     },
   },
+  {
+    name: "Healix Medical",
+    domain: "healixistanbul.com.tr",
+    liveUrl: "https://www.healixistanbul.com.tr",
+    image: "/ad-images/healix-191.jpg",
+    caseStudySlug: "healix-medical-platform",
+    fact: {
+      tr: "Uluslararası hasta koordinasyon platformu — 5 dil, dil başına 12 hizmet sayfası, Türkiye'de 33 anlaşmalı sağlık kuruluşu",
+      ar: "منصة دولية لتنسيق علاج المرضى — 5 لغات، 12 صفحة خدمة لكل لغة، 33 منشأة رعاية صحية متعاقدة في تركيا",
+      en: "International patient-coordination platform — 5 languages, 12 service pages per language, 33 contracted healthcare facilities in Türkiye",
+    },
+  },
 ];
 
 const copy = {
@@ -69,7 +81,7 @@ const copy = {
     proofLabel: "Canlıdaki İşlerim",
     proofTitle: "Söylediklerimi değil, yayındaki siteleri inceleyin",
     proofDesc:
-      "Aşağıdaki dört site de şu an yayında. Bağlantılara tıklayıp kendiniz gezebilir, menülere bakabilir, hatta sipariş akışını deneyebilirsiniz.",
+      "Aşağıdaki beş site de şu an yayında. Bağlantılara tıklayıp kendiniz gezebilir, menülere bakabilir, hatta sipariş akışını deneyebilirsiniz.",
     visitSite: "Canlı Site",
     caseStudy: "Vaka Analizi",
     stepsLabel: "Nasıl Çalışırız?",
@@ -93,7 +105,7 @@ const copy = {
     proofLabel: "أعمالي المنشورة",
     proofTitle: "لا تكتفِ بكلامي — عاين المواقع الحية بنفسك",
     proofDesc:
-      "المواقع الأربعة التالية منشورة الآن. اضغط على الروابط وتصفحها بنفسك، واطّلع على القوائم، وجرّب مسار الطلب.",
+      "المواقع الخمسة التالية منشورة الآن. اضغط على الروابط وتصفحها بنفسك، واطّلع على القوائم، وجرّب مسار الطلب.",
     visitSite: "الموقع الحي",
     caseStudy: "دراسة الحالة",
     stepsLabel: "كيف نعمل؟",
@@ -117,7 +129,7 @@ const copy = {
     proofLabel: "My Live Work",
     proofTitle: "Don't take my word for it — inspect the live sites",
     proofDesc:
-      "All four sites below are live right now. Click through, browse the menus, and try the ordering flow yourself.",
+      "All five sites below are live right now. Click through, browse the menus, and try the ordering flow yourself.",
     visitSite: "Live Site",
     caseStudy: "Case Study",
     stepsLabel: "How It Works",
