@@ -16,6 +16,7 @@ import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { GoogleAdsTracker } from "@/components/providers/GoogleAdsTracker";
 
 // English: Space Grotesk (display) + Inter (body)
 const spaceGrotesk = Space_Grotesk({
@@ -375,6 +376,7 @@ export default async function LangLayout({
           <Footer lang={lang} />
           <Analytics />
           <SpeedInsights />
+          <GoogleAdsTracker />
         </LanguageProvider>
       </body>
     </html>
