@@ -26,7 +26,7 @@ export function BuyerCTA({
   contextTitle,
   variant = "hero",
   secondaryLink,
-  showPhone = false,
+  showPhone = true,
 }: BuyerCTAProps) {
   const safeLang = lang === "ar" || lang === "tr" ? lang : "en";
 
